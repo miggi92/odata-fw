@@ -1,0 +1,294 @@
+"! <p class="shorttext synchronized" lang="en">Main Odata Class</p>
+CLASS zcl_odata_main DEFINITION
+  PUBLIC
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+    INTERFACES:
+      /iwbep/if_mgw_appl_srv_runtime.
+    METHODS:
+      constructor
+        IMPORTING
+          i_dpc_object TYPE REF TO /iwbep/cl_mgw_push_abs_data.
+  PROTECTED SECTION.
+    DATA:
+      dpc_object        TYPE REF TO /iwbep/cl_mgw_push_abs_data,
+      message_container TYPE REF TO /iwbep/if_message_container.
+    METHODS:
+      copy_data_to_ref
+        IMPORTING
+          i_data TYPE any
+        CHANGING
+          c_data TYPE REF TO data,
+      entityset_filter_page_order
+        IMPORTING
+          io_tech_request_context TYPE REF TO /iwbep/if_mgw_req_entityset
+        CHANGING
+          c_data                  TYPE table
+        RAISING
+          /iwbep/cx_mgw_tech_exception,
+      order_collection
+        IMPORTING
+          io_tech_request_context TYPE REF TO /iwbep/if_mgw_req_entityset
+        CHANGING
+          c_data                  TYPE table
+        RAISING
+          /iwbep/cx_mgw_tech_exception,
+      filter_collection
+        IMPORTING
+          io_tech_request_context TYPE REF TO /iwbep/if_mgw_req_entityset
+        CHANGING
+          c_data                  TYPE table
+        RAISING
+          /iwbep/cx_mgw_tech_exception,
+      paginate_collection
+        IMPORTING
+          io_tech_request_context TYPE REF TO /iwbep/if_mgw_req_entityset
+        CHANGING
+          c_data                  TYPE table,
+      get_properties
+        IMPORTING
+          io_tech_request_context TYPE REF TO /iwbep/if_mgw_req_entityset
+        RETURNING
+          VALUE(r_properties)     TYPE /iwbep/if_mgw_odata_re_prop=>ty_t_mgw_odata_properties
+        RAISING
+          /iwbep/cx_mgw_tech_exception,
+      raise_error
+        IMPORTING
+          i_error TYPE REF TO cx_root
+        RAISING
+          /iwbep/cx_mgw_busi_exception,
+      get_request_header
+        RETURNING
+          VALUE(r_request_headers) TYPE tihttpnvp
+        RAISING
+          /iwbep/cx_mgw_tech_exception.
+  PRIVATE SECTION.
+
+ENDCLASS.
+
+
+
+CLASS zcl_odata_main IMPLEMENTATION.
+  METHOD constructor.
+    me->dpc_object = i_dpc_object.
+*    me->message_container = me->dpc_object->/iwbep/if_mgw_conv_srv_runtime~get_message_container( ).
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~batch_begin.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~batch_end.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_begin.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_end.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_process.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~create_deep_entity.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~create_entity.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~create_stream.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~delete_entity.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~delete_stream.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~execute_action.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~get_entity.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~get_entityset.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~get_entityset_delta.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~get_expanded_entity.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~get_expanded_entityset.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~get_is_conditional_implemented.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~get_is_condi_imple_for_action.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~get_stream.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~patch_entity.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~update_entity.
+
+  ENDMETHOD.
+
+  METHOD /iwbep/if_mgw_appl_srv_runtime~update_stream.
+
+  ENDMETHOD.
+
+  METHOD copy_data_to_ref.
+    DATA: header TYPE ihttpnvp,
+          table  TYPE REF TO cl_abap_tabledescr,
+          dref   TYPE REF TO data.
+    FIELD-SYMBOLS:
+    <itab> TYPE ANY TABLE.
+
+    me->dpc_object->copy_data_to_ref(
+      EXPORTING
+        is_data = i_data
+      CHANGING
+        cr_data = c_data
+    ).
+
+    DATA(type) = cl_abap_elemdescr=>describe_by_data_ref( c_data )->kind.
+
+    IF type = cl_abap_elemdescr=>kind_table.
+      ASSIGN c_data->* TO <itab>.
+      DATA(count) = lines( <itab> ).
+    ELSEIF i_data IS INITIAL.
+      count = 0.
+    ELSE.
+      count = 1.
+    ENDIF.
+
+    header-name = 'count'.
+    header-value = count.
+
+    me->dpc_object->set_header( is_header = header ).
+  ENDMETHOD.
+
+  METHOD entityset_filter_page_order.
+    me->filter_collection(
+      EXPORTING
+        io_tech_request_context = io_tech_request_context
+      CHANGING
+        c_data                  = c_data
+    ).
+    me->order_collection(
+      EXPORTING
+        io_tech_request_context = io_tech_request_context
+      CHANGING
+        c_data                  = c_data
+    ).
+    me->paginate_collection(
+      EXPORTING
+        io_tech_request_context = io_tech_request_context
+      CHANGING
+        c_data                  = c_data
+    ).
+  ENDMETHOD.
+
+  METHOD order_collection.
+    DATA: sortorder TYPE abap_sortorder_tab.
+    DATA(orderby) = io_tech_request_context->get_orderby( ).
+
+    CHECK orderby IS NOT INITIAL AND lines( c_data ) > 0.
+
+    LOOP AT orderby ASSIGNING FIELD-SYMBOL(<orderby>).
+      APPEND INITIAL LINE TO sortorder ASSIGNING FIELD-SYMBOL(<sort>).
+      <sort>-name = <orderby>-property.
+      IF <orderby>-order = 'asc'.
+        <sort>-descending = abap_false.
+      ELSE.
+        <sort>-descending = abap_true.
+      ENDIF.
+    ENDLOOP.
+
+    SORT c_data BY (sortorder).
+  ENDMETHOD.
+
+  METHOD get_properties.
+    DATA: facade TYPE REF TO /iwbep/cl_mgw_dp_facade.
+
+    TRY.
+        facade ?= me->dpc_object->/iwbep/if_mgw_conv_srv_runtime~get_dp_facade( ).
+        r_properties = facade->/iwbep/if_mgw_dp_int_facade~get_model( )->get_entity_type( iv_entity_name = io_tech_request_context->get_entity_type_name( ) )->get_properties( ).
+      CATCH /iwbep/cx_mgw_med_exception INTO DATA(error).
+        RAISE EXCEPTION TYPE /iwbep/cx_mgw_med_exception
+          EXPORTING
+            previous = error.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD filter_collection.
+    TRY.
+        DATA(filter) = io_tech_request_context->get_filter( )->get_filter_select_options( ).
+
+        CHECK filter IS NOT INITIAL.
+
+        LOOP AT filter ASSIGNING FIELD-SYMBOL(<filter>).
+          LOOP AT c_data ASSIGNING FIELD-SYMBOL(<data>).
+            DATA(tabix) = sy-tabix.
+            ASSIGN COMPONENT <filter>-property OF STRUCTURE <data> TO FIELD-SYMBOL(<value>).
+            CHECK sy-subrc = 0 AND <value> IS ASSIGNED.
+            IF <value> NOT IN <filter>-select_options.
+              DELETE c_data INDEX tabix.
+            ENDIF.
+          ENDLOOP.
+        ENDLOOP.
+      CATCH /iwbep/cx_mgw_med_exception.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD paginate_collection.
+    DATA(top) = io_tech_request_context->get_top( ).
+    DATA(skip) = io_tech_request_context->get_skip( ).
+
+
+    IF skip IS NOT INITIAL.
+      DATA(begin) = skip + 1.
+      DATA(end) = begin + top.
+
+      DELETE c_data FROM begin TO end.
+    ENDIF.
+  ENDMETHOD.
+
+  METHOD raise_error.
+    NEW zcl_odata_error_handler( me->dpc_object )->raise_exception_object( i_exception = i_error ).
+  ENDMETHOD.
+
+  METHOD get_request_header.
+    DATA: facade TYPE REF TO /iwbep/if_mgw_dp_int_facade.
+
+    facade ?= me->dpc_object->/iwbep/if_mgw_conv_srv_runtime~get_dp_facade( ).
+    r_request_headers = facade->get_request_header( ).
+  ENDMETHOD.
+
+ENDCLASS.

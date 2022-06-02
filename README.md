@@ -1,5 +1,10 @@
 # odata-fw
 
+[![GitHub license](https://img.shields.io/github/license/miggi92/odata-fw?style=for-the-badge)](https://github.com/miggi92/odata-fw/blob/master/LICENSE.md)
+
+<div style="text-align: right">
+[![GitHub issues](https://img.shields.io/github/issues/miggi92/odata-fw?style=for-the-badge)](https://github.com/miggi92/odata-fw/issues) </div>
+
 ## Description
 
 An OData ABAP Framework.

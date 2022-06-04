@@ -1,0 +1,7 @@
+{
+  "configurations": {
+    "default": {
+      "filename": "./abaplint.json"
+    }
+  }
+}

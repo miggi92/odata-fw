@@ -6,7 +6,7 @@
 
 ## Description
 
-An OData ABAP Framework.
+An OData ABAP Framework
 
 ## Contributing
 

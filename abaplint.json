@@ -138,7 +138,7 @@
     "check_include": true,
     "xml_consistency": true,
     "prefix_is_current_class": {
-      "omitMeInstanceCalls": true
+      "omitMeInstanceCalls": false
     },
     "check_no_handler_pragma": true,
     "line_break_multiple_parameters": true,
@@ -148,7 +148,7 @@
     "sql_escape_host_variables": true,
     "try_without_catch": true,
     "names_no_dash": true,
-    "unknown_types": true,
+    "unknown_types": false,
     "unused_variables": true,
     "unused_types": true,
     "use_bool_expression": true,

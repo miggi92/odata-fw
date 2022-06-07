@@ -1,3 +1,4 @@
+"! <p class="shorttext synchronized" lang="en">OData framework controller</p>
 CLASS zcl_odata_fw_controller DEFINITION
   PUBLIC
   FINAL
@@ -22,11 +23,14 @@ CLASS zcl_odata_fw_controller DEFINITION
   PROTECTED SECTION.
   PRIVATE SECTION.
     DATA:
-      namespace    TYPE z_odata_namespace,
-      entities     TYPE zodata_entity_tt,
-      properties   TYPE zodata_property_tt,
-      navigation   TYPE zodata_nav_tt,
-      search_helps TYPE zodata_searchhlp_tt.
+      namespace        TYPE z_odata_namespace,
+      entities         TYPE zodata_entity_tt,
+      properties       TYPE zodata_property_tt,
+      property_texts   TYPE zodata_prop_txts_tt,
+      navigation       TYPE zodata_nav_tt,
+      search_helps     TYPE zodata_searchhlp_tt,
+      actions          TYPE zodata_actions_tt,
+      action_parameter TYPE zodata_act_param_tt.
 
     METHODS:
       load_customizing
@@ -50,7 +54,16 @@ CLASS zcl_odata_fw_controller DEFINITION
         IMPORTING
           i_model TYPE REF TO /iwbep/if_mgw_odata_model
         RAISING
-          /iwbep/cx_mgw_med_exception.
+          /iwbep/cx_mgw_med_exception,
+      define_actions
+        IMPORTING
+          i_model TYPE REF TO /iwbep/if_mgw_odata_model
+        RAISING
+          /iwbep/cx_mgw_med_exception,
+      override_texts
+        IMPORTING
+          i_property TYPE zodata_property
+          i_prop_ref TYPE REF TO /iwbep/if_mgw_odata_item.
 ENDCLASS.
 
 
@@ -64,6 +77,33 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
   ENDMETHOD.
 
 
+  METHOD define_actions.
+    LOOP AT me->actions ASSIGNING FIELD-SYMBOL(<action>).
+      DATA(action) = i_model->create_action( iv_action_name = |{ <action>-action_name }| ).
+      action->set_action_for( iv_entity_type_name = |{ <action>-entity }| ).
+      action->set_return_entity_set( |{ <action>-returning_entity }Set| ).
+      action->set_return_multiplicity( iv_cardinality = '1' ).
+      action->set_name( |{ <action>-action_name }| ).
+      IF <action>-http_method IS NOT INITIAL.
+        " default is GET
+        action->set_http_method( iv_method_name = <action>-http_method ).
+      ENDIF.
+
+      LOOP AT me->action_parameter ASSIGNING FIELD-SYMBOL(<action_param>) WHERE action_name = <action>-action_name.
+        DATA(parameter) = action->create_input_parameter(
+            iv_parameter_name = <action_param>-parameter_name
+            iv_abap_fieldname = <action_param>-fieldname                 " Field Name
+        ).
+      ENDLOOP.
+
+      action->bind_input_structure(
+          iv_structure_name   = |{ <action>-structure_name }|
+*          iv_bind_conversions = abap_false       " Consider conv. exits and ref. fields for currency and amount
+      ).
+    ENDLOOP.
+  ENDMETHOD.
+
+
   METHOD define_complex_type.
     DATA(complex_type) = i_model->create_complex_type( iv_cplx_type_name = i_entity-entity_name  ).
     complex_type->bind_structure( |{ i_entity-structure }| ).
@@ -73,6 +113,12 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
         iv_property_name  = <property>-property_name
         iv_abap_fieldname = <property>-abap_name
      ).
+
+      me->override_texts(
+                  i_property = <property>
+                  i_prop_ref = CAST #( property )
+              ).
+*     CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
     ENDLOOP.
   ENDMETHOD.
 
@@ -115,13 +161,19 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
 
     components = structure->get_components( ).
 
-    IF structure->struct_kind = structure->structkind_nested.
+    IF structure->struct_kind = structure->structkind_nested
+    OR line_exists( components[ as_include = abap_true ] ). " is sometimes needed cause it doesn't recognizes includes...
       DATA(nested) = structure->get_components( ).
       LOOP AT nested ASSIGNING FIELD-SYMBOL(<nested>) WHERE type->kind = cl_abap_structdescr=>kind_struct.
         DATA(nested_struct) = CAST cl_abap_structdescr( <nested>-type ).
         APPEND LINES OF nested_struct->get_components( ) TO components.
       ENDLOOP.
     ENDIF.
+
+    IF i_entity-entity_name = 'globalDocuments'.
+      entity->set_is_media( ).
+    ENDIF.
+
 
     entity->bind_structure(
       iv_structure_name   = |{ i_entity-structure }|
@@ -131,10 +183,15 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
 
     LOOP AT properties ASSIGNING FIELD-SYMBOL(<property>) WHERE entity_name = i_entity-entity_name.
       IF <property>-complex_type IS NOT INITIAL.
-        entity->create_complex_property(
+        DATA(cmplx_type) = entity->create_cmplx_type_property(
             iv_complex_type_name = <property>-complex_type
             iv_property_name     = <property>-property_name
             iv_abap_fieldname    = <property>-abap_name
+        ).
+
+        me->override_texts(
+            i_property = <property>
+            i_prop_ref = CAST #( cmplx_type )
         ).
       ELSE.
         TRY.
@@ -151,6 +208,12 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
           iv_property_name  = <property>-property_name
           iv_abap_fieldname = <property>-abap_name
         ).
+
+        me->override_texts(
+            i_property = <property>
+            i_prop_ref = CAST #( property )
+        ).
+
         IF component-type->absolute_name CS 'GUID'.
           property->set_type_edm_guid( ).
         ENDIF.
@@ -174,8 +237,11 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
                 iv_valuelist_entityset = |{ value_help-entity_name }Set|
                 iv_valuelist_property  = 'value'
             ).
-*              annotation->add_display_parameter( iv_valuelist_property = 'value' ).
               annotation->add_display_parameter( iv_valuelist_property = 'description' ).
+*            annotation->
+*            CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
+*            CATCH cx_fkk_error.                " General Errors
+
 *        CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
 *          property->set_value_list(
 *              iv_value_list_type = /iwbep/if_mgw_odata_property=>gcs_value_list_type_property-fixed_values
@@ -183,6 +249,10 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
             CATCH cx_sy_itab_line_not_found.
           ENDTRY.
         ENDIF.
+      ENDIF.
+
+      IF i_entity-entity_name = 'globalDocuments' and <property>-abap_name = 'MIME_TYPE'.
+        property->set_as_content_type( ).
       ENDIF.
     ENDLOOP.
   ENDMETHOD.
@@ -209,6 +279,7 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
         ENDLOOP.
 
         me->define_navigation_properties( i_model ).
+        me->define_actions( i_model ).
       CATCH zcx_odata INTO DATA(error).
         zcl_odata_utils=>raise_mpc_error( error ).
     ENDTRY.
@@ -250,10 +321,25 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
 
 
   METHOD load_customizing.
+    DATA: namespaces TYPE RANGE OF zodata_namespace-namespace.
+
+    " select global namespaces
+    SELECT namespace
+        FROM zodata_namespace
+        INTO TABLE @DATA(global_namespaces)
+        WHERE is_global = @abap_true.
+
+    LOOP AT global_namespaces ASSIGNING FIELD-SYMBOL(<global_namespace>).
+      CHECK <global_namespace> <> me->namespace.
+      APPEND VALUE #( sign = 'I' option = 'EQ' low = <global_namespace> ) TO namespaces.
+    ENDLOOP.
+
+    APPEND VALUE #( sign = 'I' option = 'EQ' low = me->namespace ) TO namespaces.
+
     SELECT *
         FROM zodata_entity
         INTO TABLE me->entities
-        WHERE namespace = me->namespace.
+        WHERE namespace IN namespaces.
 
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_odata
@@ -267,7 +353,7 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
     SELECT *
         FROM zodata_property
         INTO TABLE me->properties
-        WHERE namespace = me->namespace.
+        WHERE namespace IN namespaces.
 
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_odata
@@ -277,15 +363,56 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
     ENDIF.
 
     SELECT *
+        FROM zodata_prop_txts
+        INTO TABLE me->property_texts
+        WHERE namespace IN namespaces.
+
+    SELECT *
         FROM zodata_nav
         INTO TABLE me->navigation
-        WHERE namespace = me->namespace.
+        WHERE namespace IN namespaces.
 
     SELECT *
         FROM zodata_searchhlp
         INTO TABLE me->search_helps.
-*        WHERE namespace = me->namespace.
+
+    SELECT *
+        FROM zodata_actions
+        INTO TABLE me->actions
+        WHERE namespace IN namespaces.
+
+    SELECT *
+        FROM zodata_act_param
+        INTO TABLE me->action_parameter
+        WHERE namespace IN namespaces.
 
   ENDMETHOD.
 
+
+  METHOD override_texts.
+    CHECK i_prop_ref IS BOUND.
+    TRY.
+        DATA(label) = me->property_texts[ entity_name = i_property-entity_name
+                                          property_name = i_property-property_name
+                                          text_type = 'L' ].
+
+        i_prop_ref->set_label_from_text_element(
+            iv_text_element_symbol    = |{ label-text_id }|                " Text element key (number/selection name)
+            iv_text_element_container = |{ label-object_name }|                 " the class/report which contains the text element
+        ).
+      CATCH cx_sy_itab_line_not_found /iwbep/cx_mgw_med_exception.
+    ENDTRY.
+    TRY.
+        DATA(heading) = me->property_texts[ entity_name = i_property-entity_name
+                                            property_name = i_property-property_name
+                                            text_type = 'H' ].
+
+        i_prop_ref->set_heading_from_text_element(
+                    iv_text_element_symbol    = |{ label-text_id }|                " Text element key (number/selection name)
+                    iv_text_element_container = |{ label-object_name }|                 " the class/report which contains the text element
+                ).
+
+      CATCH cx_sy_itab_line_not_found /iwbep/cx_mgw_med_exception.
+    ENDTRY.
+  ENDMETHOD.
 ENDCLASS.

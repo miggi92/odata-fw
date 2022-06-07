@@ -11,7 +11,8 @@ CLASS zcl_odata_data_provider DEFINITION
       add
         IMPORTING
           i_entity_name TYPE zodata_data_provider-entity_name
-          i_class_name  TYPE zodata_entity-class_name,
+          i_class_name  TYPE zodata_entity-class_name
+          i_actions     TYPE zodata_data_provider-actions OPTIONAL,
       add_entities2providers
         IMPORTING
           i_entities TYPE zodata_entity_tt,
@@ -21,6 +22,11 @@ CLASS zcl_odata_data_provider DEFINITION
       get
         IMPORTING
           i_entity_name          TYPE zodata_data_provider-entity_name
+        RETURNING
+          VALUE(r_data_provider) TYPE zodata_data_provider,
+      get_action
+        IMPORTING
+          i_action               TYPE string
         RETURNING
           VALUE(r_data_provider) TYPE zodata_data_provider.
   PROTECTED SECTION.
@@ -42,8 +48,9 @@ CLASS zcl_odata_data_provider IMPLEMENTATION.
   METHOD add.
     DATA: data_provider LIKE LINE OF me->data_providers.
 
-    data_provider-entity_name = i_entity_name.
-    data_provider-instance = me->create_instance( i_class_name = i_class_name ).
+    data_provider-entity_name   = i_entity_name.
+    data_provider-instance      = me->create_instance( i_class_name = i_class_name ).
+    data_provider-actions       = i_actions.
 
 
     APPEND data_provider TO me->data_providers.
@@ -83,6 +90,23 @@ CLASS zcl_odata_data_provider IMPLEMENTATION.
       APPEND INITIAL LINE TO me->data_providers ASSIGNING FIELD-SYMBOL(<data_provider>).
       <data_provider>-entity_name = <entity>-entity_name.
       <data_provider>-instance = me->create_instance( i_class_name = <entity>-class_name ).
+      SELECT *
+        FROM zodata_actions
+        INTO TABLE @DATA(actions)
+        WHERE namespace = @<entity>-namespace
+          AND entity    = @<entity>-entity_name.
+      LOOP AT actions ASSIGNING FIELD-SYMBOL(<action>).
+        APPEND <action>-action_name TO <data_provider>-actions.
+      ENDLOOP.
+    ENDLOOP.
+  ENDMETHOD.
+
+  METHOD get_action.
+    LOOP AT me->data_providers ASSIGNING FIELD-SYMBOL(<data_provider>) WHERE actions IS NOT INITIAL.
+      IF line_exists( <data_provider>-actions[ table_line = i_action ] ).
+        r_data_provider = <data_provider>.
+        RETURN.
+      ENDIF.
     ENDLOOP.
   ENDMETHOD.
 

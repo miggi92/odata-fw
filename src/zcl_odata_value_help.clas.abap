@@ -16,6 +16,12 @@ CLASS zcl_odata_value_help DEFINITION
       /iwbep/if_mgw_appl_srv_runtime~get_entity REDEFINITION.
   PROTECTED SECTION.
   PRIVATE SECTION.
+    TYPES:
+      BEGIN OF ty_s_clause,
+        line(72) TYPE c,
+      END OF ty_s_clause,
+      ty_t_clause TYPE STANDARD TABLE OF ty_s_clause WITH DEFAULT KEY.
+
     METHODS:
       get_customizing
         IMPORTING
@@ -42,7 +48,12 @@ CLASS zcl_odata_value_help DEFINITION
         RETURNING
           VALUE(r_value_help) TYPE tty_t_value_help
         RAISING
-          zcx_odata.
+          zcx_odata,
+      build_where_condition
+        IMPORTING
+          i_customizing       TYPE zodata_searchhlp
+        RETURNING
+          VALUE(r_where_cond) TYPE ty_t_clause.
 ENDCLASS.
 
 
@@ -86,6 +97,17 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
           value_help = me->get_data_by_domain( i_customizing = customizing ).
         ENDIF.
 
+        " add empty value if none exists
+        IF NOT line_exists( value_help[ value = '' ] ).
+          APPEND VALUE #( value = '' description = ' ' search_help = customizing-id ) TO value_help.
+        ENDIF.
+
+        me->entityset_filter_page_order(
+          EXPORTING
+            io_tech_request_context = io_tech_request_context
+          CHANGING
+            c_data                  = value_help
+        ).
 
         me->copy_data_to_ref(
           EXPORTING
@@ -133,7 +155,11 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
     DATA: description_component TYPE string,
           table_name            TYPE tabname,
           table                 TYPE REF TO data,
-          checkfield            TYPE dd08v-fieldname.
+          checkfield            TYPE dd08v-fieldname,
+          table_ref             TYPE REF TO cl_abap_tabledescr,
+          keys                  TYPE  ddfields,
+          structure             TYPE REF TO cl_abap_structdescr.
+
     FIELD-SYMBOLS:
       <table_values>    TYPE ANY TABLE,
       <texttable_value> TYPE ANY TABLE.
@@ -144,16 +170,42 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
     CREATE DATA table TYPE TABLE OF (table_name).
     ASSIGN table->* TO <table_values>.
 
+    table_ref ?= cl_abap_tabledescr=>describe_by_data( <table_values> ).
+    structure ?= table_ref->get_table_line_type( ).
 
-    SELECT *
+    structure->get_ddic_field_list(
+      RECEIVING
+        p_field_list             = keys                 " List of Dictionary Descriptions for the Components
+      EXCEPTIONS
+        not_found                = 1                " Type could not be found
+        no_ddic_type             = 2                " Typ is not a dictionary type
+        OTHERS                   = 3
+    ).
+    DELETE keys WHERE keyflag <> abap_true.
+
+    DATA(components) = structure->get_components( ).
+
+    DATA(where_cond) = me->build_where_condition( i_customizing ).
+
+    IF line_exists( components[ name = 'SPRAS' ] ) AND line_exists( keys[ fieldname = 'SPRAS' ] ).
+      SELECT *
+         FROM (table_name)
+         INTO TABLE <table_values>
+         WHERE spras = sy-langu
+           AND (where_cond).
+    ELSE.
+      SELECT *
         FROM (table_name)
-        INTO TABLE <table_values>.
+        INTO TABLE <table_values>
+        WHERE (where_cond).
 
-    DATA(texttable) = get_texttable(
-                  EXPORTING
-                    i_table_name = table_name
-                  IMPORTING
-                    e_checkfield = checkfield ).
+
+      DATA(texttable) = get_texttable(
+                    EXPORTING
+                      i_table_name = table_name
+                    IMPORTING
+                      e_checkfield = checkfield ).
+    ENDIF.
 
     IF texttable IS INITIAL.
       checkfield = i_customizing-data_element.
@@ -161,11 +213,15 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
       CREATE DATA table TYPE TABLE OF (texttable).
       ASSIGN table->* TO <texttable_value>.
 
+      DATA: test TYPE string.
+
       SELECT *
           FROM (texttable)
           INTO TABLE <texttable_value>
-           WHERE spras = sy-langu.
+           WHERE spras = sy-langu
+             AND (test).
     ENDIF.
+
     LOOP AT <table_values> ASSIGNING FIELD-SYMBOL(<table_value>).
       APPEND INITIAL LINE TO r_value_help ASSIGNING FIELD-SYMBOL(<value_help>).
       ASSIGN COMPONENT checkfield OF STRUCTURE <table_value> TO FIELD-SYMBOL(<value>).
@@ -220,6 +276,36 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
       <value_help>-value        = <fixed_value>-low .
       <value_help>-description  = <fixed_value>-ddtext.
     ENDLOOP.
+  ENDMETHOD.
+
+  METHOD build_where_condition.
+    DATA: cond_tab TYPE STANDARD TABLE OF hrcond.
+
+    IF i_customizing-where_data_element1 IS NOT INITIAL.
+      APPEND VALUE #( field = i_customizing-where_data_element1 opera = 'EQ' low = i_customizing-where_value1 ) TO cond_tab.
+    ENDIF.
+
+    IF i_customizing-where_data_element2 IS NOT INITIAL.
+      APPEND VALUE #( field = i_customizing-where_data_element2 opera = 'EQ' low = i_customizing-where_value2 ) TO cond_tab.
+    ENDIF.
+
+    CALL FUNCTION 'RH_DYNAMIC_WHERE_BUILD'
+      EXPORTING
+        dbtable         = i_customizing-tabname                 " Database Table
+      TABLES
+        condtab         = cond_tab                 " Condition Table
+        where_clause    = r_where_cond                  " Where Clause
+      EXCEPTIONS
+        empty_condtab   = 1
+        no_db_field     = 2
+        unknown_db      = 3
+        wrong_condition = 4
+        OTHERS          = 5.
+
+    IF sy-subrc <> 0.
+*     MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+*       WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+    ENDIF.
   ENDMETHOD.
 
 ENDCLASS.

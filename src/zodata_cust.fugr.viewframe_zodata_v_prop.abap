@@ -1,6 +1,6 @@
 *---------------------------------------------------------------------*
 *    program for:   VIEWFRAME_ZODATA_V_PROP
-*   generation date: 21.01.2021 at 13:25:28
+*   generation date: 14.12.2021 at 11:50:12
 *   view maintenance generator version: #001407#
 *---------------------------------------------------------------------*
 FUNCTION VIEWFRAME_ZODATA_V_PROP       .

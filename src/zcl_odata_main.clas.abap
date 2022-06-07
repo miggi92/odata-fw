@@ -70,98 +70,123 @@ ENDCLASS.
 
 
 CLASS zcl_odata_main IMPLEMENTATION.
-  METHOD constructor.
-    me->dpc_object = i_dpc_object.
-*    me->message_container = me->dpc_object->/iwbep/if_mgw_conv_srv_runtime~get_message_container( ).
-  ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~batch_begin.
 
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~batch_end.
 
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_begin.
 
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_end.
 
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_process.
 
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~create_deep_entity.
 
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~create_entity.
 
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~create_stream.
 
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~delete_entity.
 
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~delete_stream.
 
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~execute_action.
 
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entity.
 
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entityset.
 
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entityset_delta.
 
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_expanded_entity.
 
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_expanded_entityset.
 
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_is_conditional_implemented.
 
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_is_condi_imple_for_action.
 
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_stream.
 
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~patch_entity.
 
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~update_entity.
 
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~update_stream.
 
   ENDMETHOD.
+
+
+  METHOD constructor.
+    me->dpc_object = i_dpc_object.
+*    me->message_container = me->dpc_object->/iwbep/if_mgw_conv_srv_runtime~get_message_container( ).
+  ENDMETHOD.
+
 
   METHOD copy_data_to_ref.
     DATA: header TYPE ihttpnvp,
@@ -194,6 +219,7 @@ CLASS zcl_odata_main IMPLEMENTATION.
     me->dpc_object->set_header( is_header = header ).
   ENDMETHOD.
 
+
   METHOD entityset_filter_page_order.
     me->filter_collection(
       EXPORTING
@@ -215,6 +241,112 @@ CLASS zcl_odata_main IMPLEMENTATION.
     ).
   ENDMETHOD.
 
+
+  METHOD filter_collection.
+    DATA: dynamic_where      TYPE rsds_twhere,
+          dynamic_where_line LIKE LINE OF dynamic_where,
+          field_ranges       TYPE rsds_trange,
+          entries            TYPE REF TO data.
+    FIELD-SYMBOLS:
+                   <entries> LIKE c_data.
+
+    TRY.
+        DATA(filter) = io_tech_request_context->get_filter( )->get_filter_select_options( ).
+
+        IF filter IS NOT INITIAL.
+
+          LOOP AT filter ASSIGNING FIELD-SYMBOL(<filter>).
+            LOOP AT c_data ASSIGNING FIELD-SYMBOL(<data>).
+              DATA(tabix) = sy-tabix.
+              ASSIGN COMPONENT <filter>-property OF STRUCTURE <data> TO FIELD-SYMBOL(<value>).
+              CHECK sy-subrc = 0 AND <value> IS ASSIGNED.
+              IF <value> NOT IN <filter>-select_options.
+                DELETE c_data INDEX tabix.
+              ENDIF.
+            ENDLOOP.
+          ENDLOOP.
+        ELSE.
+          TRY.
+              DATA(osql_where_clause) = io_tech_request_context->get_osql_where_clause_convert( ).
+              CHECK osql_where_clause IS NOT INITIAL.
+              REPLACE ALL OCCURRENCES OF '(' IN osql_where_clause WITH ''.
+              REPLACE ALL OCCURRENCES OF ')' IN osql_where_clause WITH ''.
+              REPLACE ALL OCCURRENCES OF | OR | IN osql_where_clause WITH | AND |.
+              dynamic_where_line-tablename = 'TEST'.
+
+              ##TODO " line ist nur 72 zeichen lang. der osql string muss aufgeteilt werden.
+              DATA(length_osql) = strlen( osql_where_clause ).
+
+              IF length_osql <= 72 .
+                dynamic_where_line-where_tab = VALUE #( ( |{ osql_where_clause }| ) ).
+                APPEND dynamic_where_line TO dynamic_where.
+              ELSE.
+                SPLIT osql_where_clause AT 'AND' INTO TABLE DATA(split_osql).
+
+                LOOP AT split_osql ASSIGNING FIELD-SYMBOL(<split_osql>).
+                  APPEND |{ <split_osql> } { COND char03( WHEN sy-tabix = lines( split_osql ) THEN '' ELSE 'AND' ) }| TO dynamic_where_line-where_tab.
+                ENDLOOP.
+              ENDIF.
+              APPEND dynamic_where_line TO dynamic_where.
+
+
+              CALL FUNCTION 'FREE_SELECTIONS_WHERE_2_RANGE'
+                EXPORTING
+                  where_clauses            = dynamic_where                " Abgrenzungen in Form RSDS_TWHERE
+                IMPORTING
+                  field_ranges             = field_ranges                 " Abgrenzungen in Form RSDS_TRANGE
+                EXCEPTIONS
+                  expression_not_supported = 1                " (Noch) nicht unterstützter logischer Ausdruck
+                  incorrect_expression     = 2                " Inkorrekter logischer Ausdruck
+                  OTHERS                   = 3.
+              IF sy-subrc <> 0.
+                RETURN.
+              ENDIF.
+              DATA(ranges) = field_ranges[ 1 ].
+              CREATE DATA entries LIKE c_data.
+              ASSIGN entries->* TO <entries>.
+
+              LOOP AT ranges-frange_t ASSIGNING FIELD-SYMBOL(<ranges>).
+                LOOP AT c_data ASSIGNING <data>.
+                  tabix = sy-tabix.
+                  ASSIGN COMPONENT <ranges>-fieldname OF STRUCTURE <data> TO <value>.
+                  CHECK sy-subrc = 0 AND <value> IS ASSIGNED.
+                  IF <value> IN <ranges>-selopt_t.
+                    APPEND <data> TO <entries>.
+                    DELETE c_data INDEX tabix.
+                  ENDIF.
+                ENDLOOP.
+              ENDLOOP.
+              c_data = <entries>.
+          ENDTRY.
+        ENDIF.
+      CATCH /iwbep/cx_mgw_med_exception.
+    ENDTRY.
+  ENDMETHOD.
+
+
+  METHOD get_properties.
+    DATA: facade TYPE REF TO /iwbep/cl_mgw_dp_facade.
+
+    TRY.
+        facade ?= me->dpc_object->/iwbep/if_mgw_conv_srv_runtime~get_dp_facade( ).
+        r_properties = facade->/iwbep/if_mgw_dp_int_facade~get_model( )->get_entity_type( iv_entity_name = io_tech_request_context->get_entity_type_name( ) )->get_properties( ).
+      CATCH /iwbep/cx_mgw_med_exception INTO DATA(error).
+        RAISE EXCEPTION TYPE /iwbep/cx_mgw_med_exception
+          EXPORTING
+            previous = error.
+    ENDTRY.
+  ENDMETHOD.
+
+
+  METHOD get_request_header.
+    DATA: facade TYPE REF TO /iwbep/if_mgw_dp_int_facade.
+
+    facade ?= me->dpc_object->/iwbep/if_mgw_conv_srv_runtime~get_dp_facade( ).
+    r_request_headers = facade->get_request_header( ).
+  ENDMETHOD.
+
+
   METHOD order_collection.
     DATA: sortorder TYPE abap_sortorder_tab.
     DATA(orderby) = io_tech_request_context->get_orderby( ).
@@ -234,61 +366,28 @@ CLASS zcl_odata_main IMPLEMENTATION.
     SORT c_data BY (sortorder).
   ENDMETHOD.
 
-  METHOD get_properties.
-    DATA: facade TYPE REF TO /iwbep/cl_mgw_dp_facade.
-
-    TRY.
-        facade ?= me->dpc_object->/iwbep/if_mgw_conv_srv_runtime~get_dp_facade( ).
-        r_properties = facade->/iwbep/if_mgw_dp_int_facade~get_model( )->get_entity_type( iv_entity_name = io_tech_request_context->get_entity_type_name( ) )->get_properties( ).
-      CATCH /iwbep/cx_mgw_med_exception INTO DATA(error).
-        RAISE EXCEPTION TYPE /iwbep/cx_mgw_med_exception
-          EXPORTING
-            previous = error.
-    ENDTRY.
-  ENDMETHOD.
-
-  METHOD filter_collection.
-    TRY.
-        DATA(filter) = io_tech_request_context->get_filter( )->get_filter_select_options( ).
-
-        CHECK filter IS NOT INITIAL.
-
-        LOOP AT filter ASSIGNING FIELD-SYMBOL(<filter>).
-          LOOP AT c_data ASSIGNING FIELD-SYMBOL(<data>).
-            DATA(tabix) = sy-tabix.
-            ASSIGN COMPONENT <filter>-property OF STRUCTURE <data> TO FIELD-SYMBOL(<value>).
-            CHECK sy-subrc = 0 AND <value> IS ASSIGNED.
-            IF <value> NOT IN <filter>-select_options.
-              DELETE c_data INDEX tabix.
-            ENDIF.
-          ENDLOOP.
-        ENDLOOP.
-      CATCH /iwbep/cx_mgw_med_exception.
-    ENDTRY.
-  ENDMETHOD.
 
   METHOD paginate_collection.
+    DATA: end TYPE i.
+
     DATA(top) = io_tech_request_context->get_top( ).
     DATA(skip) = io_tech_request_context->get_skip( ).
 
 
     IF skip IS NOT INITIAL.
-      DATA(begin) = skip + 1.
-      DATA(end) = begin + top.
+      DELETE c_data FROM 1 TO skip.
+    ENDIF.
 
-      DELETE c_data FROM begin TO end.
+    DATA(max_entries) = lines( c_data ).
+
+    IF top IS NOT INITIAL AND max_entries > top.
+      top = top + 1.
+      DELETE c_data FROM top TO max_entries.
     ENDIF.
   ENDMETHOD.
+
 
   METHOD raise_error.
     NEW zcl_odata_error_handler( me->dpc_object )->raise_exception_object( i_exception = i_error ).
   ENDMETHOD.
-
-  METHOD get_request_header.
-    DATA: facade TYPE REF TO /iwbep/if_mgw_dp_int_facade.
-
-    facade ?= me->dpc_object->/iwbep/if_mgw_conv_srv_runtime~get_dp_facade( ).
-    r_request_headers = facade->get_request_header( ).
-  ENDMETHOD.
-
 ENDCLASS.

@@ -8,6 +8,9 @@
 
 An OData ABAP Framework
 
+## Documentation
+The documentation and how to use can be found under [Documentation](./docs/documentation.md)
+
 ## Contributing
 
 Comments and suggestions for improvements are welcome.

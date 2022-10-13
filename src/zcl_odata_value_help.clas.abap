@@ -1,3 +1,4 @@
+"! <p class="shorttext synchronized" lang="en">Dynamic Value help</p>
 CLASS zcl_odata_value_help DEFINITION
   PUBLIC
   INHERITING FROM zcl_odata_main
@@ -23,6 +24,11 @@ CLASS zcl_odata_value_help DEFINITION
       ty_t_clause TYPE STANDARD TABLE OF ty_s_clause WITH DEFAULT KEY.
 
     METHODS:
+      "! <p class="shorttext synchronized" lang="en">Get customizing</p>
+      "!
+      "! @parameter i_filter | <p class="shorttext synchronized" lang="en">Search field filter</p>
+      "! @parameter r_sh_cust | <p class="shorttext synchronized" lang="en">Customizing</p>
+      "! @raising zcx_odata | <p class="shorttext synchronized" lang="en">Error</p>
       get_customizing
         IMPORTING
           i_filter         TYPE /iwbep/t_cod_select_options
@@ -30,6 +36,11 @@ CLASS zcl_odata_value_help DEFINITION
           VALUE(r_sh_cust) TYPE zodata_searchhlp
         RAISING
           zcx_odata,
+      "! <p class="shorttext synchronized" lang="en">Get texttable from table</p>
+      "!
+      "! @parameter i_table_name | <p class="shorttext synchronized" lang="en">Table name</p>
+      "! @parameter e_checkfield | <p class="shorttext synchronized" lang="en">Field to check for</p>
+      "! @parameter r_texttable | <p class="shorttext synchronized" lang="en">Text table</p>
       get_texttable
         IMPORTING
           i_table_name       TYPE tabname
@@ -37,11 +48,20 @@ CLASS zcl_odata_value_help DEFINITION
           e_checkfield       TYPE dd08v-fieldname
         RETURNING
           VALUE(r_texttable) TYPE dd08v-tabname,
+      "! <p class="shorttext synchronized" lang="en">Get values by table</p>
+      "!
+      "! @parameter i_customizing | <p class="shorttext synchronized" lang="en">Customizing</p>
+      "! @parameter r_value_help | <p class="shorttext synchronized" lang="en">Value help data</p>
       get_data_by_table
         IMPORTING
           i_customizing       TYPE zodata_searchhlp
         RETURNING
           VALUE(r_value_help) TYPE tty_t_value_help,
+      "! <p class="shorttext synchronized" lang="en">Get values by domain</p>
+      "!
+      "! @parameter i_customizing | <p class="shorttext synchronized" lang="en">Customizing</p>
+      "! @parameter r_value_help | <p class="shorttext synchronized" lang="en">Value help data</p>
+      "! @raising zcx_odata | <p class="shorttext synchronized" lang="en">Error</p>
       get_data_by_domain
         IMPORTING
           i_customizing       TYPE zodata_searchhlp
@@ -49,6 +69,10 @@ CLASS zcl_odata_value_help DEFINITION
           VALUE(r_value_help) TYPE tty_t_value_help
         RAISING
           zcx_odata,
+      "! <p class="shorttext synchronized" lang="en">Build dynamic where condition</p>
+      "!
+      "! @parameter i_customizing | <p class="shorttext synchronized" lang="en">Customizing</p>
+      "! @parameter r_where_cond | <p class="shorttext synchronized" lang="en">Error</p>
       build_where_condition
         IMPORTING
           i_customizing       TYPE zodata_searchhlp

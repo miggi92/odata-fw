@@ -1,7 +1,6 @@
 "! <p class="shorttext synchronized" lang="en">OData framework controller</p>
 CLASS zcl_odata_fw_controller DEFINITION
   PUBLIC
-  FINAL
   CREATE PUBLIC .
 
   PUBLIC SECTION.

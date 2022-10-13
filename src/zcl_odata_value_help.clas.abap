@@ -77,29 +77,36 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entityset.
-    DATA: value_help TYPE tty_t_value_help.
+    DATA: value_help        TYPE tty_t_value_help,
+          ls_customizing    TYPE zodata_searchhlp,
+          lt_filter_options TYPE /iwbep/s_mgw_select_option-select_options.
 
     TRY.
         DATA(filter) = io_tech_request_context->get_filter( )->get_filter_select_options( ).
 
-        IF filter IS INITIAL.
+        IF filter IS INITIAL AND io_tech_request_context->get_entity_type_name( ) = zif_odata_constants=>gc_global_entities-value_help.
           RAISE EXCEPTION TYPE zcx_odata
             EXPORTING
               textid = zcx_odata=>no_filter_passed.
+        ELSEIF filter IS NOT INITIAL.
+          lt_filter_options = filter[ property = 'SEARCH_HELP' ]-select_options.
+        ELSEIF io_tech_request_context->get_entity_type_name( ) <> zif_odata_constants=>gc_global_entities-value_help.
+          lt_filter_options = VALUE #( ( low = io_tech_request_context->get_entity_type_name( ) sign = 'I' option = 'EQ' ) ).
         ENDIF.
-        DATA(filter_options) = filter[ property = 'SEARCH_HELP' ]-select_options.
-        DATA(customizing) = me->get_customizing( filter_options ).
+
+        ls_customizing = me->get_customizing( lt_filter_options ).
 
 
-        IF customizing-tabname IS NOT INITIAL.
-          value_help = me->get_data_by_table( i_customizing = customizing ).
-        ELSEIF customizing-data_element IS NOT INITIAL.
-          value_help = me->get_data_by_domain( i_customizing = customizing ).
+
+        IF ls_customizing-tabname IS NOT INITIAL.
+          value_help = me->get_data_by_table( i_customizing = ls_customizing ).
+        ELSEIF ls_customizing-data_element IS NOT INITIAL.
+          value_help = me->get_data_by_domain( i_customizing = ls_customizing ).
         ENDIF.
 
         " add empty value if none exists
         IF NOT line_exists( value_help[ value = '' ] ).
-          APPEND VALUE #( value = '' description = ' ' search_help = customizing-id ) TO value_help.
+          APPEND VALUE #( value = '' description = ' ' search_help = ls_customizing-id ) TO value_help.
         ENDIF.
 
         me->entityset_filter_page_order(

@@ -22,7 +22,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_odata_documents IMPLEMENTATION.
+CLASS ZCL_ODATA_DOCUMENTS IMPLEMENTATION.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entity.
@@ -81,6 +81,13 @@ CLASS zcl_odata_documents IMPLEMENTATION.
     stream-mime_type    = file-mime_type.
     stream-value        = file-content.
 
+    " HTTP-Header-Infos setzen (Dateiname usw.)
+    DATA(lv_lheader) = VALUE ihttpnvp( name  = 'Content-Disposition'
+                                       value = |inline; filename="{ escape( val = file-name format = cl_abap_format=>e_url ) }";| ). " Datei im Tab inline (Plugin) öffnen
+*                                           value = |outline; filename="{ escape( val = file-name format = cl_abap_format=>e_url ) }";| ). " Datei zum direkten Herunterladen / Öffnen anbieten
+
+    me->dpc_object->set_header( is_header = lv_lheader ).
+
     me->copy_data_to_ref(
       EXPORTING
         i_data = stream
@@ -91,8 +98,9 @@ CLASS zcl_odata_documents IMPLEMENTATION.
 
 
   METHOD get_file.
-    DATA: lt_comp    TYPE gty_lt_comp,
-          lt_content TYPE TABLE OF sdokcntbin.
+    DATA: lt_comp     TYPE gty_lt_comp,
+          lt_content  TYPE TABLE OF sdokcntbin,
+          lv_mimetype TYPE  mimetypes-type.
 
     SELECT SINGLE *
         FROM toa01
@@ -178,11 +186,13 @@ CLASS zcl_odata_documents IMPLEMENTATION.
     ENDIF.
     " Für die Umwandlung die Dateigröße der Binärdaten berechnen
     DATA(lv_size) = lines( lt_content ).
-    DATA: lv_line LIKE LINE OF lt_content.
+    DATA: lv_line      LIKE LINE OF lt_content,
+          lv_extension TYPE char10.
     DATA(lv_length) = 0.
     " für Unicode-Kompatibilität IN BYTE MODE
     DESCRIBE FIELD lv_line LENGTH lv_length IN BYTE MODE.
-    cs_file-length = lv_length.
+    lv_size = lv_size * lv_length.
+    cs_file-length = lv_size.
 
     CALL FUNCTION 'SCMS_BINARY_TO_XSTRING'
       EXPORTING
@@ -201,6 +211,17 @@ CLASS zcl_odata_documents IMPLEMENTATION.
 *     MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
 *       WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
     ENDIF.
+
+    lv_mimetype = cs_file-mime_type.
+
+    CALL FUNCTION 'SA_KW_RFC_FILENAME_EXT_GET'
+      EXPORTING
+*       area      = 'IWBSOLAR'       " Area
+        mimetype  = lv_mimetype
+      IMPORTING
+        extension = lv_extension.                 " File Name Extension
+
+    cs_file-name = |{ cs_file-name }.{ lv_extension }|.
 
   ENDMETHOD.
 ENDCLASS.

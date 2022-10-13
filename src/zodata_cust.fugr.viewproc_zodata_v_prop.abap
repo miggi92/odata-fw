@@ -1,6 +1,6 @@
 *---------------------------------------------------------------------*
 *    program for:   VIEWPROC_ZODATA_V_PROP
-*   generation date: 14.12.2021 at 11:50:12
+*   generation date: 13.10.2022 at 13:53:10
 *   view maintenance generator version: #001407#
 *---------------------------------------------------------------------*
 FUNCTION VIEWPROC_ZODATA_V_PROP        .

@@ -6,8 +6,8 @@
    <INCLUDES>
     <SOBJ_NAME>LZODATA_CUSTF00</SOBJ_NAME>
     <SOBJ_NAME>LZODATA_CUSTI00</SOBJ_NAME>
-    <SOBJ_NAME>LZODATA_CUSTTOP</SOBJ_NAME>
     <SOBJ_NAME>LZODATA_CUSTT00</SOBJ_NAME>
+    <SOBJ_NAME>LZODATA_CUSTTOP</SOBJ_NAME>
     <SOBJ_NAME>SAPLZODATA_CUST</SOBJ_NAME>
    </INCLUDES>
    <FUNCTIONS>
@@ -1940,7 +1940,6 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZODATA_V_NAV-NAMESPACE</NAME>
-       <TEXT>Namensraum__________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>020</LENGTH>
@@ -2038,7 +2037,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_NAV</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_NAV-NAV_PROP</NAME>
-       <TEXT>Entitätsnamen___________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2055,7 +2053,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_NAV</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_NAV-FROM_ENTITY</NAME>
-       <TEXT>Entitätsnamen___________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2072,7 +2069,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_NAV</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_NAV-TO_ENTITY</NAME>
-       <TEXT>Entitätsnamen___________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2089,7 +2085,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_NAV</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_NAV-CARDINALITY</NAME>
-       <TEXT>Kardinalit______________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>004</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2120,7 +2115,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_NAV</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZODATA_V_NAV-NAV_PROP</NAME>
-       <TEXT>________________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2138,7 +2132,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_NAV</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZODATA_V_NAV-FROM_ENTITY</NAME>
-       <TEXT>________________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2155,7 +2148,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_NAV</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZODATA_V_NAV-TO_ENTITY</NAME>
-       <TEXT>________________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2195,22 +2187,22 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INITIALISIEREN.</LINE>
+       <LINE> MODULE LISTE_INITIALISIEREN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT WITH CONTROL</LINE>
+       <LINE> LOOP AT EXTRACT WITH CONTROL</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>TCTRL_ZODATA_V_NAV CURSOR NEXTLINE.</LINE>
+       <LINE>  TCTRL_ZODATA_V_NAV CURSOR NEXTLINE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_SHOW_LISTE.</LINE>
+       <LINE>   MODULE LISTE_SHOW_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE FILL_SUBSTFLDS.</LINE>
+       <LINE> MODULE FILL_SUBSTFLDS.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -2219,94 +2211,63 @@
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
+       <LINE> MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_BEFORE_LOOP.</LINE>
+       <LINE> MODULE LISTE_BEFORE_LOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT.</LINE>
+       <LINE> LOOP AT EXTRACT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INIT_WORKAREA.</LINE>
+       <LINE>   MODULE LISTE_INIT_WORKAREA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_NAV-NAV_PROP .</LINE>
+       <LINE>    FIELD ZODATA_V_NAV-NAV_PROP .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_NAV-FROM_ENTITY .</LINE>
+       <LINE>    FIELD ZODATA_V_NAV-FROM_ENTITY .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_NAV-TO_ENTITY .</LINE>
+       <LINE>    FIELD ZODATA_V_NAV-TO_ENTITY .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_NAV-CARDINALITY .</LINE>
+       <LINE>    FIELD ZODATA_V_NAV-CARDINALITY .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
+       <LINE>    MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
+       <LINE>   FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_NAV-NAV_PROP .</LINE>
+       <LINE>    FIELD ZODATA_V_NAV-NAV_PROP .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_NAV-FROM_ENTITY.</LINE>
+       <LINE>    FIELD ZODATA_V_NAV-FROM_ENTITY.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_UPDATE_LISTE.</LINE>
+       <LINE>    MODULE LISTE_UPDATE_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_AFTER_LOOP.</LINE>
+       <LINE> MODULE LISTE_AFTER_LOOP.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>2</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-      <item>0</item>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>1</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -2354,7 +2315,6 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZODATA_V_ACTIONS-NAMESPACE</NAME>
-       <TEXT>Namensraum__________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>020</LENGTH>
@@ -2390,7 +2350,6 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZODATA_V_ACTIONS-ENTITY</NAME>
-       <TEXT>Entitätsnamen_______</TEXT>
        <LINE>002</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>020</LENGTH>
@@ -2488,7 +2447,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_ACTIONS</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_ACTIONS-ACTION_NAME</NAME>
-       <TEXT>Action_Name_____________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2505,7 +2463,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_ACTIONS</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_ACTIONS-RETURNING_ENTITY</NAME>
-       <TEXT>Rückgabe_entität________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2522,7 +2479,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_ACTIONS</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_ACTIONS-HTTP_METHOD</NAME>
-       <TEXT>HTTP_Methode____________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2539,7 +2495,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_ACTIONS</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_ACTIONS-STRUCTURE_NAME</NAME>
-       <TEXT>char70__________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>004</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2589,7 +2544,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_ACTIONS</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZODATA_V_ACTIONS-RETURNING_ENTITY</NAME>
-       <TEXT>________________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2645,22 +2599,22 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INITIALISIEREN.</LINE>
+       <LINE> MODULE LISTE_INITIALISIEREN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT WITH CONTROL</LINE>
+       <LINE> LOOP AT EXTRACT WITH CONTROL</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>TCTRL_ZODATA_V_ACTIONS CURSOR NEXTLINE.</LINE>
+       <LINE>  TCTRL_ZODATA_V_ACTIONS CURSOR NEXTLINE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_SHOW_LISTE.</LINE>
+       <LINE>   MODULE LISTE_SHOW_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE FILL_SUBSTFLDS.</LINE>
+       <LINE> MODULE FILL_SUBSTFLDS.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -2669,61 +2623,61 @@
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
+       <LINE> MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_BEFORE_LOOP.</LINE>
+       <LINE> MODULE LISTE_BEFORE_LOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT.</LINE>
+       <LINE> LOOP AT EXTRACT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INIT_WORKAREA.</LINE>
+       <LINE>   MODULE LISTE_INIT_WORKAREA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_ACTIONS-ACTION_NAME .</LINE>
+       <LINE>    FIELD ZODATA_V_ACTIONS-ACTION_NAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_ACTIONS-RETURNING_ENTITY .</LINE>
+       <LINE>    FIELD ZODATA_V_ACTIONS-RETURNING_ENTITY .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_ACTIONS-HTTP_METHOD .</LINE>
+       <LINE>    FIELD ZODATA_V_ACTIONS-HTTP_METHOD .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_ACTIONS-STRUCTURE_NAME .</LINE>
+       <LINE>    FIELD ZODATA_V_ACTIONS-STRUCTURE_NAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
+       <LINE>    MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
+       <LINE>   FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_ACTIONS-ACTION_NAME .</LINE>
+       <LINE>    FIELD ZODATA_V_ACTIONS-ACTION_NAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_ACTIONS-RETURNING_ENTITY.</LINE>
+       <LINE>    FIELD ZODATA_V_ACTIONS-RETURNING_ENTITY.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_UPDATE_LISTE.</LINE>
+       <LINE>    MODULE LISTE_UPDATE_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_AFTER_LOOP.</LINE>
+       <LINE> MODULE LISTE_AFTER_LOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -2732,43 +2686,9 @@
        <LINE>PROCESS ON VALUE-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD  ZODATA_V_ACTIONS-RETURNING_ENTITY MODULE VCL_HELP_VALUES.</LINE>
+       <LINE>    FIELD  ZODATA_V_ACTIONS-RETURNING_ENTITY MODULE VCL_HELP_VALUES.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>2</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-      <item>0</item>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>1</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-      <item>0</item>
-      <item>0</item>
-      <item>4</item>
-     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -2878,7 +2798,6 @@
        <CONT_NAME>TCTRL_ZODATA_SEARCHHLP</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_SEARCHHLP-ID</NAME>
-       <TEXT>Text____________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2895,7 +2814,6 @@
        <CONT_NAME>TCTRL_ZODATA_SEARCHHLP</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_SEARCHHLP-TABNAME</NAME>
-       <TEXT>Tabellenname____________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2957,7 +2875,6 @@
        <CONT_NAME>TCTRL_ZODATA_SEARCHHLP</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_SEARCHHLP-WHERE_VALUE1</NAME>
-       <TEXT>Text____________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>006</COLUMN>
        <LENGTH>040</LENGTH>
@@ -2989,7 +2906,6 @@
        <CONT_NAME>TCTRL_ZODATA_SEARCHHLP</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_SEARCHHLP-WHERE_VALUE2</NAME>
-       <TEXT>Text____________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>008</COLUMN>
        <LENGTH>040</LENGTH>
@@ -3162,19 +3078,19 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INITIALISIEREN.</LINE>
+       <LINE> MODULE LISTE_INITIALISIEREN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT WITH CONTROL</LINE>
+       <LINE> LOOP AT EXTRACT WITH CONTROL</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>TCTRL_ZODATA_SEARCHHLP CURSOR NEXTLINE.</LINE>
+       <LINE>  TCTRL_ZODATA_SEARCHHLP CURSOR NEXTLINE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_SHOW_LISTE.</LINE>
+       <LINE>   MODULE LISTE_SHOW_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -3183,104 +3099,72 @@
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
+       <LINE> MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_BEFORE_LOOP.</LINE>
+       <LINE> MODULE LISTE_BEFORE_LOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT.</LINE>
+       <LINE> LOOP AT EXTRACT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INIT_WORKAREA.</LINE>
+       <LINE>   MODULE LISTE_INIT_WORKAREA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_SEARCHHLP-ID .</LINE>
+       <LINE>    FIELD ZODATA_SEARCHHLP-ID .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_SEARCHHLP-TABNAME .</LINE>
+       <LINE>    FIELD ZODATA_SEARCHHLP-TABNAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_SEARCHHLP-DESCRIPTION_FIELD .</LINE>
+       <LINE>    FIELD ZODATA_SEARCHHLP-DESCRIPTION_FIELD .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_SEARCHHLP-DATA_ELEMENT .</LINE>
+       <LINE>    FIELD ZODATA_SEARCHHLP-DATA_ELEMENT .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_SEARCHHLP-WHERE_DATA_ELEMENT1 .</LINE>
+       <LINE>    FIELD ZODATA_SEARCHHLP-WHERE_DATA_ELEMENT1 .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_SEARCHHLP-WHERE_VALUE1 .</LINE>
+       <LINE>    FIELD ZODATA_SEARCHHLP-WHERE_VALUE1 .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_SEARCHHLP-WHERE_DATA_ELEMENT2 .</LINE>
+       <LINE>    FIELD ZODATA_SEARCHHLP-WHERE_DATA_ELEMENT2 .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_SEARCHHLP-WHERE_VALUE2 .</LINE>
+       <LINE>    FIELD ZODATA_SEARCHHLP-WHERE_VALUE2 .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
+       <LINE>    MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
+       <LINE>   FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_SEARCHHLP-ID .</LINE>
+       <LINE>    FIELD ZODATA_SEARCHHLP-ID .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_UPDATE_LISTE.</LINE>
+       <LINE>    MODULE LISTE_UPDATE_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_AFTER_LOOP.</LINE>
+       <LINE> MODULE LISTE_AFTER_LOOP.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>2</item>
-      <item>3</item>
-      <item>1</item>
-      <item>0</item>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>1</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -3291,7 +3175,7 @@
       <TYPE>N</TYPE>
       <NEXTSCREEN>0005</NEXTSCREEN>
       <LINES>061</LINES>
-      <COLUMNS>220</COLUMNS>
+      <COLUMNS>235</COLUMNS>
      </HEADER>
      <CONTAINERS>
       <RPY_DYCATT>
@@ -3304,8 +3188,8 @@
        <ELEMENT_OF>SCREEN</ELEMENT_OF>
        <LINE>004</LINE>
        <COLUMN>001</COLUMN>
-       <LENGTH>173</LENGTH>
-       <HEIGHT>055</HEIGHT>
+       <LENGTH>235</LENGTH>
+       <HEIGHT>056</HEIGHT>
        <C_RESIZE_V>X</C_RESIZE_V>
        <C_RESIZE_H>X</C_RESIZE_H>
        <C_SCROLL_V>X</C_SCROLL_V>
@@ -3328,7 +3212,6 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZODATA_V_PROP-NAMESPACE</NAME>
-       <TEXT>Namensraum__________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>020</LENGTH>
@@ -3363,7 +3246,6 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZODATA_V_PROP-ENTITY_NAME</NAME>
-       <TEXT>Entitätsnamen_______</TEXT>
        <LINE>002</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>020</LENGTH>
@@ -3462,7 +3344,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_PROP-PROPERTY_NAME</NAME>
-       <TEXT>Property_Name___________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>040</LENGTH>
@@ -3479,7 +3360,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_PROP-ABAP_NAME</NAME>
-       <TEXT>Feldname________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>040</LENGTH>
@@ -3496,7 +3376,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_PROP-IS_KEY</NAME>
-       <TEXT>Schlüssel?______________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>040</LENGTH>
@@ -3513,7 +3392,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_PROP-COMPLEX_TYPE</NAME>
-       <TEXT>Entitätsnamen___________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>004</COLUMN>
        <LENGTH>040</LENGTH>
@@ -3530,7 +3408,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_PROP-SEARCH_HELP</NAME>
-       <TEXT>Text____________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>005</COLUMN>
        <LENGTH>040</LENGTH>
@@ -3539,6 +3416,38 @@
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>V</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <TC_HEADING>X</TC_HEADING>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>*ZODATA_V_PROP-AS_ETAG</NAME>
+       <LINE>001</LINE>
+       <COLUMN>006</COLUMN>
+       <LENGTH>040</LENGTH>
+       <VISLENGTH>010</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>1</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <TC_HEADING>X</TC_HEADING>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>*ZODATA_V_PROP-NOT_FILTERABLE</NAME>
+       <LINE>001</LINE>
+       <COLUMN>007</COLUMN>
+       <LENGTH>040</LENGTH>
+       <VISLENGTH>010</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>1</MODIFIC>
        <REQU_ENTRY>N</REQU_ENTRY>
        <TC_HEADING>X</TC_HEADING>
       </RPY_DYFATC>
@@ -3561,7 +3470,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZODATA_V_PROP-PROPERTY_NAME</NAME>
-       <TEXT>________________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>040</LENGTH>
@@ -3614,7 +3522,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZODATA_V_PROP-COMPLEX_TYPE</NAME>
-       <TEXT>________________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>004</COLUMN>
        <LENGTH>040</LENGTH>
@@ -3641,35 +3548,67 @@
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
        <UP_LOWER>X</UP_LOWER>
+       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <DICT_I_FKY>X</DICT_I_FKY>
       </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
+       <TYPE>CHECK</TYPE>
+       <NAME>ZODATA_V_PROP-AS_ETAG</NAME>
+       <LINE>001</LINE>
+       <COLUMN>006</COLUMN>
+       <LENGTH>001</LENGTH>
+       <VISLENGTH>010</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>X</MODIFIC>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <DICT_I_VAL>X</DICT_I_VAL>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
+       <TYPE>CHECK</TYPE>
+       <NAME>ZODATA_V_PROP-NOT_FILTERABLE</NAME>
+       <LINE>001</LINE>
+       <COLUMN>007</COLUMN>
+       <LENGTH>001</LENGTH>
+       <VISLENGTH>010</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>X</MODIFIC>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <DICT_I_VAL>X</DICT_I_VAL>
+      </RPY_DYFATC>
      </FIELDS>
      <FLOW_LOGIC>
-      <RPY_DYFLOW>
-       <LINE>* VCL-Modifications</LINE>
-      </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INITIALISIEREN.</LINE>
+       <LINE> MODULE LISTE_INITIALISIEREN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT WITH CONTROL</LINE>
+       <LINE> LOOP AT EXTRACT WITH CONTROL</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>TCTRL_ZODATA_V_PROP CURSOR NEXTLINE.</LINE>
+       <LINE>  TCTRL_ZODATA_V_PROP CURSOR NEXTLINE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_SHOW_LISTE.</LINE>
+       <LINE>   MODULE LISTE_SHOW_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE FILL_SUBSTFLDS.</LINE>
+       <LINE> MODULE FILL_SUBSTFLDS.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -3678,110 +3617,69 @@
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
+       <LINE> MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_BEFORE_LOOP.</LINE>
+       <LINE> MODULE LISTE_BEFORE_LOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT.</LINE>
+       <LINE> LOOP AT EXTRACT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INIT_WORKAREA.</LINE>
+       <LINE>   MODULE LISTE_INIT_WORKAREA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_PROP-PROPERTY_NAME .</LINE>
+       <LINE>    FIELD ZODATA_V_PROP-PROPERTY_NAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_PROP-ABAP_NAME .</LINE>
+       <LINE>    FIELD ZODATA_V_PROP-ABAP_NAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_PROP-IS_KEY .</LINE>
+       <LINE>    FIELD ZODATA_V_PROP-IS_KEY .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_PROP-COMPLEX_TYPE .</LINE>
+       <LINE>    FIELD ZODATA_V_PROP-COMPLEX_TYPE .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_PROP-SEARCH_HELP .</LINE>
+       <LINE>    FIELD ZODATA_V_PROP-SEARCH_HELP .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
+       <LINE>    FIELD ZODATA_V_PROP-AS_ETAG .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>    FIELD ZODATA_V_PROP-NOT_FILTERABLE .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
+       <LINE>    MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_PROP-PROPERTY_NAME .</LINE>
+       <LINE>   FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_PROP-SEARCH_HELP.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_UPDATE_LISTE.</LINE>
+       <LINE>    FIELD ZODATA_V_PROP-PROPERTY_NAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>    MODULE LISTE_UPDATE_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_AFTER_LOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>*</LINE>
-      </RPY_DYFLOW>
-      <RPY_DYFLOW>
-       <LINE>PROCESS ON VALUE-REQUEST.</LINE>
-      </RPY_DYFLOW>
-      <RPY_DYFLOW>
-       <LINE>FIELD  ZODATA_V_PROP-SEARCH_HELP MODULE VCL_HELP_VALUES.</LINE>
+       <LINE> MODULE LISTE_AFTER_LOOP.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>2</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-      <item>0</item>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>1</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-      <item>0</item>
-      <item>0</item>
-      <item>4</item>
-     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -3829,7 +3727,6 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZODATA_V_PROPTXT-NAMESPACE</NAME>
-       <TEXT>Namensraum__________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>020</LENGTH>
@@ -3863,7 +3760,6 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZODATA_V_PROPTXT-ENTITY_NAME</NAME>
-       <TEXT>Entitätsnamen_______</TEXT>
        <LINE>002</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>020</LENGTH>
@@ -3898,7 +3794,6 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZODATA_V_PROPTXT-PROPERTY_NAME</NAME>
-       <TEXT>Property_Name</TEXT>
        <LINE>003</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>013</LENGTH>
@@ -3996,7 +3891,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_PROPTXT</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_PROPTXT-TEXT_TYPE</NAME>
-       <TEXT>Text_type_______________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>040</LENGTH>
@@ -4013,7 +3907,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_PROPTXT</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_PROPTXT-TEXT_ID</NAME>
-       <TEXT>nicht_verwendet_________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>040</LENGTH>
@@ -4030,7 +3923,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_PROPTXT</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_PROPTXT-OBJECT_NAME</NAME>
-       <TEXT>Text____________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>040</LENGTH>
@@ -4117,22 +4009,22 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INITIALISIEREN.</LINE>
+       <LINE> MODULE LISTE_INITIALISIEREN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT WITH CONTROL</LINE>
+       <LINE> LOOP AT EXTRACT WITH CONTROL</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>TCTRL_ZODATA_V_PROPTXT CURSOR NEXTLINE.</LINE>
+       <LINE>  TCTRL_ZODATA_V_PROPTXT CURSOR NEXTLINE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_SHOW_LISTE.</LINE>
+       <LINE>   MODULE LISTE_SHOW_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE FILL_SUBSTFLDS.</LINE>
+       <LINE> MODULE FILL_SUBSTFLDS.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -4141,85 +4033,57 @@
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
+       <LINE> MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_BEFORE_LOOP.</LINE>
+       <LINE> MODULE LISTE_BEFORE_LOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT.</LINE>
+       <LINE> LOOP AT EXTRACT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INIT_WORKAREA.</LINE>
+       <LINE>   MODULE LISTE_INIT_WORKAREA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_PROPTXT-TEXT_TYPE .</LINE>
+       <LINE>    FIELD ZODATA_V_PROPTXT-TEXT_TYPE .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_PROPTXT-TEXT_ID .</LINE>
+       <LINE>    FIELD ZODATA_V_PROPTXT-TEXT_ID .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_PROPTXT-OBJECT_NAME .</LINE>
+       <LINE>    FIELD ZODATA_V_PROPTXT-OBJECT_NAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
+       <LINE>    MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
+       <LINE>   FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_PROPTXT-TEXT_TYPE .</LINE>
+       <LINE>    FIELD ZODATA_V_PROPTXT-TEXT_TYPE .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_UPDATE_LISTE.</LINE>
+       <LINE>    MODULE LISTE_UPDATE_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_AFTER_LOOP.</LINE>
+       <LINE> MODULE LISTE_AFTER_LOOP.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>2</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-      <item>0</item>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>1</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -4267,7 +4131,6 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZODATA_V_ACTPARA-NAMESPACE</NAME>
-       <TEXT>Namensraum__________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>020</LENGTH>
@@ -4303,7 +4166,6 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZODATA_V_ACTPARA-ENTITY</NAME>
-       <TEXT>Entitätsnamen_______</TEXT>
        <LINE>002</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>020</LENGTH>
@@ -4340,7 +4202,6 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZODATA_V_ACTPARA-ACTION_NAME</NAME>
-       <TEXT>Action_Name_________</TEXT>
        <LINE>003</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>020</LENGTH>
@@ -4439,7 +4300,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_ACTPARA</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_ACTPARA-FIELDNAME</NAME>
-       <TEXT>Feldname________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>040</LENGTH>
@@ -4456,7 +4316,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_ACTPARA</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_ACTPARA-PARAMETER_NAME</NAME>
-       <TEXT>Externer_Name_-_Metamodellelement_______</TEXT>
        <LINE>001</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>040</LENGTH>
@@ -4505,7 +4364,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_ACTPARA</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZODATA_V_ACTPARA-PARAMETER_NAME</NAME>
-       <TEXT>________________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>040</LENGTH>
@@ -4524,22 +4382,22 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INITIALISIEREN.</LINE>
+       <LINE> MODULE LISTE_INITIALISIEREN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT WITH CONTROL</LINE>
+       <LINE> LOOP AT EXTRACT WITH CONTROL</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>TCTRL_ZODATA_V_ACTPARA CURSOR NEXTLINE.</LINE>
+       <LINE>  TCTRL_ZODATA_V_ACTPARA CURSOR NEXTLINE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_SHOW_LISTE.</LINE>
+       <LINE>   MODULE LISTE_SHOW_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE FILL_SUBSTFLDS.</LINE>
+       <LINE> MODULE FILL_SUBSTFLDS.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -4548,81 +4406,54 @@
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
+       <LINE> MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_BEFORE_LOOP.</LINE>
+       <LINE> MODULE LISTE_BEFORE_LOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT.</LINE>
+       <LINE> LOOP AT EXTRACT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INIT_WORKAREA.</LINE>
+       <LINE>   MODULE LISTE_INIT_WORKAREA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_ACTPARA-FIELDNAME .</LINE>
+       <LINE>    FIELD ZODATA_V_ACTPARA-FIELDNAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_ACTPARA-PARAMETER_NAME .</LINE>
+       <LINE>    FIELD ZODATA_V_ACTPARA-PARAMETER_NAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
+       <LINE>    MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
+       <LINE>   FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_ACTPARA-PARAMETER_NAME .</LINE>
+       <LINE>    FIELD ZODATA_V_ACTPARA-PARAMETER_NAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_UPDATE_LISTE.</LINE>
+       <LINE>    MODULE LISTE_UPDATE_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_AFTER_LOOP.</LINE>
+       <LINE> MODULE LISTE_AFTER_LOOP.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>2</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-      <item>0</item>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>1</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -4732,7 +4563,6 @@
        <CONT_NAME>TCTRL_ZODATA_NAMESPACE</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_NAMESPACE-NAMESPACE</NAME>
-       <TEXT>Namensraum______________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>040</LENGTH>
@@ -4749,7 +4579,6 @@
        <CONT_NAME>TCTRL_ZODATA_NAMESPACE</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_NAMESPACE-IS_GLOBAL</NAME>
-       <TEXT>Globaler_Namensraum</TEXT>
        <LINE>001</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>019</LENGTH>
@@ -4817,19 +4646,19 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INITIALISIEREN.</LINE>
+       <LINE> MODULE LISTE_INITIALISIEREN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT WITH CONTROL</LINE>
+       <LINE> LOOP AT EXTRACT WITH CONTROL</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>TCTRL_ZODATA_NAMESPACE CURSOR NEXTLINE.</LINE>
+       <LINE>  TCTRL_ZODATA_NAMESPACE CURSOR NEXTLINE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_SHOW_LISTE.</LINE>
+       <LINE>   MODULE LISTE_SHOW_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -4838,80 +4667,54 @@
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
+       <LINE> MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_BEFORE_LOOP.</LINE>
+       <LINE> MODULE LISTE_BEFORE_LOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT.</LINE>
+       <LINE> LOOP AT EXTRACT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INIT_WORKAREA.</LINE>
+       <LINE>   MODULE LISTE_INIT_WORKAREA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_NAMESPACE-NAMESPACE .</LINE>
+       <LINE>    FIELD ZODATA_NAMESPACE-NAMESPACE .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_NAMESPACE-IS_GLOBAL .</LINE>
+       <LINE>    FIELD ZODATA_NAMESPACE-IS_GLOBAL .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
+       <LINE>    MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
+       <LINE>   FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_NAMESPACE-NAMESPACE .</LINE>
+       <LINE>    FIELD ZODATA_NAMESPACE-NAMESPACE .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_UPDATE_LISTE.</LINE>
+       <LINE>    MODULE LISTE_UPDATE_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_AFTER_LOOP.</LINE>
+       <LINE> MODULE LISTE_AFTER_LOOP.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>2</item>
-      <item>3</item>
-      <item>1</item>
-      <item>0</item>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>1</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-     </SPACES>
     </item>
     <item>
      <HEADER>
@@ -4959,7 +4762,6 @@
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>ZODATA_V_ENTITY-NAMESPACE</NAME>
-       <TEXT>Namensraum__________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>020</LENGTH>
@@ -5056,7 +4858,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_ENTITY</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_ENTITY-ENTITY_NAME</NAME>
-       <TEXT>Entitätsnamen___________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>040</LENGTH>
@@ -5073,7 +4874,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_ENTITY</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_ENTITY-CLASS_NAME</NAME>
-       <TEXT>Klassen_name____________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>040</LENGTH>
@@ -5090,7 +4890,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_ENTITY</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_ENTITY-STRUCTURE</NAME>
-       <TEXT>Struktur________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>003</COLUMN>
        <LENGTH>040</LENGTH>
@@ -5107,7 +4906,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_ENTITY</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_ENTITY-IS_COMPLEX</NAME>
-       <TEXT>Is_complex______________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>004</COLUMN>
        <LENGTH>040</LENGTH>
@@ -5138,7 +4936,6 @@
        <CONT_NAME>TCTRL_ZODATA_V_ENTITY</CONT_NAME>
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZODATA_V_ENTITY-ENTITY_NAME</NAME>
-       <TEXT>________________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>040</LENGTH>
@@ -5208,22 +5005,22 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INITIALISIEREN.</LINE>
+       <LINE> MODULE LISTE_INITIALISIEREN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT WITH CONTROL</LINE>
+       <LINE> LOOP AT EXTRACT WITH CONTROL</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>TCTRL_ZODATA_V_ENTITY CURSOR NEXTLINE.</LINE>
+       <LINE>  TCTRL_ZODATA_V_ENTITY CURSOR NEXTLINE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_SHOW_LISTE.</LINE>
+       <LINE>   MODULE LISTE_SHOW_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE FILL_SUBSTFLDS.</LINE>
+       <LINE> MODULE FILL_SUBSTFLDS.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -5232,89 +5029,60 @@
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
+       <LINE> MODULE LISTE_EXIT_COMMAND AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_BEFORE_LOOP.</LINE>
+       <LINE> MODULE LISTE_BEFORE_LOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>LOOP AT EXTRACT.</LINE>
+       <LINE> LOOP AT EXTRACT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_INIT_WORKAREA.</LINE>
+       <LINE>   MODULE LISTE_INIT_WORKAREA.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_ENTITY-ENTITY_NAME .</LINE>
+       <LINE>    FIELD ZODATA_V_ENTITY-ENTITY_NAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_ENTITY-CLASS_NAME .</LINE>
+       <LINE>    FIELD ZODATA_V_ENTITY-CLASS_NAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_ENTITY-STRUCTURE .</LINE>
+       <LINE>    FIELD ZODATA_V_ENTITY-STRUCTURE .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_ENTITY-IS_COMPLEX .</LINE>
+       <LINE>    FIELD ZODATA_V_ENTITY-IS_COMPLEX .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
+       <LINE>    MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
+       <LINE>   FIELD VIM_MARKED MODULE LISTE_MARK_CHECKBOX.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>CHAIN.</LINE>
+       <LINE>   CHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>FIELD ZODATA_V_ENTITY-ENTITY_NAME .</LINE>
+       <LINE>    FIELD ZODATA_V_ENTITY-ENTITY_NAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_UPDATE_LISTE.</LINE>
+       <LINE>    MODULE LISTE_UPDATE_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDCHAIN.</LINE>
+       <LINE>   ENDCHAIN.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>ENDLOOP.</LINE>
+       <LINE> ENDLOOP.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE LISTE_AFTER_LOOP.</LINE>
+       <LINE> MODULE LISTE_AFTER_LOOP.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>2</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-      <item>0</item>
-      <item>0</item>
-      <item>1</item>
-      <item>1</item>
-      <item>1</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>3</item>
-      <item>3</item>
-      <item>4</item>
-      <item>4</item>
-      <item>3</item>
-      <item>1</item>
-      <item>1</item>
-     </SPACES>
     </item>
    </DYNPROS>
   </asx:values>

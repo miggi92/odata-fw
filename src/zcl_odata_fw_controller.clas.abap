@@ -63,7 +63,8 @@ CLASS zcl_odata_fw_controller DEFINITION
       override_texts
         IMPORTING
           i_property TYPE zodata_property
-          i_prop_ref TYPE REF TO /iwbep/if_mgw_odata_item.
+          i_prop_ref TYPE REF TO /iwbep/if_mgw_odata_item,
+      init_search_help_cust_entities.
 ENDCLASS.
 
 
@@ -170,7 +171,7 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
       ENDLOOP.
     ENDIF.
 
-    IF i_entity-entity_name = 'globalDocuments'.
+    IF i_entity-entity_name = zif_odata_constants=>gc_global_entities-documents.
       entity->set_is_media( ).
     ENDIF.
 
@@ -219,10 +220,18 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
         ENDIF.
         property->set_is_key( <property>-is_key ).
 
+        IF <property>-as_etag = abap_true.
+          property->set_as_etag( ).
+        ENDIF.
+
+        IF <property>-not_filterable = abap_true.
+          property->set_filterable( abap_false ).
+        ENDIF.
+
         IF <property>-search_help IS NOT INITIAL.
           ##TODO "geht da was acuh mit v2?
           TRY.
-              DATA(value_help) = entities[ entity_name = 'valueHelp' ].
+              DATA(value_help) = entities[ entity_name = zif_odata_constants=>gc_global_entities-value_help ].
 *              cl*shlp_annotation*
               DATA(annotation) = cl_apj_shlp_annotation=>create(
                 io_odata_model         = i_model
@@ -234,24 +243,20 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
                 iv_search_help_field   = <property>-abap_name
 *            iv_qualifier           =
 *            iv_label               =
-                iv_valuelist_entityset = |{ value_help-entity_name }Set|
-                iv_valuelist_property  = 'value'
+                iv_valuelist_entityset = |{ <property>-search_help }Set|
+                iv_valuelist_property  = |{ zif_odata_constants=>gc_global_properties-value_help-value }|
             ).
-              annotation->add_display_parameter( iv_valuelist_property = 'description' ).
-*            annotation->
+              annotation->add_display_parameter( iv_valuelist_property = |{ zif_odata_constants=>gc_global_properties-value_help-description }| ).
 *            CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
 *            CATCH cx_fkk_error.                " General Errors
 
 *        CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
-*          property->set_value_list(
-*              iv_value_list_type = /iwbep/if_mgw_odata_property=>gcs_value_list_type_property-fixed_values
-*          ).
             CATCH cx_sy_itab_line_not_found.
           ENDTRY.
         ENDIF.
       ENDIF.
 
-      IF i_entity-entity_name = 'globalDocuments' and <property>-abap_name = 'MIME_TYPE'.
+      IF i_entity-entity_name = zif_odata_constants=>gc_global_entities-documents AND <property>-abap_name = zif_odata_constants=>gc_global_fieldnames-documents-mime_type.
         property->set_as_content_type( ).
       ENDIF.
     ENDLOOP.
@@ -386,6 +391,9 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
         INTO TABLE me->action_parameter
         WHERE namespace IN namespaces.
 
+
+    me->init_search_help_cust_entities( ).
+
   ENDMETHOD.
 
 
@@ -415,4 +423,26 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
       CATCH cx_sy_itab_line_not_found /iwbep/cx_mgw_med_exception.
     ENDTRY.
   ENDMETHOD.
+
+  METHOD init_search_help_cust_entities.
+
+    DATA(lt_shelp_prop) = me->properties.
+    DELETE lt_shelp_prop WHERE search_help = space.
+    SORT lt_shelp_prop BY search_help ASCENDING.
+    DELETE ADJACENT DUPLICATES FROM lt_shelp_prop COMPARING search_help.
+
+    CHECK lines( lt_shelp_prop ) <> 0.
+    DATA(ls_entity) = entities[ entity_name = zif_odata_constants=>gc_global_entities-value_help ].
+    LOOP AT lt_shelp_prop ASSIGNING FIELD-SYMBOL(<ls_shelp>).
+      ls_entity-entity_name = <ls_shelp>-search_help.
+      APPEND ls_entity TO entities.
+
+      LOOP AT properties INTO DATA(ls_prop) WHERE entity_name = zif_odata_constants=>gc_global_entities-value_help
+                                              AND property_name <> zif_odata_constants=>gc_global_properties-value_help-search_field.
+        ls_prop-entity_name = ls_entity-entity_name.
+        APPEND ls_prop TO properties.
+      ENDLOOP.
+    ENDLOOP.
+  ENDMETHOD.
+
 ENDCLASS.

@@ -60,7 +60,7 @@ CLASS zcl_odata_data_provider IMPLEMENTATION.
     DATA: params TYPE abap_parmbind_tab.
 
     DATA(class_name) = to_upper( i_class_name ).
-    params = VALUE #( ( name  = 'I_DPC_OBJECT'
+    params = VALUE #( ( name  = 'IO_DPC_OBJECT'
                         kind  = cl_abap_objectdescr=>exporting
                         value = REF #( me->dpc_object ) ) ).
 
@@ -71,7 +71,8 @@ CLASS zcl_odata_data_provider IMPLEMENTATION.
 
   METHOD get.
     TRY.
-        r_data_provider = me->data_providers[ entity_name = i_entity_name ].
+        DATA(lv_entity_name) = i_entity_name.
+        r_data_provider = me->data_providers[ entity_name = lv_entity_name ].
       CATCH cx_sy_itab_line_not_found.
         ##TODO
     ENDTRY.

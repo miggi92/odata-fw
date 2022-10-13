@@ -1,4 +1,4 @@
-* regenerated at 14.12.2021 12:14:49
+* regenerated at 13.10.2022 13:53:10
 FUNCTION-POOL ZODATA_CUST                MESSAGE-ID SV.
 
 * INCLUDE LZODATA_CUSTD...                   " Local class definition

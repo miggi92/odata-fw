@@ -9,7 +9,7 @@ CLASS zcl_odata_main DEFINITION
     METHODS:
       constructor
         IMPORTING
-          i_dpc_object TYPE REF TO /iwbep/cl_mgw_push_abs_data.
+          io_dpc_object TYPE REF TO /iwbep/cl_mgw_push_abs_data.
   PROTECTED SECTION.
     DATA:
       dpc_object        TYPE REF TO /iwbep/cl_mgw_push_abs_data,
@@ -183,7 +183,7 @@ CLASS zcl_odata_main IMPLEMENTATION.
 
 
   METHOD constructor.
-    me->dpc_object = i_dpc_object.
+    me->dpc_object = io_dpc_object.
 *    me->message_container = me->dpc_object->/iwbep/if_mgw_conv_srv_runtime~get_message_container( ).
   ENDMETHOD.
 

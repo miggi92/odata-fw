@@ -1,7 +1,5 @@
 *---------------------------------------------------------------------*
 *    view related data declarations
-*   generation date: 14.12.2021 at 12:14:49
-*   view maintenance generator version: #001407#
 *---------------------------------------------------------------------*
 *...processing: ZODATA_NAMESPACE................................*
 DATA:  BEGIN OF STATUS_ZODATA_NAMESPACE              .   "state vector

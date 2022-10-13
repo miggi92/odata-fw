@@ -6,17 +6,29 @@ CLASS zcl_odata_fw_controller DEFINITION
 
   PUBLIC SECTION.
     METHODS:
+      "! <p class="shorttext synchronized" lang="en">Constructor</p>
+      "!
+      "! @parameter i_namespace | <p class="shorttext synchronized" lang="en">OData namespace</p>
+      "! @raising zcx_odata | <p class="shorttext synchronized" lang="en">Error</p>
       constructor
         IMPORTING
           i_namespace TYPE z_odata_namespace
         RAISING
           zcx_odata,
+      "! <p class="shorttext synchronized" lang="en">Define MPC from customizing</p>
+      "!
+      "! @parameter i_model | <p class="shorttext synchronized" lang="en">Model</p>
+      "! @parameter i_anno_model | <p class="shorttext synchronized" lang="en">Annotation model</p>
+      "! @raising /iwbep/cx_mgw_med_exception | <p class="shorttext synchronized" lang="en">Error in Customizing</p>
       define_mpc
         IMPORTING
           i_model      TYPE REF TO /iwbep/if_mgw_odata_model
           i_anno_model TYPE REF TO /iwbep/if_mgw_vocan_model
         RAISING
           /iwbep/cx_mgw_med_exception,
+      "! <p class="shorttext synchronized" lang="en">Define DPC from customizing</p>
+      "!
+      "! @parameter i_data_provider | <p class="shorttext synchronized" lang="en">Data provider</p>
       define_dpc
         IMPORTING
           i_data_provider TYPE REF TO zcl_odata_data_provider.
@@ -33,15 +45,30 @@ CLASS zcl_odata_fw_controller DEFINITION
       action_parameter TYPE zodata_act_param_tt.
 
     METHODS:
+      "! <p class="shorttext synchronized" lang="en">Load customizing from DB</p>
+      "!
+      "! @raising zcx_odata | <p class="shorttext synchronized" lang="en">Failed to load customizing</p>
       load_customizing
         RAISING
           zcx_odata,
+      "! <p class="shorttext synchronized" lang="en">Define complex types</p>
+      "!
+      "! @parameter i_entity | <p class="shorttext synchronized" lang="en">Entity</p>
+      "! @parameter i_model | <p class="shorttext synchronized" lang="en">Model</p>
+      "! @raising /iwbep/cx_mgw_med_exception | <p class="shorttext synchronized" lang="en">Error</p>
       define_complex_type
         IMPORTING
           i_entity TYPE zodata_entity
           i_model  TYPE REF TO /iwbep/if_mgw_odata_model
         RAISING
           /iwbep/cx_mgw_med_exception,
+      "! <p class="shorttext synchronized" lang="en">Define odata entity</p>
+      "!
+      "! @parameter i_entity | <p class="shorttext synchronized" lang="en">Customizing entity</p>
+      "! @parameter i_model | <p class="shorttext synchronized" lang="en">Model</p>
+      "! @parameter i_anno_model | <p class="shorttext synchronized" lang="en">Annotation Model</p>
+      "! @raising zcx_odata | <p class="shorttext synchronized" lang="en">Error</p>
+      "! @raising /iwbep/cx_mgw_med_exception | <p class="shorttext synchronized" lang="en">Error</p>
       define_entity
         IMPORTING
           i_entity     TYPE zodata_entity
@@ -50,20 +77,34 @@ CLASS zcl_odata_fw_controller DEFINITION
         RAISING
           zcx_odata
           /iwbep/cx_mgw_med_exception,
+      "! <p class="shorttext synchronized" lang="en">Define odata navigations</p>
+      "!
+      "! @parameter i_model | <p class="shorttext synchronized" lang="en">Model</p>
+      "! @raising /iwbep/cx_mgw_med_exception | <p class="shorttext synchronized" lang="en">Error</p>
       define_navigation_properties
         IMPORTING
           i_model TYPE REF TO /iwbep/if_mgw_odata_model
         RAISING
           /iwbep/cx_mgw_med_exception,
+      "! <p class="shorttext synchronized" lang="en">Define odata actions/ function imports</p>
+      "!
+      "! @parameter i_model | <p class="shorttext synchronized" lang="en">Model</p>
+      "! @raising /iwbep/cx_mgw_med_exception | <p class="shorttext synchronized" lang="en">Error</p>
       define_actions
         IMPORTING
           i_model TYPE REF TO /iwbep/if_mgw_odata_model
         RAISING
           /iwbep/cx_mgw_med_exception,
+      "! <p class="shorttext synchronized" lang="en">Override sap:lable texts</p>
+      "!
+      "! @parameter i_property | <p class="shorttext synchronized" lang="en">Property</p>
+      "! @parameter i_prop_ref | <p class="shorttext synchronized" lang="en">Property reference</p>
       override_texts
         IMPORTING
           i_property TYPE zodata_property
           i_prop_ref TYPE REF TO /iwbep/if_mgw_odata_item,
+      "! <p class="shorttext synchronized" lang="en">Init searchhelps as seperate entities from customizing</p>
+      "!
       init_search_help_cust_entities.
 ENDCLASS.
 

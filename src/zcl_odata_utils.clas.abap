@@ -16,7 +16,8 @@ CLASS zcl_odata_utils DEFINITION
         RETURNING
           VALUE(r_user) TYPE zodata_user
         RAISING
-          zcx_odata ,
+          zcx_odata
+          zcx_utils,
       "! <p class="shorttext synchronized" lang="en">Raise error within the Model</p>
       "!
       "! @parameter i_error | <p class="shorttext synchronized" lang="en">Error</p>

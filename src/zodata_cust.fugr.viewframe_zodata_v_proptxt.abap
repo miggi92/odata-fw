@@ -1,7 +1,5 @@
 *---------------------------------------------------------------------*
 *    program for:   VIEWFRAME_ZODATA_V_PROPTXT
-*   generation date: 17.02.2021 at 16:01:45
-*   view maintenance generator version: #001407#
 *---------------------------------------------------------------------*
 FUNCTION VIEWFRAME_ZODATA_V_PROPTXT    .
 

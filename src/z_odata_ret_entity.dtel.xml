@@ -18,6 +18,19 @@
     <DTELMASTER>D</DTELMASTER>
     <REFKIND>D</REFKIND>
    </DD04V>
+   <I18N_LANGS>
+    <LANGU>E</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DDTEXT>Returning entity</DDTEXT>
+     <REPTEXT>Returning entity</REPTEXT>
+     <SCRTEXT_S>Ret.entity</SCRTEXT_S>
+     <SCRTEXT_M>Returning entity</SCRTEXT_M>
+     <SCRTEXT_L>Returning entity</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
   </asx:values>
  </asx:abap>
 </abapGit>

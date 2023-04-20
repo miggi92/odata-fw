@@ -9,7 +9,10 @@ CLASS zcl_odata_main DEFINITION
     METHODS:
       constructor
         IMPORTING
-          io_dpc_object TYPE REF TO /iwbep/cl_mgw_push_abs_data.
+          io_dpc_object TYPE REF TO /iwbep/cl_mgw_push_abs_data,
+      before_processing
+        RAISING
+          /iwbep/cx_mgw_tech_exception.
   PROTECTED SECTION.
     DATA:
       dpc_object        TYPE REF TO /iwbep/cl_mgw_push_abs_data,
@@ -179,6 +182,10 @@ CLASS zcl_odata_main IMPLEMENTATION.
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~update_stream.
 
+  ENDMETHOD.
+
+  METHOD before_processing.
+    RETURN. " can be redefined and used for dpc_ext class
   ENDMETHOD.
 
 
@@ -356,6 +363,10 @@ CLASS zcl_odata_main IMPLEMENTATION.
     LOOP AT orderby ASSIGNING FIELD-SYMBOL(<orderby>).
       APPEND INITIAL LINE TO sortorder ASSIGNING FIELD-SYMBOL(<sort>).
       <sort>-name = <orderby>-property.
+      IF <sort>-name IS INITIAL AND <orderby>-property_path IS NOT INITIAL.
+        <sort>-name = <orderby>-property_path.
+      ENDIF.
+
       IF <orderby>-order = 'asc'.
         <sort>-descending = abap_false.
       ELSE.

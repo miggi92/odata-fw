@@ -1,7 +1,5 @@
 *---------------------------------------------------------------------*
 *    program for:   VIEWFRAME_ZODATA_V_ENTITY
-*   generation date: 14.12.2021 at 11:51:57
-*   view maintenance generator version: #001407#
 *---------------------------------------------------------------------*
 FUNCTION VIEWFRAME_ZODATA_V_ENTITY     .
 

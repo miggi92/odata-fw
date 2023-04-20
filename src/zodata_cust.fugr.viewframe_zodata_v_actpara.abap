@@ -1,7 +1,5 @@
 *---------------------------------------------------------------------*
 *    program for:   VIEWFRAME_ZODATA_V_ACTPARA
-*   generation date: 03.05.2021 at 17:03:33
-*   view maintenance generator version: #001407#
 *---------------------------------------------------------------------*
 FUNCTION VIEWFRAME_ZODATA_V_ACTPARA    .
 

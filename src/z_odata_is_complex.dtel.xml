@@ -18,6 +18,19 @@
     <DTELMASTER>E</DTELMASTER>
     <REFKIND>D</REFKIND>
    </DD04V>
+   <I18N_LANGS>
+    <LANGU>E</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DDTEXT>Is complex</DDTEXT>
+     <REPTEXT>Is complex</REPTEXT>
+     <SCRTEXT_S>Is complex</SCRTEXT_S>
+     <SCRTEXT_M>Is complex</SCRTEXT_M>
+     <SCRTEXT_L>Is complex</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
   </asx:values>
  </asx:abap>
 </abapGit>

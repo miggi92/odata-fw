@@ -70,7 +70,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_odata_data_provider IMPLEMENTATION.
+CLASS ZCL_ODATA_DATA_PROVIDER IMPLEMENTATION.
+
+
   METHOD add.
     DATA: ls_data_provider LIKE LINE OF me->data_providers.
 
@@ -81,6 +83,29 @@ CLASS zcl_odata_data_provider IMPLEMENTATION.
 
     APPEND ls_data_provider TO me->data_providers.
   ENDMETHOD.
+
+
+  METHOD add_entities2providers.
+    LOOP AT i_entities ASSIGNING FIELD-SYMBOL(<ls_entity>).
+      APPEND INITIAL LINE TO me->data_providers ASSIGNING FIELD-SYMBOL(<ls_data_provider>).
+      <ls_data_provider>-entity_name = <ls_entity>-entity_name.
+      <ls_data_provider>-instance = me->create_instance( i_class_name = <ls_entity>-class_name ).
+      SELECT action_name
+        FROM zodata_actions
+        INTO TABLE @DATA(lt_actions)
+        WHERE namespace = @<ls_entity>-namespace
+          AND entity    = @<ls_entity>-entity_name.
+      LOOP AT lt_actions ASSIGNING FIELD-SYMBOL(<ls_action>).
+        APPEND <ls_action> TO <ls_data_provider>-actions.
+      ENDLOOP.
+    ENDLOOP.
+  ENDMETHOD.
+
+
+  METHOD constructor.
+    me->dpc_object = i_dpc_object.
+  ENDMETHOD.
+
 
   METHOD create_instance.
     DATA: lt_params TYPE abap_parmbind_tab.
@@ -95,6 +120,7 @@ CLASS zcl_odata_data_provider IMPLEMENTATION.
 
   ENDMETHOD.
 
+
   METHOD get.
     TRY.
         DATA(lv_entity_name) = i_entity_name.
@@ -104,29 +130,6 @@ CLASS zcl_odata_data_provider IMPLEMENTATION.
     ENDTRY.
   ENDMETHOD.
 
-  METHOD get_all.
-    r_data_providers = me->data_providers.
-  ENDMETHOD.
-
-  METHOD constructor.
-    me->dpc_object = i_dpc_object.
-  ENDMETHOD.
-
-  METHOD add_entities2providers.
-    LOOP AT i_entities ASSIGNING FIELD-SYMBOL(<ls_entity>).
-      APPEND INITIAL LINE TO me->data_providers ASSIGNING FIELD-SYMBOL(<ls_data_provider>).
-      <ls_data_provider>-entity_name = <ls_entity>-entity_name.
-      <ls_data_provider>-instance = me->create_instance( i_class_name = <ls_entity>-class_name ).
-      SELECT *
-        FROM zodata_actions
-        INTO TABLE @DATA(actions)
-        WHERE namespace = @<ls_entity>-namespace
-          AND entity    = @<ls_entity>-entity_name.
-      LOOP AT actions ASSIGNING FIELD-SYMBOL(<ls_action>).
-        APPEND <ls_action>-action_name TO <ls_data_provider>-actions.
-      ENDLOOP.
-    ENDLOOP.
-  ENDMETHOD.
 
   METHOD get_action.
     LOOP AT me->data_providers ASSIGNING FIELD-SYMBOL(<ls_data_provider>) WHERE actions IS NOT INITIAL.
@@ -137,4 +140,8 @@ CLASS zcl_odata_data_provider IMPLEMENTATION.
     ENDLOOP.
   ENDMETHOD.
 
+
+  METHOD get_all.
+    r_data_providers = me->data_providers.
+  ENDMETHOD.
 ENDCLASS.

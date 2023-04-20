@@ -18,6 +18,19 @@
     <DTELMASTER>E</DTELMASTER>
     <REFKIND>D</REFKIND>
    </DD04V>
+   <I18N_LANGS>
+    <LANGU>E</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DDTEXT>Namespace</DDTEXT>
+     <REPTEXT>Namespace</REPTEXT>
+     <SCRTEXT_S>Namespace</SCRTEXT_S>
+     <SCRTEXT_M>Namespace</SCRTEXT_M>
+     <SCRTEXT_L>Namespace</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
   </asx:values>
  </asx:abap>
 </abapGit>

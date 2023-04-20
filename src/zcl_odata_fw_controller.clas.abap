@@ -211,7 +211,8 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
       ENDLOOP.
     ENDIF.
 
-    IF i_entity-entity_name = zif_odata_constants=>gc_global_entities-documents.
+    IF i_entity-entity_name = zif_odata_constants=>gc_global_entities-documents
+    OR i_entity-entity_name = zif_odata_constants=>gc_global_entities-attachments.
       entity->set_is_media( ).
     ENDIF.
 
@@ -268,35 +269,39 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
           property->set_filterable( abap_false ).
         ENDIF.
 
-        IF <property>-search_help IS NOT INITIAL.
-          ##TODO "geht da was acuh mit v2?
-          TRY.
-              DATA(value_help) = entities[ entity_name = zif_odata_constants=>gc_global_entities-value_help ].
+
+      ENDIF.
+
+      IF <property>-search_help IS NOT INITIAL.
+        ##TODO "geht da was acuh mit v2?
+        TRY.
+            DATA(value_help) = entities[ entity_name = zif_odata_constants=>gc_global_entities-value_help ].
 *              cl*shlp_annotation*
-              DATA(annotation) = cl_apj_shlp_annotation=>create(
-                io_odata_model         = i_model
-                io_vocan_model         = i_anno_model
-                iv_namespace           = |{ me->namespace }|
-                iv_entitytype          = i_entity-entity_name
-                iv_property            = <property>-property_name
+            DATA(annotation) = cl_apj_shlp_annotation=>create(
+              io_odata_model         = i_model
+              io_vocan_model         = i_anno_model
+              iv_namespace           = |{ me->namespace }|
+              iv_entitytype          = i_entity-entity_name
+              iv_property            = SWITCH #( <property>-complex_type WHEN 'valueDescription' THEN |{ <property>-property_name }/value| ELSE <property>-property_name )
 *            iv_search_supported    =
-                iv_search_help_field   = <property>-abap_name
+              iv_search_help_field   = <property>-abap_name
 *            iv_qualifier           =
 *            iv_label               =
-                iv_valuelist_entityset = |{ <property>-search_help }Set|
-                iv_valuelist_property  = |{ zif_odata_constants=>gc_global_properties-value_help-value }|
-            ).
-              annotation->add_display_parameter( iv_valuelist_property = |{ zif_odata_constants=>gc_global_properties-value_help-description }| ).
+              iv_valuelist_entityset = |{ <property>-search_help }Set|
+              iv_valuelist_property  = |{ zif_odata_constants=>gc_global_properties-value_help-value }|
+          ).
+            annotation->add_display_parameter( iv_valuelist_property = |{ zif_odata_constants=>gc_global_properties-value_help-description }| ).
 *            CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
 *            CATCH cx_fkk_error.                " General Errors
 
 *        CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
-            CATCH cx_sy_itab_line_not_found.
-          ENDTRY.
-        ENDIF.
+          CATCH cx_sy_itab_line_not_found.
+        ENDTRY.
       ENDIF.
 
-      IF i_entity-entity_name = zif_odata_constants=>gc_global_entities-documents AND <property>-abap_name = zif_odata_constants=>gc_global_fieldnames-documents-mime_type.
+      IF ( i_entity-entity_name = zif_odata_constants=>gc_global_entities-documents OR
+           i_entity-entity_name = zif_odata_constants=>gc_global_entities-attachments )
+      AND <property>-abap_name = zif_odata_constants=>gc_global_fieldnames-documents-mime_type.
         property->set_as_content_type( ).
       ENDIF.
     ENDLOOP.

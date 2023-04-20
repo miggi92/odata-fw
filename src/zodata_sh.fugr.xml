@@ -55,6 +55,447 @@
      </DOCUMENTATION>
     </item>
    </FUNCTIONS>
+   <LONGTEXTS_Z_ODATA_ENTITY_SHLP_EXIT>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>Z_ODATA_ENTITY_SHLP_EXIT</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0004</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00018</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>Z_ODATA_ENTITY_SHLP_EXIT</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00004</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;FUNCTIONALITY&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Dieser Baustein dient nur als Beispiel für die Schnittstelle und die</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Gestaltung von &lt;DS:TX.DDDOK_SHLP_EXIT&gt;Suchhilfe-Exits&lt;/&gt; in</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TX.DDDOK_SHLP_SEARCHHELP&gt;Suchhilfen&lt;/&gt;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Alle hier definierten Schnittstellenparameter sind für einen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Funktionsbaustein, der als Suchhilfe-Exit dienen soll, obligatorisch,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>weil der Rufer des Bausteins nicht weiß, welche Parameter intern</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>wirklich benutzt werden.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Ein Suchhilfe-Exit wird zu mehreren</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TX.DDDOK_SHLP_STEP&gt;Zeitpunkten&lt;/&gt; während des F4-Ablaufs</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>aufgerufen. In CALLCONTROL-STEP wird der jeweilige Schritt des Ablaufs</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>mitgegeben. Wenn der Baustein nur einige Modifikationen vor dem Schritt</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>durchführen möchte, sollte CALLCONTROL-STEP unverändert bleiben.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Wenn der Schritt dagegen vollständig von dem Baustein übernommen wird,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>muß in CALLCONTROL-STEP der Folgeschritt zurückgegeben werden.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Beachten Sie hierzu bitte die ausführliche Dokumentation zum Konzept</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>der Suchhilfe-Exits.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Der Baustein muß auf alle Schritte, die er nicht kennt, bzw. die er</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>nicht behandeln will, mit einem sofortigen EXIT reagieren.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;EXAMPLE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;HINTS&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;FURTHER_SOURCES_OF_INF&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>Z_ODATA_ENTITY_SHLP_EXIT</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0004</VERSION>
+      <TXTLINES>00017</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>Z_ODATA_ENTITY_SHLP_EXIT</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00004</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;FUNCTIONALITY&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>This module has been created as an example for the interface and design</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>of &lt;DS:TX.DDDOK_SHLP_EXIT&gt;Search help exits&lt;/&gt; in</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TX.DDDOK_SHLP_SEARCHHELP&gt;Search help&lt;/&gt;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>All the interface parameters defined here are mandatory for a function</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>module to be used as a search help exit, because the calling program</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>does not know which parameters are actually used internally.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>A search help exit is called repeatedly in connection with several</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>&lt;DS:TX.DDDOK_SHLP_STEP&gt;events&lt;/&gt; during the F4 process. The relevant</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>step of the process is passed on in the CALLCONTROL step. If the module</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>is intended to perform only a few modifications before the step,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>CALLCONTROL-STEP should remain unchanged.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>However, if the step is performed completely by the module, the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>following step must be returned in CALLCONTROL-STEP.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>For more detailed information please refer to the documentation</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>describing the concept of the search help exit.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The module must react with an immediate EXIT to all steps that it does</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>not know or does not want to handle.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;EXAMPLE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;HINTS&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;FURTHER_SOURCES_OF_INF&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>Z_ODATA_ENTITY_SHLP_EXIT      RECORD_TAB</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0003</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00006</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>Z_ODATA_ENTITY_SHLP_EXIT      RECORD_TAB</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00003</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;MEANING&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Wenn die Daten-Selektion vom Suchhilfe-Exit übernommen wird (Step</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>SELECT), muß die Trefferliste in interner Darstellung in dieser Tabelle</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>zurückgegeben werden.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Wenn die Daten-Anzeige vom Suchhilfe-Exit übernommen wird (Step DISP),</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>wird die Trefferliste in dieser Tabelle in interner Darstellung</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>übergeben.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;RANGE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFAULT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>Z_ODATA_ENTITY_SHLP_EXIT      SHLP</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0002</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00008</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>Z_ODATA_ENTITY_SHLP_EXIT      SHLP</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;MEANING&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Aktuelle Suchhilfe vom Typ</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TX.DDDOK_SHLP_SHLP_DESCR_T&gt;SHLP_DESCR_T&lt;/&gt;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Zum &lt;DS:TX.DDDOK_SHLP_STEP&gt;Zeitpunkt&lt;/&gt; SELONE wird die direkt dem Feld</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>zugeordnete Suchhilfe übergeben. Dabei kann es sich auch um eine</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Sammelsuchhilfe handeln. Die zugehörigen elementaren Suchhilfen stehen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>in SHLP_TAB. Zu allen späteren Zeitpunkten wird die elementare</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Suchhilfe übergeben, die entweder im Dialog ausgewählt wurde, oder von</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Anfang an direkt dem Feld zugeordnet war.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;RANGE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFAULT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>Z_ODATA_ENTITY_SHLP_EXIT      SHLP_TAB</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0005</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00016</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>Z_ODATA_ENTITY_SHLP_EXIT      SHLP_TAB</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00005</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;MEANING&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Diese Tabelle ist vor allem für den &lt;DS:TX.DDDOK_SHLP_STEP&gt;Zeitpunkt&lt;/&gt;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>SELONE (Selektion einer elementaren Suchhilfe aus mehreren</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Möglichkeiten) relevant.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Sie enthält pro Zeile die vollständige Beschreibung einer elementaren</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Suchhilfe (Zeilentyp ist</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TX.DDDOK_SHLP_SHLP_DESCR_T&gt;SHLP_DESCR_T&lt;/&gt;). Die Anzahl elementarer</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Suchhilfen, kann durch Manipulation von SHLP_TAB eingeschränkt werden.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Als Folgeschritt kann in der Regel SELONE beibehalten werden. Dem</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Benutzer wird dann die eingeschränkte Menge elementarer Suchhilfen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>zur Auswahl angeboten.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Zum Zeitpunkt SELONE steht die zugehörige Sammelsuchhilfe im Parameter</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>SHLP zur Verfügung.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Nur wenn zum Zeitpunkt SELONE mehr als ein Eintrag in SHLP_TAB</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>verbleibt aber trotzdem das Auswahlpopup nicht angezeigt werden soll,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>sollte der Folgeschritt auf PRESEL1 geändert werden. Die zu benutzende</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Suchhilfe ist dann vorab aus SHLP_TAB in SHLP zu übertragen.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;RANGE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFAULT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+   </LONGTEXTS_Z_ODATA_ENTITY_SHLP_EXIT>
   </asx:values>
  </asx:abap>
 </abapGit>

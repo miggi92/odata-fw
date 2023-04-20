@@ -4,8 +4,9 @@ INTERFACE zif_odata_constants
 
   CONSTANTS:
     BEGIN OF gc_global_entities,
-      value_help TYPE string VALUE 'valueHelp',
-      documents  TYPE string VALUE 'globalDocuments',
+      value_help  TYPE string VALUE 'valueHelp',
+      documents   TYPE string VALUE 'globalDocuments',
+      attachments TYPE string VALUE 'globalAttachments',
     END OF gc_global_entities,
     BEGIN OF gc_global_properties,
       BEGIN OF value_help,

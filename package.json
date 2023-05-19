@@ -1,0 +1,30 @@
+{
+  "name": "odata-fw",
+  "version": "1.0.0",
+  "description": "OData framework",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "unit": "rm -rf output && abap_transpile abap_transpile.json && echo RUNNING && node output/index.mjs",
+    "test": "npm run unit",
+    "abaplint": "abaplint --format codeframe"
+  },
+  "repository": "github:miggi92/odata-fw",
+  "keywords": [
+    "abap",
+    "odata",
+    "framework"
+  ],
+  "author": "Miguel Gebhardt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miggi92/odata-fw/issues"
+  },
+  "homepage": "https://github.com/miggi92/odata-fw/blob/master/README.md",
+  "devDependencies": {
+    "@abaplint/cli": "^2.100.6",
+    "@abaplint/runtime": "^2.7.5",
+    "@abaplint/transpiler-cli": "^2.7.5"
+  }
+}

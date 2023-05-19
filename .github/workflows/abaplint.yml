@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: abaplint
         uses: abaplint/actions-abaplint@main
         # GITHUB_TOKEN in forked repositories is read-only

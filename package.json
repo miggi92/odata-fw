@@ -1,0 +1,23 @@
+{
+  "name": "odata-fw",
+  "version": "1.0.0",
+  "description": "OData framework",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "github:miggi92/odata-fw",
+  "keywords": [
+    "abap",
+    "odata",
+    "framework"
+  ],
+  "author": "Miguel Gebhardt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miggi92/odata-fw/issues"
+  },
+  "homepage": "https://github.com/miggi92/odata-fw/blob/master/README.md"
+}

@@ -8,5 +8,6 @@
   "spellcheckLanguages": [
     "de",
     "en"
-  ]
+  ],
+  "alwaysUpdateLinks": true
 }

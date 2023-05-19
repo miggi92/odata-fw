@@ -9,5 +9,6 @@
     "de",
     "en"
   ],
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "strictLineBreaks": false
 }

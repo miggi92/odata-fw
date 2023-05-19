@@ -48,3 +48,9 @@ Thumbs.db
 *.mov
 *.wmv
 
+# exclude workspace cache
+docs/.obsidian/workspace*
+
+# Add below lines to exclude OS settings and caches
+docs/.trash/
+docs/.DS_Store

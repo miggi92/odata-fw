@@ -16,8 +16,7 @@ CLASS zcl_odata_utils DEFINITION
         RETURNING
           VALUE(r_user) TYPE zodata_user
         RAISING
-          zcx_odata
-          zcx_utils,
+          zcx_odata,
       "! <p class="shorttext synchronized" lang="en">Raise error within the Model</p>
       "!
       "! @parameter i_error | <p class="shorttext synchronized" lang="en">Error</p>
@@ -93,7 +92,7 @@ CLASS zcl_odata_utils IMPLEMENTATION.
           textid = zcx_odata=>convert_bapiret2( return ).
     ENDIF.
 
-    DATA(user) = NEW zcl_user( i_uname ).
+    DATA(user) = NEW zcl_odata_bo_user( i_uname ).
     r_user = VALUE #( first_name    = user->get_firstname( )
                       last_name     = user->get_lastname( )
                       sap_name      = i_uname

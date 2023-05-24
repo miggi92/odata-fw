@@ -8,6 +8,8 @@
 3. [Implement the framework MPC method](#Implement%20the%20framework%20MPC%20method)
 4. [Implementing the framework DPC methods](#Implementing%20the%20framework%20DPC%20methods)
 	-  [Boilerplate coding for the OData methods](#Boilerplate%20coding%20for%20the%20OData%20methods)
+5. [Customize your service](#Customize%20your%20service)
+
 
 ## Create a SEGW Project
 
@@ -73,3 +75,9 @@ DATA: mt_data_providers TYPE REF TO zcl_odata_data_provider.
 ### Boilerplate coding for the OData methods
 
 For the boilerplate code, that has to be inserted into the OData methods you can copy the lines in the [DPC Boilerplate code](DPC%20Boilerplate%20code.md) file.
+
+## Customize your service
+
+Implement your odata service customizing. By calling the **ZODATA_CUST** transaction.
+For a detailed documentation you can look into the [OData Customizing](OData%20Customizing.md) file.
+

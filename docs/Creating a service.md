@@ -8,7 +8,8 @@
 3. [Implement the framework MPC method](#Implement%20the%20framework%20MPC%20method)
 4. [Implementing the framework DPC methods](#Implementing%20the%20framework%20DPC%20methods)
 	-  [Boilerplate coding for the OData methods](#Boilerplate%20coding%20for%20the%20OData%20methods)
-		- [GetEntitySet](#GetEntitySet)
+		- [get_entityset](#get_entityset)
+		- [get_entity](#get_entity)
 
 ## Create a SEGW Project
 
@@ -65,7 +66,7 @@ METHOD constructor.
 	ENDTRY.
 ENDMETHOD.
 ```
-3. Data provider attribute
+2. Data provider attribute
 ```abap
 DATA: mt_data_providers TYPE REF TO zcl_odata_data_provider.
 ```
@@ -73,8 +74,14 @@ DATA: mt_data_providers TYPE REF TO zcl_odata_data_provider.
 
 ### Boilerplate coding for the OData methods
 
-#### GetEntitySet
+#### get_entityset
 
+Redefinition:
+```abap
+METHODS /iwbep/if_mgw_appl_srv_runtime~get_entityset REDEFINITION.
+```
+
+Implementation:
 ```abap
 DATA(ls_data_provider) = me->mt_data_providers->get( iv_entity_name ).
 
@@ -97,4 +104,31 @@ ls_data_provider-instance->/iwbep/if_mgw_appl_srv_runtime~get_entityset(
 	 es_response_context      = es_response_context
  ).
 ```
+
+#### get_entity
+
+Redefinition:
+```abap
+METHODS /iwbep/if_mgw_appl_srv_runtime~get_entity REDEFINITION.
+```
+
+Implementation:
+```abap
+DATA(ls_data_provider) = me->mt_data_providers->get( iv_entity_name ).
+
+ls_data_provider-instance->before_processing( ).
+ls_data_provider-instance->/iwbep/if_mgw_appl_srv_runtime~get_entity(
+  EXPORTING
+	iv_entity_name          = iv_entity_name
+	iv_entity_set_name      = iv_entity_set_name
+	iv_source_name          = iv_source_name
+	it_key_tab              = it_key_tab
+	it_navigation_path      = it_navigation_path
+	io_tech_request_context = io_tech_request_context
+  IMPORTING
+	er_entity               = er_entity
+	es_response_context     = es_response_context
+).
+```
+
 

@@ -6,6 +6,9 @@
 1. [Create a SEGW Project](#Create%20a%20SEGW%20Project)
 2. [Generate classes](#Generate%20classes)
 3. [Implement the framework MPC method](#Implement%20the%20framework%20MPC%20method)
+4. [Implementing the framework DPC methods](#Implementing%20the%20framework%20DPC%20methods)
+	-  [Boilerplate coding for the OData methods](#Boilerplate%20coding%20for%20the%20OData%20methods)
+		- [GetEntitySet](#GetEntitySet)
 
 ## Create a SEGW Project
 
@@ -46,3 +49,52 @@ METHOD define.
     ENDTRY.
   ENDMETHOD.
 ```
+
+## Implementing the framework DPC methods
+
+For the DPC methods to work with the framework we need to implement two things in the DPC_EXT class.
+1. Constructor
+```abap
+METHOD constructor.
+	super->constructor( ).
+	TRY.
+		me->mt_data_providers = NEW #( me ).
+		NEW zcl_odata_fw_controller( 'Z_MY_PROJECT' )->define_dpc( i_data_provider = me->mt_data_providers ).
+	  CATCH zcx_odata INTO DATA(lo_error).
+		NEW zcl_odata_error_handler( me )->raise_exception_object( lo_error ).
+	ENDTRY.
+ENDMETHOD.
+```
+3. Data provider attribute
+```abap
+DATA: mt_data_providers TYPE REF TO zcl_odata_data_provider.
+```
+
+
+### Boilerplate coding for the OData methods
+
+#### GetEntitySet
+
+```abap
+DATA(ls_data_provider) = me->mt_data_providers->get( iv_entity_name ).
+
+ls_data_provider-instance->before_processing( ).
+ls_data_provider-instance->/iwbep/if_mgw_appl_srv_runtime~get_entityset(
+   EXPORTING
+	 iv_entity_name           = iv_entity_name  
+	 iv_entity_set_name       = iv_entity_set_name    
+	 iv_source_name           = iv_source_name      
+	 it_filter_select_options = it_filter_select_options 
+	 it_order                 = it_order
+	 is_paging                = is_paging
+	 it_navigation_path       = it_navigation_path
+	 it_key_tab               = it_key_tab
+	 iv_filter_string         = iv_filter_string
+	 iv_search_string         = iv_search_string
+	 io_tech_request_context  = io_tech_request_context
+   IMPORTING
+	 er_entityset             = er_entityset
+	 es_response_context      = es_response_context
+ ).
+```
+

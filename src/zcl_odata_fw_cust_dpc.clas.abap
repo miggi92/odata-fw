@@ -130,7 +130,7 @@ CLASS zcl_odata_fw_cust_dpc IMPLEMENTATION.
     SELECT *
         FROM zodata_prop_txts
         INTO TABLE rt_property_texts
-        WHERE namespace IN it_namespaces.
+@it_namespaces
 
     IF sy-subrc <> 0.
       " no need to throw anything

@@ -92,7 +92,7 @@ CLASS zcl_odata_fw_cust_dpc IMPLEMENTATION.
     SELECT *
           FROM zodata_entity
           INTO TABLE rt_entities
-          WHERE namespace IN it_namespaces.
+@it_namespaces
 
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_odata

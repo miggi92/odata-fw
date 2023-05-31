@@ -10,7 +10,8 @@ Legend
 
 2023-05-31 v1.0.1
 -------------------
-+ create deep entity customizing #9
++ create deep entity customizing (#9)
+! changed mpc and extract to seperate class
 
 before 2023-05-30 
 -------------------

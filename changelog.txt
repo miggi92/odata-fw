@@ -12,6 +12,8 @@ Legend
 -------------------
 + create deep entity customizing (#9)
 ! changed mpc and extract to seperate class
++ annotation class (#4)
+! annotation logic (#4)
 
 before 2023-05-30 
 -------------------

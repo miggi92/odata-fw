@@ -1,6 +1,12 @@
 *---------------------------------------------------------------------*
 *    view related data declarations
 *---------------------------------------------------------------------*
+*...processing: ZODATA_ENTITY...................................*
+DATA:  BEGIN OF STATUS_ZODATA_ENTITY                 .   "state vector
+         INCLUDE STRUCTURE VIMSTATUS.
+DATA:  END OF STATUS_ZODATA_ENTITY                 .
+CONTROLS: TCTRL_ZODATA_ENTITY
+            TYPE TABLEVIEW USING SCREEN '0001'.
 *...processing: ZODATA_NAMESPACE................................*
 DATA:  BEGIN OF STATUS_ZODATA_NAMESPACE              .   "state vector
          INCLUDE STRUCTURE VIMSTATUS.
@@ -122,6 +128,7 @@ INCLUDE STRUCTURE ZODATA_V_PROPTXT.
 DATA: END OF ZODATA_V_PROPTXT_TOTAL.
 
 *.........table declarations:.................................*
+TABLES: *ZODATA_ENTITY                 .
 TABLES: *ZODATA_NAMESPACE              .
 TABLES: *ZODATA_SEARCHHLP              .
 TABLES: ZODATA_ACTIONS                 .

@@ -5,7 +5,7 @@
    <PROGDIR>
     <NAME>LZODATA_CUSTT00</NAME>
     <SUBC>I</SUBC>
-    <RLOAD>D</RLOAD>
+    <RLOAD>E</RLOAD>
    </PROGDIR>
   </asx:values>
  </asx:abap>

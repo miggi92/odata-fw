@@ -68,6 +68,16 @@ CLASS zcl_odata_fw_mpc DEFINITION
           is_entity TYPE zodata_entity
         RAISING
           zcx_odata
+          /iwbep/cx_mgw_med_exception,
+      "! <p class="shorttext synchronized" lang="en">Define value help annotations</p>
+      "! @parameter is_entity | <p class="shorttext synchronized" lang="en">Entity</p>
+      "! @parameter is_property | <p class="shorttext synchronized" lang="en">Property</p>
+      "! @raising /iwbep/cx_mgw_med_exception | <p class="shorttext synchronized" lang="en">Error</p>
+      define_search_help_annotations
+        IMPORTING
+          is_entity   TYPE zodata_entity
+          is_property TYPE zodata_property
+        RAISING
           /iwbep/cx_mgw_med_exception.
 ENDCLASS.
 
@@ -109,9 +119,9 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
     DATA(lo_complex_type) = mo_model->create_complex_type( iv_cplx_type_name = is_entity-entity_name  ).
     lo_complex_type->bind_structure( |{ is_entity-structure }| ).
 
-    LOOP AT mo_customizing->get_properties( ) ASSIGNING FIELD-SYMBOL(<ls_property>) 
+    LOOP AT mo_customizing->get_properties( ) ASSIGNING FIELD-SYMBOL(<ls_property>)
         WHERE entity_name = is_entity-entity_name.
-        
+
       DATA(lo_property) =  lo_complex_type->create_property(
         iv_property_name  = <ls_property>-property_name
         iv_abap_fieldname = <ls_property>-abap_name
@@ -175,7 +185,7 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
     ).
     lo_entity->create_entity_set( iv_entity_set_name = |{ is_entity-entity_name }Set| ).
 
-    LOOP AT mo_customizing->get_properties( ) ASSIGNING FIELD-SYMBOL(<ls_property>) 
+    LOOP AT mo_customizing->get_properties( ) ASSIGNING FIELD-SYMBOL(<ls_property>)
       WHERE entity_name = is_entity-entity_name.
       IF <ls_property>-complex_type IS NOT INITIAL.
         DATA(lo_cmplx_type) = lo_entity->create_cmplx_type_property(
@@ -226,34 +236,9 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
       ENDIF.
 
       IF <ls_property>-search_help IS NOT INITIAL.
-        ##TODO "geht da was acuh mit v2?
-        TRY.
-            DATA(lt_entities) = mo_customizing->get_entities( ).
-            DATA(ls_value_help) = lt_entities[ entity_name = zif_odata_constants=>gc_global_entities-value_help ].
-*              cl*shlp_annotation*
-            DATA(annotation) = cl_apj_shlp_annotation=>create(
-              io_odata_model         = mo_model
-              io_vocan_model         = mo_anno_model
-              iv_namespace           = |{ mo_customizing->get_namespace( ) }|
-              iv_entitytype          = is_entity-entity_name
-              iv_property            = SWITCH #( <ls_property>-complex_type 
-                                          WHEN 'valueDescription' THEN |{ <ls_property>-property_name }/value| 
-                                          ELSE <ls_property>-property_name )
-*            iv_search_supported    =
-              iv_search_help_field   = <ls_property>-abap_name
-*            iv_qualifier           =
-*            iv_label               =
-              iv_valuelist_entityset = |{ <ls_property>-search_help }Set|
-              iv_valuelist_property  = |{ zif_odata_constants=>gc_global_properties-value_help-value }|
-          ).
-            annotation->add_display_parameter( iv_valuelist_property = |{ 
-                zif_odata_constants=>gc_global_properties-value_help-description }| ).
-*            CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
-*            CATCH cx_fkk_error.                " General Errors
-
-*        CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
-          CATCH cx_sy_itab_line_not_found.
-        ENDTRY.
+        define_search_help_annotations(
+      is_entity   = is_entity
+      is_property = <ls_property> ).
       ENDIF.
 
       IF ( is_entity-entity_name = zif_odata_constants=>gc_global_entities-documents OR
@@ -267,6 +252,61 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
       ENDIF.
     ENDLOOP.
   ENDMETHOD.
+
+  METHOD define_search_help_annotations.
+    ##TODO "geht da was acuh mit v2?
+    TRY.
+        DATA(lt_entities) = mo_customizing->get_entities( ).
+        DATA(ls_search_help) = lt_entities[ entity_name = is_property-search_help ].
+
+        DATA(lt_sh_properties) = mo_customizing->get_properties( ).
+        DELETE lt_sh_properties WHERE entity_name <> is_property-search_help.
+        DATA(lv_first_key) = lt_sh_properties[ is_key = abap_true ]-property_name.
+
+*              cl*shlp_annotation*
+        DATA(lo_annotation) = zcl_odata_annotation_shlp=>create(
+          io_vocan_model         = mo_anno_model
+          iv_namespace           = |{ mo_customizing->get_namespace( ) }|
+          iv_entitytype          = is_entity-entity_name
+          iv_property            = SWITCH #( is_property-complex_type
+                                      WHEN 'valueDescription' THEN |{ is_property-property_name }/value|
+                                      ELSE is_property-property_name )
+          iv_search_supported    = abap_true
+          iv_search_help_field   = is_property-abap_name
+*            iv_qualifier           =
+*            iv_label               =
+          iv_valuelist_entityset = |{ is_property-search_help }Set|
+          iv_valuelist_property  = SWITCH #( is_property-complex_type
+                                      WHEN 'valueDescription' THEN |{ zif_odata_constants=>gc_global_properties-value_help-value }|
+                                      ELSE lv_first_key )
+      ).
+
+        IF is_property-complex_type = 'valueDescription'.
+          lo_annotation->add_display_parameter( |{ zif_odata_constants=>gc_global_properties-value_help-description }| ).
+        ELSE.
+          LOOP AT lt_sh_properties ASSIGNING FIELD-SYMBOL(<ls_sh_property>) WHERE property_name <> lv_first_key.
+
+            IF <ls_sh_property>-is_key = abap_true.
+              lo_annotation->add_inout_parameter(
+                  iv_property           = |{ <ls_sh_property>-property_name }|
+                  iv_valuelist_property = |{ <ls_sh_property>-property_name }|
+              ).
+            ELSE.
+*              lo_annotation->add_display_parameter( |{ <ls_sh_property>-property_name }| ).
+              lo_annotation->add_out_parameter(
+                iv_property           = |{ <ls_sh_property>-property_name }|
+                iv_valuelist_property = |{ <ls_sh_property>-property_name }|
+            ).
+            ENDIF.
+
+          ENDLOOP.
+        ENDIF.
+      CATCH cx_sy_itab_line_not_found.
+    ENDTRY.
+
+  ENDMETHOD.
+
+
 
   METHOD override_texts.
     CHECK io_prop_ref IS BOUND.
@@ -288,7 +328,7 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
                                             text_type = 'H' ].
 
         io_prop_ref->set_heading_from_text_element(
-                    iv_text_element_symbol    = |{ ls_heading-text_id }| 
+                    iv_text_element_symbol    = |{ ls_heading-text_id }|
                     iv_text_element_container = |{ ls_heading-object_name }|
                 ).
 
@@ -341,7 +381,7 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
         lo_action->set_http_method( iv_method_name = <ls_action>-http_method ).
       ENDIF.
 
-      LOOP AT mo_customizing->get_action_parameter( ) ASSIGNING FIELD-SYMBOL(<ls_action_param>) 
+      LOOP AT mo_customizing->get_action_parameter( ) ASSIGNING FIELD-SYMBOL(<ls_action_param>)
         WHERE action_name = <ls_action>-action_name.
         DATA(lo_parameter) = lo_action->create_input_parameter(
             iv_parameter_name = <ls_action_param>-parameter_name

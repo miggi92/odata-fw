@@ -106,7 +106,7 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
     TRY.
         DATA(filter) = io_tech_request_context->get_filter( )->get_filter_select_options( ).
 
-        IF filter IS INITIAL 
+        IF filter IS INITIAL
         AND io_tech_request_context->get_entity_type_name( ) = zif_odata_constants=>gc_global_entities-value_help.
           RAISE EXCEPTION TYPE zcx_odata
             EXPORTING
@@ -114,8 +114,8 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
         ELSEIF filter IS NOT INITIAL.
           lt_filter_options = filter[ property = 'SEARCH_HELP' ]-select_options.
         ELSEIF io_tech_request_context->get_entity_type_name( ) <> zif_odata_constants=>gc_global_entities-value_help.
-          lt_filter_options = VALUE #( (  low = io_tech_request_context->get_entity_type_name( ) 
-                                          sign = 'I' 
+          lt_filter_options = VALUE #( (  low = io_tech_request_context->get_entity_type_name( )
+                                          sign = 'I'
                                           option = 'EQ' ) ).
         ENDIF.
 
@@ -219,12 +219,12 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
          FROM (table_name)
          INTO TABLE @<table_values>
          WHERE spras = @sy-langu
-           AND (where_cond). "#EC CI_SUBRC 
+           AND (where_cond). "#EC CI_SUBRC
     ELSE.
       SELECT *
         FROM (table_name)
         INTO TABLE @<table_values>
-        WHERE (where_cond)."#EC CI_SUBRC 
+        WHERE (where_cond)."#EC CI_SUBRC
 
       DATA(texttable) = get_texttable(
                     EXPORTING
@@ -245,7 +245,7 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
           FROM (texttable)
           INTO TABLE @<texttable_value>
            WHERE spras = @sy-langu
-             AND (test). "#EC CI_SUBRC 
+             AND (test). "#EC CI_SUBRC
     ENDIF.
 
     LOOP AT <table_values> ASSIGNING FIELD-SYMBOL(<table_value>).
@@ -321,14 +321,14 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
     DATA: cond_tab TYPE STANDARD TABLE OF hrcond.
 
     IF i_customizing-where_data_element1 IS NOT INITIAL.
-      APPEND VALUE #( field = i_customizing-where_data_element1 
-                      opera = 'EQ' 
+      APPEND VALUE #( field = i_customizing-where_data_element1
+                      opera = 'EQ'
                       low = i_customizing-where_value1 ) TO cond_tab.
     ENDIF.
 
     IF i_customizing-where_data_element2 IS NOT INITIAL.
-      APPEND VALUE #( field = i_customizing-where_data_element2 
-                      opera = 'EQ' 
+      APPEND VALUE #( field = i_customizing-where_data_element2
+                      opera = 'EQ'
                       low = i_customizing-where_value2 ) TO cond_tab.
     ENDIF.
 

@@ -290,8 +290,8 @@ CLASS zcl_odata_main IMPLEMENTATION.
                 SPLIT osql_where_clause AT 'AND' INTO TABLE DATA(split_osql).
 
                 LOOP AT split_osql ASSIGNING FIELD-SYMBOL(<split_osql>).
-                  APPEND |{ <split_osql> } { 
-                      COND char03( WHEN sy-tabix = lines( split_osql ) THEN '' 
+                  APPEND |{ <split_osql> } {
+                      COND char03( WHEN sy-tabix = lines( split_osql ) THEN ''
                                    ELSE 'AND' ) }| TO dynamic_where_line-where_tab.
                 ENDLOOP.
               ENDIF.
@@ -338,8 +338,8 @@ CLASS zcl_odata_main IMPLEMENTATION.
 
     TRY.
         facade ?= me->dpc_object->/iwbep/if_mgw_conv_srv_runtime~get_dp_facade( ).
-        r_properties = facade->/iwbep/if_mgw_dp_int_facade~get_model( 
-          )->get_entity_type( iv_entity_name = io_tech_request_context->get_entity_type_name( ) 
+        r_properties = facade->/iwbep/if_mgw_dp_int_facade~get_model(
+          )->get_entity_type( iv_entity_name = io_tech_request_context->get_entity_type_name( )
             )->get_properties( ).
       CATCH /iwbep/cx_mgw_med_exception INTO DATA(error).
         RAISE EXCEPTION TYPE /iwbep/cx_mgw_med_exception

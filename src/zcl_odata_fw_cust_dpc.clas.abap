@@ -102,7 +102,7 @@ CLASS zcl_odata_fw_cust_dpc IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD read_global_namespaces.
-    SELECT namespace
+    SELECT *
        FROM zodata_namespace
        INTO TABLE @rt_global_namespaces
        WHERE is_global = @abap_true. "#EC CI_SUBRC

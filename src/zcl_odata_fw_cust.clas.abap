@@ -96,7 +96,7 @@ CLASS zcl_odata_fw_cust IMPLEMENTATION.
 
     LOOP AT zcl_odata_fw_cust_dpc=>read_global_namespaces( ) ASSIGNING FIELD-SYMBOL(<ls_global_namespace>).
       CHECK <ls_global_namespace> <> mv_namespace.
-      APPEND VALUE #( sign = 'I' option = 'EQ' low = <ls_global_namespace> ) TO lt_namespaces.
+      APPEND VALUE #( sign = 'I' option = 'EQ' low = <ls_global_namespace>-namespace ) TO lt_namespaces.
     ENDLOOP.
 
     APPEND VALUE #( sign = 'I' option = 'EQ' low = mv_namespace ) TO lt_namespaces.
@@ -116,24 +116,27 @@ CLASS zcl_odata_fw_cust IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD init_search_help_cust_entities.
-    DATA(lt_shelp_prop) = me->mt_properties.
-    DELETE lt_shelp_prop WHERE search_help = space.
-    SORT lt_shelp_prop BY search_help ASCENDING.
-    DELETE ADJACENT DUPLICATES FROM lt_shelp_prop COMPARING search_help.
+    TRY.
+        DATA(lt_shelp_prop) = me->mt_properties.
+        DELETE lt_shelp_prop WHERE search_help = space.
+        SORT lt_shelp_prop BY search_help ASCENDING.
+        DELETE ADJACENT DUPLICATES FROM lt_shelp_prop COMPARING search_help.
 
-    CHECK lines( lt_shelp_prop ) <> 0.
-    DATA(ls_entity) = mt_entities[ entity_name = zif_odata_constants=>gc_global_entities-value_help ].
-    LOOP AT lt_shelp_prop ASSIGNING FIELD-SYMBOL(<ls_shelp>).
-      ls_entity-entity_name = <ls_shelp>-search_help.
-      APPEND ls_entity TO mt_entities.
+        CHECK lines( lt_shelp_prop ) <> 0.
+        DATA(ls_entity) = mt_entities[ entity_name = zif_odata_constants=>gc_global_entities-value_help ].
+        LOOP AT lt_shelp_prop ASSIGNING FIELD-SYMBOL(<ls_shelp>).
+          ls_entity-entity_name = <ls_shelp>-search_help.
+          APPEND ls_entity TO mt_entities.
 
-      LOOP AT mt_properties INTO DATA(ls_prop)
-        WHERE entity_name = zif_odata_constants=>gc_global_entities-value_help
-          AND property_name <> zif_odata_constants=>gc_global_properties-value_help-search_field.
-        ls_prop-entity_name = ls_entity-entity_name.
-        APPEND ls_prop TO mt_properties.
-      ENDLOOP.
-    ENDLOOP.
+          LOOP AT mt_properties INTO DATA(ls_prop)
+            WHERE entity_name = zif_odata_constants=>gc_global_entities-value_help
+              AND property_name <> zif_odata_constants=>gc_global_properties-value_help-search_field.
+            ls_prop-entity_name = ls_entity-entity_name.
+            APPEND ls_prop TO mt_properties.
+          ENDLOOP.
+        ENDLOOP.
+      CATCH cx_sy_itab_line_not_found.
+    ENDTRY.
   ENDMETHOD.
 
   METHOD get_namespace.

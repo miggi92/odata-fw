@@ -27,7 +27,6 @@ CLASS zcl_odata_error_handler DEFINITION
 ENDCLASS.
 
 
-
 CLASS zcl_odata_error_handler IMPLEMENTATION.
   METHOD constructor.
     mv_context = i_context.
@@ -38,10 +37,9 @@ CLASS zcl_odata_error_handler IMPLEMENTATION.
     DATA(ls_error_text) = CONV bapi_msg( i_exception->get_longtext(  ) ).
 
     lo_msg_container->add_message_text_only(
-        iv_msg_type               = /iwbep/if_message_container=>gcs_message_type-error                " Message Type - defined by GCS_MESSAGE_TYPE
-        iv_msg_text               = ls_error_text                 " Message Text
+        iv_msg_type = /iwbep/if_message_container=>gcs_message_type-error " Message Type - defined by GCS_MESSAGE_TYPE
+        iv_msg_text = ls_error_text " Message Text
     ).
-
 
     RAISE EXCEPTION TYPE /iwbep/cx_mgw_busi_exception
       EXPORTING

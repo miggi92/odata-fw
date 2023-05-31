@@ -25,11 +25,8 @@ CLASS ltcl_odata_utils IMPLEMENTATION.
     GET TIME STAMP FIELD convert_timestamp2date.
 
     cl_abap_unit_assert=>assert_equals(
-        act                  = zcl_odata_utils=>convert_timestamp2date( convert_timestamp2date )      " Data object with current value
-        exp                  = sy-datum                             " Data object with expected type
-*        msg                  =                              " Description
-*        level                = if_aunit_constants=>critical " Severity (TOLERABLE, CRITICAL, FATAL)
-*        quit                 = if_aunit_constants=>method   " Alter control flow/ quit test (NO, >METHOD<, CLASS)
+        act                  = zcl_odata_utils=>convert_timestamp2date( convert_timestamp2date )
+        exp                  = sy-datum
     ).
   ENDMETHOD.
 
@@ -38,11 +35,8 @@ CLASS ltcl_odata_utils IMPLEMENTATION.
           test_date              TYPE datum VALUE '20210504'.
 
     cl_abap_unit_assert=>assert_equals(
-        act                  = zcl_odata_utils=>convert_date2timestamp( test_date )     " Data object with current value
-        exp                  =  convert_timestamp2date                            " Data object with expected type
-*       msg                  =                              " Description
-*       level                = if_aunit_constants=>critical " Severity (TOLERABLE, CRITICAL, FATAL)
-*       quit                 = if_aunit_constants=>method   " Alter control flow/ quit test (NO, >METHOD<, CLASS)
+        act                  = zcl_odata_utils=>convert_date2timestamp( test_date )
+        exp                  =  convert_timestamp2date
     ).
   ENDMETHOD.
 
@@ -52,11 +46,8 @@ CLASS ltcl_odata_utils IMPLEMENTATION.
           test_time              TYPE syst_timlo VALUE '101530'.
 
     cl_abap_unit_assert=>assert_equals(
-        act                  = zcl_odata_utils=>conv_date_and_time2timestamp( i_date = test_date i_time = test_time )  " Data object with current value
-        exp                  =  '20210504101530.000000'                           " Data object with expected type
-*       msg                  =                              " Description
-*       level                = if_aunit_constants=>critical " Severity (TOLERABLE, CRITICAL, FATAL)
-*       quit                 = if_aunit_constants=>method   " Alter control flow/ quit test (NO, >METHOD<, CLASS)
+        act                  = zcl_odata_utils=>conv_date_and_time2timestamp( i_date = test_date i_time = test_time )
+        exp                  =  '20210504101530.000000'
     ).
   ENDMETHOD.
 
@@ -76,19 +67,15 @@ CLASS ltcl_odata_utils IMPLEMENTATION.
     ).
 
     cl_abap_unit_assert=>assert_equals(
-        act                  =  test_date " Data object with current value
-        exp                  =  '20210504'" Data object with expected type
-*       msg                  =                              " Description
-*       level                = if_aunit_constants=>critical " Severity (TOLERABLE, CRITICAL, FATAL)
-       quit                 = if_aunit_constants=>no   " Alter control flow/ quit test (NO, >METHOD<, CLASS)
+        act                  =  test_date 
+        exp                  =  '20210504'
+       quit                 = if_aunit_constants=>no
     ).
 
     cl_abap_unit_assert=>assert_equals(
-    act                  =  test_time " Data object with current value
-    exp                  =  '101530'    " Data object with expected type
-*       msg                  =                              " Description
-*       level                = if_aunit_constants=>critical " Severity (TOLERABLE, CRITICAL, FATAL)
-   quit                 = if_aunit_constants=>no   " Alter control flow/ quit test (NO, >METHOD<, CLASS)
+    act                  =  test_time
+    exp                  =  '101530'
+   quit                 = if_aunit_constants=>no 
 ).
   ENDMETHOD.
 

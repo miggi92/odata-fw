@@ -73,7 +73,6 @@ CLASS zcl_odata_utils DEFINITION
 ENDCLASS.
 
 
-
 CLASS zcl_odata_utils IMPLEMENTATION.
 
 
@@ -139,31 +138,29 @@ CLASS zcl_odata_utils IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD convert_timestamp2date.
-    CONVERT TIME STAMP i_timestamp TIME ZONE zcl_odata_utils=>standard_timezone INTO DATE r_date.
+    CONVERT TIME STAMP i_timestamp TIME ZONE standard_timezone INTO DATE r_date.
   ENDMETHOD.
 
   METHOD convert_date2timestamp.
-    CONVERT DATE i_date INTO TIME STAMP r_timestamp TIME ZONE zcl_odata_utils=>standard_timezone.
+    CONVERT DATE i_date INTO TIME STAMP r_timestamp TIME ZONE standard_timezone.
   ENDMETHOD.
 
   METHOD conv_date_and_time2timestamp.
-    CONVERT DATE i_date TIME i_time INTO TIME STAMP r_timestamp TIME ZONE zcl_odata_utils=>standard_timezone.
+    CONVERT DATE i_date TIME i_time INTO TIME STAMP r_timestamp TIME ZONE standard_timezone.
   ENDMETHOD.
 
   METHOD conv_timestamp2date_and_time.
-    CONVERT TIME STAMP i_timestamp TIME ZONE zcl_odata_utils=>standard_timezone INTO DATE e_date TIME e_time .
+    CONVERT TIME STAMP i_timestamp TIME ZONE standard_timezone INTO DATE e_date TIME e_time .
   ENDMETHOD.
 
   METHOD convert_date2fullday_timestamp.
-    e_start_timestamp = zcl_odata_utils=>conv_date_and_time2timestamp(
+    e_start_timestamp = conv_date_and_time2timestamp(
             i_date      = i_date
             i_time      = '000000'
-
         ).
-    e_end_timestamp = zcl_odata_utils=>conv_date_and_time2timestamp(
+    e_end_timestamp = conv_date_and_time2timestamp(
         i_date      = i_date
         i_time      = '235959'
-
     ).
   ENDMETHOD.
 

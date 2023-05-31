@@ -86,13 +86,12 @@ CLASS zcl_odata_fw_cust_dpc DEFINITION
 ENDCLASS.
 
 
-
 CLASS zcl_odata_fw_cust_dpc IMPLEMENTATION.
   METHOD read_entities.
     SELECT *
-          FROM zodata_entity
-          INTO TABLE rt_entities
-@it_namespaces
+      FROM zodata_entity
+      INTO TABLE @rt_entities
+      where namespace IN @it_namespaces.
 
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_odata
@@ -106,18 +105,14 @@ CLASS zcl_odata_fw_cust_dpc IMPLEMENTATION.
     SELECT namespace
        FROM zodata_namespace
        INTO TABLE @rt_global_namespaces
-       WHERE is_global = @abap_true.
-
-    IF sy-subrc <> 0.
-      " no need to raise anything
-    ENDIF.
+       WHERE is_global = @abap_true. "#EC CI_SUBRC 
   ENDMETHOD.
 
   METHOD read_properties.
     SELECT *
-        FROM zodata_property
-        INTO TABLE rt_properties
-@it_namespaces
+      FROM zodata_property
+      INTO TABLE @rt_properties
+      where namespace IN @it_namespaces.
 
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_odata
@@ -128,56 +123,36 @@ CLASS zcl_odata_fw_cust_dpc IMPLEMENTATION.
 
   METHOD read_property_texts.
     SELECT *
-        FROM zodata_prop_txts
-        INTO TABLE rt_property_texts
-@it_namespaces
-
-    IF sy-subrc <> 0.
-      " no need to throw anything
-    ENDIF.
+      FROM zodata_prop_txts
+      INTO TABLE @rt_property_texts
+      where namespace in @it_namespaces. "#EC CI_SUBRC 
   ENDMETHOD.
 
   METHOD read_navigations.
     SELECT *
         FROM zodata_nav
-        INTO TABLE rt_navigations
-        WHERE namespace IN it_namespaces.
-
-    IF sy-subrc <> 0.
-      " no need to throw anything
-    ENDIF.
+        INTO TABLE @rt_navigations
+        WHERE namespace IN @it_namespaces. "#EC CI_SUBRC 
   ENDMETHOD.
 
   METHOD read_search_helps.
     SELECT *
         FROM zodata_searchhlp
-        INTO TABLE rt_search_helps.
-
-    IF sy-subrc <> 0.
-      " no need to throw anything
-    ENDIF.
+        INTO TABLE @rt_search_helps. "#EC CI_SUBRC 
   ENDMETHOD.
 
   METHOD read_actions.
     SELECT *
-        FROM zodata_actions
-        INTO TABLE rt_actions
-        WHERE namespace IN it_namespaces.
-
-    IF sy-subrc <> 0.
-      " no need to throw anything
-    ENDIF.
+      FROM zodata_actions
+      INTO TABLE @rt_actions
+      WHERE namespace IN @it_namespaces. "#EC CI_SUBRC 
   ENDMETHOD.
 
   METHOD read_action_parameters.
     SELECT *
-        FROM zodata_act_param
-        INTO TABLE rt_action_parameters
-        WHERE namespace IN it_namespaces.
-
-    IF sy-subrc <> 0.
-      " no need to throw anything
-    ENDIF.
+      FROM zodata_act_param
+      INTO TABLE @rt_action_parameters
+      WHERE namespace IN @it_namespaces. "#EC CI_SUBRC 
   ENDMETHOD.
 
 ENDCLASS.

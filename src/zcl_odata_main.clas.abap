@@ -71,117 +71,116 @@ CLASS zcl_odata_main DEFINITION
 ENDCLASS.
 
 
-
 CLASS zcl_odata_main IMPLEMENTATION.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~batch_begin.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~batch_end.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_begin.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_end.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_process.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~create_deep_entity.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~create_entity.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~create_stream.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~delete_entity.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~delete_stream.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~execute_action.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entity.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entityset.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entityset_delta.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_expanded_entity.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_expanded_entityset.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_is_conditional_implemented.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_is_condi_imple_for_action.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_stream.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~patch_entity.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~update_entity.
-
+    return.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~update_stream.
-
+    return.
   ENDMETHOD.
 
   METHOD before_processing.
@@ -291,7 +290,9 @@ CLASS zcl_odata_main IMPLEMENTATION.
                 SPLIT osql_where_clause AT 'AND' INTO TABLE DATA(split_osql).
 
                 LOOP AT split_osql ASSIGNING FIELD-SYMBOL(<split_osql>).
-                  APPEND |{ <split_osql> } { COND char03( WHEN sy-tabix = lines( split_osql ) THEN '' ELSE 'AND' ) }| TO dynamic_where_line-where_tab.
+                  APPEND |{ <split_osql> } { 
+                      COND char03( WHEN sy-tabix = lines( split_osql ) THEN '' 
+                                   ELSE 'AND' ) }| TO dynamic_where_line-where_tab.
                 ENDLOOP.
               ENDIF.
               APPEND dynamic_where_line TO dynamic_where.
@@ -337,7 +338,9 @@ CLASS zcl_odata_main IMPLEMENTATION.
 
     TRY.
         facade ?= me->dpc_object->/iwbep/if_mgw_conv_srv_runtime~get_dp_facade( ).
-        r_properties = facade->/iwbep/if_mgw_dp_int_facade~get_model( )->get_entity_type( iv_entity_name = io_tech_request_context->get_entity_type_name( ) )->get_properties( ).
+        r_properties = facade->/iwbep/if_mgw_dp_int_facade~get_model( 
+          )->get_entity_type( iv_entity_name = io_tech_request_context->get_entity_type_name( ) 
+            )->get_properties( ).
       CATCH /iwbep/cx_mgw_med_exception INTO DATA(error).
         RAISE EXCEPTION TYPE /iwbep/cx_mgw_med_exception
           EXPORTING

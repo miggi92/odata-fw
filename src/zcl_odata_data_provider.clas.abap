@@ -94,7 +94,7 @@ CLASS ZCL_ODATA_DATA_PROVIDER IMPLEMENTATION.
         FROM zodata_actions
         INTO TABLE @DATA(lt_actions)
         WHERE namespace = @<ls_entity>-namespace
-          AND entity    = @<ls_entity>-entity_name.
+          AND entity    = @<ls_entity>-entity_name. "#EC CI_SUBRC 
       LOOP AT lt_actions ASSIGNING FIELD-SYMBOL(<ls_action>).
         APPEND <ls_action> TO <ls_data_provider>-actions.
       ENDLOOP.

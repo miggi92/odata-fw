@@ -45,8 +45,8 @@ CLASS zcl_odata_documents IMPLEMENTATION.
     me->get_file( CHANGING cs_file = file ).
 
     me->dpc_object->set_header( is_header = VALUE #( name  = 'Content-Disposition'
-                                                     value = |inline; filename="{ 
-                                                        escape( val = file-name format = cl_abap_format=>e_url ) 
+                                                     value = |inline; filename="{
+                                                        escape( val = file-name format = cl_abap_format=>e_url )
                                                       }";| ) ).
 
     me->copy_data_to_ref(
@@ -87,11 +87,11 @@ CLASS zcl_odata_documents IMPLEMENTATION.
 
     " HTTP-Header-Infos setzen (Dateiname usw.)
     DATA(lv_lheader) = VALUE ihttpnvp( name  = 'Content-Disposition'
-                                       value = |inline; filename="{ 
-                                        escape( val     = file-name 
-                                                format  = cl_abap_format=>e_url ) 
+                                       value = |inline; filename="{
+                                        escape( val     = file-name
+                                                format  = cl_abap_format=>e_url )
                                       }";| ). " Datei im Tab inline (Plugin) öffnen
-                                      
+
     me->dpc_object->set_header( is_header = lv_lheader ).
 
     me->copy_data_to_ref(

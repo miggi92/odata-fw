@@ -127,7 +127,7 @@ CLASS zcl_odata_fw_cust IMPLEMENTATION.
       ls_entity-entity_name = <ls_shelp>-search_help.
       APPEND ls_entity TO mt_entities.
 
-      LOOP AT mt_properties INTO DATA(ls_prop) 
+      LOOP AT mt_properties INTO DATA(ls_prop)
         WHERE entity_name = zif_odata_constants=>gc_global_entities-value_help
           AND property_name <> zif_odata_constants=>gc_global_properties-value_help-search_field.
         ls_prop-entity_name = ls_entity-entity_name.

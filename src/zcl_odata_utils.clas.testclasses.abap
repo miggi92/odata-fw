@@ -67,7 +67,7 @@ CLASS ltcl_odata_utils IMPLEMENTATION.
     ).
 
     cl_abap_unit_assert=>assert_equals(
-        act                  =  test_date 
+        act                  =  test_date
         exp                  =  '20210504'
        quit                 = if_aunit_constants=>no
     ).
@@ -75,7 +75,7 @@ CLASS ltcl_odata_utils IMPLEMENTATION.
     cl_abap_unit_assert=>assert_equals(
     act                  =  test_time
     exp                  =  '101530'
-   quit                 = if_aunit_constants=>no 
+   quit                 = if_aunit_constants=>no
 ).
   ENDMETHOD.
 

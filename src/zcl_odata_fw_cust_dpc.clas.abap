@@ -105,7 +105,7 @@ CLASS zcl_odata_fw_cust_dpc IMPLEMENTATION.
     SELECT namespace
        FROM zodata_namespace
        INTO TABLE @rt_global_namespaces
-       WHERE is_global = @abap_true. "#EC CI_SUBRC 
+       WHERE is_global = @abap_true. "#EC CI_SUBRC
   ENDMETHOD.
 
   METHOD read_properties.
@@ -125,34 +125,34 @@ CLASS zcl_odata_fw_cust_dpc IMPLEMENTATION.
     SELECT *
       FROM zodata_prop_txts
       INTO TABLE @rt_property_texts
-      where namespace in @it_namespaces. "#EC CI_SUBRC 
+      where namespace in @it_namespaces. "#EC CI_SUBRC
   ENDMETHOD.
 
   METHOD read_navigations.
     SELECT *
         FROM zodata_nav
         INTO TABLE @rt_navigations
-        WHERE namespace IN @it_namespaces. "#EC CI_SUBRC 
+        WHERE namespace IN @it_namespaces. "#EC CI_SUBRC
   ENDMETHOD.
 
   METHOD read_search_helps.
     SELECT *
         FROM zodata_searchhlp
-        INTO TABLE @rt_search_helps. "#EC CI_SUBRC 
+        INTO TABLE @rt_search_helps. "#EC CI_SUBRC
   ENDMETHOD.
 
   METHOD read_actions.
     SELECT *
       FROM zodata_actions
       INTO TABLE @rt_actions
-      WHERE namespace IN @it_namespaces. "#EC CI_SUBRC 
+      WHERE namespace IN @it_namespaces. "#EC CI_SUBRC
   ENDMETHOD.
 
   METHOD read_action_parameters.
     SELECT *
       FROM zodata_act_param
       INTO TABLE @rt_action_parameters
-      WHERE namespace IN @it_namespaces. "#EC CI_SUBRC 
+      WHERE namespace IN @it_namespaces. "#EC CI_SUBRC
   ENDMETHOD.
 
 ENDCLASS.

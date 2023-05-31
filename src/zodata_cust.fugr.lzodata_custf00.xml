@@ -6,7 +6,7 @@
     <NAME>LZODATA_CUSTF00</NAME>
     <SQLX>X</SQLX>
     <SUBC>I</SUBC>
-    <RLOAD>D</RLOAD>
+    <RLOAD>E</RLOAD>
    </PROGDIR>
   </asx:values>
  </asx:abap>

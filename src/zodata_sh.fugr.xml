@@ -35,22 +35,18 @@
       <RSFDO>
        <PARAMETER>SHLP_TAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle der elementaren Suchhilfen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>RECORD_TAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Trefferliste</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>SHLP</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Einzelne (aktuelle) Suchhilfe</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CALLCONTROL</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Steuerung des F4-Ablaufs</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>

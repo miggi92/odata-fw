@@ -3,6 +3,9 @@
  <asx:values>
   <DATA>
    <MASTER_LANGUAGE>D</MASTER_LANGUAGE>
+   <I18N_LANGUAGES>
+    <LAISO>E</LAISO>
+   </I18N_LANGUAGES>
    <STARTING_FOLDER>/src/</STARTING_FOLDER>
    <FOLDER_LOGIC>FULL</FOLDER_LOGIC>
    <IGNORE>
@@ -15,6 +18,7 @@
     <item>/abaplint.json</item>
     <item>/azure-pipelines.yml</item>
    </IGNORE>
+   <VERSION_CONSTANT>zif_odata_constants=&gt;gc_version</VERSION_CONSTANT>
   </DATA>
  </asx:values>
 </asx:abap>

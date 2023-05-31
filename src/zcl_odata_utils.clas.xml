@@ -4,8 +4,8 @@
   <asx:values>
    <VSEOCLASS>
     <CLSNAME>ZCL_ODATA_UTILS</CLSNAME>
-    <LANGU>D</LANGU>
-    <DESCRIPT>Odata Hilfsmethoden</DESCRIPT>
+    <LANGU>E</LANGU>
+    <DESCRIPT>OData Utils</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>

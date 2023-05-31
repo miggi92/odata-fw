@@ -13,7 +13,6 @@
    <FUNCTIONS>
     <item>
      <FUNCNAME>TABLEFRAME_ZODATA_CUST</FUNCNAME>
-     <SHORT_TEXT>erweiterte Tabellenpflege obere Ebene</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>VIEW_ACTION</PARAMETER>
@@ -60,54 +59,44 @@
       <RSFDO>
        <PARAMETER>VIEW_ACTION</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Aktion mit Tabelle: anz./änd./transp. (S/U/T)</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_NAME</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Name der Tabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_NUMBER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DBA_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DPL_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle mit dynam. zu deaktivierenden CUA-Funkt.</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_HEADER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für die Tabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_NAMTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für die Tabellen-Felder</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Korrekturnummer fehlt</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
     <item>
      <FUNCNAME>TABLEPROC_ZODATA_CUST</FUNCNAME>
      <GLOBAL_FLAG>X</GLOBAL_FLAG>
-     <SHORT_TEXT>erweiterte Tabellenpflege untere Ebene</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>FCODE</PARAMETER>
@@ -182,93 +171,75 @@
       <RSFDO>
        <PARAMETER>FCODE</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>gewünschte Funktion des Bausteins</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_ACTION</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Aktion mit Tabelle: anz./änd./transp. (S/U/T)</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_NAME</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Name der Tabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_NUMBER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>LAST_ACT_ENTRY</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Index der Cursorposition in der Anzeigetabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UCOMM</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>letztes User-command innerhalb der Viewpflege</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UPDATE_REQUIRED</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Flag: Einträge verändert, Sichern erforderlich</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_KEYTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle mit den Keys der zu transport. Einträge</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DBA_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DPL_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tab. der nicht zu aktivierenden CUA-Funktionen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXTRACT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tab. der gerade sichtbaren Daten (Anzeigetabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>TOTAL</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle, mit allen von der DB gelesenen Daten</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_HEADER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für die Tabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_NAMTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für die Tabellen-Felder</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Korrekturnummer fehlt</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>SAVING_CORRECTION_FAILED</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Fehler beim Sichern der Korrektureinträge</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
     <item>
      <FUNCNAME>VIEWFRAME_ZODATA_V_ACTIONS</FUNCNAME>
-     <SHORT_TEXT>erweiterte Tabellenpflege obere Ebene</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>VIEW_ACTION</PARAMETER>
@@ -318,58 +289,47 @@
       <RSFDO>
        <PARAMETER>VIEW_ACTION</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Aktion mit dem View: anzeigen/ändern (S/U)</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_NAME</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Name des Views</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_NUMBER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DBA_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DPL_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle mit dynam. zu deaktivierenden CUA-Funkt.</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_HEADER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für den View</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_NAMTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für die View-Felder</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>NO_VALUE_FOR_SUBSET_IDENT</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>für &apos;SUBSET&apos;-Feld wurde kein Wert vorgegeben</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Korrekturnummer fehlt</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
     <item>
      <FUNCNAME>VIEWFRAME_ZODATA_V_ACTPARA</FUNCNAME>
-     <SHORT_TEXT>erweiterte Tabellenpflege obere Ebene</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>VIEW_ACTION</PARAMETER>
@@ -419,58 +379,48 @@
       <RSFDO>
        <PARAMETER>VIEW_ACTION</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Aktion mit dem View: anzeigen/ändern (S/U)</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_NAME</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Name des Views</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_NUMBER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DBA_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DPL_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle mit dynam. zu deaktivierenden CUA-Funkt.</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_HEADER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für den View</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_NAMTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für die View-Felder</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>NO_VALUE_FOR_SUBSET_IDENT</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>für &apos;SUBSET&apos;-Feld wurde kein Wert vorgegeben</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Korrekturnummer fehlt</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
     <item>
      <FUNCNAME>VIEWFRAME_ZODATA_V_ENTITY</FUNCNAME>
-     <SHORT_TEXT>erweiterte Tabellenpflege obere Ebene</SHORT_TEXT>
+     <SHORT_TEXT>Extended Table Maintenance: Upper Level</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>VIEW_ACTION</PARAMETER>
@@ -571,7 +521,6 @@
     </item>
     <item>
      <FUNCNAME>VIEWFRAME_ZODATA_V_NAV</FUNCNAME>
-     <SHORT_TEXT>erweiterte Tabellenpflege obere Ebene</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>VIEW_ACTION</PARAMETER>
@@ -621,58 +570,47 @@
       <RSFDO>
        <PARAMETER>VIEW_ACTION</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Aktion mit dem View: anzeigen/ändern (S/U)</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_NAME</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Name des Views</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_NUMBER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DBA_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DPL_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle mit dynam. zu deaktivierenden CUA-Funkt.</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_HEADER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für den View</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_NAMTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für die View-Felder</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>NO_VALUE_FOR_SUBSET_IDENT</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>für &apos;SUBSET&apos;-Feld wurde kein Wert vorgegeben</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Korrekturnummer fehlt</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
     <item>
      <FUNCNAME>VIEWFRAME_ZODATA_V_PROP</FUNCNAME>
-     <SHORT_TEXT>erweiterte Tabellenpflege obere Ebene</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>VIEW_ACTION</PARAMETER>
@@ -722,58 +660,47 @@
       <RSFDO>
        <PARAMETER>VIEW_ACTION</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Aktion mit dem View: anzeigen/ändern (S/U)</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_NAME</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Name des Views</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_NUMBER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DBA_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DPL_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle mit dynam. zu deaktivierenden CUA-Funkt.</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_HEADER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für den View</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_NAMTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für die View-Felder</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>NO_VALUE_FOR_SUBSET_IDENT</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>für &apos;SUBSET&apos;-Feld wurde kein Wert vorgegeben</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Korrekturnummer fehlt</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
     <item>
      <FUNCNAME>VIEWFRAME_ZODATA_V_PROPTXT</FUNCNAME>
-     <SHORT_TEXT>erweiterte Tabellenpflege obere Ebene</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>VIEW_ACTION</PARAMETER>
@@ -823,59 +750,48 @@
       <RSFDO>
        <PARAMETER>VIEW_ACTION</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Aktion mit dem View: anzeigen/ändern (S/U)</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_NAME</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Name des Views</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_NUMBER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DBA_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DPL_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle mit dynam. zu deaktivierenden CUA-Funkt.</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_HEADER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für den View</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_NAMTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für die View-Felder</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>NO_VALUE_FOR_SUBSET_IDENT</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>für &apos;SUBSET&apos;-Feld wurde kein Wert vorgegeben</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Korrekturnummer fehlt</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
     <item>
      <FUNCNAME>VIEWPROC_ZODATA_V_ACTIONS</FUNCNAME>
      <GLOBAL_FLAG>X</GLOBAL_FLAG>
-     <SHORT_TEXT>erweiterte Tabellenpflege untere Ebene</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>FCODE</PARAMETER>
@@ -953,99 +869,80 @@
       <RSFDO>
        <PARAMETER>FCODE</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>gewünschte Funktion des Bausteins</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_ACTION</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Aktion mit dem View: anzeigen/ändern (S/U)</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_NAME</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Name des Views</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_NUMBER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>LAST_ACT_ENTRY</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Index der Cursorposition in der Anzeigetabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UCOMM</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>letztes User-command innerhalb der Viewpflege</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UPDATE_REQUIRED</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Flag: Einträge verändert, Sichern erforderlich</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_KEYTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle mit den Keys der zu transport. Einträge</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DBA_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DPL_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tab. der nicht zu aktivierenden CUA-Funktionen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXTRACT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tab. der gerade sichtbaren Daten (Anzeigetabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>TOTAL</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle, mit allen von der DB gelesenen Daten</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_HEADER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für den View</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_NAMTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für die View-Felder</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>NO_VALUE_FOR_SUBSET_IDENT</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>für ein &apos;SUBSET&apos;-Feld wurde kein Wert vorgegeben</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Korrekturnummer fehlt</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>SAVING_CORRECTION_FAILED</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Fehler beim Sichern der Korrektureinträge</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
     <item>
      <FUNCNAME>VIEWPROC_ZODATA_V_ACTPARA</FUNCNAME>
      <GLOBAL_FLAG>X</GLOBAL_FLAG>
-     <SHORT_TEXT>erweiterte Tabellenpflege untere Ebene</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>FCODE</PARAMETER>
@@ -1123,99 +1020,81 @@
       <RSFDO>
        <PARAMETER>FCODE</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>gewünschte Funktion des Bausteins</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_ACTION</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Aktion mit dem View: anzeigen/ändern (S/U)</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_NAME</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Name des Views</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_NUMBER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>LAST_ACT_ENTRY</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Index der Cursorposition in der Anzeigetabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UCOMM</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>letztes User-command innerhalb der Viewpflege</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UPDATE_REQUIRED</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Flag: Einträge verändert, Sichern erforderlich</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_KEYTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle mit den Keys der zu transport. Einträge</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DBA_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DPL_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tab. der nicht zu aktivierenden CUA-Funktionen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXTRACT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tab. der gerade sichtbaren Daten (Anzeigetabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>TOTAL</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle, mit allen von der DB gelesenen Daten</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_HEADER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für den View</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_NAMTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für die View-Felder</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>NO_VALUE_FOR_SUBSET_IDENT</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>für ein &apos;SUBSET&apos;-Feld wurde kein Wert vorgegeben</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Korrekturnummer fehlt</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>SAVING_CORRECTION_FAILED</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Fehler beim Sichern der Korrektureinträge</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
     <item>
      <FUNCNAME>VIEWPROC_ZODATA_V_ENTITY</FUNCNAME>
      <GLOBAL_FLAG>X</GLOBAL_FLAG>
-     <SHORT_TEXT>erweiterte Tabellenpflege untere Ebene</SHORT_TEXT>
+     <SHORT_TEXT>Lower-level extended table maintenance</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>FCODE</PARAMETER>
@@ -1385,7 +1264,6 @@
     <item>
      <FUNCNAME>VIEWPROC_ZODATA_V_NAV</FUNCNAME>
      <GLOBAL_FLAG>X</GLOBAL_FLAG>
-     <SHORT_TEXT>erweiterte Tabellenpflege untere Ebene</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>FCODE</PARAMETER>
@@ -1463,99 +1341,80 @@
       <RSFDO>
        <PARAMETER>FCODE</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>gewünschte Funktion des Bausteins</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_ACTION</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Aktion mit dem View: anzeigen/ändern (S/U)</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_NAME</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Name des Views</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_NUMBER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>LAST_ACT_ENTRY</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Index der Cursorposition in der Anzeigetabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UCOMM</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>letztes User-command innerhalb der Viewpflege</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UPDATE_REQUIRED</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Flag: Einträge verändert, Sichern erforderlich</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_KEYTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle mit den Keys der zu transport. Einträge</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DBA_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DPL_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tab. der nicht zu aktivierenden CUA-Funktionen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXTRACT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tab. der gerade sichtbaren Daten (Anzeigetabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>TOTAL</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle, mit allen von der DB gelesenen Daten</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_HEADER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für den View</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_NAMTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für die View-Felder</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>NO_VALUE_FOR_SUBSET_IDENT</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>für ein &apos;SUBSET&apos;-Feld wurde kein Wert vorgegeben</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Korrekturnummer fehlt</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>SAVING_CORRECTION_FAILED</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Fehler beim Sichern der Korrektureinträge</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
     <item>
      <FUNCNAME>VIEWPROC_ZODATA_V_PROP</FUNCNAME>
      <GLOBAL_FLAG>X</GLOBAL_FLAG>
-     <SHORT_TEXT>erweiterte Tabellenpflege untere Ebene</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>FCODE</PARAMETER>
@@ -1633,99 +1492,80 @@
       <RSFDO>
        <PARAMETER>FCODE</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>gewünschte Funktion des Bausteins</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_ACTION</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Aktion mit dem View: anzeigen/ändern (S/U)</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_NAME</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Name des Views</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_NUMBER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>LAST_ACT_ENTRY</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Index der Cursorposition in der Anzeigetabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UCOMM</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>letztes User-command innerhalb der Viewpflege</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UPDATE_REQUIRED</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Flag: Einträge verändert, Sichern erforderlich</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_KEYTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle mit den Keys der zu transport. Einträge</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DBA_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DPL_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tab. der nicht zu aktivierenden CUA-Funktionen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXTRACT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tab. der gerade sichtbaren Daten (Anzeigetabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>TOTAL</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle, mit allen von der DB gelesenen Daten</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_HEADER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für den View</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_NAMTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für die View-Felder</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>NO_VALUE_FOR_SUBSET_IDENT</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>für ein &apos;SUBSET&apos;-Feld wurde kein Wert vorgegeben</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Korrekturnummer fehlt</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>SAVING_CORRECTION_FAILED</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Fehler beim Sichern der Korrektureinträge</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
     <item>
      <FUNCNAME>VIEWPROC_ZODATA_V_PROPTXT</FUNCNAME>
      <GLOBAL_FLAG>X</GLOBAL_FLAG>
-     <SHORT_TEXT>erweiterte Tabellenpflege untere Ebene</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>FCODE</PARAMETER>
@@ -1803,92 +1643,74 @@
       <RSFDO>
        <PARAMETER>FCODE</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>gewünschte Funktion des Bausteins</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_ACTION</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Aktion mit dem View: anzeigen/ändern (S/U)</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_NAME</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Name des Views</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_NUMBER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>LAST_ACT_ENTRY</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Index der Cursorposition in der Anzeigetabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UCOMM</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>letztes User-command innerhalb der Viewpflege</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UPDATE_REQUIRED</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Flag: Einträge verändert, Sichern erforderlich</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_KEYTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle mit den Keys der zu transport. Einträge</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DBA_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DPL_SELLIST</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tab. der nicht zu aktivierenden CUA-Funktionen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXTRACT</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tab. der gerade sichtbaren Daten (Anzeigetabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>TOTAL</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Tabelle, mit allen von der DB gelesenen Daten</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_HEADER</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für den View</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_NAMTAB</PARAMETER>
        <KIND>P</KIND>
-       <STEXT>Kontrollblocktabelle für die View-Felder</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>NO_VALUE_FOR_SUBSET_IDENT</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>für ein &apos;SUBSET&apos;-Feld wurde kein Wert vorgegeben</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Korrekturnummer fehlt</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>SAVING_CORRECTION_FAILED</PARAMETER>
        <KIND>X</KIND>
-       <STEXT>Fehler beim Sichern der Korrektureinträge</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
@@ -3548,7 +3370,6 @@
        <FROM_DICT>X</FROM_DICT>
        <MODIFIC>X</MODIFIC>
        <UP_LOWER>X</UP_LOWER>
-       <FOREIGNKEY>X</FOREIGNKEY>
        <INPUT_FLD>X</INPUT_FLD>
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <DICT_I_FKY>X</DICT_I_FKY>
@@ -3589,6 +3410,9 @@
       </RPY_DYFATC>
      </FIELDS>
      <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>* VCL-Modifications</LINE>
+      </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
@@ -3668,6 +3492,9 @@
        <LINE>    FIELD ZODATA_V_PROP-PROPERTY_NAME .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
+       <LINE>    FIELD ZODATA_V_PROP-SEARCH_HELP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
        <LINE>    MODULE LISTE_UPDATE_LISTE.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
@@ -3678,6 +3505,15 @@
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE> MODULE LISTE_AFTER_LOOP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>PROCESS ON VALUE-REQUEST.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD  ZODATA_V_PROP-SEARCH_HELP MODULE VCL_HELP_VALUES.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
     </item>
@@ -4721,11 +4557,11 @@
       <PROGRAM>SAPLZODATA_CUST</PROGRAM>
       <SCREEN>0009</SCREEN>
       <LANGUAGE>D</LANGUAGE>
-      <DESCRIPT>Viewpflege: Übersichtsbild ZODATA_V_ENTITY</DESCRIPT>
+      <DESCRIPT>View Maintenance: Overview Screen ZODATA_V_ENTITY</DESCRIPT>
       <TYPE>N</TYPE>
       <NEXTSCREEN>0009</NEXTSCREEN>
       <LINES>061</LINES>
-      <COLUMNS>221</COLUMNS>
+      <COLUMNS>200</COLUMNS>
      </HEADER>
      <CONTAINERS>
       <RPY_DYCATT>
@@ -4739,7 +4575,7 @@
        <LINE>003</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>200</LENGTH>
-       <HEIGHT>056</HEIGHT>
+       <HEIGHT>057</HEIGHT>
        <C_RESIZE_V>X</C_RESIZE_V>
        <C_RESIZE_H>X</C_RESIZE_H>
        <C_SCROLL_V>X</C_SCROLL_V>
@@ -4920,6 +4756,22 @@
       <RPY_DYFATC>
        <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
        <CONT_NAME>TCTRL_ZODATA_V_ENTITY</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>*ZODATA_V_ENTITY-DEEP_ENTITY_STRUCTURE</NAME>
+       <LINE>001</LINE>
+       <COLUMN>005</COLUMN>
+       <LENGTH>040</LENGTH>
+       <VISLENGTH>040</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>V</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <TC_HEADING>X</TC_HEADING>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZODATA_V_ENTITY</CONT_NAME>
        <TYPE>CHECK</TYPE>
        <NAME>VIM_MARKED</NAME>
        <LINE>001</LINE>
@@ -4999,6 +4851,22 @@
        <OUTPUT_FLD>X</OUTPUT_FLD>
        <DICT_I_VAL>X</DICT_I_VAL>
       </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZODATA_V_ENTITY</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>ZODATA_V_ENTITY-DEEP_ENTITY_STRUCTURE</NAME>
+       <LINE>001</LINE>
+       <COLUMN>005</COLUMN>
+       <LENGTH>040</LENGTH>
+       <VISLENGTH>040</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <UP_LOWER>X</UP_LOWER>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+      </RPY_DYFATC>
      </FIELDS>
      <FLOW_LOGIC>
       <RPY_DYFLOW>
@@ -5054,6 +4922,9 @@
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>    FIELD ZODATA_V_ENTITY-IS_COMPLEX .</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD ZODATA_V_ENTITY-DEEP_ENTITY_STRUCTURE .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>    MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>

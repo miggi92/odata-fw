@@ -11,7 +11,7 @@ CLASS zcl_odata_value_help DEFINITION
         value       TYPE string,
         description TYPE string,
       END OF tty_value_help,
-      tty_t_value_help TYPE STANDARD TABLE OF tty_value_help WITH DEFAULT KEY.
+      tty_t_value_help TYPE STANDARD TABLE OF tty_value_help WITH KEY search_help value.
     METHODS:
       /iwbep/if_mgw_appl_srv_runtime~get_entityset REDEFINITION,
       /iwbep/if_mgw_appl_srv_runtime~get_entity REDEFINITION.
@@ -21,7 +21,7 @@ CLASS zcl_odata_value_help DEFINITION
       BEGIN OF ty_s_clause,
         line(72) TYPE c,
       END OF ty_s_clause,
-      ty_t_clause TYPE STANDARD TABLE OF ty_s_clause WITH DEFAULT KEY.
+      ty_t_clause TYPE STANDARD TABLE OF ty_s_clause WITH EMPTY KEY.
 
     METHODS:
       "! <p class="shorttext synchronized" lang="en">Get customizing</p>
@@ -81,7 +81,6 @@ CLASS zcl_odata_value_help DEFINITION
 ENDCLASS.
 
 
-
 CLASS zcl_odata_value_help IMPLEMENTATION.
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entity.
     DATA: value_hlp TYPE tty_value_help.
@@ -90,7 +89,6 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
       IMPORTING
         es_key_values = value_hlp                 " Entity Key Values - converted
     ).
-
 
     me->copy_data_to_ref(
       EXPORTING
@@ -108,19 +106,20 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
     TRY.
         DATA(filter) = io_tech_request_context->get_filter( )->get_filter_select_options( ).
 
-        IF filter IS INITIAL AND io_tech_request_context->get_entity_type_name( ) = zif_odata_constants=>gc_global_entities-value_help.
+        IF filter IS INITIAL 
+        AND io_tech_request_context->get_entity_type_name( ) = zif_odata_constants=>gc_global_entities-value_help.
           RAISE EXCEPTION TYPE zcx_odata
             EXPORTING
               textid = zcx_odata=>no_filter_passed.
         ELSEIF filter IS NOT INITIAL.
           lt_filter_options = filter[ property = 'SEARCH_HELP' ]-select_options.
         ELSEIF io_tech_request_context->get_entity_type_name( ) <> zif_odata_constants=>gc_global_entities-value_help.
-          lt_filter_options = VALUE #( ( low = io_tech_request_context->get_entity_type_name( ) sign = 'I' option = 'EQ' ) ).
+          lt_filter_options = VALUE #( (  low = io_tech_request_context->get_entity_type_name( ) 
+                                          sign = 'I' 
+                                          option = 'EQ' ) ).
         ENDIF.
 
         ls_customizing = me->get_customizing( lt_filter_options ).
-
-
 
         IF ls_customizing-tabname IS NOT INITIAL.
           value_help = me->get_data_by_table( i_customizing = ls_customizing ).
@@ -159,10 +158,7 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
       IMPORTING
         texttable  = r_texttable                 " Text Table if it Exists. Otherwise SPACE.
         checkfield = e_checkfield.                 " Poss. Check Field to which Text Key is Appended
-
   ENDMETHOD.
-
-
 
   METHOD get_customizing.
     SELECT *
@@ -221,15 +217,14 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
     IF line_exists( components[ name = 'SPRAS' ] ) AND line_exists( keys[ fieldname = 'SPRAS' ] ).
       SELECT *
          FROM (table_name)
-         INTO TABLE <table_values>
-         WHERE spras = sy-langu
-           AND (where_cond).
+         INTO TABLE @<table_values>
+         WHERE spras = @sy-langu
+           AND (where_cond). "#EC CI_SUBRC 
     ELSE.
       SELECT *
         FROM (table_name)
-        INTO TABLE <table_values>
-        WHERE (where_cond).
-
+        INTO TABLE @<table_values>
+        WHERE (where_cond)."#EC CI_SUBRC 
 
       DATA(texttable) = get_texttable(
                     EXPORTING
@@ -248,14 +243,18 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
 
       SELECT *
           FROM (texttable)
-          INTO TABLE <texttable_value>
-           WHERE spras = sy-langu
-             AND (test).
+          INTO TABLE @<texttable_value>
+           WHERE spras = @sy-langu
+             AND (test). "#EC CI_SUBRC 
     ENDIF.
 
     LOOP AT <table_values> ASSIGNING FIELD-SYMBOL(<table_value>).
       APPEND INITIAL LINE TO r_value_help ASSIGNING FIELD-SYMBOL(<value_help>).
       ASSIGN COMPONENT checkfield OF STRUCTURE <table_value> TO FIELD-SYMBOL(<value>).
+
+      if sy-subrc <> 0.
+        continue.
+      endif.
 
       <value_help>-search_help  = i_customizing-id.
       <value_help>-value        = <value>.
@@ -263,14 +262,23 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
       IF <texttable_value> IS ASSIGNED.
         LOOP AT <texttable_value> ASSIGNING FIELD-SYMBOL(<texttable>).
           ASSIGN COMPONENT checkfield OF STRUCTURE <texttable> TO FIELD-SYMBOL(<t_id_value>).
+          if sy-subrc <> 0.
+            continue.
+          endif.
           CHECK <t_id_value> = <value>.
           ASSIGN COMPONENT description_component OF STRUCTURE <texttable> TO FIELD-SYMBOL(<description>).
+          if sy-subrc <> 0.
+            continue.
+          endif.
           <value_help>-description = <description>.
           DELETE TABLE <texttable_value> FROM <texttable>.
           EXIT.
         ENDLOOP.
       ELSE.
         ASSIGN COMPONENT description_component OF STRUCTURE <table_value> TO <description>.
+        if sy-subrc <> 0.
+          continue.
+        endif.
         <value_help>-description = <description>.
       ENDIF.
     ENDLOOP.
@@ -282,7 +290,7 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
     data_element ?= cl_abap_typedescr=>describe_by_name( i_customizing-data_element ).
 
     IF data_element->kind <> data_element->kind_elem.
-      " no data element
+      return.
     ENDIF.
 
     data_element->get_ddic_fixed_values(
@@ -313,11 +321,15 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
     DATA: cond_tab TYPE STANDARD TABLE OF hrcond.
 
     IF i_customizing-where_data_element1 IS NOT INITIAL.
-      APPEND VALUE #( field = i_customizing-where_data_element1 opera = 'EQ' low = i_customizing-where_value1 ) TO cond_tab.
+      APPEND VALUE #( field = i_customizing-where_data_element1 
+                      opera = 'EQ' 
+                      low = i_customizing-where_value1 ) TO cond_tab.
     ENDIF.
 
     IF i_customizing-where_data_element2 IS NOT INITIAL.
-      APPEND VALUE #( field = i_customizing-where_data_element2 opera = 'EQ' low = i_customizing-where_value2 ) TO cond_tab.
+      APPEND VALUE #( field = i_customizing-where_data_element2 
+                      opera = 'EQ' 
+                      low = i_customizing-where_value2 ) TO cond_tab.
     ENDIF.
 
     CALL FUNCTION 'RH_DYNAMIC_WHERE_BUILD'
@@ -334,8 +346,7 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
         OTHERS          = 5.
 
     IF sy-subrc <> 0.
-*     MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
-*       WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+      return. " maybe an exception?
     ENDIF.
   ENDMETHOD.
 

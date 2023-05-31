@@ -17,7 +17,7 @@ CLASS zcl_odata_fw_mpc DEFINITION
           io_anno_model  TYPE REF TO /iwbep/if_mgw_vocan_model  ,
       "! <p class="shorttext synchronized" lang="en">Define mpc from customizing</p>
       "!
-      "! @raising /iwbep/cx_mgw_med_exception | <p class="shorttext synchronized" lang="en">Error while generating model</p>
+      "! @raising /iwbep/cx_mgw_med_exception | <p class="shorttext synchronized" lang="en">Error generating model</p>
       define_from_cust
         RAISING
           /iwbep/cx_mgw_med_exception .
@@ -109,7 +109,9 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
     DATA(lo_complex_type) = mo_model->create_complex_type( iv_cplx_type_name = is_entity-entity_name  ).
     lo_complex_type->bind_structure( |{ is_entity-structure }| ).
 
-    LOOP AT mo_customizing->get_properties( ) ASSIGNING FIELD-SYMBOL(<ls_property>) WHERE entity_name = is_entity-entity_name.
+    LOOP AT mo_customizing->get_properties( ) ASSIGNING FIELD-SYMBOL(<ls_property>) 
+        WHERE entity_name = is_entity-entity_name.
+        
       DATA(lo_property) =  lo_complex_type->create_property(
         iv_property_name  = <ls_property>-property_name
         iv_abap_fieldname = <ls_property>-abap_name
@@ -153,7 +155,7 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
     lt_components = lo_structure->get_components( ).
 
     IF lo_structure->struct_kind = lo_structure->structkind_nested
-    OR line_exists( lt_components[ as_include = abap_true ] ). " is sometimes needed cause it doesn't recognizes includes...
+    OR line_exists( lt_components[ as_include = abap_true ] ). "is sometimes needed cause it doesn't recognizes includes
       DATA(lt_nested) = lo_structure->get_components( ).
       LOOP AT lt_nested ASSIGNING FIELD-SYMBOL(<ls_nested>) WHERE type->kind = cl_abap_structdescr=>kind_struct.
         DATA(lo_nested_struct) = CAST cl_abap_structdescr( <ls_nested>-type ).
@@ -173,7 +175,8 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
     ).
     lo_entity->create_entity_set( iv_entity_set_name = |{ is_entity-entity_name }Set| ).
 
-    LOOP AT mo_customizing->get_properties( ) ASSIGNING FIELD-SYMBOL(<ls_property>) WHERE entity_name = is_entity-entity_name.
+    LOOP AT mo_customizing->get_properties( ) ASSIGNING FIELD-SYMBOL(<ls_property>) 
+      WHERE entity_name = is_entity-entity_name.
       IF <ls_property>-complex_type IS NOT INITIAL.
         DATA(lo_cmplx_type) = lo_entity->create_cmplx_type_property(
             iv_complex_type_name = <ls_property>-complex_type
@@ -233,7 +236,9 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
               io_vocan_model         = mo_anno_model
               iv_namespace           = |{ mo_customizing->get_namespace( ) }|
               iv_entitytype          = is_entity-entity_name
-              iv_property            = SWITCH #( <ls_property>-complex_type WHEN 'valueDescription' THEN |{ <ls_property>-property_name }/value| ELSE <ls_property>-property_name )
+              iv_property            = SWITCH #( <ls_property>-complex_type 
+                                          WHEN 'valueDescription' THEN |{ <ls_property>-property_name }/value| 
+                                          ELSE <ls_property>-property_name )
 *            iv_search_supported    =
               iv_search_help_field   = <ls_property>-abap_name
 *            iv_qualifier           =
@@ -241,7 +246,8 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
               iv_valuelist_entityset = |{ <ls_property>-search_help }Set|
               iv_valuelist_property  = |{ zif_odata_constants=>gc_global_properties-value_help-value }|
           ).
-            annotation->add_display_parameter( iv_valuelist_property = |{ zif_odata_constants=>gc_global_properties-value_help-description }| ).
+            annotation->add_display_parameter( iv_valuelist_property = |{ 
+                zif_odata_constants=>gc_global_properties-value_help-description }| ).
 *            CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
 *            CATCH cx_fkk_error.                " General Errors
 
@@ -271,8 +277,8 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
                                           text_type = 'L' ].
 
         io_prop_ref->set_label_from_text_element(
-            iv_text_element_symbol    = |{ ls_label-text_id }|                " Text element key (number/selection name)
-            iv_text_element_container = |{ ls_label-object_name }|                 " the class/report which contains the text element
+            iv_text_element_symbol    = |{ ls_label-text_id }| " Text element key (number/selection name)
+            iv_text_element_container = |{ ls_label-object_name }| " the class/report which contains the text element
         ).
       CATCH cx_sy_itab_line_not_found /iwbep/cx_mgw_med_exception.
     ENDTRY.
@@ -282,8 +288,8 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
                                             text_type = 'H' ].
 
         io_prop_ref->set_heading_from_text_element(
-                    iv_text_element_symbol    = |{ ls_heading-text_id }|                " Text element key (number/selection name)
-                    iv_text_element_container = |{ ls_heading-object_name }|                 " the class/report which contains the text element
+                    iv_text_element_symbol    = |{ ls_heading-text_id }| 
+                    iv_text_element_container = |{ ls_heading-object_name }|
                 ).
 
       CATCH cx_sy_itab_line_not_found /iwbep/cx_mgw_med_exception.
@@ -335,17 +341,15 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
         lo_action->set_http_method( iv_method_name = <ls_action>-http_method ).
       ENDIF.
 
-      LOOP AT mo_customizing->get_action_parameter( ) ASSIGNING FIELD-SYMBOL(<ls_action_param>) WHERE action_name = <ls_action>-action_name.
+      LOOP AT mo_customizing->get_action_parameter( ) ASSIGNING FIELD-SYMBOL(<ls_action_param>) 
+        WHERE action_name = <ls_action>-action_name.
         DATA(lo_parameter) = lo_action->create_input_parameter(
             iv_parameter_name = <ls_action_param>-parameter_name
             iv_abap_fieldname = <ls_action_param>-fieldname                 " Field Name
         ).
       ENDLOOP.
 
-      lo_action->bind_input_structure(
-          iv_structure_name   = |{ <ls_action>-structure_name }|
-*          iv_bind_conversions = abap_false       " Consider conv. exits and ref. fields for currency and amount
-      ).
+      lo_action->bind_input_structure( |{ <ls_action>-structure_name }| ).
     ENDLOOP.
   ENDMETHOD.
 

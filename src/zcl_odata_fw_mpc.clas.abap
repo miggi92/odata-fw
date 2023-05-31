@@ -264,8 +264,7 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
         DATA(lv_first_key) = lt_sh_properties[ is_key = abap_true ]-property_name.
 
 *              cl*shlp_annotation*
-        DATA(lo_annotation) = cl_apj_shlp_annotation=>create(
-          io_odata_model         = mo_model
+        DATA(lo_annotation) = zcl_odata_annotation_shlp=>create(
           io_vocan_model         = mo_anno_model
           iv_namespace           = |{ mo_customizing->get_namespace( ) }|
           iv_entitytype          = is_entity-entity_name
@@ -293,7 +292,11 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
                   iv_valuelist_property = |{ <ls_sh_property>-property_name }|
               ).
             ELSE.
-              lo_annotation->add_display_parameter( |{ <ls_sh_property>-property_name }| ).
+*              lo_annotation->add_display_parameter( |{ <ls_sh_property>-property_name }| ).
+              lo_annotation->add_out_parameter(
+                iv_property           = |{ <ls_sh_property>-property_name }|
+                iv_valuelist_property = |{ <ls_sh_property>-property_name }|
+            ).
             ENDIF.
 
           ENDLOOP.

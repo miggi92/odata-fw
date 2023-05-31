@@ -6,6 +6,10 @@
 1. [Create a SEGW Project](#Create%20a%20SEGW%20Project)
 2. [Generate classes](#Generate%20classes)
 3. [Implement the framework MPC method](#Implement%20the%20framework%20MPC%20method)
+4. [Implementing the framework DPC methods](#Implementing%20the%20framework%20DPC%20methods)
+	-  [Boilerplate coding for the OData methods](#Boilerplate%20coding%20for%20the%20OData%20methods)
+5. [Customize your service](#Customize%20your%20service)
+
 
 ## Create a SEGW Project
 
@@ -46,3 +50,34 @@ METHOD define.
     ENDTRY.
   ENDMETHOD.
 ```
+
+## Implementing the framework DPC methods
+
+For the DPC methods to work with the framework we need to implement two things in the DPC_EXT class.
+1. Constructor
+```abap
+METHOD constructor.
+	super->constructor( ).
+	TRY.
+		me->mt_data_providers = NEW #( me ).
+		NEW zcl_odata_fw_controller( 'Z_MY_PROJECT' )->define_dpc( i_data_provider = me->mt_data_providers ).
+	  CATCH zcx_odata INTO DATA(lo_error).
+		NEW zcl_odata_error_handler( me )->raise_exception_object( lo_error ).
+	ENDTRY.
+ENDMETHOD.
+```
+2. Data provider attribute
+```abap
+DATA: mt_data_providers TYPE REF TO zcl_odata_data_provider.
+```
+
+
+### Boilerplate coding for the OData methods
+
+For the boilerplate code, that has to be inserted into the OData methods you can copy the lines in the [DPC Boilerplate code](DPC%20Boilerplate%20code.md) file.
+
+## Customize your service
+
+Implement your odata service customizing. By calling the **ZODATA_CUST** transaction.
+For a detailed documentation you can look into the [OData Customizing](OData%20Customizing.md) file.
+

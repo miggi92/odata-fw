@@ -1,4 +1,6 @@
-
+---
+share: true
+---
 # DPC Boilerplate code 
 
 ## get_entity

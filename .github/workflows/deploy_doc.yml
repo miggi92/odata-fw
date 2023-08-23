@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - feat/gh-pages
     paths: 
       - 'README.md'
       - 'overrides/**'

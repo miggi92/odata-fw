@@ -1,11 +1,14 @@
 site_name: OData FW  # Change this to your site name
 site_description: A cool description of your site
 site_url: https://miggi92.github.io/odata-fw/ # Change this to your site URL
+repo_url: https://github.com/miggi92/odata-fw
 
 theme:
     name: 'material'
-    logo: assets/meta/favicons.png
-    favicon: assets/meta/favicons.png
+    logo: assets/meta/odata_fw_logo_transparent.png
+    favicon: assets/meta/odata_fw_logo_transparent.png
+    icon:
+      repo: fontawesome/brands/github
     custom_dir: overrides
     font:
         text: Ubuntu
@@ -19,16 +22,16 @@ theme:
       primary: teal
       accent: light blue
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/weather-sunny
         name: Switch to dark mode
 
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: blue
+      primary: blue grey
       accent: indigo
       toggle:
-        icon: material/toggle-switch
+        icon: material/weather-night
         name: Switch to light mode
     features:
         - navigation.indexes
@@ -38,6 +41,7 @@ theme:
         - navigation.expand
         - search.suggest
         - search.highlight
+        - content.code.copy
         
 # Extensions
 markdown_extensions:
@@ -123,6 +127,9 @@ extra_css:
     - assets/css/customization.css
 extra:
   SEO: assets/meta/SEO.png
+  social:
+    - icon: fontawesome/brands/github 
+      link: https://github.com/miggi92
   comments: false #disable comments globally
   generate_graph: true #generate the graph of the site
   attachments: 'assets/img' #path to the folder where the attachments are stored

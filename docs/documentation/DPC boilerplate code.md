@@ -12,7 +12,7 @@ METHODS /iwbep/if_mgw_appl_srv_runtime~get_entity REDEFINITION.
 
 Implementation:
 
-```abap
+``` abap
 
 DATA(ls_data_provider) = me->mt_data_providers->get( iv_entity_name ).
 

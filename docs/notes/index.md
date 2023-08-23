@@ -1,4 +1,9 @@
 # OData framework documentation
 
-## Introduction
-Test123
+## Creating the first service
+
+[[Creating a service]]
+
+## DPC boilerplate code
+
+[[DPC boilerplate code]]

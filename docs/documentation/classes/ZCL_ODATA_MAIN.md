@@ -1,4 +1,4 @@
-  # ZCL_ODATA_MAIN
+# ZCL_ODATA_MAIN
 
 This abstract class is the blueprint for every entity class used by this framework.
 
@@ -6,7 +6,7 @@ This abstract class is the blueprint for every entity class used by this framewo
 
 Every method of the "/iwbep/if_mgw_appl_srv_runtime" interface can be redefined in the sub class. Only the methods that you really need have to be redefined.
 
-## Calling other methods of the DPC_EXT class
+## Calling other Methods of the DPC_EXT Class
 
 For calling other methods of the dpc_ext class you can use the protected attribute "DPC_OBJECT". It holds the instance of the dpc_ext class.
 
@@ -34,7 +34,6 @@ Reads out the header attributes of the request.
 This method applies dynamic filtering, pagination and sorting to the current entity set table. This is ment to be called after selecting the entries.
 
 > [!attention]
-
 > This can be heavily non performant. If you can, please filter and paginate your entries before or while selecting.
 > This is a lazy option without caring about performance.
 

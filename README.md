@@ -8,7 +8,7 @@
 An OData ABAP Framework
 
 ## Documentation
-The documentation and how to use can be found under [Documentation](./docs/documentation.md)
+The documentation and how to use can be found under [Documentation](https://miggi92.github.io/odata-fw/)
 
 ## Contributing
 

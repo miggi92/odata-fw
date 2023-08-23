@@ -50,7 +50,7 @@ Thumbs.db
 *.wmv
 
 # exclude workspace cache
-docs/.obsidian/workspace*
+docs/notes/.obsidian/workspace*
 
 # Add below lines to exclude OS settings and caches
 docs/.trash/

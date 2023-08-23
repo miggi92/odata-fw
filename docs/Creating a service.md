@@ -15,15 +15,15 @@ share: true
 
 ## Create a SEGW Project
 
-First of all we need to create a  [SEGW](Definitions/SEGW.md#) project. 
-Transaction code:  [SEGW](Definitions/SEGW.md#)
+First of all we need to create a  [SEGW](SEGW.md#) project. 
+Transaction code:  [SEGW](SEGW.md#)
 
 ![segw_create_project.png](attachments/segw_create_project.png#)
 ![](attachments/segw_name_project.png)
 
 ## Generate classes 
 
-To start with our development we first need the [SEGW](Definitions/SEGW.md#) transaction to generate the [DPC](Definitions/DPC.md#) and [MPC](Definitions/MPC.md#) classes. 
+To start with our development we first need the [SEGW](Definitions/SEGW.md#) transaction to generate the [DPC](DPC.md#) and [MPC](MPC.md#) classes. 
 ![generate_classes](attachments/segw_generate_classes.png)
 You might want to change now the class names to match the system naming conventions.
 ![](attachments/segw_model_service_def.png)

@@ -1,0 +1,25 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - feat/gh-pages
+    paths: 
+      - 'README.md'
+      - 'overrides/**'
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - 'requirements.txt'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    uses: ObsidianPublisher/actions/.github/workflows/deploy.yml@main
+    secrets:
+      GH_PAT: ${{ secrets.GITHUB_TOKEN }}

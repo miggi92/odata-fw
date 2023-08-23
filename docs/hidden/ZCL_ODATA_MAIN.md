@@ -1,4 +1,6 @@
-
+---
+share: true
+---
 # ZCL_ODATA_MAIN
 
 This abstract class is the blueprint for every entity class used by this framework.
@@ -40,9 +42,9 @@ This method applies dynamic filtering, pagination and sorting to the current ent
 > This is a lazy option without caring about performance.
 
 The options can also be called separate. 
-- [PAGINATE_COLLECTION](#PAGINATE_COLLECTION)
-- [FILTER_COLLECTION](#FILTER_COLLECTION)
-- [ORDER_COLLECTION](#ORDER_COLLECTION)
+- [PAGINATE_COLLECTION](ZCL_ODATA_MAIN.md##PAGINATE_COLLECTION)
+- [FILTER_COLLECTION](ZCL_ODATA_MAIN.md##FILTER_COLLECTION)
+- [ORDER_COLLECTION](ZCL_ODATA_MAIN.md##ORDER_COLLECTION)
 
 ### PAGINATE_COLLECTION
 

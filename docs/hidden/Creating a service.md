@@ -5,30 +5,30 @@ share: true
 
 ## Steps
 
-1. [ > Create a SEGW Project](.md#create-a-segw-project)
-2. [ > Generate classes](.md#generate-classes)
-3. [ > Implement the framework MPC method](.md#implement-the-framework-mpc-method)
-4. [ > Implementing the framework DPC methods](.md#implementing-the-framework-dpc-methods)
-	-  [ > Boilerplate coding for the OData methods](.md#boilerplate-coding-for-the-odata-methods)
-5. [ > Customize your service](.md#customize-your-service)
+1. [[Creating a service#Create a SEGW Project|Create a SEGW Project]]
+2. [[Creating a service#Generate classes|Generate classes]]
+3. [[Creating a service#Implement the framework MPC method|Implement the framework MPC method]]
+4. [[Creating a service#Implementing the framework DPC methods|Implementing the framework DPC methods]]
+	-  [[Creating a service#Boilerplate coding for the OData methods|Boilerplate coding for the OData methods]]
+5. [[Creating a service#Customize your service|Customize your service]]
 
 
 ## Create a SEGW Project
 
-First of all we need to create a  [SEGW](SEGW.md#) project. 
-Transaction code:  [SEGW](SEGW.md#)
+First of all we need to create a  [[./SEGW|SEGW]] project. 
+Transaction code:  [[./SEGW|SEGW]]
 
-![segw_create_project.png](attachments/segw_create_project.png#)
-![](attachments/segw_name_project.png)
+![[../assets/img/segw_create_project.png|segw_create_project]]
+![](../assets/img/segw_name_project.png)
 
 ## Generate classes 
 
-To start with our development we first need the [SEGW](Definitions/SEGW.md#) transaction to generate the [DPC](DPC.md#) and [MPC](MPC.md#) classes. 
-![generate_classes](attachments/segw_generate_classes.png)
+To start with our development we first need the [[./SEGW|SEGW]] transaction to generate the [[./DPC|DPC]] and [[./MPC|MPC]] classes. 
+![generate_classes](../assets/img/segw_generate_classes.png)
 You might want to change now the class names to match the system naming conventions.
-![](attachments/segw_model_service_def.png)
+![](../assets/img/segw_model_service_def.png)
 
-After this we're done using the  [SEGW](Definitions/SEGW.md#) for developing reasons. 
+After this we're done using the  [[./SEGW|SEGW]] for developing reasons. 
 
 ## Implement the framework MPC method
 
@@ -76,10 +76,10 @@ DATA: mt_data_providers TYPE REF TO zcl_odata_data_provider.
 
 ### Boilerplate coding for the OData methods
 
-For the boilerplate code, that has to be inserted into the OData methods you can copy the lines in the [DPC Boilerplate code](DPC%20Boilerplate%20code.md#) file.
+For the boilerplate code, that has to be inserted into the OData methods you can copy the lines in the [[./DPC Boilerplate code|DPC Boilerplate code]] file.
 
 ## Customize your service
 
 Implement your odata service customizing. By calling the **ZODATA_CUST** transaction.
-For a detailed documentation you can look into the [OData Customizing](OData%20Customizing.md#) file.
+For a detailed documentation you can look into the [[./OData Customizing|OData Customizing]] file.
 

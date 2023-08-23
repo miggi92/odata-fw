@@ -5,7 +5,7 @@ share: true
 
 ## Creating the first Service 
 
-[Creating a service](Creating%20a%20service.md#)
+[Creating a service](./Creating%20a%20service.md#)
 
 ## DPC boilerplate code
 

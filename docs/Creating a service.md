@@ -5,30 +5,30 @@ share: true
 
 ## Steps
 
-1. [Create a SEGW Project](#Create%20a%20SEGW%20Project)
-2. [Generate classes](#Generate%20classes)
-3. [Implement the framework MPC method](#Implement%20the%20framework%20MPC%20method)
-4. [Implementing the framework DPC methods](#Implementing%20the%20framework%20DPC%20methods)
-	-  [Boilerplate coding for the OData methods](#Boilerplate%20coding%20for%20the%20OData%20methods)
-5. [Customize your service](#Customize%20your%20service)
+1. [ > Create a SEGW Project](.md#create-a-segw-project)
+2. [ > Generate classes](.md#generate-classes)
+3. [ > Implement the framework MPC method](.md#implement-the-framework-mpc-method)
+4. [ > Implementing the framework DPC methods](.md#implementing-the-framework-dpc-methods)
+	-  [ > Boilerplate coding for the OData methods](.md#boilerplate-coding-for-the-odata-methods)
+5. [ > Customize your service](.md#customize-your-service)
 
 
 ## Create a SEGW Project
 
-First of all we need to create a [SEGW](Definitions/SEGW.md) project. 
-Transaction code: [SEGW](Definitions/SEGW.md)
+First of all we need to create a  [SEGW](Definitions/SEGW.md#) project. 
+Transaction code:  [SEGW](Definitions/SEGW.md#)
 
-![segw_create_project](attachments/segw_create_project.png)
+![segw_create_project.png](attachments/segw_create_project.png#)
 ![](attachments/segw_name_project.png)
 
 ## Generate classes 
 
-To start with our development we first need the [SEGW](Definitions/SEGW.md) transaction to generate the [DPC](Definitions/DPC.md) and [MPC](Definitions/MPC.md) classes. 
+To start with our development we first need the [SEGW](Definitions/SEGW.md#) transaction to generate the [DPC](Definitions/DPC.md#) and [MPC](Definitions/MPC.md#) classes. 
 ![generate_classes](attachments/segw_generate_classes.png)
 You might want to change now the class names to match the system naming conventions.
 ![](attachments/segw_model_service_def.png)
 
-After this we're done using the [SEGW](Definitions/SEGW.md) for developing reasons. 
+After this we're done using the  [SEGW](Definitions/SEGW.md#) for developing reasons. 
 
 ## Implement the framework MPC method
 

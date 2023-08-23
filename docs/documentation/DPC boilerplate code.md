@@ -1,3 +1,7 @@
+---
+tags:
+  - dpc
+---
 # DPC Boilerplate Code
 
 ## get_entity

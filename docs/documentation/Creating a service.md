@@ -1,3 +1,9 @@
+---
+tags:
+  - customizing
+  - dpc
+  - mpc
+---
 # Creating a Service
 
 ## Steps
@@ -69,7 +75,7 @@ METHOD constructor.
 		)->define_dpc( i_data_provider = me->mt_data_providers ).
 	CATCH zcx_odata INTO DATA(lo_error).
 		NEW zcl_odata_error_handler( me )->raise_exception_object( lo_error ).
-ENDTRY.
+	ENDTRY.
 ENDMETHOD.
 ```
 

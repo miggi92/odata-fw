@@ -24,11 +24,11 @@ Transaction code:  [[./SEGW|SEGW]]
 ## Generate classes 
 
 To start with our development we first need the [[./SEGW|SEGW]] transaction to generate the [[./DPC|DPC]] and [[./MPC|MPC]] classes. 
-![generate_classes](../assets/img/segw_generate_classes.png)
+![[../assets/img/segw_generate_classes.png|segw_generate_classes.png]]
 You might want to change now the class names to match the system naming conventions.
 ![](../assets/img/segw_model_service_def.png)
 
-After this we're done using the  [[./SEGW|SEGW]] for developing reasons. 
+After this we're done using the [[./SEGW|SEGW]] for developing reasons. 
 
 ## Implement the framework MPC method
 

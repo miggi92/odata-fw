@@ -9,4 +9,4 @@ share: true
 
 ## DPC boilerplate code
 
-[DPC Boilerplate code](DPC%20Boilerplate%20code.md#)
+[DPC Boilerplate code](./DPC%20Boilerplate%20code.md#)

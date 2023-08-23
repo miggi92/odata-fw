@@ -5,7 +5,7 @@ share: true
 
 ## Boilerplate coding for implementing
 
-Look into [create_deep_entity](./DPC%20Boilerplate%20code.md#createdeepentity).
+Look into [create_deep_entity](DPC%20Boilerplate%20code.md#create_deep_entity).
 
 ## Defining deep entity structure
 
@@ -25,5 +25,5 @@ TYPES:
 
 Just insert the structure name into the "Deep entity structure" field.
 
-![](./attachments/cust_deep_entity.png)
+![](attachments/cust_deep_entity.png)
 

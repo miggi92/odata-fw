@@ -15,20 +15,20 @@ share: true
 
 ## Create a SEGW Project
 
-First of all we need to create a [SEGW](SEGW.md#) project. 
-Transaction code: [SEGW](SEGW.md#.md#)
+First of all we need to create a [SEGW](./SEGW.md#) project. 
+Transaction code: [SEGW](./SEGW.md#.md#)
 
-![segw_create_project](./segw_create_project.png)
-![](./segw_name_project.png)
+![segw_create_project](./attachments/segw_create_project.png)
+![](./attachments/segw_name_project.png)
 
 ## Generate classes 
 
-To start with our development we first need the [SEGW](SEGW.md#.md#.md#) transaction to generate the [DPC](DPC.md#) and [MPC](MPC.md#) classes. 
-![generate_classes](./segw_generate_classes.png)
+To start with our development we first need the [SEGW](./SEGW.md#.md#.md#) transaction to generate the [DPC](./DPC.md#) and [MPC](./MPC.md#) classes. 
+![generate_classes](./attachments/segw_generate_classes.png)
 You might want to change now the class names to match the system naming conventions.
-![](./segw_model_service_def.png)
+![](./attachments/segw_model_service_def.png)
 
-After this we're done using the [SEGW](SEGW.md#.md#.md#.md#) for developing reasons. 
+After this we're done using the [SEGW](./SEGW.md#.md#.md#.md#) for developing reasons. 
 
 ## Implement the framework MPC method
 
@@ -76,7 +76,7 @@ DATA: mt_data_providers TYPE REF TO zcl_odata_data_provider.
 
 ### Boilerplate coding for the OData methods
 
-For the boilerplate code, that has to be inserted into the OData methods you can copy the lines in the [DPC Boilerplate code](DPC%20Boilerplate%20code.md#) file.
+For the boilerplate code, that has to be inserted into the OData methods you can copy the lines in the [DPC Boilerplate code](./DPC%20Boilerplate%20code.md#) file.
 
 ## Customize your service
 

@@ -55,3 +55,6 @@ docs/.obsidian/workspace*
 # Add below lines to exclude OS settings and caches
 docs/.trash/
 docs/.DS_Store
+
+# exclude generated files by mkdoc
+docs/assets/graph.html

@@ -32,7 +32,7 @@ After this we're done using the [[SEGW]] for developing reasons.
 
 ## Implement the Framework MPC Method
 
-First we open the "*MPC_EXT" Class. We then want to **redefine** the "define" method.
+First we open the "MPC_EXT" Class. We then want to **redefine** the "define" method.
 
 ```abap
 PUBLIC SECTION.
@@ -62,14 +62,14 @@ For the DPC methods to work with the framework we need to implement two things i
 
 ```abap
 METHOD constructor.
-  super->constructor( ).
-  TRY.
-    me->mt_data_providers = NEW #( me ).
-    NEW zcl_odata_fw_controller( 'Z_MY_PROJECT'
-	    )->define_dpc( i_data_provider = me->mt_data_providers ).
-    CATCH zcx_odata INTO DATA(lo_error).
-    NEW zcl_odata_error_handler( me )->raise_exception_object( lo_error ).
-  ENDTRY.
+	super->constructor( ).
+	TRY.
+		me->mt_data_providers = NEW #( me ).
+		NEW zcl_odata_fw_controller( 'Z_MY_PROJECT'
+		)->define_dpc( i_data_provider = me->mt_data_providers ).
+	CATCH zcx_odata INTO DATA(lo_error).
+		NEW zcl_odata_error_handler( me )->raise_exception_object( lo_error ).
+ENDTRY.
 ENDMETHOD.
 ```
 

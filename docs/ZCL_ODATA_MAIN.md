@@ -42,9 +42,9 @@ This method applies dynamic filtering, pagination and sorting to the current ent
 > This is a lazy option without caring about performance.
 
 The options can also be called separate. 
-- [PAGINATE_COLLECTION](ZCL_ODATA_MAIN.md#paginatecollection)
-- [FILTER_COLLECTION](ZCL_ODATA_MAIN.md#filtercollection)
-- [ORDER_COLLECTION](ZCL_ODATA_MAIN.md#ordercollection)
+- [PAGINATE_COLLECTION](#PAGINATE_COLLECTION)
+- [FILTER_COLLECTION](#FILTER_COLLECTION)
+- [ORDER_COLLECTION](#ORDER_COLLECTION)
 
 ### PAGINATE_COLLECTION
 

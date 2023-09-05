@@ -21,8 +21,8 @@
       "force-multi-line-array-style": ""
     },
     "insert-yaml-attributes": {
-      "enabled": false,
-      "text-to-insert": "aliases: \ntags: "
+      "enabled": true,
+      "text-to-insert": "title:\ndescription:\naliases: \ntags: "
     },
     "move-tags-to-yaml": {
       "enabled": false,
@@ -40,7 +40,7 @@
       "yaml-sort-order-for-other-keys": "None"
     },
     "yaml-timestamp": {
-      "enabled": false,
+      "enabled": true,
       "date-created": true,
       "date-created-key": "date created",
       "force-retention-of-create-value": false,

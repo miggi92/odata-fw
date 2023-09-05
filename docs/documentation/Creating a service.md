@@ -1,10 +1,13 @@
 ---
+aliases: 
 title: Creating a service
 description: How to create a service
 tags:
   - customizing
   - dpc
   - mpc
+date created: Wednesday, August 23rd 2023, 6:18:18 pm
+date modified: Tuesday, September 5th 2023, 5:13:51 pm
 ---
 # Creating a Service
 

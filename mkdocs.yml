@@ -4,6 +4,7 @@ site_url: https://miggi92.github.io/odata-fw/ # Change this to your site URL
 repo_url: https://github.com/miggi92/odata-fw
 repo_name: odata-fw
 edit_uri: edit/master/docs/
+copyright: Copyright &copy; 2019 - 2023 miggi92
 
 # Theme
 theme:

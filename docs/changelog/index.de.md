@@ -1,8 +1,8 @@
 ---
 template: blog.html
-title: Changelog
+title: 'Änderungsprotokoll'
 category: Changelog
 hidden: true
 ---
 
-Changelog.
+Änderungsprotokoll.

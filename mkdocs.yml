@@ -83,6 +83,11 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 plugins:
   - search
+  - i18n:
+      default_language: en
+      languages:
+        - en
+        - de
   - meta-descriptions
   - git-revision-date-localized:
       type: date
@@ -142,10 +147,3 @@ extra:
   hooks:
     strip_comments: true
     fix_heading: true
-  alternate:
-    - name: English
-      link: /odata-fw/documentation/en
-      lang: en
-    - name: Deutsch
-      link: /odata-fw/documentation/de
-      lang: de

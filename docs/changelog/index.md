@@ -1,7 +1,5 @@
 ---
 description: Changelog index file.
-aliases: 
-tags: 
 template: blog.html
 title: Changelog
 category: Changelog

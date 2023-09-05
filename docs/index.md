@@ -1,5 +1,7 @@
 # OData Framework
 
+![[odata_fw_logo_transparent.png]]
+
 ## Documentation
 
 [[documentation/index|documentation]]

@@ -4,5 +4,6 @@ title: Changelog
 category: Changelog
 hidden: true
 ---
+# Index
 
 Changelog.

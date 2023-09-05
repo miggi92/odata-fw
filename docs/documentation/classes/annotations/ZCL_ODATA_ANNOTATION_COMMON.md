@@ -3,6 +3,8 @@ title: ZCL_ODATA_ANNOTATION_COMMON
 description: Common annotation class
 date created: Tuesday, September 5th 2023, 11:17:29 pm
 date modified: Tuesday, September 5th 2023, 11:18:35 pm
+tags:
+  - annotation
 ---
 # ZCL_ODATA_ANNOTATION_COMMON
 

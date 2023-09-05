@@ -3,6 +3,8 @@ title: Annotations
 description: Annotation classes
 date created: Tuesday, September 5th 2023, 11:16:53 pm
 date modified: Tuesday, September 5th 2023, 11:47:16 pm
+tags:
+  - annotation
 ---
 # Annotations
 

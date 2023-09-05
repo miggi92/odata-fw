@@ -3,6 +3,8 @@ title: ZCL_ODATA_ANNOTATION_SHLP
 description: Search help annotations
 date created: Tuesday, September 5th 2023, 11:18:38 pm
 date modified: Tuesday, September 5th 2023, 11:44:25 pm
+tags:
+  - annotation
 ---
 # ZCL_ODATA_ANNOTATION_SHLP
 

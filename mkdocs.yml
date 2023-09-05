@@ -46,6 +46,7 @@ theme:
         - content.code.copy
         - navigation.tracking
         - navigation.path
+        - navigation.footer
         
 # Extensions
 markdown_extensions:

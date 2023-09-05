@@ -1,0 +1,10 @@
+name: Get latest release from doc template
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  update:
+    uses: ObsidianPublisher/actions/.github/workflows/update.yml@main
+    secrets:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}

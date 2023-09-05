@@ -126,6 +126,11 @@ plugins:
   - git-committers:
       repository: miggi92/odata-fw
       branch: master
+  - blog:
+      blog_dir: changelog
+      posts_dir: changelog/releases
+      blog_toc: true
+      categories_toc: true
 hooks:
   - overrides/hooks/on_page_markdown.py
   - overrides/hooks/on_env.py

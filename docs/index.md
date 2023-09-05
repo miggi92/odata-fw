@@ -4,6 +4,10 @@
 
 [[documentation/index|documentation]]
 
+## Changelog
+
+[[changelog/index|Changelog]]
+
 ## Project
 
 [GitHub Repository](https://github.com/miggi92/odata-fw)

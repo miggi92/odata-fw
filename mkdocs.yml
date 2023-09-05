@@ -4,8 +4,10 @@ site_url: https://miggi92.github.io/odata-fw/ # Change this to your site URL
 repo_url: https://github.com/miggi92/odata-fw
 repo_name: odata-fw
 edit_uri: edit/master/docs/
+site_author: Miguel Gebhardt
+site_author_title: ABAP Developer
 
-
+# Theme
 theme:
     name: 'material'
     logo: assets/meta/odata_fw_logo_transparent.png

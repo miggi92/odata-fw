@@ -21,5 +21,7 @@ permissions:
 jobs:
   deploy:
     uses: ObsidianPublisher/actions/.github/workflows/deploy.yml@main
+    inputs:
+      GENERATE_GRAPH: true
     secrets:
       GH_PAT: ${{ secrets.GITHUB_TOKEN }}

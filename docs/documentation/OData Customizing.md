@@ -1,6 +1,6 @@
 ---
 title: OData Customizing
-description:
+description: OData Customizing
 aliases: 
 tags:
   - customizing

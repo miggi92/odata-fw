@@ -1,6 +1,6 @@
 ---
 title: Deep entities
-description:
+description: Deep entities
 aliases: 
 tags: 
 date created: Wednesday, August 23rd 2023, 6:18:18 pm

@@ -1,6 +1,6 @@
 ---
 title: OData Framework Documentation
-description:
+description: OData Framework Documentation
 aliases: 
 tags: 
 date created: Tuesday, September 5th 2023, 11:24:45 am

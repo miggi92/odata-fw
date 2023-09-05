@@ -1,6 +1,6 @@
 ---
 title: DPC boilerplate code
-description:
+description: DPC boilerplate code
 aliases: 
 tags:
   - dpc

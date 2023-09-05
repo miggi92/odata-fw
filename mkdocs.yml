@@ -150,3 +150,10 @@ extra:
   hooks:
     strip_comments: true
     fix_heading: true
+  alternate:
+    - name: "English"
+      language: "en"
+      link: ""
+    - name: "Deutsch"
+      language: "de"
+      link: "index.de/"

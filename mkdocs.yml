@@ -9,6 +9,7 @@ theme:
     logo: assets/meta/odata_fw_logo_transparent.png
     favicon: assets/meta/odata_fw_logo_transparent.png
     icon:
+      logo: assets/meta/odata_fw_logo_transparent.png
       repo: fontawesome/brands/github
     custom_dir: overrides
     font:
@@ -86,6 +87,7 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 plugins:
   - search
+  - social
   - meta-descriptions
   - git-revision-date-localized:
       type: date

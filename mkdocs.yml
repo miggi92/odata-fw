@@ -86,8 +86,11 @@ plugins:
   - i18n:
       default_language: en
       languages:
-        - en
-        - de
+        en: "English"
+        de: "Deutsch"
+      no_translation:
+        en: "No translation available"
+        de: "Keine Übersetzung verfügbar"
   - meta-descriptions
   - git-revision-date-localized:
       type: date

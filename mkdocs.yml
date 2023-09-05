@@ -144,8 +144,8 @@ extra:
     fix_heading: true
   alternate:
     - name: English
-      link: /en/
+      link: /odata-fw/documentation/en
       lang: en
     - name: Deutsch
-      link: /de/
+      link: /odata-fw/documentation/de
       lang: de

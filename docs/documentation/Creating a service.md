@@ -6,7 +6,7 @@ tags:
   - dpc
   - mpc
 date created: Wednesday, August 23rd 2023, 6:18:18 pm
-date modified: Tuesday, September 5th 2023, 5:13:51 pm
+date modified: Tuesday, September 5th 2023, 11:12:48 pm
 ---
 # Creating a Service
 
@@ -49,7 +49,7 @@ PUBLIC SECTION.
 	METHODS define REDEFINITION.
 ```
 
-Next we add the OData framework by calling the "define_mpc" method of the framework class. Notice, that 'Z_MY_PROJECT' is the namespace, that we need to use in the framework view cluster.
+Next we add the OData framework by calling the "define_mpc" method of the framework class ([[ZCL_ODATA_FW_CONTROLLER]]). Notice, that 'Z_MY_PROJECT' is the namespace, that we need to use in the framework view cluster.
 
 ```abap
 METHOD define.

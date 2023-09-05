@@ -133,9 +133,6 @@ extra_css:
     - assets/css/admonition.css
     - assets/css/custom_attributes.css
     - assets/css/customization.css
-nav:
-  - index.md
-  - index.de.md
 extra:
   SEO: assets/meta/SEO.png
   social:

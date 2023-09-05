@@ -2,7 +2,7 @@
 template: blog.html
 title: Folder Index
 category: Changelog
-hidden: True
+hidden: false
 ---
 
-A cool description
+Changelog.

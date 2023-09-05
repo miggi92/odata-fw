@@ -9,7 +9,7 @@
       "force-yaml-escape-keys": ""
     },
     "format-tags-in-yaml": {
-      "enabled": false
+      "enabled": true
     },
     "format-yaml-array": {
       "enabled": false,
@@ -22,7 +22,7 @@
     },
     "insert-yaml-attributes": {
       "enabled": true,
-      "text-to-insert": "title:\ndescription:\naliases: \ntags: "
+      "text-to-insert": "title:\ndescription:"
     },
     "move-tags-to-yaml": {
       "enabled": false,

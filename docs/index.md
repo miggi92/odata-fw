@@ -1,10 +1,8 @@
 ---
 title: OData Framework
 description: OData framework
-aliases: 
-tags: 
 date created: Wednesday, August 23rd 2023, 5:11:52 pm
-date modified: Tuesday, September 5th 2023, 5:14:25 pm
+date modified: Tuesday, September 5th 2023, 5:38:15 pm
 ---
 # OData Framework
 

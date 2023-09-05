@@ -1,8 +1,6 @@
 ---
 title: Graph
 description: Displays the obsidian graph
-aliases: 
-tags: 
 date created: Tuesday, September 5th 2023, 5:19:57 pm
 date modified: Tuesday, September 5th 2023, 5:20:33 pm
 ---

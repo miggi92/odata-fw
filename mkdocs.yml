@@ -156,4 +156,4 @@ extra:
       link: ""
     - name: "Deutsch"
       language: "de"
-      link: "index.de/"
+      link: "./index.de/"

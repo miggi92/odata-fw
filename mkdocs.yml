@@ -1,8 +1,8 @@
 site_name: OData FW  # Change this to your site name
-site_description: A cool description of your site
+site_description: An ABAP OData framework.
 site_url: https://miggi92.github.io/odata-fw/ # Change this to your site URL
 repo_url: https://github.com/miggi92/odata-fw
-reop_name: odata-fw
+repo_name: odata-fw
 
 theme:
     name: 'material'

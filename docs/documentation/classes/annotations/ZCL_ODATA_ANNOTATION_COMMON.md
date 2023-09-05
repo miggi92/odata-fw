@@ -8,5 +8,5 @@ tags:
 ---
 # ZCL_ODATA_ANNOTATION_COMMON
 
-Abstract class for the (common annotations)[https://sap.github.io/odata-vocabularies/vocabularies/Common.html].
+Abstract class for the [common annotations](https://sap.github.io/odata-vocabularies/vocabularies/Common.html).
 

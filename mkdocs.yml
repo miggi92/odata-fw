@@ -124,7 +124,7 @@ plugins:
   - glightbox
   - git-committers:
       repository: miggi92/odata-fw
-      branch: main
+      branch: master
 hooks:
   - overrides/hooks/on_page_markdown.py
   - overrides/hooks/on_env.py

@@ -2,4 +2,5 @@
 
 ## Available languages
 
-{% for lang in site.languages %}
+- [🇬🇧 - English](en/)
+- [🇩🇪 - Deutsch](de/)

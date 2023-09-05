@@ -34,6 +34,7 @@ theme:
         icon: material/weather-night
         name: Switch to light mode
     features:
+        - header.autohide
         - navigation.indexes
         - navigation.top
         - navigation.tabs
@@ -150,10 +151,3 @@ extra:
   hooks:
     strip_comments: true
     fix_heading: true
-  alternate:
-    - name: "English"
-      language: "en"
-      link: ""
-    - name: "Deutsch"
-      language: "de"
-      link: "./index.de/"

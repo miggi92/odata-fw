@@ -57,4 +57,4 @@ docs/.trash/
 docs/.DS_Store
 
 # exclude generated files by mkdoc
-docs/assets/graph.html
+# docs/assets/graph.html

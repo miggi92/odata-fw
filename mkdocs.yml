@@ -142,3 +142,10 @@ extra:
   hooks:
     strip_comments: true
     fix_heading: true
+  alternate:
+    - name: English
+      link: /en/
+      lang: en
+    - name: Deutsch
+      link: /de/
+      lang: de

@@ -22,5 +22,9 @@ classDiagram
 	class ZCL_ODATA_ANNOTATION_SHLP{
 	
 	}
+
+
+	class ZCL_ODATA_ANNOTATION_COMMON internal-link;
+	class ZCL_ODATA_ANNOTATION_SHLP internal-link;
 ```
 

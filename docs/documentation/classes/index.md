@@ -12,3 +12,25 @@ date modified: Tuesday, September 5th 2023, 11:14:38 pm
 2. [[ZCL_ODATA_FW_CONTROLLER]]
 3. [[ZCL_ODATA_FW_MPC]]
 4. [[ZCL_ODATA_FW_CUST_DPC]]
+
+## UML
+
+```mermaid
+classDiagram
+
+	ZCL_ODATA_FW_MPC <-- ZCL_ODATA_FW_CONTROLLER
+    ZCL_ODATA_FW_CUST_DPC <-- ZCL_ODATA_FW_CONTROLLER
+
+	class ZCL_ODATA_FW_CONTROLLER{
+        +define_dpc()
+        +define_mpc()
+	}
+
+	class ZCL_ODATA_FW_MPC{
+	
+	}
+
+    class ZCL_ODATA_FW_CUST_DPC{
+	
+	}
+```

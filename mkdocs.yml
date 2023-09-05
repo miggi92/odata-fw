@@ -114,6 +114,8 @@ plugins:
   - tags:
       tags_file: tags.md
   - blog:
+      blog_dir: changelog
+      post_dir: changelog/releases
       authors: true
       categories: true
       archive: true

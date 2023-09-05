@@ -3,6 +3,8 @@ site_description: An ABAP OData framework.
 site_url: https://miggi92.github.io/odata-fw/ # Change this to your site URL
 repo_url: https://github.com/miggi92/odata-fw
 repo_name: odata-fw
+edit_uri: edit/master/docs/
+
 
 theme:
     name: 'material'
@@ -11,6 +13,8 @@ theme:
     icon:
       logo: assets/meta/odata_fw_logo_transparent.png
       repo: fontawesome/brands/github
+      edit: material/pencil 
+      view: material/eye
     custom_dir: overrides
     font:
         text: Ubuntu
@@ -47,6 +51,7 @@ theme:
         - navigation.tracking
         - navigation.path
         - navigation.footer
+        - content.action.edit
         
 # Extensions
 markdown_extensions:

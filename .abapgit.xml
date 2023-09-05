@@ -17,6 +17,11 @@
     <item>/.gitlab-ci.yml</item>
     <item>/abaplint.json</item>
     <item>/azure-pipelines.yml</item>
+    <item>/docs</item>
+    <item>/overrides</item>
+    <item>/.github</item>
+    <item>/.vscode</item>
+     <item>/requirements.txt</item>
    </IGNORE>
    <VERSION_CONSTANT>zif_odata_constants=&gt;gc_version</VERSION_CONSTANT>
   </DATA>

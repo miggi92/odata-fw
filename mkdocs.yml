@@ -113,6 +113,12 @@ plugins:
       file: 'assets/css/custom_attributes.css'
   - tags:
       tags_file: tags.md
+  - blog:
+      authors: true
+      categories: true
+      archive: true
+      post_reading_time: true
+      blog_toc: true
   - encryptcontent:
       title_prefix: '🔐'
       summary: 'Private page'

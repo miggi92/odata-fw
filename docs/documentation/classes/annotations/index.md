@@ -20,7 +20,10 @@ classDiagram
 	}
 
 	class ZCL_ODATA_ANNOTATION_SHLP{
-	
+		+add_inout_parameter()
+		+add_display_parameter()
+		+add_in_parameter()
+		+add_out_parameter()
 	}
 
 ```

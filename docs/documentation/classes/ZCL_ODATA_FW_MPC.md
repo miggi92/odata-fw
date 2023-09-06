@@ -11,7 +11,9 @@ date modified: Tuesday, September 5th 2023, 11:10:10 pm
 
 ## Methods
 
-### DEFINE_FROM_CUST
+### Public
+
+#### DEFINE_FROM_CUST
 
 This method builds up the model for the odata service from the customized entries
 

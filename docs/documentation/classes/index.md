@@ -8,12 +8,15 @@ date modified: Tuesday, September 5th 2023, 11:14:38 pm
 
 ## Class Documentations
 
-1. [[ZCL_ODATA_MAIN]]
-2. [[ZCL_ODATA_FW_CONTROLLER]]
-3. [[ZCL_ODATA_FW_MPC]]
-4. [[ZCL_ODATA_FW_CUST_DPC]]
+### Framework classes
 
-## UML
+1. [[ZCL_ODATA_FW_CONTROLLER]]
+1. [[ZCL_ODATA_FW_MPC]]
+1. [[ZCL_ODATA_FW_CUST_DPC]]
+1. [[ZCL_ODATA_DATA_PROVIDER]]
+1. [[ZCL_ODATA_FW_CUST]]
+
+#### UML
 
 ```mermaid
 classDiagram
@@ -27,10 +30,27 @@ classDiagram
 	}
 
 	class ZCL_ODATA_FW_MPC{
-	
+		+define_from_cust()
 	}
 
     class ZCL_ODATA_FW_CUST_DPC{
-	
+
+	}
+
+	class ZCL_ODATA_DATA_PROVIDER{
+		+add()
+		+add_entities2providers()
+		+get_all()
+		+get()
+		+get_action()
+	}
+
+	class ZCL_ODATA_FW_CUST{
+		
 	}
 ```
+
+### Helper classes
+
+  1. [[ZCL_ODATA_MAIN]]
+  1. [[ZCL_ODATA_DOCUMENTS]]

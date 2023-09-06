@@ -23,7 +23,5 @@ classDiagram
 	
 	}
 
-	click ZCL_ODATA_ANNOTATION_COMMON internal-link
-
 ```
 

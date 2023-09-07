@@ -53,7 +53,14 @@ classDiagram
 	}
 
 	class ZCL_ODATA_FW_CUST{
-		
+		+get_namespace()
+		+get_entities()
+		+get_properties()
+		+get_property_texts()
+		+get_navigation()
+		+get_actions()
+		+get_action_parameter()
+		-load_customizing()
 	}
 ```
 

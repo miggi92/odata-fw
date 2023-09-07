@@ -34,7 +34,14 @@ classDiagram
 	}
 
     class ZCL_ODATA_FW_CUST_DPC{
-
+		+read_entities()
+		+read_global_namespaces()
+		+read_properties()
+		+read_propery_texts()
+		+read_navigations()
+		+read_seach_helps()
+		+read_actions()
+		+read_action_parameters()
 	}
 
 	class ZCL_ODATA_DATA_PROVIDER{

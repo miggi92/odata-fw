@@ -2,13 +2,13 @@
 title: ZCL_ODATA_MAIN
 description: Class ZCL_ODATA_MAIN
 date created: Wednesday, August 23rd 2023, 6:18:18 pm
-date modified: Tuesday, September 5th 2023, 5:12:52 pm
+date modified: Friday, September 8th 2023, 9:57:18 am
 ---
 # ZCL_ODATA_MAIN
 
 This abstract class is the blueprint for every entity class used by this framework.
 
-## /iwbep/if_mgw_appl_srv_runtime
+## [[-IWBEP-IF_MGW_APPL_SRV_RUNTIME|/IWBEP/IF_MGW_APPL_SRV_RUNTIME]]
 
 Every method of the "/iwbep/if_mgw_appl_srv_runtime" interface can be redefined in the sub class. Only the methods that you really need have to be redefined.
 

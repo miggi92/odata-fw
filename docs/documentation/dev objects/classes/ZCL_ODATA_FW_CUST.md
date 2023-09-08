@@ -1,5 +1,10 @@
 ---
+description: Framework customizing class
 title: ZCL_ODATA_FW_CUST
+tags:
+  - customizing
+date created: Friday, September 8th 2023, 9:50:10 am
+date modified: Friday, September 8th 2023, 10:01:05 am
 ---
 
 # ZCL_ODATA_FW_CUST

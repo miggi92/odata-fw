@@ -68,3 +68,8 @@ classDiagram
 
   1. [[ZCL_ODATA_MAIN]]
   1. [[ZCL_ODATA_DOCUMENTS]]
+  1. [[ZCL_ODATA_VALUE_HELP]]
+
+### UTIL classes
+
+  1. [[ZCL_ODATA_UTILS]]

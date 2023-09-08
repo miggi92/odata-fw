@@ -47,18 +47,8 @@ page.meta.revision_date
 {% include "partials/source-file.html" %}
 {% endif %}
 
-{% block footer %}
-<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
-  <li class="contributors-holder">
-    <span class="contributors-text">Contributors</span>
-    <ul class="contributors" data-bi-name="contributors">
-      {%- for user in committers -%}
-      <li><a href="{{ user.url }}" title="{{ user.name }}" data-bi-name="contributorprofile" target="_blank"><img src="{{ user.avatar }}" alt="{{ user.name }}"></a></li>
-      {%- endfor -%}
-    </ul>
-  </li>
-</ul>
-{% endblock %}
+<!-- Contributors -->
+{% include "partials/contributors.html" %}
 
 <!-- Was this page helpful? -->
 {% include "partials/feedback.html" %}

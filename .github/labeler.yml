@@ -1,0 +1,12 @@
+documentation:
+- docs/*
+
+dependencies:
+- requirements.txt
+- package.json
+
+pip:
+- requirements.txt
+
+abap:
+- any: ['src/**']

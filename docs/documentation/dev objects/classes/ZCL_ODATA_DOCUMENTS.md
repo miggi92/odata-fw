@@ -1,5 +1,10 @@
 ---
+description: Documents entity class
 title: ZCL_ODATA_DOCUMENTS
+tags:
+  - entity
+date created: Friday, September 8th 2023, 9:50:10 am
+date modified: Friday, September 8th 2023, 10:00:28 am
 ---
 
 # ZCL_ODATA_DOCUMENTS

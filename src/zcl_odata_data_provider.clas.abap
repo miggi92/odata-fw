@@ -68,10 +68,7 @@ CLASS zcl_odata_data_provider DEFINITION
           VALUE(r_instance) TYPE zodata_data_provider-instance.
 ENDCLASS.
 
-
-
 CLASS ZCL_ODATA_DATA_PROVIDER IMPLEMENTATION.
-
 
   METHOD add.
     DATA: ls_data_provider LIKE LINE OF me->data_providers.

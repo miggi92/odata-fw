@@ -81,8 +81,6 @@ CLASS zcl_odata_fw_mpc DEFINITION
           /iwbep/cx_mgw_med_exception.
 ENDCLASS.
 
-
-
 CLASS zcl_odata_fw_mpc IMPLEMENTATION.
 
   METHOD constructor.
@@ -131,7 +129,6 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
           is_property = <ls_property>
           io_prop_ref = CAST #( lo_property )
       ).
-*     CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
     ENDLOOP.
   ENDMETHOD.
 
@@ -231,8 +228,6 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
         IF <ls_property>-not_filterable = abap_true.
           lo_property->set_filterable( abap_false ).
         ENDIF.
-
-
       ENDIF.
 
       IF <ls_property>-search_help IS NOT INITIAL.
@@ -262,8 +257,6 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
         DATA(lt_sh_properties) = mo_customizing->get_properties( ).
         DELETE lt_sh_properties WHERE entity_name <> is_property-search_help.
         DATA(lv_first_key) = lt_sh_properties[ is_key = abap_true ]-property_name.
-
-*              cl*shlp_annotation*
         DATA(lo_annotation) = zcl_odata_annotation_shlp=>create(
           io_vocan_model         = mo_anno_model
           iv_namespace           = |{ mo_customizing->get_namespace( ) }|
@@ -273,11 +266,10 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
                                       ELSE is_property-property_name )
           iv_search_supported    = abap_true
           iv_search_help_field   = is_property-abap_name
-*            iv_qualifier           =
-*            iv_label               =
           iv_valuelist_entityset = |{ is_property-search_help }Set|
           iv_valuelist_property  = SWITCH #( is_property-complex_type
-                                      WHEN 'valueDescription' THEN |{ zif_odata_constants=>gc_global_properties-value_help-value }|
+                                      WHEN 'valueDescription' 
+                                        THEN |{ zif_odata_constants=>gc_global_properties-value_help-value }|
                                       ELSE lv_first_key )
       ).
 
@@ -292,7 +284,6 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
                   iv_valuelist_property = |{ <ls_sh_property>-property_name }|
               ).
             ELSE.
-*              lo_annotation->add_display_parameter( |{ <ls_sh_property>-property_name }| ).
               lo_annotation->add_out_parameter(
                 iv_property           = |{ <ls_sh_property>-property_name }|
                 iv_valuelist_property = |{ <ls_sh_property>-property_name }|
@@ -305,8 +296,6 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
     ENDTRY.
 
   ENDMETHOD.
-
-
 
   METHOD override_texts.
     CHECK io_prop_ref IS BOUND.

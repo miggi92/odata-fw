@@ -29,7 +29,7 @@ FUNCTION z_odata_entity_shlp_exit.
 * elementary searchhelp in SHLP and to change CALLCONTROL-STEP to
 * either to 'PRESEL' or to 'SELECT'.
   IF callcontrol-step = 'SELONE'.
-*   PERFORM SELONE .........
+
     EXIT.
   ENDIF.
 
@@ -42,7 +42,7 @@ FUNCTION z_odata_entity_shlp_exit.
 * to 'SELECT'.
 * Normaly only SHLP-SELOPT should be changed in this step.
   IF callcontrol-step = 'PRESEL'.
-*   PERFORM PRESEL ..........
+
     EXIT.
   ENDIF.
 *"----------------------------------------------------------------------
@@ -55,13 +55,7 @@ FUNCTION z_odata_entity_shlp_exit.
 * Standard function module F4UT_RESULTS_MAP may be very helpfull in this
 * step.
   IF callcontrol-step = 'SELECT'.
-*   PERFORM STEP_SELECT TABLES RECORD_TAB SHLP_TAB
-*                       CHANGING SHLP CALLCONTROL RC.
-*   IF RC = 0.
-*     CALLCONTROL-STEP = 'DISP'.
-*   ELSE.
-*     CALLCONTROL-STEP = 'EXIT'.
-*   ENDIF.
+
     EXIT. "Don't process STEP DISP additionally in this call.
   ENDIF.
 *"----------------------------------------------------------------------
@@ -82,15 +76,14 @@ FUNCTION z_odata_entity_shlp_exit.
 * Standard function modules F4UT_PARAMETER_VALUE_GET and
 * F4UT_PARAMETER_RESULTS_PUT may be very helpfull in this step.
   IF callcontrol-step = 'DISP'.
-*   PERFORM AUTHORITY_CHECK TABLES RECORD_TAB SHLP_TAB
-*                           CHANGING SHLP CALLCONTROL.
+
     DATA: namespace_range TYPE RANGE OF zodata_namespace-namespace.
     TRY.
         DATA(name_space_shlp) = shlp-selopt[ shlpfield = 'NAMESPACE' ].
         SELECT namespace
             FROM zodata_namespace
             INTO TABLE @DATA(namespaces)
-            WHERE is_global = @abap_true.
+            WHERE is_global = @abap_true. "#EC CI_SUBRC
 
         DELETE namespaces WHERE table_line = name_space_shlp-low.
 
@@ -102,7 +95,7 @@ FUNCTION z_odata_entity_shlp_exit.
             FROM zodata_entity
             INTO TABLE @DATA(global_entities)
             WHERE is_complex = @abap_true
-              AND namespace IN @namespace_range.
+              AND namespace IN @namespace_range. "#EC CI_SUBRC
 
         LOOP AT global_entities ASSIGNING FIELD-SYMBOL(<global_entity>).
           APPEND VALUE #( string = <global_entity> ) TO record_tab.

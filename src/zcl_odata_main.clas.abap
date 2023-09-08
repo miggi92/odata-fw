@@ -7,9 +7,11 @@ CLASS zcl_odata_main DEFINITION
     INTERFACES:
       /iwbep/if_mgw_appl_srv_runtime.
     METHODS:
+      "! <p class="shorttext synchronized" lang="en">Constructor</p>
       constructor
         IMPORTING
           io_dpc_object TYPE REF TO /iwbep/cl_mgw_push_abs_data,
+      "! <p class="shorttext synchronized" lang="en">Before processing</p>
       before_processing
         RAISING
           /iwbep/cx_mgw_tech_exception.
@@ -190,7 +192,6 @@ CLASS zcl_odata_main IMPLEMENTATION.
 
   METHOD constructor.
     me->dpc_object = io_dpc_object.
-*    me->message_container = me->dpc_object->/iwbep/if_mgw_conv_srv_runtime~get_message_container( ).
   ENDMETHOD.
 
 
@@ -212,6 +213,9 @@ CLASS zcl_odata_main IMPLEMENTATION.
 
     IF type = cl_abap_elemdescr=>kind_table.
       ASSIGN c_data->* TO <itab>.
+      if sy-subrc <> 0.
+        return.
+      endif.
       DATA(count) = lines( <itab> ).
     ELSEIF i_data IS INITIAL.
       count = 0.
@@ -314,6 +318,10 @@ CLASS zcl_odata_main IMPLEMENTATION.
               CREATE DATA entries LIKE c_data.
               ASSIGN entries->* TO <entries>.
 
+              if sy-subrc <> 0.
+                return.
+              endif.
+
               LOOP AT ranges-frange_t ASSIGNING FIELD-SYMBOL(<ranges>).
                 LOOP AT c_data ASSIGNING <data>.
                   tabix = sy-tabix.
@@ -370,11 +378,7 @@ CLASS zcl_odata_main IMPLEMENTATION.
         <sort>-name = <orderby>-property_path.
       ENDIF.
 
-      IF <orderby>-order = 'asc'.
-        <sort>-descending = abap_false.
-      ELSE.
-        <sort>-descending = abap_true.
-      ENDIF.
+      <sort>-descending = xsdbool( NOT ( <orderby>-order = 'asc' ) ).
     ENDLOOP.
 
     SORT c_data BY (sortorder).

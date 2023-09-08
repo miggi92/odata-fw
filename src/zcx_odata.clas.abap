@@ -3,12 +3,12 @@ class ZCX_ODATA definition
   inheriting from CX_STATIC_CHECK
   create public .
 
-public section.
+  public section.
 
-  interfaces IF_T100_DYN_MSG .
-  interfaces IF_T100_MESSAGE .
+    interfaces IF_T100_DYN_MSG .
+    interfaces IF_T100_MESSAGE .
 
-  constants:
+    constants:
     BEGIN OF no_filter_passed,
         msgid TYPE symsgid VALUE 'Z_ODATA',
         msgno TYPE symsgno VALUE '001',
@@ -17,7 +17,7 @@ public section.
         attr3 TYPE scx_attrname VALUE '',
         attr4 TYPE scx_attrname VALUE '',
       END OF no_filter_passed .
-  constants:
+    constants:
     BEGIN OF no_structure,
         msgid TYPE symsgid VALUE 'Z_ODATA',
         msgno TYPE symsgno VALUE '002',
@@ -26,7 +26,7 @@ public section.
         attr3 TYPE scx_attrname VALUE '',
         attr4 TYPE scx_attrname VALUE '',
       END OF no_structure .
-  constants:
+    constants:
     BEGIN OF no_entities,
         msgid TYPE symsgid VALUE 'Z_ODATA',
         msgno TYPE symsgno VALUE '003',
@@ -35,7 +35,7 @@ public section.
         attr3 TYPE scx_attrname VALUE '',
         attr4 TYPE scx_attrname VALUE '',
       END OF no_entities .
-  constants:
+    constants:
     BEGIN OF no_properties,
         msgid TYPE symsgid VALUE 'Z_ODATA',
         msgno TYPE symsgno VALUE '004',
@@ -44,7 +44,7 @@ public section.
         attr3 TYPE scx_attrname VALUE '',
         attr4 TYPE scx_attrname VALUE '',
       END OF no_properties .
-  constants:
+    constants:
     BEGIN OF component_not_in_structure,
         msgid TYPE symsgid VALUE 'Z_ODATA',
         msgno TYPE symsgno VALUE '005',
@@ -53,7 +53,7 @@ public section.
         attr3 TYPE scx_attrname VALUE '',
         attr4 TYPE scx_attrname VALUE '',
       END OF component_not_in_structure .
-  constants:
+    constants:
     BEGIN OF only_one_filter_id,
         msgid TYPE symsgid VALUE 'Z_ODATA',
         msgno TYPE symsgno VALUE '006',
@@ -62,7 +62,7 @@ public section.
         attr3 TYPE scx_attrname VALUE '',
         attr4 TYPE scx_attrname VALUE '',
       END OF only_one_filter_id .
-  constants:
+    constants:
     BEGIN OF no_search_help_found,
         msgid TYPE symsgid VALUE 'Z_ODATA',
         msgno TYPE symsgno VALUE '007',
@@ -71,7 +71,7 @@ public section.
         attr3 TYPE scx_attrname VALUE '',
         attr4 TYPE scx_attrname VALUE '',
       END OF no_search_help_found .
-  constants:
+    constants:
     begin of ACTION_NOT_IMPLEMENTED,
       msgid type symsgid value 'Z_ODATA',
       msgno type symsgno value '008',
@@ -80,10 +80,19 @@ public section.
       attr3 type scx_attrname value '',
       attr4 type scx_attrname value '',
     end of ACTION_NOT_IMPLEMENTED .
-  data VALUE type STRING .
-  data VALUE2 type STRING .
+    data VALUE type STRING .
+    data VALUE2 type STRING .
 
-  class-methods CONVERT_MSG
+    "! <p class="shorttext synchronized" lang="en">Convert msg to error</p>
+    "!
+    "! @parameter I_MSGID | <p class="shorttext synchronized" lang="en">Message id</p>
+    "! @parameter I_MSGNO | <p class="shorttext synchronized" lang="en">Message number</p>
+    "! @parameter I_MSGV1 | <p class="shorttext synchronized" lang="en">Message attribute 1</p>
+    "! @parameter I_MSGV2 | <p class="shorttext synchronized" lang="en">Message attribute 2</p>
+    "! @parameter I_MSGV3 | <p class="shorttext synchronized" lang="en">Message attribute 3</p>
+    "! @parameter I_MSGV4 | <p class="shorttext synchronized" lang="en">Message attribute 4</p>
+    "! @parameter R_TEXTID | <p class="shorttext synchronized" lang="en">Error structure</p>
+    class-methods CONVERT_MSG
     importing
       !I_MSGID type SYST_MSGID default SY-MSGID
       !I_MSGNO type SYST_MSGNO default SY-MSGNO
@@ -93,12 +102,22 @@ public section.
       !I_MSGV4 type SYST_MSGV default SY-MSGV4
     returning
       value(R_TEXTID) like IF_T100_MESSAGE=>T100KEY .
-  class-methods CONVERT_BAPIRET2
+    "! <p class="shorttext synchronized" lang="en">Convert BAPIRET2 to error</p>
+    "!
+    "! @parameter I_RETURN | <p class="shorttext synchronized" lang="en">Bapi return 2 structure</p>
+    "! @parameter R_TEXTID | <p class="shorttext synchronized" lang="en">Error structure</p>
+    class-methods CONVERT_BAPIRET2
     importing
       !I_RETURN type BAPIRET2
     returning
       value(R_TEXTID) like IF_T100_MESSAGE=>T100KEY .
-  methods CONSTRUCTOR
+    "! <p class="shorttext synchronized" lang="en">Constructor</p>
+    "!
+    "! @parameter TEXTID | <p class="shorttext synchronized" lang="en">Message id</p>
+    "! @parameter PREVIOUS | <p class="shorttext synchronized" lang="en">Previous exception</p>
+    "! @parameter VALUE | <p class="shorttext synchronized" lang="en">Message attribute 1</p>
+    "! @parameter VALUE2 | <p class="shorttext synchronized" lang="en">Message attribute 2</p>
+    methods CONSTRUCTOR
     importing
       !TEXTID like IF_T100_MESSAGE=>T100KEY optional
       !PREVIOUS like PREVIOUS optional
@@ -107,7 +126,6 @@ public section.
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
-
 
 
 CLASS ZCX_ODATA IMPLEMENTATION.

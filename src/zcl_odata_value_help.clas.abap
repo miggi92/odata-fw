@@ -197,6 +197,10 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
     CREATE DATA table TYPE TABLE OF (table_name).
     ASSIGN table->* TO <table_values>.
 
+    if sy-subrc <> 0.
+      return.
+    endif.
+
     table_ref ?= cl_abap_tabledescr=>describe_by_data( <table_values> ).
     structure ?= table_ref->get_table_line_type( ).
 
@@ -238,6 +242,9 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
     ELSE.
       CREATE DATA table TYPE TABLE OF (texttable).
       ASSIGN table->* TO <texttable_value>.
+      if sy-subrc <> 0.
+        return.
+      endif.
 
       DATA: test TYPE string.
 

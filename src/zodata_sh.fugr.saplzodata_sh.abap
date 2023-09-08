@@ -1,8 +1,8 @@
 *******************************************************************
 *   System-defined Include-files.                                 *
 *******************************************************************
-  INCLUDE LZODATA_SHTOP.                     " Global Declarations
-  INCLUDE LZODATA_SHUXX.                     " Function Modules
+INCLUDE LZODATA_SHTOP.                     " Global Declarations
+INCLUDE LZODATA_SHUXX.                     " Function Modules
 
 *******************************************************************
 *   User-defined Include-files (if necessary).                    *

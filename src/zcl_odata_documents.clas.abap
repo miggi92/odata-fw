@@ -23,11 +23,7 @@ CLASS zcl_odata_documents DEFINITION
         RETURNING
           VALUE(rv_result) TYPE string.
   PRIVATE SECTION.
-
-
 ENDCLASS.
-
-
 
 CLASS zcl_odata_documents IMPLEMENTATION.
 

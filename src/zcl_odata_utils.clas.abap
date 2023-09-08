@@ -10,6 +10,7 @@ CLASS zcl_odata_utils DEFINITION
                  standard_timezone TYPE timezone VALUE 'CET'.
 
     CLASS-METHODS:
+      "! <p class="shorttext synchronized" lang="en">Get user details/p>
       get_user_detail
         IMPORTING
           !i_uname      TYPE sy-uname DEFAULT sy-uname
@@ -26,7 +27,7 @@ CLASS zcl_odata_utils DEFINITION
           !i_error TYPE REF TO cx_root
         RAISING
           /iwbep/cx_mgw_med_exception,
-
+      "! <p class="shorttext synchronized" lang="en">Get text from domain</p>
       get_text_from_domain
         IMPORTING
           i_value       TYPE any
@@ -60,6 +61,7 @@ CLASS zcl_odata_utils DEFINITION
           i_time             TYPE syst_timlo DEFAULT sy-timlo
         RETURNING
           VALUE(r_timestamp) TYPE timestampl,
+      "! <p class="shorttext synchronized" lang="en">Converts date to a timestamp in UTC format</p>
       convert_date2fullday_timestamp
         IMPORTING
           i_date            TYPE datum DEFAULT sy-datum
@@ -113,6 +115,7 @@ CLASS zcl_odata_utils IMPLEMENTATION.
 
     IF data_element->kind <> data_element->kind_elem.
       " no data element
+      return.
     ENDIF.
 
     data_element->get_ddic_fixed_values(

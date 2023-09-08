@@ -5,7 +5,6 @@ CLASS ltcl_odata_utils DEFINITION FINAL FOR TESTING
 
   PRIVATE SECTION.
     METHODS:
-      setup,
       convert_timestamp2date FOR TESTING,
       convert_date2timestamp FOR TESTING,
       conv_date_and_time2timestamp FOR TESTING,
@@ -14,10 +13,6 @@ ENDCLASS.
 
 
 CLASS ltcl_odata_utils IMPLEMENTATION.
-
-  METHOD setup.
-
-  ENDMETHOD.
 
   METHOD convert_timestamp2date.
     DATA: convert_timestamp2date TYPE timestampl.

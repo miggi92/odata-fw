@@ -36,8 +36,6 @@ CLASS zcl_odata_fw_controller DEFINITION
     DATA mo_customizing TYPE REF TO zcl_odata_fw_cust.
 ENDCLASS.
 
-
-
 CLASS zcl_odata_fw_controller IMPLEMENTATION.
 
   METHOD constructor.

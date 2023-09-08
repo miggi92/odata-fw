@@ -8,32 +8,41 @@ CLASS zcl_odata_bo_user DEFINITION
 
           ty_parameters TYPE STANDARD TABLE OF bapiparam WITH DEFAULT KEY.
     METHODS:
+      "! <p class="shorttext synchronized" lang="en">Constructor</p>
       constructor
         IMPORTING
           i_user TYPE sy-uname
         RAISING
           zcx_odata,
+      "! <p class="shorttext synchronized" lang="en">Get user parameters</p>
       get_parameters
         RETURNING
           VALUE(r_result) TYPE ty_parameters,
+      "! <p class="shorttext synchronized" lang="en">Get default mail</p>
       get_standard_email
         RETURNING
           VALUE(r_email) TYPE bapiadsmtp-e_mail,
+      "! <p class="shorttext synchronized" lang="en">Get default telephone</p>
       get_standard_tel
         RETURNING
           VALUE(r_tel) TYPE bapiadtel-tel_no,
+      "! <p class="shorttext synchronized" lang="en">Get fullname</p>
       get_fullname
         RETURNING
           VALUE(r_name) TYPE bapiaddr3-fullname,
+      "! <p class="shorttext synchronized" lang="en">Get user cost center</p>
       get_cost_center
         RETURNING
           VALUE(r_cost_center) TYPE bapidefaul-kostl,
+      "! <p class="shorttext synchronized" lang="en">Get first name</p>
       get_firstname
         RETURNING
           VALUE(r_firstname) TYPE bapiaddr3-firstname,
+      "! <p class="shorttext synchronized" lang="en">Get last name</p>
       get_lastname
         RETURNING
           VALUE(r_lastname) TYPE bapiaddr3-lastname,
+      "! <p class="shorttext synchronized" lang="en">Get user id</p>
       get_user_id
         RETURNING
           VALUE(r_result) TYPE sy-uname.
@@ -49,12 +58,11 @@ CLASS zcl_odata_bo_user DEFINITION
           defaults   TYPE bapidefaul.
 
     METHODS:
+      "! <p class="shorttext synchronized" lang="en">Read user detail</p>
       read_user_detail
         RAISING
           zcx_odata.
 ENDCLASS.
-
-
 
 CLASS zcl_odata_bo_user IMPLEMENTATION.
 

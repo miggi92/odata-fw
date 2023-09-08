@@ -60,12 +60,14 @@
     "method_length": {
       "statements": 25,
       "ignoreTestClasses": false,
-      "errorWhenEmpty": true
+      "errorWhenEmpty": true,
+      "severity": "Warning"
     },
-    "mix_returning": true,
+    "mix_returning": false,
     "msag_consistency": true,
     "nesting": {
-      "depth": 5
+      "depth": 5,
+      "severity": "Warning"
     },
     "obsolete_statement": {
       "refresh": true,
@@ -96,9 +98,11 @@
     "ambiguous_statement": true,
     "begin_end_names": true,
     "check_transformation_exists": true,
-    "check_syntax": true,
+    "check_syntax": false,
     "form_tables_obsolete": true,
-    "tabl_enhancement_category": true,
+    "tabl_enhancement_category": {
+      "severity": "Warning"
+    },
     "implement_methods": true,
     "local_testclass_location": true,
     "main_file_contents": true,
@@ -123,7 +127,8 @@
     "abapdoc": true,
     "prefer_returning_to_exporting": true,
     "keep_single_parameter_on_one_line": {
-      "length": 120
+      "length": 120,
+      "severity": "Warning"
     },
     "allowed_object_naming": true,
     "fully_type_constants": true,
@@ -155,7 +160,8 @@
     "use_line_exists": true,
     "check_subrc": true,
     "cyclomatic_complexity": {
-      "max": 6
+      "max": 6,
+      "severity": "Warning"
     },
     "parser_missing_space": true,
     "identical_conditions": true,

@@ -6,6 +6,6 @@ date modified: Friday, September 8th 2023, 9:58:44 am
 ---
 # Development Objects
 
-## [[documentation/dev objects/classes/index|Classes]]
+## [[dev objects/classes/index|Classes]]
 
-## [[documentation/dev objects/sap objects/index|SAP Objects]]
+## [[dev objects/sap objects/index|SAP Objects]]

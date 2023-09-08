@@ -117,8 +117,6 @@ CLASS zcl_odata_annotation_shlp DEFINITION
           VALUE(ro_record)      TYPE REF TO /iwbep/if_mgw_vocan_record.
 ENDCLASS.
 
-
-
 CLASS zcl_odata_annotation_shlp IMPLEMENTATION.
   METHOD add_out_parameter.
     DATA(lo_record) = create_annotation_with_local(
@@ -183,7 +181,7 @@ CLASS zcl_odata_annotation_shlp IMPLEMENTATION.
       lo_record->create_property( 'SearchSupported' )->create_simple_value( )->set_boolean( abap_true ).
     ENDIF.
 
-    CREATE OBJECT ro_annotation.
+    ro_annotation = new #( ).
 
     " collect parameters of value help (incl. result fields)
     ro_annotation->mo_parameters = lo_record->create_property( 'Parameters' )->create_collection( )      ##NO_TEXT.

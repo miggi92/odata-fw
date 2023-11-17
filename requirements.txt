@@ -1,5 +1,5 @@
 mkdocs==1.5.2
-mkdocs-material==9.4.6
+mkdocs-material==9.4.8
 mkdocs-ezlinked-plugin==0.3.3
 mkdocs-awesome-pages-plugin==2.9.2
 mdx_breakless_lists==1.0.1
@@ -8,7 +8,7 @@ mkdocs-embed-file-plugins==2.0.6
 mkdocs_custom_fences==0.1.2
 mkdocs-git-revision-date-localized-plugin==1.2.1
 mkdocs-encryptcontent-plugin==3.0.0
-mkdocs-callouts==1.9.2
+mkdocs-callouts==1.10.0
 mkdocs-custom-tags-attributes==0.3.0
 mkdocs-meta-descriptions-plugin==2.3.0
 obsidiantools==0.10.0

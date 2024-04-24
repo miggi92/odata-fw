@@ -12,9 +12,9 @@ export default
     lang: 'en-US',
     base: '/odata-fw/',
     description: "A odata framework for a SAP System. ",
-    
+
     head: [
-      ['link', { rel: 'icon', href: '../assets/favicon.ico' }],
+      ['link', { rel: 'icon', href: '/favicon.ico' }],
       ['meta', { property: 'og:type', content: 'website' }],
       ['meta', { property: 'og:locale', content: 'en' }],
       ['meta', { property: 'og:site_name', content: 'ABAP OData framework' }],
@@ -27,7 +27,7 @@ export default
     themeConfig: {
       // https://vitepress.dev/reference/default-theme-config
       nav: nav(),
-      editLink: { 
+      editLink: {
         pattern: 'https://github.com/miggi92/odata-fw/edit/master/docs/:path',
         text: 'Edit this page on GitHub'
       },
@@ -54,7 +54,7 @@ export default
       sidebar: {
         "/documentation/": sidebarDocumentation(),
       },
-      logo: '../assets/odata_fw_logo_transparent.png',
+      logo: '/odata_fw_logo_transparent.png',
 
       socialLinks: [
         { icon: 'github', link: 'https://github.com/miggi92/odata-fw' }

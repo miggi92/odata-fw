@@ -8,7 +8,7 @@ date modified: Tuesday, September 5th 2023, 5:37:56 pm
 
 ## Boilerplate Coding for Implementing
 
-Look into [[DPC boilerplate code#create_deep_entity]].
+Look into [create deep entity](./DPC-boilerplate-code#create_deep_entity) documentation.
 
 ## Defining Deep Entity Structure
 
@@ -29,5 +29,5 @@ TYPES:
 
 Just insert the structure name into the "Deep entity structure" field.
 
-![[cust_deep_entity.png]]
+![deep entity customizing](./attachments/cust_deep_entity.png)
 

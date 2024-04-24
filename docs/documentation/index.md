@@ -8,8 +8,8 @@ date modified: Tuesday, September 5th 2023, 5:38:03 pm
 
 ## Creating the First Service
 
-[[Creating a service]]
+[Creating a service](./Creating-a-service)
 
 ## DPC Boilerplate Code
 
-[[DPC boilerplate code]]
+[DPC boilerplate code](./DPC-boilerplate-code)

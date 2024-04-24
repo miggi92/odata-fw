@@ -8,37 +8,37 @@ tags:
 date created: Wednesday, August 23rd 2023, 6:18:18 pm
 date modified: Tuesday, September 5th 2023, 11:12:48 pm
 ---
-# Creating a Service
+# {{ $frontmatter.title }}
 
 ## Steps
 
-1. [[#Create a SEGW Project]]
-2. [[#Generate classes]]
-3. [[#Implement the framework MPC method]]
-4. [[#Implementing the framework DPC methods]]
-  -  [[#Boilerplate coding for the OData methods]]
-5. [[#Customize your service]]
+1. [Create a SEGW Project](#create-a-segw-project)
+2. [Generate classes](#generate-classes)
+3. [Implement the framework MPC method](#implement-the-framework-mpc-method)
+4. [Implementing the framework DPC methods](#implementing-the-framework-dpc-methods)
+	-  [Boilerplate coding for the OData methods](#boilerplate-coding-for-the-odata-methods)
+5. [Customize your service](#customize-your-service)
 
 ## Create a SEGW Project
 
-First of all we need to create a [[SEGW]] project.
-Transaction code: [[SEGW]]
+First of all we need to create a [SEGW](./definitions/SEGW) project.
+Transaction code: [SEGW](./definitions/SEGW)
 
-![segw_create_project](segw_create_project.png)
+![segw_create_project](./attachments/segw_create_project.png)
 
-![](segw_name_project.png)
+![](./attachments/segw_name_project.png)
 
 ## Generate Classes
 
-To start with our development we first need the [[SEGW]] transaction to generate the [[DPC]] and [[MPC]] classes.
+To start with our development we first need the [SEGW](./definitions/SEGW) transaction to generate the [DPC](./definitions/DPC) and [MPC](./definitions/MPC) classes.
 
-![[segw_generate_classes.png]]
+![Generate segw class](./attachments/segw_generate_classes.png)
 
 You might want to change now the class names to match the system naming conventions.
 
-![[segw_model_service_def.png]]
+![model service definition](./attachments/segw_model_service_def.png)
 
-After this we're done using the [[SEGW]] for developing reasons.
+After this we're done using the [SEGW](./definitions/SEGW) for developing reasons.
 
 ## Implement the Framework MPC Method
 
@@ -49,7 +49,7 @@ PUBLIC SECTION.
 	METHODS define REDEFINITION.
 ```
 
-Next we add the OData framework by calling the "define_mpc" method of the framework class ([[ZCL_ODATA_FW_CONTROLLER]]). Notice, that 'Z_MY_PROJECT' is the namespace, that we need to use in the framework view cluster.
+Next we add the OData framework by calling the "define_mpc" method of the framework class ([ZCL_ODATA_FW_CONTROLLER](../dev-objects/classes/ZCL_ODATA_FW_CONTROLLER)). Notice, that 'Z_MY_PROJECT' is the namespace, that we need to use in the framework view cluster.
 
 ```abap
 METHOD define.
@@ -91,9 +91,9 @@ DATA: mt_data_providers TYPE REF TO zcl_odata_data_provider.
 
 ### Boilerplate Coding for the OData Methods
 
-For the boilerplate code, that has to be inserted into the OData methods you can copy the lines in the [[DPC boilerplate code]] file.
+For the boilerplate code, that has to be inserted into the OData methods you can copy the lines in the [DPC boilerplate code](./DPC-boilerplate-code) file.
 
 ## Customize Your Service
 
 Implement your odata service customizing. By calling the **ZODATA_CUST** transaction.
-For a detailed documentation you can look into the [[OData Customizing]] file.
+For a detailed documentation you can look into the [OData Customizing](./OData-Customizing) file.

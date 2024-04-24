@@ -10,9 +10,6 @@ hero:
     - theme: brand
       text: Documentation
       link: /documentation/
-    - theme: alt
-      text: API Examples
-      link: /api-examples
 
 features:
   - title: Feature A

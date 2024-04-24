@@ -343,7 +343,8 @@ CLASS zcl_odata_main IMPLEMENTATION.
     DATA lt_order_properties TYPE TABLE OF string.
 
     LOOP AT lt_orderby ASSIGNING FIELD-SYMBOL(<lv_orderby>).
-      DATA(lv_order_property) = |{ <lv_orderby>-property } { COND #( WHEN <lv_orderby>-order = 'desc' THEN 'DESCENDING' ) }|.
+      DATA(lv_sort_order) = COND #( WHEN <lv_orderby>-order = 'desc' THEN 'DESCENDING' ).
+      DATA(lv_order_property) = |{ <lv_orderby>-property } { lv_sort_order }|.
       APPEND lv_order_property TO lt_order_properties.
     ENDLOOP.
 

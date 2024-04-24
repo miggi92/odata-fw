@@ -325,8 +325,8 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
             CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
           ENDTRY.
         ELSE.
-          io_prop_ref->set_label_from_text_element( iv_text_element_symbol    = |{ ls_label-text_id }| " Text element key (number/selection name)
-                                                    iv_text_element_container = |{ ls_label-object_name }| ). " the class/report which contains the text element
+          io_prop_ref->set_label_from_text_element( iv_text_element_symbol    = |{ ls_label-text_id }|
+                                                    iv_text_element_container = |{ ls_label-object_name }| ).
         ENDIF.
 
       CATCH cx_sy_itab_line_not_found /iwbep/cx_mgw_med_exception.

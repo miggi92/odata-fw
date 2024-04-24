@@ -3,7 +3,7 @@ class ZCX_ODATA definition
   inheriting from CX_STATIC_CHECK
   create public .
 
-public section.
+  public section.
 
   interfaces IF_T100_MESSAGE .
   interfaces IF_T100_DYN_MSG .

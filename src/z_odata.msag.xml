@@ -17,25 +17,25 @@
      <SPRSL>D</SPRSL>
      <ARBGB>Z_ODATA</ARBGB>
      <MSGNR>002</MSGNR>
-     <TEXT>&amp; ist keine Struktur.</TEXT>
+     <TEXT>&amp;1 ist keine Struktur.</TEXT>
     </T100>
     <T100>
      <SPRSL>D</SPRSL>
      <ARBGB>Z_ODATA</ARBGB>
      <MSGNR>003</MSGNR>
-     <TEXT>Es wurden im Namensraum &amp; keine Entitäten gefunden.</TEXT>
+     <TEXT>Es wurden im Namensraum &amp;1 keine Entitäten gefunden.</TEXT>
     </T100>
     <T100>
      <SPRSL>D</SPRSL>
      <ARBGB>Z_ODATA</ARBGB>
      <MSGNR>004</MSGNR>
-     <TEXT>Keine Eigenschaften für den Namensraum &amp; gefunden.</TEXT>
+     <TEXT>Keine Eigenschaften für den Namensraum &amp;1 gefunden.</TEXT>
     </T100>
     <T100>
      <SPRSL>D</SPRSL>
      <ARBGB>Z_ODATA</ARBGB>
      <MSGNR>005</MSGNR>
-     <TEXT>Komonente &amp; existiert in der Struktur &amp; nicht.</TEXT>
+     <TEXT>Komonente &amp;1 existiert in der Struktur &amp;2 nicht.</TEXT>
     </T100>
     <T100>
      <SPRSL>D</SPRSL>
@@ -68,22 +68,22 @@
     <item>
      <SPRSL>E</SPRSL>
      <MSGNR>002</MSGNR>
-     <TEXT>&amp; is not a structure.</TEXT>
+     <TEXT>&amp;1 is not a structure.</TEXT>
     </item>
     <item>
      <SPRSL>E</SPRSL>
      <MSGNR>003</MSGNR>
-     <TEXT>No entities found for namespace &amp;.</TEXT>
+     <TEXT>No entities found for namespace &amp;1.</TEXT>
     </item>
     <item>
      <SPRSL>E</SPRSL>
      <MSGNR>004</MSGNR>
-     <TEXT>No properties found for namespace &amp;.</TEXT>
+     <TEXT>No properties found for namespace &amp;1.</TEXT>
     </item>
     <item>
      <SPRSL>E</SPRSL>
      <MSGNR>005</MSGNR>
-     <TEXT>Component &amp; not found in structure &amp;.</TEXT>
+     <TEXT>Component &amp;1 not found in structure &amp;2.</TEXT>
     </item>
     <item>
      <SPRSL>E</SPRSL>
@@ -98,7 +98,12 @@
     <item>
      <SPRSL>E</SPRSL>
      <MSGNR>008</MSGNR>
-     <TEXT>Action &amp; isn&apos;t implemented yet.</TEXT>
+     <TEXT>Action &amp;1 isn&apos;t implemented yet.</TEXT>
+    </item>
+    <item>
+     <SPRSL>E</SPRSL>
+     <MSGNR>009</MSGNR>
+     <TEXT>Column &amp;1 not found in table &amp;2. (Search help generation)</TEXT>
     </item>
    </T100_TEXTS>
   </asx:values>

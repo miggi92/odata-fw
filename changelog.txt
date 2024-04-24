@@ -8,6 +8,62 @@ Legend
 + : added
 - : removed
 
+2024-04-25 v1.1.0
+🚀 Enhancements
+
+- Add method for orderby clause 
+- Updated search helps 
+- 🎉  init vitepress 
+- 📝  updated documentation to fit vitepress
+- ✨  addede favicon 
+- 🔍️  added seo head 
+- ✨  added edit button for docs 
+
+🩹 Fixes
+
+- Fixed autofixable lint errors
+- 🐛  fixed collapsing not working 
+- 🚨  fixed existing abaplint errors 
+
+💅 Refactors
+
+- 🔥  removed mkdocs assets
+- ♻️  changed title to frontmatter 
+- ♻️  moved customizing to own section 
+- ♻️  refactor customizing documentation
+- 🔥  removed labeler 
+
+📖 Documentation
+
+- 📝  added fixed domain values documentation
+- 📝  updated value help documentation 
+
+🏡 Chore
+
+- Autopublish 2023-09-06T12:37:27Z 
+- Autopublish 2023-09-09T00:17:54Z 
+- 🙈  removed unused entries in ignore file 
+- 🔧  moved to pnpm
+- ➕  added vitepress dep 
+- 🔥  removed mkdocs files 
+- 🙈  ignoring vitepress cache 
+- 🔧  updated vitepress config
+- 🍱  moved assets
+- 📝  updated documentation 
+- 🔥  removed example link 
+- ♻️  updated assets 
+- ⬆️  updated deps
+- 🔖  updated version in constant interface for abapgit 
+
+🤖 CI
+
+- 👷  updated to vitepress
+
+❤️ Contributors
+
+- Miguel 
+- Jan 
+
 2023-05-31 v1.0.1
 -------------------
 + create deep entity customizing (#9)

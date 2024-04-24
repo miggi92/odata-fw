@@ -53,7 +53,7 @@
     "if_in_if": true,
     "inline_data_old_versions": true,
     "line_length": {
-      "length": 120
+      "length": 150
     },
     "max_one_statement": true,
     "message_exists": true,
@@ -126,10 +126,7 @@
     },
     "abapdoc": true,
     "prefer_returning_to_exporting": true,
-    "keep_single_parameter_on_one_line": {
-      "length": 120,
-      "severity": "Warning"
-    },
+    "keep_single_parameter_on_one_line": false,
     "allowed_object_naming": true,
     "fully_type_constants": true,
     "check_comments": {
@@ -154,7 +151,7 @@
     "try_without_catch": true,
     "names_no_dash": true,
     "unknown_types": false,
-    "unused_variables": true,
+    "unused_variables": false,
     "unused_types": true,
     "use_bool_expression": true,
     "use_line_exists": true,

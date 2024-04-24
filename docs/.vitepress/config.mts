@@ -12,7 +12,13 @@ export default
     lang: 'en-US',
     base: '/odata-fw/',
     description: "A odata framework for a SAP System. ",
-    head: [['link', { rel: 'icon', href: '../assets/favicon.ico' }]],
+    head: [
+      ['link', { rel: 'icon', href: '../assets/favicon.ico' }],
+      ['meta', { property: 'og:type', content: 'website' }],
+      ['meta', { property: 'og:locale', content: 'en' }],
+      ['meta', { property: 'og:site_name', content: 'ABAP OData framework' }],
+      ['meta', { property: 'og:url', content: 'https://miggi92.github.io/odata-fw/' }],
+    ],
     lastUpdated: true,
     sitemap: {
       hostname: "https://miggi92.github.io/odata-fw/"

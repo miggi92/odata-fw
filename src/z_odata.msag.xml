@@ -4,7 +4,7 @@
   <asx:values>
    <T100A>
     <ARBGB>Z_ODATA</ARBGB>
-    <MASTERLANG>E</MASTERLANG>
+    <MASTERLANG>D</MASTERLANG>
    </T100A>
    <T100>
     <T100>
@@ -94,16 +94,6 @@
      <SPRSL>E</SPRSL>
      <MSGNR>007</MSGNR>
      <TEXT>No searchhelp was found, please check customizing.</TEXT>
-    </item>
-    <item>
-     <SPRSL>E</SPRSL>
-     <MSGNR>008</MSGNR>
-     <TEXT>Action &amp;1 isn&apos;t implemented yet.</TEXT>
-    </item>
-    <item>
-     <SPRSL>E</SPRSL>
-     <MSGNR>009</MSGNR>
-     <TEXT>Column &amp;1 not found in table &amp;2. (Search help generation)</TEXT>
     </item>
    </T100_TEXTS>
   </asx:values>

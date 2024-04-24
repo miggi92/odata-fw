@@ -22,3 +22,15 @@ So to get it to work you only need to enter the data element into the "data_elem
 The framework automatically propergates the values.
 
 In the example the value help enity will be: **fixedDomainValueHelpSet**
+
+## Valuehelp from table
+
+As a value help a table with the description and value fields can be specified. Therefore you fill in the columns "tablename", "data_element" and "DESCRIPTION_FIELD".
+
+![value help from table](./attachments/valuehelp_from_table.png)
+
+## Valuehelp from table with where condition
+
+You can also specify a simple where condition to your value help. The customizing is similar to the [value help from table](#valuehelp-from-table). But you must also fill in the columns "WHERE_DATA_ELEMENT1" and "WHERE_VALUE1".
+
+![value help from table with where condition](./attachments/valuehelp_from_table_with_where.png)

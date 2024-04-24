@@ -1,11 +1,6 @@
 ---
 title: ZCL_ODATA_FW_CUST_DPC
 description: DPC Class
-date created: Tuesday, September 5th 2023, 11:14:46 pm
-date modified: Friday, September 8th 2023, 10:01:11 am
-tags:
-  - dpc
-  - customizing
 ---
 #  {{ $frontmatter.title }}
 

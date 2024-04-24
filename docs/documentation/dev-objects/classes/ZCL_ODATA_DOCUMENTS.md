@@ -33,8 +33,8 @@ This method reads out the stream of the document. The stream contains the binary
 
 #### get_file
 
-This method reads out the file data and returns it as structure of type [[ZODATA_FILE]].
-It is called within the method [[#get_stream]] and should be redefined in the inherited class.
+This method reads out the file data and returns it as structure of type [ZODATA_FILE](./ddic/structures/ZODATA_FILE).
+It is called within the method [get_strean](#get_stream) and should be redefined in the inherited class.
 
 #### get_mime_type_from_type
 

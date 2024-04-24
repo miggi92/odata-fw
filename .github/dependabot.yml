@@ -22,11 +22,3 @@ updates:
     labels:
       - "npm"
       - "dependencies"
-  # Maintain dependencies for pip
-  - package-ecosystem: "pip"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    labels:
-      - "pip"
-      - "dependencies"

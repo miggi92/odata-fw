@@ -1,14 +1,10 @@
 ---
 title: ZCL_ODATA_ANNOTATION_SHLP
 description: Search help annotations
-date created: Tuesday, September 5th 2023, 11:18:38 pm
-date modified: Tuesday, September 5th 2023, 11:44:25 pm
-tags:
-  - annotation
 ---
 #  {{ $frontmatter.title }}
 
-Inheritates from [[ZCL_ODATA_ANNOTATION_COMMON]]. Adds the search help annotations to the odata service.
+Inheritates from [ZCL_ODATA_ANNOTATION_COMMON](./ZCL_ODATA_ANNOTATION_COMMON). Adds the search help annotations to the odata service.
 
 ## Methods
 

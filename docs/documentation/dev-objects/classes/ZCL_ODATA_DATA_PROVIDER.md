@@ -4,7 +4,7 @@ title: ZCL_ODATA_DATA_PROVIDER
 
 #  {{ $frontmatter.title }}
 
-This class contains the data provider classes for the odata service. Every data provider needs to inherit from the [[ZCL_ODATA_MAIN]] class.
+This class contains the data provider classes for the odata service. Every data provider needs to inherit from the [ZCL_ODATA_MAIN](./ZCL_ODATA_MAIN) class.
 
 ## Methods
 

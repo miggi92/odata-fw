@@ -1,0 +1,90 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+devDependencies:
+  '@abaplint/cli':
+    specifier: ^2.100.6
+    version: 2.106.9
+  '@abaplint/runtime':
+    specifier: ^2.7.5
+    version: 2.8.24
+  '@abaplint/transpiler':
+    specifier: ^2.7.20
+    version: 2.8.24
+  '@abaplint/transpiler-cli':
+    specifier: ^2.7.5
+    version: 2.8.24
+
+packages:
+
+  /@abaplint/cli@2.106.9:
+    resolution: {integrity: sha512-go4PX6CEN23tGKco1dmcPJJt3ldwWPtS8urpeQWhrvNmvgHw7DAUiJeuxhSM7/sVUy4a0G3wqWvM6kC1zSYMZg==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dev: true
+
+  /@abaplint/core@2.106.9:
+    resolution: {integrity: sha512-DxEfJViLJHeefqzkUhkC0OAQIkEIH3nZt2GpfCzeYXuYNurKUF8ICJH7my7WM2CXCKoVu/p2OmTjxEim5xRafQ==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      fast-xml-parser: 4.3.6
+      json5: 2.2.3
+      vscode-languageserver-types: 3.17.5
+    dev: true
+
+  /@abaplint/runtime@2.8.24:
+    resolution: {integrity: sha512-FISKIHAhz7VcyLdgDQHpdLi5BeFWXJdmHzTy2VyacbsscNv7c75oi6gyL2Bq6ACvr9yVJgaDuR3erf3Yl3SNbA==}
+    dependencies:
+      temporal-polyfill: 0.2.4
+    dev: true
+
+  /@abaplint/transpiler-cli@2.8.24:
+    resolution: {integrity: sha512-KI5mRqAhwWy3suLuVUTf4kkUH8vshyhXX7fiejhTPGZ7BD5ULFeg6VspN1xWT7CfUGl3S2oD70YbOQWYJ6guRA==}
+    hasBin: true
+    dev: true
+
+  /@abaplint/transpiler@2.8.24:
+    resolution: {integrity: sha512-6OeeAANjzqX71Kbq2NLMABxximo+1GkvKFiY4TlQTHTIW4LvEOHohkYIwSi5mKkYL32u8jHM7ztmgnETYhc+9g==}
+    dependencies:
+      '@abaplint/core': 2.106.9
+      source-map: 0.7.4
+    dev: true
+
+  /fast-xml-parser@4.3.6:
+    resolution: {integrity: sha512-M2SovcRxD4+vC493Uc2GZVcZaj66CCJhWurC4viynVSTvrpErCShNcDz1lAho6n9REQKvL/ll4A4/fw6Y9z8nw==}
+    hasBin: true
+    dependencies:
+      strnum: 1.0.5
+    dev: true
+
+  /json5@2.2.3:
+    resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
+    engines: {node: '>=6'}
+    hasBin: true
+    dev: true
+
+  /source-map@0.7.4:
+    resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
+    engines: {node: '>= 8'}
+    dev: true
+
+  /strnum@1.0.5:
+    resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
+    dev: true
+
+  /temporal-polyfill@0.2.4:
+    resolution: {integrity: sha512-WA5p0CjQTkMjF9m8sP4wSYgpqI8m2d4q7wPUyaJOWhy4bI9mReLb2yGvTV4qf/DPMTe6H6M/Dig5KmTMB7ev6Q==}
+    dependencies:
+      temporal-spec: 0.2.4
+    dev: true
+
+  /temporal-spec@0.2.4:
+    resolution: {integrity: sha512-lDMFv4nKQrSjlkHKAlHVqKrBG4DyFfa9F74cmBZ3Iy3ed8yvWnlWSIdi4IKfSqwmazAohBNwiN64qGx4y5Q3IQ==}
+    dev: true
+
+  /vscode-languageserver-types@3.17.5:
+    resolution: {integrity: sha512-Ld1VelNuX9pdF39h2Hgaeb5hEZM2Z3jUrrMgWQAu82jMtZp7p3vJT3BzToKtZI7NgQssZje5o0zryOrhQvzQAg==}
+    dev: true

@@ -2,7 +2,7 @@
 INTERFACE zif_odata_constants
   PUBLIC.
 
-  CONSTANTS gc_version TYPE string VALUE '1.0.1'.
+  CONSTANTS gc_version TYPE string VALUE '1.1.0'.
   CONSTANTS: BEGIN OF gc_global_entities,
                value_help  TYPE string VALUE 'valueHelp',
                documents   TYPE string VALUE 'globalDocuments',

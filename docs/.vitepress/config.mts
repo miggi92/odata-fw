@@ -3,7 +3,9 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "ABAP OData Framework",
+  lang: 'en-US',
   description: "A odata framework for a SAP System. ",
+  head: [['link', { rel: 'icon', href: '../assets/favicon.ico' }]],
   sitemap: {
     hostname: "https://miggi92.github.io/odata-fw/"
   },
@@ -24,7 +26,7 @@ export default defineConfig({
         ]
       }
     ],
-    logo: './assets/odata_fw_logo_transparent.png',
+    logo: '../assets/odata_fw_logo_transparent.png',
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/miggi92/odata-fw' }

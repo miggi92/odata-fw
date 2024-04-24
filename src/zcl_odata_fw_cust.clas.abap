@@ -117,7 +117,7 @@ CLASS zcl_odata_fw_cust IMPLEMENTATION.
     mt_properties       = zcl_odata_fw_cust_dpc=>read_properties( lt_namespaces ).
     mt_property_texts   = zcl_odata_fw_cust_dpc=>read_property_texts( lt_namespaces ).
     mt_navigation       = zcl_odata_fw_cust_dpc=>read_navigations( lt_namespaces ).
-    mt_search_helps     = zcl_odata_fw_cust_dpc=>read_search_helps( lt_namespaces ).
+    mt_search_helps     = zcl_odata_fw_cust_dpc=>read_search_helps( ).
     mt_actions          = zcl_odata_fw_cust_dpc=>read_actions( lt_namespaces ).
     mt_action_parameter = zcl_odata_fw_cust_dpc=>read_action_parameters( lt_namespaces ).
 

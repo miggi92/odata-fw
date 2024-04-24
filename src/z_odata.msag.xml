@@ -68,22 +68,22 @@
     <item>
      <SPRSL>E</SPRSL>
      <MSGNR>002</MSGNR>
-     <TEXT>&amp; is not a structure.</TEXT>
+     <TEXT>&amp;1 is not a structure.</TEXT>
     </item>
     <item>
      <SPRSL>E</SPRSL>
      <MSGNR>003</MSGNR>
-     <TEXT>No entities found for namespace &amp;.</TEXT>
+     <TEXT>No entities found for namespace &amp;1.</TEXT>
     </item>
     <item>
      <SPRSL>E</SPRSL>
      <MSGNR>004</MSGNR>
-     <TEXT>No properties found for namespace &amp;.</TEXT>
+     <TEXT>No properties found for namespace &amp;1.</TEXT>
     </item>
     <item>
      <SPRSL>E</SPRSL>
      <MSGNR>005</MSGNR>
-     <TEXT>Component &amp; not found in structure &amp;.</TEXT>
+     <TEXT>Component &amp;1 not found in structure &amp;2.</TEXT>
     </item>
     <item>
      <SPRSL>E</SPRSL>
@@ -98,12 +98,12 @@
     <item>
      <SPRSL>E</SPRSL>
      <MSGNR>008</MSGNR>
-     <TEXT>Action &amp; isn&apos;t implemented yet.</TEXT>
+     <TEXT>Action &amp;1 isn&apos;t implemented yet.</TEXT>
     </item>
     <item>
      <SPRSL>E</SPRSL>
      <MSGNR>009</MSGNR>
-     <TEXT>Column &amp; not found in table &amp;. (Search help generation)</TEXT>
+     <TEXT>Column &amp;1 not found in table &amp;2. (Search help generation)</TEXT>
     </item>
    </T100_TEXTS>
   </asx:values>

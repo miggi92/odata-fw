@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "ABAP OData Framework",
   lang: 'en-US',
+  base: '/odata-fw/',
   description: "A odata framework for a SAP System. ",
   head: [['link', { rel: 'icon', href: '../assets/favicon.ico' }]],
   sitemap: {
@@ -15,6 +16,17 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Documentation', link: '/documentation/' }
     ],
+    search: {
+      provider: 'local',
+      options: {
+        _render(src, env, md) {
+          const html = md.render(src, env)
+          if (env.frontmatter?.title)
+            return md.render(`# ${env.frontmatter.title}`) + html
+          return html
+        }
+      }
+    },
 
     sidebar: [
       {

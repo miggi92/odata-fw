@@ -4,7 +4,7 @@ description: Class ZCL_ODATA_MAIN
 date created: Wednesday, August 23rd 2023, 6:18:18 pm
 date modified: Friday, September 8th 2023, 9:57:18 am
 ---
-# ZCL_ODATA_MAIN
+#  {{ $frontmatter.title }}
 
 This abstract class is the blueprint for every entity class used by this framework.
 

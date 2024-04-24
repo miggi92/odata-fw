@@ -6,7 +6,7 @@ date modified: Tuesday, September 5th 2023, 11:47:16 pm
 tags:
   - annotation
 ---
-# Annotations
+#  {{ $frontmatter.title }}
 
 
 ## Class UML

@@ -7,9 +7,9 @@ date created: Friday, September 8th 2023, 9:50:10 am
 date modified: Friday, September 8th 2023, 10:00:28 am
 ---
 
-# ZCL_ODATA_DOCUMENTS
+#  {{ $frontmatter.title }}
 
-This class inherits from [[ZCL_ODATA_MAIN]]. 
+This class inherits from [ZCL_ODATA_MAIN](./ZCL_ODATA_MAIN). 
 It contains an abstract document entity for the odata service.
 This class helps to handle the an document entity in the odata service.
 

@@ -6,7 +6,7 @@ date modified: Tuesday, September 5th 2023, 11:44:25 pm
 tags:
   - annotation
 ---
-# ZCL_ODATA_ANNOTATION_SHLP
+#  {{ $frontmatter.title }}
 
 Inheritates from [[ZCL_ODATA_ANNOTATION_COMMON]]. Adds the search help annotations to the odata service.
 

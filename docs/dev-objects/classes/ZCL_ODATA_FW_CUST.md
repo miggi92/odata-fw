@@ -7,7 +7,7 @@ date created: Friday, September 8th 2023, 9:50:10 am
 date modified: Friday, September 8th 2023, 10:01:05 am
 ---
 
-# ZCL_ODATA_FW_CUST
+#  {{ $frontmatter.title }}
 
 This class reads out the customizing and stores it for the other classes.
 

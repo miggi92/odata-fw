@@ -4,7 +4,7 @@ description: Framework controller class
 date created: Tuesday, September 5th 2023, 11:10:30 pm
 date modified: Tuesday, September 5th 2023, 11:12:18 pm
 ---
-# ZCL_ODATA_FW_CONTROLLER
+#  {{ $frontmatter.title }}
 
 The controller class, that will be called in the "DPC_EXT" and "MPC_EXT" classes.
 

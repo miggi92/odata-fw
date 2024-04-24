@@ -7,7 +7,7 @@ tags:
   - dpc
   - customizing
 ---
-# ZCL_ODATA_FW_CUST_DPC
+#  {{ $frontmatter.title }}
 
 
 ## Methods

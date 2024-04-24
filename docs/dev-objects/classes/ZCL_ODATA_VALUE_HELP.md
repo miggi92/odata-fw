@@ -7,7 +7,7 @@ tags:
   - entity
 ---
 
-# ZCL_ODATA_VALUE_HELP
+#  {{ $frontmatter.title }}
 
 This class is used for the [[global value help]] entity.
 This class inherits from [[ZCL_ODATA_MAIN]].

@@ -4,7 +4,7 @@ description: OData Framework Documentation
 date created: Tuesday, September 5th 2023, 11:24:45 am
 date modified: Tuesday, September 5th 2023, 5:38:03 pm
 ---
-# OData Framework Documentation
+#  {{ $frontmatter.title }}
 
 ## Creating the First Service
 

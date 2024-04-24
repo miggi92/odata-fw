@@ -6,7 +6,7 @@ date modified: Tuesday, September 5th 2023, 11:18:35 pm
 tags:
   - annotation
 ---
-# ZCL_ODATA_ANNOTATION_COMMON
+#  {{ $frontmatter.title }}
 
 Abstract class for the [common annotations](https://sap.github.io/odata-vocabularies/vocabularies/Common.html).
 

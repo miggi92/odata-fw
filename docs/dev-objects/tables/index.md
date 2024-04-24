@@ -2,4 +2,4 @@
 title: Tables
 ---
 
-# Tables
+#  {{ $frontmatter.title }}

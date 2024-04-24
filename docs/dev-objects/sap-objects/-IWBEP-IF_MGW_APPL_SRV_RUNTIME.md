@@ -8,7 +8,7 @@ authors:
   - miggi92
 ---
 
-# /IWBEP/IF_MGW_APPL_SRV_RUNTIME
+#  {{ $frontmatter.title }}
 
 This interface is used from the odata gateway to get the data. 
 

@@ -2,7 +2,7 @@
 title: ZCL_ODATA_UTILS
 ---
 
-# ZCL_ODATA_UTILS
+#  {{ $frontmatter.title }}
 
 This class contains some utility methods for the odata framework.
 

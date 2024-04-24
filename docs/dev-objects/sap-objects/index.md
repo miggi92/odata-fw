@@ -2,4 +2,4 @@
 title: SAP Objects
 ---
 
-# SAP Objects
+#  {{ $frontmatter.title }}

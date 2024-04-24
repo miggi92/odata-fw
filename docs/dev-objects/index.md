@@ -4,8 +4,8 @@ title: Development Objects
 date created: Friday, September 8th 2023, 9:50:10 am
 date modified: Friday, September 8th 2023, 9:58:44 am
 ---
-# Development Objects
+#  {{ $frontmatter.title }}
 
-## [[dev objects/classes/index|Classes]]
+## [Classes](./classes/)
 
-## [[dev objects/sap objects/index|SAP Objects]]
+## [SAP Objects](./sap-objects/)

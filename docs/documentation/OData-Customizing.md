@@ -6,7 +6,7 @@ tags:
 date created: Wednesday, August 23rd 2023, 6:18:18 pm
 date modified: Tuesday, September 5th 2023, 5:38:06 pm
 ---
-# OData Customizing
+#  {{ $frontmatter.title }}
 
 ## Transaction
 

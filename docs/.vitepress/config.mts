@@ -87,7 +87,7 @@ function sidebarDocumentation() {
   return [
     {
       text: "Documentation",
-      collapsible: true,
+      collapsed: false,
       items: [
         { text: 'Creating a service', link: '/documentation/Creating-a-service' },
         { text: 'DPC boilerplate code', link: '/documentation/DPC-boilerplate-code' }
@@ -96,10 +96,12 @@ function sidebarDocumentation() {
     {
       text: 'Development Objects',
       link: '/documentation/dev-objects/',
-      collapsible: true,
+      collapsed: true,
       items: [
         { text: 'Documentation', link: '/documentation/dev-objects/' }, {
-          text: 'Classes', link: '/documentation/dev-objects/classes/', items: [
+          text: 'Classes', link: '/documentation/dev-objects/classes/',
+          collapsed: true,
+          items: [
             { text: 'ZCL_ODATA_DATA_PROVIDER', link: '/documentation/dev-objects/classes/ZCL_ODATA_DATA_PROVIDER' },
             { text: 'ZCL_ODATA_DOCUMENTS', link: '/documentation/dev-objects/classes/ZCL_ODATA_DOCUMENTS' },
             { text: 'ZCL_ODATA_FW_CONTROLLER', link: '/documentation/dev-objects/classes/ZCL_ODATA_FW_CONTROLLER' },
@@ -110,14 +112,15 @@ function sidebarDocumentation() {
             { text: 'ZCL_ODATA_UTILS', link: '/documentation/dev-objects/classes/ZCL_ODATA_UTILS' },
             { text: 'ZCL_ODATA_VALUE_HELP', link: '/documentation/dev-objects/classes/ZCL_ODATA_VALUE_HELP' },
             {
-              text: 'Annotations', link: '/documentation/dev-objects/classes/annotations/', items: [
+              text: 'Annotations', link: '/documentation/dev-objects/classes/annotations/', collapsed: true,
+              items: [
                 { text: 'ZCL_ODATA_ANNOTATION_COMMON', link: '/documentation/dev-objects/classes/annotations/ZCL_ODATA_ANNOTATION_COMMON' },
                 { text: 'ZCL_ODATA_ANNOTATION_SHLP', link: '/documentation/dev-objects/classes/annotations/ZCL_ODATA_ANNOTATION_SHLP' },
               ]
             },
           ]
         }, {
-          text: 'DDIC objects', link: '/documentation/dev-objects/ddic/', collapsible: true
+          text: 'DDIC objects', link: '/documentation/dev-objects/ddic/', collapsed: true
         },
         {
           text: 'SAP objects', link: '/documentation/dev-objects/sap-objects/'

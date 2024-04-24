@@ -8,7 +8,10 @@
   "scripts": {
     "unit": "rm -rf output && abap_transpile abap_transpile.json && echo RUNNING && node output/index.mjs",
     "test": "npm run unit",
-    "abaplint": "abaplint --format codeframe"
+    "abaplint": "abaplint --format codeframe",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "repository": "github:miggi92/odata-fw",
   "keywords": [

@@ -12,6 +12,7 @@ export default
     lang: 'en-US',
     base: '/odata-fw/',
     description: "A odata framework for a SAP System. ",
+    
     head: [
       ['link', { rel: 'icon', href: '../assets/favicon.ico' }],
       ['meta', { property: 'og:type', content: 'website' }],
@@ -26,6 +27,10 @@ export default
     themeConfig: {
       // https://vitepress.dev/reference/default-theme-config
       nav: nav(),
+      editLink: { 
+        pattern: 'https://github.com/miggi92/odata-fw/edit/master/docs/:path',
+        text: 'Edit this page on GitHub'
+      },
       outline: [2, 6],
       search: {
         provider: 'local',

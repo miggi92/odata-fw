@@ -101,7 +101,11 @@ function sidebarDocumentation() {
       collapsed: false,
       items: [
         { text: 'Creating a service', link: '/documentation/Creating-a-service' },
-        { text: 'DPC boilerplate code', link: '/documentation/DPC-boilerplate-code' }
+        { text: 'DPC boilerplate code', link: '/documentation/DPC-boilerplate-code' },
+        {
+          text: 'OData customizing', link: '/documentation/customizing/', collapsed: true,
+          items: []
+        }
       ],
     },
     {

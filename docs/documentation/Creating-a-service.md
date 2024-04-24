@@ -96,4 +96,4 @@ For the boilerplate code, that has to be inserted into the OData methods you can
 ## Customize Your Service
 
 Implement your odata service customizing. By calling the **ZODATA_CUST** transaction.
-For a detailed documentation you can look into the [OData Customizing](./OData-Customizing) file.
+For a detailed documentation you can look into the [OData Customizing](./customizing/index) file.

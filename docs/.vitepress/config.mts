@@ -4,25 +4,34 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "ABAP OData Framework",
   description: "A odata framework for a SAP System. ",
+  sitemap: {
+    hostname: "https://miggi92.github.io/odata-fw/"
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Documentation', link: '/documentation/' }
     ],
 
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Documentation',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Documentation', link: '/documentation/' },
+          { text: 'Creating a service', link: '/documentation/Creating-a-service' },
+          { text: 'DPC boilerplate code', link: '/documentation/DPC-boilerplate-code' }
         ]
       }
     ],
+    logo: './assets/odata_fw_logo_transparent.png',
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
+      { icon: 'github', link: 'https://github.com/miggi92/odata-fw' }
+    ],
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2019 - present miggi92'
+    }
   }
 })

@@ -14,7 +14,8 @@ CLASS zcl_odata_main DEFINITION
       "! <p class="shorttext synchronized" lang="en">Before processing</p>
       before_processing
         RAISING
-          /iwbep/cx_mgw_tech_exception.
+          /iwbep/cx_mgw_tech_exception
+          /iwbep/cx_mgw_busi_exception.
   PROTECTED SECTION.
     DATA:
       dpc_object        TYPE REF TO /iwbep/cl_mgw_push_abs_data,
@@ -39,6 +40,11 @@ CLASS zcl_odata_main DEFINITION
           c_data                  TYPE table
         RAISING
           /iwbep/cx_mgw_tech_exception,
+      get_orderby_clause
+        IMPORTING
+          io_tech_request_context  TYPE REF TO /iwbep/if_mgw_req_entityset
+        RETURNING
+          VALUE(rv_orderby_clause) TYPE string,
       filter_collection
         IMPORTING
           io_tech_request_context TYPE REF TO /iwbep/if_mgw_req_entityset
@@ -77,112 +83,112 @@ CLASS zcl_odata_main IMPLEMENTATION.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~batch_begin.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~batch_end.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_begin.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_end.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_process.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~create_deep_entity.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~create_entity.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~create_stream.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~delete_entity.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~delete_stream.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~execute_action.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entity.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entityset.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entityset_delta.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_expanded_entity.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_expanded_entityset.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_is_conditional_implemented.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_is_condi_imple_for_action.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_stream.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~patch_entity.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~update_entity.
-    return.
+    RETURN.
   ENDMETHOD.
 
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~update_stream.
-    return.
+    RETURN.
   ENDMETHOD.
 
   METHOD before_processing.
@@ -213,9 +219,9 @@ CLASS zcl_odata_main IMPLEMENTATION.
 
     IF type = cl_abap_elemdescr=>kind_table.
       ASSIGN c_data->* TO <itab>.
-      if sy-subrc <> 0.
-        return.
-      endif.
+      IF sy-subrc <> 0.
+        RETURN.
+      ENDIF.
       DATA(count) = lines( <itab> ).
     ELSEIF i_data IS INITIAL.
       count = 0.
@@ -318,9 +324,9 @@ CLASS zcl_odata_main IMPLEMENTATION.
               CREATE DATA entries LIKE c_data.
               ASSIGN entries->* TO <entries>.
 
-              if sy-subrc <> 0.
-                return.
-              endif.
+              IF sy-subrc <> 0.
+                RETURN.
+              ENDIF.
 
               LOOP AT ranges-frange_t ASSIGNING FIELD-SYMBOL(<ranges>).
                 LOOP AT c_data ASSIGNING <data>.
@@ -382,6 +388,27 @@ CLASS zcl_odata_main IMPLEMENTATION.
     ENDLOOP.
 
     SORT c_data BY (sortorder).
+  ENDMETHOD.
+
+
+  METHOD get_orderby_clause.
+    DATA(lt_orderby) = io_tech_request_context->get_orderby( ).
+
+    " Append all order properties to a string table
+    IF NOT lt_orderby IS INITIAL.
+      DATA: lt_order_properties TYPE TABLE OF string.
+
+      LOOP AT lt_orderby ASSIGNING FIELD-SYMBOL(<lv_orderby>).
+        DATA(lv_order_property) = |{ <lv_orderby>-property } { COND #( WHEN <lv_orderby>-order = 'desc' THEN 'DESCENDING' ) }|.
+        APPEND lv_order_property TO lt_order_properties.
+      ENDLOOP.
+
+      " Concatenate all order properties with comma separation
+      rv_orderby_clause = concat_lines_of(
+        table = lt_order_properties
+        sep = ', '
+      ).
+    ENDIF.
   ENDMETHOD.
 
 

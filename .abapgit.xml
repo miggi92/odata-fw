@@ -21,7 +21,7 @@
     <item>/overrides</item>
     <item>/.github</item>
     <item>/.vscode</item>
-     <item>/requirements.txt</item>
+    <item>/requirements.txt</item>
    </IGNORE>
    <VERSION_CONSTANT>zif_odata_constants=&gt;gc_version</VERSION_CONSTANT>
   </DATA>

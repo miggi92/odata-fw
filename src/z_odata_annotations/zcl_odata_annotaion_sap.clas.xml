@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_ODATA_ANNOTAION_SAP</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>SAP Annotation namespace</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_DATE_ONLY_ANNOTATION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Add date only annotation</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_FROM_PROPERTY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create from property</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_ANNOTATION_OBJECT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Get annotation object</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_FROM_PROPERTY</CMPNAME>
+     <SCONAME>/IWBEP/CX_MGW_MED_EXCEPTION</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Annotation couldn&apos;t be initialized</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_FROM_PROPERTY</CMPNAME>
+     <SCONAME>IO_PROPERTY</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Property</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_FROM_PROPERTY</CMPNAME>
+     <SCONAME>RO_SAP_ANNOTATION</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>SAP annotation instance</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_ANNOTATION_OBJECT</CMPNAME>
+     <SCONAME>RO_ANNOTATION</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Annotation object</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

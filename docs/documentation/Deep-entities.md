@@ -29,5 +29,5 @@ TYPES:
 
 Just insert the structure name into the "Deep entity structure" field.
 
-![deep entity customizing](./attachments/cust_deep_entity.png)
+![deep entity customizing](./customizing/attachments/cust_deep_entity.png)
 

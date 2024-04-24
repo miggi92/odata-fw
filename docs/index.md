@@ -1,26 +1,22 @@
 ---
-title: OData Framework
-description: OData framework
-date created: Wednesday, August 23rd 2023, 5:11:52 pm
-date modified: Tuesday, September 5th 2023, 5:38:15 pm
+# https://vitepress.dev/reference/default-theme-home-page
+layout: home
+
+hero:
+  name: "ABAP OData Framework"
+  text: "A odata framework for a SAP System. "
+  tagline: My great project tagline
+  actions:
+    - theme: brand
+      text: Documentation
+      link: /documentation/
+
+features:
+  - title: Feature A
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Feature B
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Feature C
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
-# OData Framework
 
-![[odata_fw_logo_transparent.png]]
-
-## Documentation
-
-[[documentation/index|documentation]]
-
-## Changelog
-
-[[changelog/index|Changelog]]
-
-## Project
-
-[GitHub Repository](https://github.com/miggi92/odata-fw)
-
-## Used for Documentation
-
-- [Home (obsidian-publisher.netlify.app)](https://obsidian-publisher.netlify.app/)
-- [MkDocs](https://www.mkdocs.org/)

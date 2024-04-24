@@ -1,6 +1,10 @@
 # Changelog
 
 
+## v1.1.0...v1.1.0
+
+[compare changes](https://github.com/miggi92/odata-fw/compare/v1.1.0...v1.1.0)
+
 ## v1.1.0
 
 [compare changes](https://github.com/miggi92/odata-fw/compare/v1.0.1...v1.1.0)
@@ -58,6 +62,5 @@
 ### ❤️ Contributors
 
 - Miguel ([@mGebAtBechtle](http://github.com/mGebAtBechtle))
-- Miguel Gebhardt <miguel.gebhardt@bechtle.com>
 - Jan Fröhlich ([@zanfee](http://github.com/zanfee))
 

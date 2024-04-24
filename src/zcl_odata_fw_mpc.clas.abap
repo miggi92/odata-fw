@@ -267,7 +267,6 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
                                                THEN |{ is_property-property_name }/{ zif_odata_constants=>gc_global_properties-value_help-value }|
                                                ELSE is_property-property_name )
             iv_search_supported    = abap_true
-            iv_search_help_field   = is_property-abap_name
             iv_valuelist_entityset = |{ is_property-search_help }Set|
             iv_valuelist_property  = SWITCH #( is_property-complex_type
                                                WHEN zif_odata_constants=>gc_global_cmplx_entities-value_description

@@ -108,7 +108,8 @@ function sidebarDocumentation() {
             { text: 'Create namespace', link: '/documentation/customizing/create-namespace' },
             { text: 'Define entity', link: '/documentation/customizing/define-entity' },
             { text: 'Define properties', link: '/documentation/customizing/define-properties' },
-            { text: 'Define navigation properties', link: '/documentation/customizing/define-associations' }
+            { text: 'Define navigation properties', link: '/documentation/customizing/define-associations' },
+            { text: 'Define search/value helps', link: '/documentation/customizing/define-searchhelps' }
           ]
         }
       ],

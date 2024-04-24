@@ -104,7 +104,12 @@ function sidebarDocumentation() {
         { text: 'DPC boilerplate code', link: '/documentation/DPC-boilerplate-code' },
         {
           text: 'OData customizing', link: '/documentation/customizing/', collapsed: true,
-          items: []
+          items: [
+            { text: 'Create namespace', link: '/documentation/customizing/create-namespace' },
+            { text: 'Define entity', link: '/documentation/customizing/define-entity' },
+            { text: 'Define properties', link: '/documentation/customizing/define-properties' },
+            { text: 'Define navigation properties', link: '/documentation/customizing/define-associations' }
+          ]
         }
       ],
     },

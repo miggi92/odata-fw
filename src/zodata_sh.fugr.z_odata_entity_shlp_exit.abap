@@ -83,7 +83,7 @@ FUNCTION z_odata_entity_shlp_exit.
         SELECT namespace
             FROM zodata_namespace
             INTO TABLE @DATA(namespaces)
-            WHERE is_global = @abap_true. "#EC CI_SUBRC
+            WHERE is_global = @abap_true. "#EC CI_SUBRC  "#EC CI_NOFIELD
 
         DELETE namespaces WHERE table_line = name_space_shlp-low.
 

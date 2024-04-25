@@ -1,18 +1,16 @@
 import { defineConfig } from 'vitepress'
-import { withMermaid } from "vitepress-plugin-mermaid";
+import MermaidExample from './mermaid-markdown-all';
 
 import { version } from "../../package.json";
 
 // https://vitepress.dev/reference/site-config
 export default
-  // withMermaid(
 
   defineConfig({
     title: "ABAP OData Framework",
     lang: 'en-US',
     base: '/odata-fw/',
     description: "A odata framework for a SAP System. ",
-
     head: [
       ['link', { rel: 'icon', href: '/favicon.ico' }],
       ['meta', { property: 'og:type', content: 'website' }],
@@ -23,6 +21,11 @@ export default
     lastUpdated: true,
     sitemap: {
       hostname: "https://miggi92.github.io/odata-fw/"
+    },
+    markdown: {
+      config: async (md) => {
+        await MermaidExample(md);
+      }
     },
     themeConfig: {
       // https://vitepress.dev/reference/default-theme-config
@@ -71,8 +74,7 @@ export default
       },
     }
   }
-    // )
-  );
+);
 
 function nav() {
   return [

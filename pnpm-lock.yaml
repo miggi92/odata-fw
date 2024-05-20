@@ -23,8 +23,8 @@ devDependencies:
     specifier: ^2.8.24
     version: 2.8.24
   '@abaplint/transpiler-cli':
-    specifier: ^2.8.24
-    version: 2.8.24
+    specifier: ^2.8.25
+    version: 2.8.25
   vitepress:
     specifier: ^1.1.4
     version: 1.1.4(@algolia/client-search@4.23.3)(search-insights@2.13.0)
@@ -52,8 +52,8 @@ packages:
       temporal-polyfill: 0.2.4
     dev: true
 
-  /@abaplint/transpiler-cli@2.8.24:
-    resolution: {integrity: sha512-KI5mRqAhwWy3suLuVUTf4kkUH8vshyhXX7fiejhTPGZ7BD5ULFeg6VspN1xWT7CfUGl3S2oD70YbOQWYJ6guRA==}
+  /@abaplint/transpiler-cli@2.8.25:
+    resolution: {integrity: sha512-XBwN87h2aZ6SUMD11XJycn9FSUxdLWRX7z1wx+icS+HIeb6OeizJ7yZDfyKMkfLz6KnMmYFvBRE5cCWtQ/w4pA==}
     hasBin: true
     dev: true
 

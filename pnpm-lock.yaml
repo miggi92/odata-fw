@@ -17,8 +17,8 @@ devDependencies:
     specifier: ^2.107.1
     version: 2.107.1
   '@abaplint/runtime':
-    specifier: ^2.8.24
-    version: 2.8.24
+    specifier: ^2.8.25
+    version: 2.8.25
   '@abaplint/transpiler':
     specifier: ^2.8.24
     version: 2.8.24
@@ -46,8 +46,8 @@ packages:
       vscode-languageserver-types: 3.17.5
     dev: true
 
-  /@abaplint/runtime@2.8.24:
-    resolution: {integrity: sha512-FISKIHAhz7VcyLdgDQHpdLi5BeFWXJdmHzTy2VyacbsscNv7c75oi6gyL2Bq6ACvr9yVJgaDuR3erf3Yl3SNbA==}
+  /@abaplint/runtime@2.8.25:
+    resolution: {integrity: sha512-VrZJUdVF2r2291TcgCd+voOL6+Oh2lx6qrNMUyLX0DQcJkn4J3Jgu/I/wjE44szoL5K9k60my1BwyWuuPTCvYA==}
     dependencies:
       temporal-polyfill: 0.2.4
     dev: true

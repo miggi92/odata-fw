@@ -20,8 +20,8 @@ devDependencies:
     specifier: ^2.8.24
     version: 2.8.24
   '@abaplint/transpiler':
-    specifier: ^2.8.24
-    version: 2.8.24
+    specifier: ^2.8.27
+    version: 2.8.27
   '@abaplint/transpiler-cli':
     specifier: ^2.8.24
     version: 2.8.24
@@ -37,11 +37,11 @@ packages:
     hasBin: true
     dev: true
 
-  /@abaplint/core@2.106.9:
-    resolution: {integrity: sha512-DxEfJViLJHeefqzkUhkC0OAQIkEIH3nZt2GpfCzeYXuYNurKUF8ICJH7my7WM2CXCKoVu/p2OmTjxEim5xRafQ==}
+  /@abaplint/core@2.109.3:
+    resolution: {integrity: sha512-O91KQnLfn7W9SQZ5/lQF/XACJY1kpMVMsUowSANGLCAo5IjfzfuyD4ykzZHb5N7Sgn+hXrtk+JEJnuXD37XOhw==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      fast-xml-parser: 4.3.6
+      fast-xml-parser: 4.4.0
       json5: 2.2.3
       vscode-languageserver-types: 3.17.5
     dev: true
@@ -57,10 +57,10 @@ packages:
     hasBin: true
     dev: true
 
-  /@abaplint/transpiler@2.8.24:
-    resolution: {integrity: sha512-6OeeAANjzqX71Kbq2NLMABxximo+1GkvKFiY4TlQTHTIW4LvEOHohkYIwSi5mKkYL32u8jHM7ztmgnETYhc+9g==}
+  /@abaplint/transpiler@2.8.27:
+    resolution: {integrity: sha512-N34ISmo6dCRIaZXKC5kDV/5G96y3MZc157XeMRCPAyB9qddUTJ+3QYw3AaufA0kyqTVIPi8mHD9PHvhxRcfgpw==}
     dependencies:
-      '@abaplint/core': 2.106.9
+      '@abaplint/core': 2.109.3
       source-map: 0.7.4
     dev: true
 
@@ -1240,8 +1240,8 @@ packages:
   /estree-walker@2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
 
-  /fast-xml-parser@4.3.6:
-    resolution: {integrity: sha512-M2SovcRxD4+vC493Uc2GZVcZaj66CCJhWurC4viynVSTvrpErCShNcDz1lAho6n9REQKvL/ll4A4/fw6Y9z8nw==}
+  /fast-xml-parser@4.4.0:
+    resolution: {integrity: sha512-kLY3jFlwIYwBNDojclKsNAC12sfD6NwW74QB2CoNGPvtVxjliYehVunB3HYyNi+n4Tt1dAcgwYvmKF/Z18flqg==}
     hasBin: true
     dependencies:
       strnum: 1.0.5

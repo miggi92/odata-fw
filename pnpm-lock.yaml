@@ -17,8 +17,8 @@ devDependencies:
     specifier: ^2.107.1
     version: 2.107.1
   '@abaplint/runtime':
-    specifier: ^2.8.24
-    version: 2.8.24
+    specifier: ^2.8.27
+    version: 2.8.27
   '@abaplint/transpiler':
     specifier: ^2.8.24
     version: 2.8.24
@@ -46,10 +46,10 @@ packages:
       vscode-languageserver-types: 3.17.5
     dev: true
 
-  /@abaplint/runtime@2.8.24:
-    resolution: {integrity: sha512-FISKIHAhz7VcyLdgDQHpdLi5BeFWXJdmHzTy2VyacbsscNv7c75oi6gyL2Bq6ACvr9yVJgaDuR3erf3Yl3SNbA==}
+  /@abaplint/runtime@2.8.27:
+    resolution: {integrity: sha512-OGmcopr6oU6xToPYia6/4QDAGo9UyXwtXXrVs40FnVxakvNH9n1YEbwUysvZyAcE7grcIGtAk6zV0V0uQA6LmQ==}
     dependencies:
-      temporal-polyfill: 0.2.4
+      temporal-polyfill: 0.2.5
     dev: true
 
   /@abaplint/transpiler-cli@2.8.24:
@@ -1669,8 +1669,8 @@ packages:
   /tabbable@6.2.0:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
 
-  /temporal-polyfill@0.2.4:
-    resolution: {integrity: sha512-WA5p0CjQTkMjF9m8sP4wSYgpqI8m2d4q7wPUyaJOWhy4bI9mReLb2yGvTV4qf/DPMTe6H6M/Dig5KmTMB7ev6Q==}
+  /temporal-polyfill@0.2.5:
+    resolution: {integrity: sha512-ye47xp8Cb0nDguAhrrDS1JT1SzwEV9e26sSsrWzVu+yPZ7LzceEcH0i2gci9jWfOfSCCgM3Qv5nOYShVUUFUXA==}
     dependencies:
       temporal-spec: 0.2.4
     dev: true

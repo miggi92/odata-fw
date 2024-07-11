@@ -15,6 +15,13 @@ CLASS zcl_odata_annotaion_sap DEFINITION
     "!
     METHODS add_date_only_annotation.
 
+    "! <p class="shorttext synchronized">Add label annoation (is displayed in ui5)</p>
+    "!  Default: the label is coming from the dataelement.
+    "!
+    "! @parameter iv_label_text | <p class="shorttext synchronized">Label text</p>
+    METHODS add_label_annotation
+      IMPORTING iv_label_text TYPE /iwbep/med_annotation_value.
+
     "! <p class="shorttext synchronized">Create from property</p>
     "!
     "! @parameter io_property                 | <p class="shorttext synchronized">Property</p>
@@ -47,5 +54,10 @@ CLASS zcl_odata_annotaion_sap IMPLEMENTATION.
   METHOD create_from_property.
     ro_sap_annotation = NEW #( ).
     ro_sap_annotation->mo_annotation = io_property->/iwbep/if_mgw_odata_annotatabl~create_annotation( 'sap' ).
+  ENDMETHOD.
+
+  METHOD add_label_annotation.
+    mo_annotation->add( iv_key   = 'label'
+                        iv_value = iv_label_text ).
   ENDMETHOD.
 ENDCLASS.

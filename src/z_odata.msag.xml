@@ -4,7 +4,7 @@
   <asx:values>
    <T100A>
     <ARBGB>Z_ODATA</ARBGB>
-    <MASTERLANG>E</MASTERLANG>
+    <MASTERLANG>D</MASTERLANG>
    </T100A>
    <T100>
     <T100>
@@ -48,6 +48,18 @@
      <ARBGB>Z_ODATA</ARBGB>
      <MSGNR>007</MSGNR>
      <TEXT>Suchhife wurde nicht gefunden, bitte Customizing überprüfen.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>D</SPRSL>
+     <ARBGB>Z_ODATA</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>Action &amp;1 is nicht implementiert.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>D</SPRSL>
+     <ARBGB>Z_ODATA</ARBGB>
+     <MSGNR>009</MSGNR>
+     <TEXT>Spalte &amp;1 wurde in Tabelle &amp;2 nicht gefunden.</TEXT>
     </T100>
    </T100>
    <I18N_LANGS>
@@ -94,16 +106,6 @@
      <SPRSL>E</SPRSL>
      <MSGNR>007</MSGNR>
      <TEXT>No searchhelp was found, please check customizing.</TEXT>
-    </item>
-    <item>
-     <SPRSL>E</SPRSL>
-     <MSGNR>008</MSGNR>
-     <TEXT>Action &amp;1 isn&apos;t implemented yet.</TEXT>
-    </item>
-    <item>
-     <SPRSL>E</SPRSL>
-     <MSGNR>009</MSGNR>
-     <TEXT>Column &amp;1 not found in table &amp;2. (Search help generation)</TEXT>
     </item>
    </T100_TEXTS>
   </asx:values>

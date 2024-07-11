@@ -10,7 +10,6 @@ Legend
 
 2024-04-25 v1.1.0
 ------------------
-
 + Add method for orderby clause 
 ! Updated search helps 
 * Fixed autofixable lint errors
@@ -18,7 +17,6 @@ Legend
 
 2023-05-31 v1.0.1
 -------------------
-
 + create deep entity customizing (#9)
 ! changed mpc and extract to seperate class
 + annotation class (#4)
@@ -26,5 +24,4 @@ Legend
 
 before 2023-05-30 
 -------------------
-
 initial version of the framework

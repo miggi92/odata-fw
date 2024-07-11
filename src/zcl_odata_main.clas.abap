@@ -5,19 +5,28 @@ CLASS zcl_odata_main DEFINITION
 
   PUBLIC SECTION.
     INTERFACES /iwbep/if_mgw_appl_srv_runtime.
+    INTERFACES if_sadl_gw_dpc_util.
+    INTERFACES if_sadl_gw_extension_control.
+    INTERFACES if_sadl_gw_query_control.
 
     "! <p class="shorttext synchronized">Constructor</p>
     METHODS constructor
-      IMPORTING io_dpc_object TYPE REF TO /iwbep/cl_mgw_push_abs_data.
+      IMPORTING io_dpc_object TYPE REF TO /iwbep/cl_mgw_push_abs_data
+                iv_namespace  TYPE z_odata_namespace.
 
     "! <p class="shorttext synchronized">Before processing</p>
     METHODS before_processing
       RAISING /iwbep/cx_mgw_tech_exception
               /iwbep/cx_mgw_busi_exception.
 
+    METHODS set_context
+      IMPORTING io_context TYPE REF TO /iwbep/if_mgw_context.
+
   PROTECTED SECTION.
     DATA dpc_object        TYPE REF TO /iwbep/cl_mgw_push_abs_data.
     DATA message_container TYPE REF TO /iwbep/if_message_container.
+    DATA mv_namespace      TYPE z_odata_namespace.
+    DATA mo_context        TYPE REF TO /iwbep/if_mgw_context.
 
     METHODS copy_data_to_ref
       IMPORTING i_data TYPE any
@@ -161,6 +170,7 @@ CLASS zcl_odata_main IMPLEMENTATION.
 
   METHOD constructor.
     dpc_object = io_dpc_object.
+    mv_namespace = iv_namespace.
   ENDMETHOD.
 
   METHOD copy_data_to_ref.
@@ -371,5 +381,36 @@ CLASS zcl_odata_main IMPLEMENTATION.
 
   METHOD raise_error.
     NEW zcl_odata_error_handler( me->dpc_object )->raise_exception_object( i_exception = i_error ).
+  ENDMETHOD.
+
+  METHOD if_sadl_gw_dpc_util~get_dpc.
+    DATA lv_current_timestamp TYPE if_sadl_types=>ty_timestamp.
+
+    TRY.
+        DATA(lo_fw) = NEW zcl_odata_fw_controller( mv_namespace ).
+        DATA(lv_sadl_xml) = lo_fw->define_sadl_xml( ).
+
+        GET TIME STAMP FIELD lv_current_timestamp.
+        ro_dpc = cl_sadl_gw_dpc_factory=>create_for_sadl( iv_sadl_xml          = lv_sadl_xml
+                                                          iv_timestamp         = lv_current_timestamp
+                                                          iv_uuid              = |{ mv_namespace }|
+                                                          io_query_control     = me
+                                                          io_extension_control = me
+                                                          io_context           = mo_context ).
+
+      CATCH zcx_odata.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD if_sadl_gw_extension_control~set_extension_mapping.
+    RETURN.
+  ENDMETHOD.
+
+  METHOD if_sadl_gw_query_control~set_query_options.
+    RETURN.
+  ENDMETHOD.
+
+  METHOD set_context.
+    mo_context = io_context.
   ENDMETHOD.
 ENDCLASS.

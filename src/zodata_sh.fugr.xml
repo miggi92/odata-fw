@@ -10,7 +10,6 @@
    <FUNCTIONS>
     <item>
      <FUNCNAME>Z_ODATA_ENTITY_SHLP_EXIT</FUNCNAME>
-     <SHORT_TEXT>Beispiel für ein Suchhilfe-Exit eine Suchhilfe</SHORT_TEXT>
      <CHANGING>
       <RSCHA>
        <PARAMETER>SHLP</PARAMETER>

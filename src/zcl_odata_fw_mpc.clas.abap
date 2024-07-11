@@ -166,7 +166,7 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
 
     lo_entity->bind_structure( iv_structure_name   = |{ is_entity-structure }|
                                iv_bind_conversions = lv_bind_conversion ).    " Consider conversion exits
-    lo_entity->create_entity_set( iv_entity_set_name = |{ is_entity-entity_name }Set| ).
+    data(lo_entity_set) = lo_entity->create_entity_set( iv_entity_set_name = |{ is_entity-entity_name }Set| ).
 
     LOOP AT mo_customizing->get_properties( ) ASSIGNING FIELD-SYMBOL(<ls_property>)
          WHERE entity_name = is_entity-entity_name.

@@ -49,6 +49,18 @@
      <MSGNR>007</MSGNR>
      <TEXT>Suchhife wurde nicht gefunden, bitte Customizing überprüfen.</TEXT>
     </T100>
+    <T100>
+     <SPRSL>D</SPRSL>
+     <ARBGB>Z_ODATA</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>Action &amp;1 is nicht implementiert.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>D</SPRSL>
+     <ARBGB>Z_ODATA</ARBGB>
+     <MSGNR>009</MSGNR>
+     <TEXT>Spalte &amp;1 wurde in Tabelle &amp;2 nicht gefunden.</TEXT>
+    </T100>
    </T100>
    <I18N_LANGS>
     <LANGU>E</LANGU>

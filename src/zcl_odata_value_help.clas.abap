@@ -82,6 +82,10 @@ CLASS zcl_odata_value_help DEFINITION
       EXPORTING ev_checkfield       TYPE forfield
                 et_table_values     TYPE ANY TABLE
                 et_texttable_values TYPE any.
+
+    METHODS check_table_contains_language
+      IMPORTING it_table_values    TYPE ANY TABLE
+      RETURNING VALUE(rv_contains) TYPE os_boolean.
 ENDCLASS.
 
 
@@ -167,10 +171,6 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
 
     description_component = i_customizing-description_field.
 
-    IF sy-subrc <> 0.
-      RETURN.
-    ENDIF.
-
     get_table_values_and_info( EXPORTING is_customizing      = i_customizing
                                IMPORTING ev_checkfield       = DATA(lv_checkfield)
                                          et_table_values     = <table_values>
@@ -215,9 +215,6 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD get_table_values_and_info.
-    DATA table_ref  TYPE REF TO cl_abap_tabledescr.
-    DATA keys       TYPE ddfields.
-    DATA structure  TYPE REF TO cl_abap_structdescr.
     DATA table_name TYPE tabname.
     DATA lr_table   TYPE REF TO data.
     FIELD-SYMBOLS <lt_texttable_value> TYPE ANY TABLE.
@@ -229,19 +226,9 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
     CREATE DATA table TYPE TABLE OF (table_name).
     ASSIGN table->* TO <lt_table_values>.
 
-    table_ref ?= cl_abap_tabledescr=>describe_by_data( <lt_table_values> ).
-    structure ?= table_ref->get_table_line_type( ).
-
-    structure->get_ddic_field_list( RECEIVING  p_field_list = keys                 " List of Dictionary Descriptions for the Components
-                                    EXCEPTIONS not_found    = 1                " Type could not be found
-                                               no_ddic_type = 2                " Typ is not a dictionary type
-                                               OTHERS       = 3 ).
-    DELETE keys WHERE keyflag <> abap_true.
-
-    DATA(components) = structure->get_components( ).
     DATA(where_cond) = build_where_condition( is_customizing ).
 
-    IF line_exists( components[ name = 'SPRAS' ] ) AND line_exists( keys[ fieldname = 'SPRAS' ] ).
+    IF check_table_contains_language( <lt_table_values> ).
       SELECT *
         FROM (table_name)
         INTO TABLE @et_table_values
@@ -328,6 +315,26 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
 
     IF sy-subrc <> 0.
       RETURN. " maybe an exception?
+    ENDIF.
+  ENDMETHOD.
+
+  METHOD check_table_contains_language.
+    DATA lt_keys      TYPE ddfields.
+    DATA lo_table     TYPE REF TO cl_abap_tabledescr.
+    DATA lo_structure TYPE REF TO cl_abap_structdescr.
+
+    lo_table ?= cl_abap_tabledescr=>describe_by_data( it_table_values ).
+    lo_structure ?= lo_table->get_table_line_type( ).
+
+    lo_structure->get_ddic_field_list( RECEIVING  p_field_list = lt_keys                 " List of Dictionary Descriptions for the Components
+                                       EXCEPTIONS not_found    = 1                " Type could not be found
+                                                  no_ddic_type = 2                " Typ is not a dictionary type
+                                                  OTHERS       = 3 ).
+    DELETE lt_keys WHERE keyflag <> abap_true.
+
+    DATA(lt_components) = lo_structure->get_components( ).
+    IF line_exists( lt_components[ name = 'SPRAS' ] ) AND line_exists( lt_keys[ fieldname = 'SPRAS' ] ).
+      rv_contains = abap_true.
     ENDIF.
   ENDMETHOD.
 ENDCLASS.

@@ -30,6 +30,7 @@ export default
     themeConfig: {
       // https://vitepress.dev/reference/default-theme-config
       nav: nav(),
+      externalLinkIcon: true,
       editLink: {
         pattern: 'https://github.com/miggi92/odata-fw/edit/master/docs/:path',
         text: 'Edit this page on GitHub'
@@ -74,7 +75,7 @@ export default
       },
     }
   }
-);
+  );
 
 function nav() {
   return [
@@ -85,7 +86,7 @@ function nav() {
       items: [
         {
           text: 'Changelog',
-          link: 'https://github.com/miggi92/odata-fw/blob/master/CHANGELOG.md'
+          link: 'https://github.com/miggi92/odata-fw/blob/master/changelog.txt'
         },
         {
           text: 'Contributing',
@@ -104,6 +105,7 @@ function sidebarDocumentation() {
       items: [
         { text: 'Creating a service', link: '/documentation/Creating-a-service' },
         { text: 'DPC boilerplate code', link: '/documentation/DPC-boilerplate-code' },
+        { text: 'SADL', link: '/documentation/sadl' },
         {
           text: 'OData customizing', link: '/documentation/customizing/', collapsed: true,
           items: [

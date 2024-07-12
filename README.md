@@ -5,7 +5,11 @@
 
 ## Description
 
-An OData ABAP Framework
+An OData ABAP Framework, that focuses on a easy and fast way to create OData Services in ABAP. Changes to the OData service are done in the code for data changes and in the customizing for model changes, no need to regenerate the service after changes.
+Every entity has it own class, therefore every class can be reused in entities of other services. 
+It also reduces the mainly unused `CRUD` methods that the `SEGW` will create for every entity.
+The purpose of this framework is to create a simple Odata service within a few minutes. 
+Every service that uses this framework can easy be extended.
 
 ## Documentation
 The documentation and how to use can be found under [Documentation](https://miggi92.github.io/odata-fw/)

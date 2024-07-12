@@ -28,6 +28,8 @@ CLASS zcl_odata_fw_controller DEFINITION
     METHODS define_dpc
       IMPORTING i_data_provider TYPE REF TO zcl_odata_data_provider.
 
+    "! <p class="shorttext synchronized">Define SADL XML</p>
+    "! @parameter rv_sadl_xml | <p class="shorttext synchronized">SADL XML</p>
     METHODS define_sadl_xml
       RETURNING VALUE(rv_sadl_xml) TYPE string.
 

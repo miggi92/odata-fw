@@ -10,6 +10,8 @@ CLASS zcl_odata_main DEFINITION
     INTERFACES if_sadl_gw_query_control.
 
     "! <p class="shorttext synchronized">Constructor</p>
+    "! @parameter io_dpc_object | <p class="shorttext synchronized">DPC object</p>
+    "! @parameter iv_namespace | <p class="shorttext synchronized">Namespace</p>
     METHODS constructor
       IMPORTING io_dpc_object TYPE REF TO /iwbep/cl_mgw_push_abs_data
                 iv_namespace  TYPE z_odata_namespace.
@@ -19,6 +21,8 @@ CLASS zcl_odata_main DEFINITION
       RAISING /iwbep/cx_mgw_tech_exception
               /iwbep/cx_mgw_busi_exception.
 
+    "! <p class="shorttext synchronized">Set context</p>
+    "! @parameter io_context | <p class="shorttext synchronized">Context</p>
     METHODS set_context
       IMPORTING io_context TYPE REF TO /iwbep/if_mgw_context.
 

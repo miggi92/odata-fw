@@ -103,7 +103,7 @@
     "tabl_enhancement_category": {
       "severity": "Warning"
     },
-    "implement_methods": true,
+    "implement_methods": false,
     "local_testclass_location": true,
     "main_file_contents": true,
     "rfc_error_handling": true,

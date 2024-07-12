@@ -166,7 +166,7 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
 
     lo_entity->bind_structure( iv_structure_name   = |{ is_entity-structure }|
                                iv_bind_conversions = lv_bind_conversion ).    " Consider conversion exits
-    lo_entity->create_entity_set( iv_entity_set_name = |{ is_entity-entity_name }Set| ).
+    data(lo_entity_set) = lo_entity->create_entity_set( iv_entity_set_name = |{ is_entity-entity_name }Set| ).
 
     LOOP AT mo_customizing->get_properties( ) ASSIGNING FIELD-SYMBOL(<ls_property>)
          WHERE entity_name = is_entity-entity_name.
@@ -266,7 +266,7 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
                                                WHEN zif_odata_constants=>gc_global_cmplx_entities-value_description
                                                THEN |{ is_property-property_name }/{ zif_odata_constants=>gc_global_properties-value_help-value }|
                                                ELSE is_property-property_name )
-            iv_search_supported    = abap_true
+            iv_search_supported    = abap_false
             iv_valuelist_entityset = |{ is_property-search_help }Set|
             iv_valuelist_property  = SWITCH #( is_property-complex_type
                                                WHEN zif_odata_constants=>gc_global_cmplx_entities-value_description

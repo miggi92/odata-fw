@@ -37,6 +37,11 @@ CLASS zcl_odata_fw_controller DEFINITION
 
   PRIVATE SECTION.
     DATA mo_customizing TYPE REF TO zcl_odata_fw_cust.
+
+    "! <p class="shorttext synchronized">Get table type</p>
+    "! @parameter rv_type | <p class="shorttext synchronized">Table type</p>
+    METHODS get_table_type
+      RETURNING VALUE(rv_type) TYPE string.
 ENDCLASS.
 
 
@@ -60,8 +65,6 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD define_sadl_xml.
-    DATA lo_structure     TYPE REF TO cl_abap_structdescr.
-    DATA lv_type          TYPE string.
     DATA lt_sadl_entities TYPE zodata_entity_tt.
 
     rv_sadl_xml = |<?xml version="1.0" encoding="utf-16"?>| &
@@ -70,18 +73,12 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
     DATA(lt_entities) = mo_customizing->get_entities( ).
 
     LOOP AT lt_entities ASSIGNING FIELD-SYMBOL(<ls_entity>) WHERE is_complex = abap_false.
-      lo_structure ?= cl_abap_elemdescr=>describe_by_name( <ls_entity>-structure ).
-      IF NOT lo_structure->is_ddic_type( ).
-        CONTINUE.
-      ENDIF.
-      CASE lo_structure->get_ddic_header( )-tabtype.
-        WHEN 'B'.
-          lv_type = 'CDS'.
-        WHEN 'T'.
-          lv_type = 'DDIC'.
-        WHEN OTHERS.
-          CONTINUE.
-      ENDCASE.
+
+      DATA(lv_type) = get_table_type( <ls_entity>-structure ).
+
+      if lv_type is initial.
+        continue.
+      endif.
 
       rv_sadl_xml = |{ rv_sadl_xml }| &
       | <sadl:dataSource type="{ lv_type }" name="{ <ls_entity>-entity_name }Set" binding="{ <ls_entity>-structure }" />|.
@@ -107,5 +104,23 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
 
     rv_sadl_xml = |{ rv_sadl_xml }| & |</sadl:resultSet>| &
     |</sadl:definition>|.
+  ENDMETHOD.
+
+  METHOD get_table_type.
+    DATA lo_structure     TYPE REF TO cl_abap_structdescr.
+
+    lo_structure ?= cl_abap_elemdescr=>describe_by_name( iv_structure ).
+    IF NOT lo_structure->is_ddic_type( ).
+      return.
+    ENDIF.
+
+    CASE lo_structure->get_ddic_header( )-tabtype.
+      WHEN 'B'.
+        rv_type = 'CDS'.
+      WHEN 'T'.
+        rv_type = 'DDIC'.
+      WHEN OTHERS.
+        return.
+    ENDCASE.
   ENDMETHOD.
 ENDCLASS.

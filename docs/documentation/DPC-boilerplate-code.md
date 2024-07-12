@@ -21,6 +21,7 @@ Implementation:
 ``` abap
 DATA(ls_data_provider) = me->mt_data_providers->get( iv_entity_name ).
 ls_data_provider-instance->before_processing( ).
+ls_data_provider-instance->set_context( mo_context ). " for SADL features
 
 ls_data_provider-instance->/iwbep/if_mgw_appl_srv_runtime~get_entity(
 	EXPORTING
@@ -48,6 +49,8 @@ Implementation:
 ```abap
 DATA(ls_data_provider) = me->mt_data_providers->get( iv_entity_name ).
 ls_data_provider-instance->before_processing( ).
+ls_data_provider-instance->set_context( mo_context ). " for SADL features
+
 ls_data_provider-instance->/iwbep/if_mgw_appl_srv_runtime~get_entityset(
 	EXPORTING
 		iv_entity_name = iv_entity_name
@@ -79,6 +82,8 @@ Implementation:
 METHOD /iwbep/if_mgw_appl_srv_runtime~create_deep_entity.
 	DATA(ls_data_provider) = me->mt_data_providers->get( iv_entity_name ).
 	ls_data_provider-instance->before_processing( ).
+	ls_data_provider-instance->set_context( mo_context ). " for SADL features
+	
 	ls_data_provider-instance->/iwbep/if_mgw_appl_srv_runtime~create_deep_entity(
 		EXPORTING
 			iv_entity_name = iv_entity_name

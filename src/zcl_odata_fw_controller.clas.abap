@@ -91,14 +91,16 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
     rv_sadl_xml = |{ rv_sadl_xml }| & |<sadl:resultSet>|.
     LOOP AT lt_sadl_entities ASSIGNING <ls_entity>.
 
-      rv_sadl_xml = |{ rv_sadl_xml }| & |<sadl:structure name="{ <ls_entity>-entity_name }Collection" dataSource="{ <ls_entity>-entity_name }Set" maxEditMode="RO" >| &
+      rv_sadl_xml = |{ rv_sadl_xml }| & 
+      |<sadl:structure name="{ <ls_entity>-entity_name }Collection" dataSource="{ <ls_entity>-entity_name }Set" maxEditMode="RO" >| &
       | <sadl:query name="EntitySetDefault">| &
       | </sadl:query>|.
       DATA(lt_properties) = mo_customizing->get_properties( ).
       DELETE lt_properties WHERE entity_name <> <ls_entity>-entity_name.
 
       LOOP AT lt_properties ASSIGNING FIELD-SYMBOL(<ls_property>) WHERE is_key = abap_false.
-        rv_sadl_xml = |{ rv_sadl_xml }| & | <sadl:attribute name="{ <ls_property>-abap_name }" binding="{ <ls_property>-abap_name }" isOutput="TRUE" isKey="FALSE" />|.
+        rv_sadl_xml = |{ rv_sadl_xml }| & 
+        | <sadl:attribute name="{ <ls_property>-abap_name }" binding="{ <ls_property>-abap_name }" isOutput="TRUE" isKey="FALSE" />|.
       ENDLOOP.
       rv_sadl_xml = |{ rv_sadl_xml }| & |</sadl:structure>|.
     ENDLOOP.

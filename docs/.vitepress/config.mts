@@ -30,6 +30,7 @@ export default
     themeConfig: {
       // https://vitepress.dev/reference/default-theme-config
       nav: nav(),
+      externalLinkIcon: true,
       editLink: {
         pattern: 'https://github.com/miggi92/odata-fw/edit/master/docs/:path',
         text: 'Edit this page on GitHub'

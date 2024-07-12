@@ -83,9 +83,21 @@ CLASS zcl_odata_value_help DEFINITION
                 et_table_values     TYPE ANY TABLE
                 et_texttable_values TYPE any.
 
+    "! <p class="shorttext synchronized">Check of table contains language</p>
+    "!
+    "! @parameter it_table_values | <p class="shorttext synchronized">Table data</p>
+    "! @parameter rv_contains     | <p class="shorttext synchronized">Contains language</p>
     METHODS check_table_contains_language
       IMPORTING it_table_values    TYPE ANY TABLE
       RETURNING VALUE(rv_contains) TYPE os_boolean.
+
+    "! <p class="shorttext synchronized">Get text table data</p>
+    "!
+    "! @parameter iv_texttable        | <p class="shorttext synchronized">Text table name</p>
+    "! @parameter et_texttable_values | <p class="shorttext synchronized">Text table data</p>
+    METHODS get_texttable_data
+      IMPORTING iv_texttable        TYPE tabname
+      EXPORTING et_texttable_values TYPE ANY TABLE.
 ENDCLASS.
 
 
@@ -215,50 +227,39 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD get_table_values_and_info.
-    DATA table_name TYPE tabname.
-    DATA lr_table   TYPE REF TO data.
-    FIELD-SYMBOLS <lt_texttable_value> TYPE ANY TABLE.
-    FIELD-SYMBOLS <lt_table_values>    TYPE ANY TABLE.
+    DATA lv_table_name TYPE tabname.
+    FIELD-SYMBOLS <lt_table_values> TYPE ANY TABLE.
     DATA table TYPE REF TO data.
 
-    table_name = is_customizing-tabname.
+    lv_table_name = is_customizing-tabname.
 
-    CREATE DATA table TYPE TABLE OF (table_name).
+    CREATE DATA table TYPE TABLE OF (lv_table_name).
     ASSIGN table->* TO <lt_table_values>.
 
     DATA(where_cond) = build_where_condition( is_customizing ).
 
     IF check_table_contains_language( <lt_table_values> ).
-      SELECT *
-        FROM (table_name)
-        INTO TABLE @et_table_values
-        WHERE spras = @sy-langu
-          AND (where_cond).                               "#EC CI_SUBRC
-    ELSE.
-      SELECT *
-        FROM (table_name)
-        INTO TABLE @et_table_values
-        WHERE (where_cond).                               "#EC CI_SUBRC
 
-      DATA(lv_texttable) = get_texttable( EXPORTING i_table_name = table_name
+      zcl_odata_value_help_dpc=>read_dyn_table_with_language( EXPORTING iv_table_name      = lv_table_name
+                                                                        it_where_condition = where_cond
+                                                              IMPORTING et_table_data      = <lt_table_values> ).
+    ELSE.
+
+      zcl_odata_value_help_dpc=>read_dyn_table( EXPORTING iv_table_name      = lv_table_name
+                                                          it_where_condition = where_cond
+                                                IMPORTING et_table_data      = <lt_table_values> ).
+
+      DATA(lv_texttable) = get_texttable( EXPORTING i_table_name = lv_table_name
                                           IMPORTING e_checkfield = ev_checkfield ).
     ENDIF.
+    et_table_values = <lt_table_values>.
 
     IF lv_texttable IS INITIAL.
       ev_checkfield = is_customizing-data_element.
     ELSE.
-      CREATE DATA lr_table TYPE TABLE OF (lv_texttable).
-      ASSIGN lr_table->* TO <lt_texttable_value>.
-      IF sy-subrc <> 0.
-        RETURN.
-      ENDIF.
 
-      SELECT *
-        FROM (lv_texttable)
-        INTO TABLE @<lt_texttable_value>
-        WHERE spras = @sy-langu.                          "#EC CI_SUBRC
-
-      et_texttable_values = <lt_texttable_value>.
+      get_texttable_data( EXPORTING iv_texttable        = lv_texttable
+                          IMPORTING et_texttable_values = et_texttable_values ).
     ENDIF.
   ENDMETHOD.
 
@@ -336,5 +337,21 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
     IF line_exists( lt_components[ name = 'SPRAS' ] ) AND line_exists( lt_keys[ fieldname = 'SPRAS' ] ).
       rv_contains = abap_true.
     ENDIF.
+  ENDMETHOD.
+
+  METHOD get_texttable_data.
+    DATA lr_table TYPE REF TO data.
+    FIELD-SYMBOLS <lt_texttable_value> TYPE ANY TABLE.
+
+    CREATE DATA lr_table TYPE TABLE OF (iv_texttable).
+    ASSIGN lr_table->* TO <lt_texttable_value>.
+    IF sy-subrc <> 0.
+      RETURN.
+    ENDIF.
+
+    zcl_odata_value_help_dpc=>read_dyn_table_with_language( EXPORTING iv_table_name = iv_texttable
+                                                            IMPORTING et_table_data = <lt_texttable_value> ).
+
+    et_texttable_values = <lt_texttable_value>.
   ENDMETHOD.
 ENDCLASS.

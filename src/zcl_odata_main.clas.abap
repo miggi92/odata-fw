@@ -401,7 +401,7 @@ CLASS zcl_odata_main IMPLEMENTATION.
     DATA(max_entries) = lines( c_data ).
 
     IF top IS NOT INITIAL AND max_entries > top.
-      top += 1.
+      top = top + 1.
       DELETE c_data FROM top TO max_entries.
     ENDIF.
   ENDMETHOD.

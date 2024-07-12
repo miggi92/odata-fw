@@ -8,6 +8,12 @@ Legend
 + : added
 - : removed
 
+2024-07-12 v1.2.0
+------------------
++ sadl support
++ label annotation
+- full search 
+
 2024-04-25 v1.1.0
 ------------------
 + Add method for orderby clause 

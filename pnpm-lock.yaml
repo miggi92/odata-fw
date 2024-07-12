@@ -22,15 +22,6 @@ importers:
         specifier: ^2.10.5
         version: 2.10.5
       '@abaplint/transpiler':
-
-packages:
-  '@abaplint/cli@2.107.1':
-    resolution: {integrity: sha512-dsw3jiAetWYu5F/7RDX0f2WLEO0CIQKHmiwF1Z4ofjlZ69VcBqOlxTJSMi6otLqlJkzmBTxJ5z1K2FF0rTJTbQ==}
-    engines: {node: '>=12.0.0'}
-    hasBin: true
-
-  '@abaplint/core@2.106.9':
-    resolution: {integrity: sha512-DxEfJViLJHeefqzkUhkC0OAQIkEIH3nZt2GpfCzeYXuYNurKUF8ICJH7my7WM2CXCKoVu/p2OmTjxEim5xRafQ==}
         specifier: ^2.10.5
         version: 2.10.5
       '@abaplint/transpiler-cli':
@@ -529,6 +520,7 @@ packages:
         optional: true
       universal-cookie:
         optional: true
+
   '@vueuse/metadata@10.11.0':
     resolution: {integrity: sha512-kQX7l6l8dVWNqlqyN3ePW3KmjCQO3ZMgXuBMddIu83CmucrsBfXlH+JoviYyRBws/yLTQO8g3Pbw+bdIoVm4oQ==}
 
@@ -1551,12 +1543,15 @@ snapshots:
   birpc@0.2.17: {}
 
   character-entities@2.0.2: {}
+
   commander@7.2.0: {}
 
   commander@8.3.0: {}
+
   copy-anything@3.0.5:
     dependencies:
       is-what: 4.1.16
+
   cose-base@1.0.3:
     dependencies:
       layout-base: 1.0.2
@@ -1773,11 +1768,9 @@ snapshots:
 
   dompurify@3.1.6: {}
 
-
   elkjs@0.9.3: {}
 
   entities@4.5.0: {}
-
 
   esbuild@0.21.5:
     optionalDependencies:
@@ -1827,7 +1820,6 @@ snapshots:
   internmap@1.0.1: {}
 
   internmap@2.0.3: {}
-
 
   is-what@4.1.16: {}
 
@@ -2204,7 +2196,6 @@ snapshots:
   vue-demi@0.14.8(vue@3.4.31):
     dependencies:
       vue: 3.4.31
-
 
   vue@3.4.31:
     dependencies:

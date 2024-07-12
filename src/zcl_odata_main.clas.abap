@@ -11,12 +11,14 @@ CLASS zcl_odata_main DEFINITION
 
     "! <p class="shorttext synchronized">Constructor</p>
     "! @parameter io_dpc_object | <p class="shorttext synchronized">DPC object</p>
-    "! @parameter iv_namespace | <p class="shorttext synchronized">Namespace</p>
+    "! @parameter iv_namespace  | <p class="shorttext synchronized">Namespace</p>
     METHODS constructor
       IMPORTING io_dpc_object TYPE REF TO /iwbep/cl_mgw_push_abs_data
                 iv_namespace  TYPE z_odata_namespace.
 
     "! <p class="shorttext synchronized">Before processing</p>
+    "! @raising /iwbep/cx_mgw_tech_exception | <p class="shorttext synchronized">Technical exception</p>
+    "! @raising /iwbep/cx_mgw_busi_exception | <p class="shorttext synchronized">Business exception</p>
     METHODS before_processing
       RAISING /iwbep/cx_mgw_tech_exception
               /iwbep/cx_mgw_busi_exception.
@@ -32,6 +34,10 @@ CLASS zcl_odata_main DEFINITION
     DATA mv_namespace      TYPE z_odata_namespace.
     DATA mo_context        TYPE REF TO /iwbep/if_mgw_context.
 
+    "! <p class="shorttext synchronized">Copy data to reference</p>
+    "!
+    "! @parameter i_data | <p class="shorttext synchronized">Data</p>
+    "! @parameter c_data | <p class="shorttext synchronized">Reference</p>
     METHODS copy_data_to_ref
       IMPORTING i_data TYPE any
       CHANGING  c_data TYPE REF TO data.
@@ -42,39 +48,82 @@ CLASS zcl_odata_main DEFINITION
       RAISING   /iwbep/cx_mgw_tech_exception
                 /iwbep/cx_mgw_busi_exception.
 
+    "! <p class="shorttext synchronized">Sort/order collection</p>
+    "!
+    "! @parameter io_tech_request_context      | <p class="shorttext synchronized">Tech request</p>
+    "! @parameter c_data                       | <p class="shorttext synchronized">Data</p>
+    "! @raising   /iwbep/cx_mgw_tech_exception | <p class="shorttext synchronized">Error</p>
     METHODS order_collection
       IMPORTING io_tech_request_context TYPE REF TO /iwbep/if_mgw_req_entityset
       CHANGING  c_data                  TYPE table
       RAISING   /iwbep/cx_mgw_tech_exception.
 
+    "! <p class="shorttext synchronized">Get order by clause</p>
+    "!
+    "! @parameter io_tech_request_context | <p class="shorttext synchronized">Tech request</p>
+    "! @parameter rv_orderby_clause       | <p class="shorttext synchronized">Order by clause</p>
     METHODS get_orderby_clause
       IMPORTING io_tech_request_context  TYPE REF TO /iwbep/if_mgw_req_entityset
       RETURNING VALUE(rv_orderby_clause) TYPE string.
 
+    "! <p class="shorttext synchronized">Filter collection</p>
+    "!
+    "! @parameter io_tech_request_context      | <p class="shorttext synchronized">Tech request</p>
+    "! @parameter c_data                       | <p class="shorttext synchronized">Data</p>
+    "! @raising   /iwbep/cx_mgw_tech_exception | <p class="shorttext synchronized">Tech error</p>
+    "! @raising   /iwbep/cx_mgw_busi_exception | <p class="shorttext synchronized">Business error</p>
     METHODS filter_collection
       IMPORTING io_tech_request_context TYPE REF TO /iwbep/if_mgw_req_entityset
       CHANGING  c_data                  TYPE table
       RAISING   /iwbep/cx_mgw_tech_exception
                 /iwbep/cx_mgw_busi_exception.
 
+    "! <p class="shorttext synchronized">Paginate collection</p>
+    "!
+    "! @parameter io_tech_request_context | <p class="shorttext synchronized">Tech request</p>
+    "! @parameter c_data                  | <p class="shorttext synchronized">Data</p>
     METHODS paginate_collection
       IMPORTING io_tech_request_context TYPE REF TO /iwbep/if_mgw_req_entityset
       CHANGING  c_data                  TYPE table.
 
+    "! <p class="shorttext synchronized">Get properties</p>
+    "!
+    "! @parameter io_tech_request_context      | <p class="shorttext synchronized">Tech request</p>
+    "! @parameter r_properties                 | <p class="shorttext synchronized">Properties</p>
+    "! @raising   /iwbep/cx_mgw_tech_exception | <p class="shorttext synchronized">Error</p>
     METHODS get_properties
       IMPORTING io_tech_request_context TYPE REF TO /iwbep/if_mgw_req_entityset
       RETURNING VALUE(r_properties)     TYPE /iwbep/if_mgw_odata_re_prop=>ty_t_mgw_odata_properties
       RAISING   /iwbep/cx_mgw_tech_exception.
 
+    "! <p class="shorttext synchronized">Raise error</p>
+    "!
+    "! @parameter i_error                      | <p class="shorttext synchronized">Error object</p>
+    "! @raising   /iwbep/cx_mgw_busi_exception | <p class="shorttext synchronized">Converted error</p>
     METHODS raise_error
       IMPORTING i_error TYPE REF TO cx_root
       RAISING   /iwbep/cx_mgw_busi_exception.
 
+    "! <p class="shorttext synchronized">Get request header</p>
+    "!
+    "! @parameter r_request_headers            | <p class="shorttext synchronized">Request header</p>
+    "! @raising   /iwbep/cx_mgw_tech_exception | <p class="shorttext synchronized">Error</p>
     METHODS get_request_header
       RETURNING VALUE(r_request_headers) TYPE tihttpnvp
       RAISING   /iwbep/cx_mgw_tech_exception.
 
   PRIVATE SECTION.
+    "! <p class="shorttext synchronized">Convert dynamic where</p>
+    "!
+    "! @parameter io_tech_request_context      | <p class="shorttext synchronized">Tech request</p>
+    "! @parameter rt_dynamic_where             | <p class="shorttext synchronized">Dynamic where table</p>
+    "! @raising   /iwbep/cx_mgw_busi_exception | <p class="shorttext synchronized">Business error</p>
+    "! @raising   /iwbep/cx_mgw_tech_exception | <p class="shorttext synchronized">Technical error</p>
+    METHODS convert_dynamic_where
+      IMPORTING io_tech_request_context TYPE REF TO /iwbep/if_mgw_req_entityset
+      RETURNING VALUE(rt_dynamic_where) TYPE rsds_twhere
+      RAISING   /iwbep/cx_mgw_busi_exception
+                /iwbep/cx_mgw_tech_exception.
 
 ENDCLASS.
 
@@ -214,10 +263,8 @@ CLASS zcl_odata_main IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD filter_collection.
-    DATA dynamic_where      TYPE rsds_twhere.
-    DATA dynamic_where_line LIKE LINE OF dynamic_where.
-    DATA field_ranges       TYPE rsds_trange.
-    DATA entries            TYPE REF TO data.
+    DATA field_ranges TYPE rsds_trange.
+    DATA entries      TYPE REF TO data.
     FIELD-SYMBOLS <entries> LIKE c_data.
 
     TRY.
@@ -238,66 +285,43 @@ CLASS zcl_odata_main IMPLEMENTATION.
             ENDLOOP.
           ENDLOOP.
         ELSE.
-          TRY.
-              DATA(osql_where_clause) = io_tech_request_context->get_osql_where_clause_convert( ).
-              IF osql_where_clause IS INITIAL.
-                RETURN.
+          DATA(lt_dynamic_where) = convert_dynamic_where( io_tech_request_context ).
+
+          IF lt_dynamic_where IS INITIAL.
+            RETURN.
+          ENDIF.
+
+          CALL FUNCTION 'FREE_SELECTIONS_WHERE_2_RANGE'
+            EXPORTING  where_clauses            = lt_dynamic_where                " Abgrenzungen in Form RSDS_TWHERE
+            IMPORTING  field_ranges             = field_ranges                 " Abgrenzungen in Form RSDS_TRANGE
+            EXCEPTIONS expression_not_supported = 1                " (Noch) nicht unterstützter logischer Ausdruck
+                       incorrect_expression     = 2                " Inkorrekter logischer Ausdruck
+                       OTHERS                   = 3.
+          IF sy-subrc <> 0.
+            RETURN.
+          ENDIF.
+          DATA(ranges) = field_ranges[ 1 ].
+          CREATE DATA entries LIKE c_data.
+          ASSIGN entries->* TO <entries>.
+
+          IF sy-subrc <> 0.
+            RETURN.
+          ENDIF.
+
+          LOOP AT ranges-frange_t ASSIGNING FIELD-SYMBOL(<ranges>).
+            LOOP AT c_data ASSIGNING <data>.
+              tabix = sy-tabix.
+              ASSIGN COMPONENT <ranges>-fieldname OF STRUCTURE <data> TO <value>.
+              IF NOT ( sy-subrc = 0 AND <value> IS ASSIGNED ).
+                CONTINUE.
               ENDIF.
-              REPLACE ALL OCCURRENCES OF '(' IN osql_where_clause WITH ''.
-              REPLACE ALL OCCURRENCES OF ')' IN osql_where_clause WITH ''.
-              REPLACE ALL OCCURRENCES OF | OR | IN osql_where_clause WITH | AND |.
-              dynamic_where_line-tablename = 'TEST'.
-
-              ##TODO " line ist nur 72 zeichen lang. der osql string muss aufgeteilt werden.
-              DATA(length_osql) = strlen( osql_where_clause ).
-
-              IF length_osql <= 72.
-                dynamic_where_line-where_tab = VALUE #( ( |{ osql_where_clause }| ) ).
-                APPEND dynamic_where_line TO dynamic_where.
-              ELSE.
-                SPLIT osql_where_clause AT 'AND' INTO TABLE DATA(split_osql).
-
-                LOOP AT split_osql ASSIGNING FIELD-SYMBOL(<split_osql>).
-                  APPEND |{ <split_osql> } {
-                      COND char03( WHEN sy-tabix = lines( split_osql )
-                                   THEN ''
-                                   ELSE 'AND' ) }| TO dynamic_where_line-where_tab.
-                ENDLOOP.
+              IF <value> IN <ranges>-selopt_t.
+                APPEND <data> TO <entries>.
+                DELETE c_data INDEX tabix.
               ENDIF.
-              APPEND dynamic_where_line TO dynamic_where.
-
-              CALL FUNCTION 'FREE_SELECTIONS_WHERE_2_RANGE'
-                EXPORTING  where_clauses            = dynamic_where                " Abgrenzungen in Form RSDS_TWHERE
-                IMPORTING  field_ranges             = field_ranges                 " Abgrenzungen in Form RSDS_TRANGE
-                EXCEPTIONS expression_not_supported = 1                " (Noch) nicht unterstützter logischer Ausdruck
-                           incorrect_expression     = 2                " Inkorrekter logischer Ausdruck
-                           OTHERS                   = 3.
-              IF sy-subrc <> 0.
-                RETURN.
-              ENDIF.
-              DATA(ranges) = field_ranges[ 1 ].
-              CREATE DATA entries LIKE c_data.
-              ASSIGN entries->* TO <entries>.
-
-              IF sy-subrc <> 0.
-                RETURN.
-              ENDIF.
-
-              LOOP AT ranges-frange_t ASSIGNING FIELD-SYMBOL(<ranges>).
-                LOOP AT c_data ASSIGNING <data>.
-                  tabix = sy-tabix.
-                  ASSIGN COMPONENT <ranges>-fieldname OF STRUCTURE <data> TO <value>.
-                  IF NOT ( sy-subrc = 0 AND <value> IS ASSIGNED ).
-                    CONTINUE.
-                  ENDIF.
-                  IF <value> IN <ranges>-selopt_t.
-                    APPEND <data> TO <entries>.
-                    DELETE c_data INDEX tabix.
-                  ENDIF.
-                ENDLOOP.
-              ENDLOOP.
-              c_data = <entries>.
-          ENDTRY.
+            ENDLOOP.
+          ENDLOOP.
+          c_data = <entries>.
         ENDIF.
       CATCH /iwbep/cx_mgw_med_exception.
     ENDTRY.
@@ -312,8 +336,7 @@ CLASS zcl_odata_main IMPLEMENTATION.
           )->get_entity_type( iv_entity_name = io_tech_request_context->get_entity_type_name( )
             )->get_properties( ).
       CATCH /iwbep/cx_mgw_med_exception INTO DATA(error).
-        RAISE EXCEPTION TYPE /iwbep/cx_mgw_med_exception
-          EXPORTING previous = error.
+        RAISE EXCEPTION NEW /iwbep/cx_mgw_med_exception( previous = error ).
     ENDTRY.
   ENDMETHOD.
 
@@ -378,7 +401,7 @@ CLASS zcl_odata_main IMPLEMENTATION.
     DATA(max_entries) = lines( c_data ).
 
     IF top IS NOT INITIAL AND max_entries > top.
-      top = top + 1.
+      top += 1.
       DELETE c_data FROM top TO max_entries.
     ENDIF.
   ENDMETHOD.
@@ -416,5 +439,36 @@ CLASS zcl_odata_main IMPLEMENTATION.
 
   METHOD set_context.
     mo_context = io_context.
+  ENDMETHOD.
+
+  METHOD convert_dynamic_where.
+    DATA ls_dynamic_where_line LIKE LINE OF rt_dynamic_where.
+
+    DATA(lv_osql_where_clause) = io_tech_request_context->get_osql_where_clause_convert( ).
+    IF lv_osql_where_clause IS INITIAL.
+      RETURN.
+    ENDIF.
+    REPLACE ALL OCCURRENCES OF '(' IN lv_osql_where_clause WITH ''.
+    REPLACE ALL OCCURRENCES OF ')' IN lv_osql_where_clause WITH ''.
+    REPLACE ALL OCCURRENCES OF | OR | IN lv_osql_where_clause WITH | AND |.
+    ls_dynamic_where_line-tablename = 'TEST'.
+
+    ##TODO " line ist nur 72 zeichen lang. der osql string muss aufgeteilt werden.
+    DATA(length_osql) = strlen( lv_osql_where_clause ).
+
+    IF length_osql <= 72.
+      ls_dynamic_where_line-where_tab = VALUE #( ( |{ lv_osql_where_clause }| ) ).
+      APPEND ls_dynamic_where_line TO rt_dynamic_where.
+    ELSE.
+      SPLIT lv_osql_where_clause AT 'AND' INTO TABLE DATA(lt_split_osql).
+
+      LOOP AT lt_split_osql ASSIGNING FIELD-SYMBOL(<lv_split_osql>).
+        APPEND |{ <lv_split_osql> } {
+            COND char03( WHEN sy-tabix = lines( lt_split_osql )
+                         THEN ''
+                         ELSE 'AND' ) }| TO ls_dynamic_where_line-where_tab.
+      ENDLOOP.
+    ENDIF.
+    APPEND ls_dynamic_where_line TO rt_dynamic_where.
   ENDMETHOD.
 ENDCLASS.

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_ODATA_FW_SADL</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>SADL Config</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>GENERATE_SADL_XML</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Generate SADL XML</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_TABLE_TYPE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Get table type</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>GENERATE_SADL_XML</CMPNAME>
+     <SCONAME>IT_ENTITIES</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Entities</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GENERATE_SADL_XML</CMPNAME>
+     <SCONAME>IT_PROPERTIES</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Properties</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GENERATE_SADL_XML</CMPNAME>
+     <SCONAME>RV_SADL_XML</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>SADL XML</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_TABLE_TYPE</CMPNAME>
+     <SCONAME>IV_STRUCTURE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Structure name</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_TABLE_TYPE</CMPNAME>
+     <SCONAME>RV_TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table type</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

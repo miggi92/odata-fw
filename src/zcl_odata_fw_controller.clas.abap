@@ -38,10 +38,6 @@ CLASS zcl_odata_fw_controller DEFINITION
   PRIVATE SECTION.
     DATA mo_customizing TYPE REF TO zcl_odata_fw_cust.
 
-    "! <p class="shorttext synchronized">Get table type</p>
-    "! @parameter rv_type | <p class="shorttext synchronized">Table type</p>
-    METHODS get_table_type
-      RETURNING VALUE(rv_type) TYPE string.
 ENDCLASS.
 
 
@@ -65,62 +61,11 @@ CLASS zcl_odata_fw_controller IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD define_sadl_xml.
-    DATA lt_sadl_entities TYPE zodata_entity_tt.
-
-    rv_sadl_xml = |<?xml version="1.0" encoding="utf-16"?>| &
-                  |<sadl:definition xmlns:sadl="http://sap.com/sap.nw.f.sadl" syntaxVersion="V2" >|.
-
     DATA(lt_entities) = mo_customizing->get_entities( ).
+    DATA(lt_properties) = mo_customizing->get_properties( ).
 
-    LOOP AT lt_entities ASSIGNING FIELD-SYMBOL(<ls_entity>) WHERE is_complex = abap_false.
-
-      DATA(lv_type) = get_table_type( <ls_entity>-structure ).
-
-      if lv_type is initial.
-        continue.
-      endif.
-
-      rv_sadl_xml = |{ rv_sadl_xml }| &
-      | <sadl:dataSource type="{ lv_type }" name="{ <ls_entity>-entity_name }Set" binding="{ <ls_entity>-structure }" />|.
-      APPEND <ls_entity> TO lt_sadl_entities.
-    ENDLOOP.
-
-    rv_sadl_xml = |{ rv_sadl_xml }| & |<sadl:resultSet>|.
-    LOOP AT lt_sadl_entities ASSIGNING <ls_entity>.
-
-      rv_sadl_xml = |{ rv_sadl_xml }| &
-      |<sadl:structure name="{ <ls_entity>-entity_name }Collection" dataSource="{ <ls_entity>-entity_name }Set" maxEditMode="RO" >| &
-      | <sadl:query name="EntitySetDefault">| &
-      | </sadl:query>|.
-      DATA(lt_properties) = mo_customizing->get_properties( ).
-      DELETE lt_properties WHERE entity_name <> <ls_entity>-entity_name.
-
-      LOOP AT lt_properties ASSIGNING FIELD-SYMBOL(<ls_property>) WHERE is_key = abap_false.
-        rv_sadl_xml = |{ rv_sadl_xml }| &
-        | <sadl:attribute name="{ <ls_property>-abap_name }" binding="{ <ls_property>-abap_name }" isOutput="TRUE" isKey="FALSE" />|.
-      ENDLOOP.
-      rv_sadl_xml = |{ rv_sadl_xml }| & |</sadl:structure>|.
-    ENDLOOP.
-
-    rv_sadl_xml = |{ rv_sadl_xml }| & |</sadl:resultSet>| &
-    |</sadl:definition>|.
-  ENDMETHOD.
-
-  METHOD get_table_type.
-    DATA lo_structure     TYPE REF TO cl_abap_structdescr.
-
-    lo_structure ?= cl_abap_elemdescr=>describe_by_name( iv_structure ).
-    IF NOT lo_structure->is_ddic_type( ).
-      return.
-    ENDIF.
-
-    CASE lo_structure->get_ddic_header( )-tabtype.
-      WHEN 'B'.
-        rv_type = 'CDS'.
-      WHEN 'T'.
-        rv_type = 'DDIC'.
-      WHEN OTHERS.
-        return.
-    ENDCASE.
+    DATA(lo_sadl) = NEW zcl_odata_fw_sadl( ).
+    rv_sadl_xml = lo_sadl->generate_sadl_xml( it_entities   = lt_entities
+                                              it_properties = lt_properties ).
   ENDMETHOD.
 ENDCLASS.

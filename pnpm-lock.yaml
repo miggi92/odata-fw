@@ -13,7 +13,7 @@ importers:
         version: 10.9.1
       vitepress-plugin-mermaid:
         specifier: ^2.0.16
-        version: 2.0.16(mermaid@10.9.1)(vitepress@1.3.0(@algolia/client-search@4.24.0)(postcss@8.4.39)(search-insights@2.13.0))
+        version: 2.0.16(mermaid@10.9.1)(vitepress@1.3.2(@algolia/client-search@4.24.0)(postcss@8.4.39)(search-insights@2.13.0))
     devDependencies:
       '@abaplint/cli':
         specifier: ^2.112.6
@@ -28,8 +28,8 @@ importers:
         specifier: ^2.10.5
         version: 2.10.5
       vitepress:
-        specifier: ^1.3.0
-        version: 1.3.0(@algolia/client-search@4.24.0)(postcss@8.4.39)(search-insights@2.13.0)
+        specifier: ^1.3.2
+        version: 1.3.2(@algolia/client-search@4.24.0)(postcss@8.4.39)(search-insights@2.13.0)
 
 packages:
 
@@ -890,8 +890,8 @@ packages:
   micromark@3.2.0:
     resolution: {integrity: sha512-uD66tJj54JLYq0De10AhWycZWGQNUvDI55xPgk2sQM5kn1JYlhbCMTtEeT27+vAhW2FBQxLlOmS3pmA7/2z4aA==}
 
-  minisearch@6.3.0:
-    resolution: {integrity: sha512-ihFnidEeU8iXzcVHy74dhkxh/dn8Dc08ERl0xwoMMGqp4+LvRSCgicb+zGqWthVokQKvCSxITlh3P08OzdTYCQ==}
+  minisearch@7.1.0:
+    resolution: {integrity: sha512-tv7c/uefWdEhcu6hvrfTihflgeEi2tN6VV7HJnCjK6VxM75QQJh4t9FwJCsA2EsRS8LCnu3W87CuGPWMocOLCA==}
 
   mitt@3.0.1:
     resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
@@ -1036,8 +1036,8 @@ packages:
       mermaid: '10'
       vitepress: ^1.0.0 || ^1.0.0-alpha
 
-  vitepress@1.3.0:
-    resolution: {integrity: sha512-Cbm2AgXcCrukUeV+/24g1ZDSvw8blamh/1uf2pz3ApFpaYb9T7mo4imWDZ6APn2uPo4bJ6sgOzvsJ4aH+oLbBA==}
+  vitepress@1.3.2:
+    resolution: {integrity: sha512-6gvecsCuR6b1Cid4w19KQiQ02qkpgzFRqiG0v1ZBekGkrZCzsxdDD5y4WH82HRXAOhU4iZIpzA1CsWqs719rqA==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4
@@ -2025,7 +2025,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  minisearch@6.3.0: {}
+  minisearch@7.1.0: {}
 
   mitt@3.0.1: {}
 
@@ -2137,14 +2137,14 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  vitepress-plugin-mermaid@2.0.16(mermaid@10.9.1)(vitepress@1.3.0(@algolia/client-search@4.24.0)(postcss@8.4.39)(search-insights@2.13.0)):
+  vitepress-plugin-mermaid@2.0.16(mermaid@10.9.1)(vitepress@1.3.2(@algolia/client-search@4.24.0)(postcss@8.4.39)(search-insights@2.13.0)):
     dependencies:
       mermaid: 10.9.1
-      vitepress: 1.3.0(@algolia/client-search@4.24.0)(postcss@8.4.39)(search-insights@2.13.0)
+      vitepress: 1.3.2(@algolia/client-search@4.24.0)(postcss@8.4.39)(search-insights@2.13.0)
     optionalDependencies:
       '@mermaid-js/mermaid-mindmap': 9.3.0
 
-  vitepress@1.3.0(@algolia/client-search@4.24.0)(postcss@8.4.39)(search-insights@2.13.0):
+  vitepress@1.3.2(@algolia/client-search@4.24.0)(postcss@8.4.39)(search-insights@2.13.0):
     dependencies:
       '@docsearch/css': 3.6.0
       '@docsearch/js': 3.6.0(@algolia/client-search@4.24.0)(search-insights@2.13.0)
@@ -2158,7 +2158,7 @@ snapshots:
       '@vueuse/integrations': 10.11.0(focus-trap@7.5.4)(vue@3.4.31)
       focus-trap: 7.5.4
       mark.js: 8.11.1
-      minisearch: 6.3.0
+      minisearch: 7.1.0
       shiki: 1.10.3
       vite: 5.3.3
       vue: 3.4.31

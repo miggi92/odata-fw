@@ -22,8 +22,8 @@ importers:
         specifier: ^2.10.5
         version: 2.10.5
       '@abaplint/transpiler':
-        specifier: ^2.10.5
-        version: 2.10.5
+        specifier: ^2.10.8
+        version: 2.10.8
       '@abaplint/transpiler-cli':
         specifier: ^2.10.5
         version: 2.10.5
@@ -38,8 +38,8 @@ packages:
     engines: {node: '>=12.0.0'}
     hasBin: true
 
-  '@abaplint/core@2.110.6':
-    resolution: {integrity: sha512-3zxllM4p/d+tC8YFL/vV75G/8iC0Kj5yDG40wXbBgxxLSqhTjM/ZFMaZlhPCWmcnosEMg3dAcfHLhFdtef6kWw==}
+  '@abaplint/core@2.112.10':
+    resolution: {integrity: sha512-o1tO8ZcYPW4Rn+DS2W+CYzFHgczqRH2G4asgNZaRKDqdNb4uXYJxuXiiGX2ki2rmOEB5JYm/qnJ035sbB75wHA==}
     engines: {node: '>=12.0.0'}
 
   '@abaplint/runtime@2.10.5':
@@ -49,8 +49,8 @@ packages:
     resolution: {integrity: sha512-MunbTgF5YT4lO96BOXuW3F6oGK0Zy1C6Xfen9/Pq0KKVFtwLXc3Fme++gxTFacRMEB7iL6uQCtr2wOZ13Ui3lQ==}
     hasBin: true
 
-  '@abaplint/transpiler@2.10.5':
-    resolution: {integrity: sha512-5Y5/w6mbgXXQ3W/x0F6E5s3Bw6+btzQjsBqA+l1q2Wyk0Hybx48h/13np+88UqESATeCFnOdpKefYaD0DEAAYA==}
+  '@abaplint/transpiler@2.10.8':
+    resolution: {integrity: sha512-yx0dqLBmMkflS1/sWHz1AKlWTWhtvVQBeURgWV8XrKRQNFlYpId7pOGFoAwUghrrX41tJBvOxQr20ubjBFCB1g==}
 
   '@algolia/autocomplete-core@1.9.3':
     resolution: {integrity: sha512-009HdfugtGCdC4JdXUbVJClA0q0zh24yyePn+KUGk3rP7j8FEe/m5Yo/z65gn6nP/cM39PxpzqKrL7A6fP6PPw==}
@@ -757,8 +757,8 @@ packages:
   estree-walker@2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
 
-  fast-xml-parser@4.4.0:
-    resolution: {integrity: sha512-kLY3jFlwIYwBNDojclKsNAC12sfD6NwW74QB2CoNGPvtVxjliYehVunB3HYyNi+n4Tt1dAcgwYvmKF/Z18flqg==}
+  fast-xml-parser@4.4.1:
+    resolution: {integrity: sha512-xkjOecfnKGkSsOwtZ5Pz7Us/T6mrbPQrq0nh+aCO5V9nk5NLWmasAHumTKjiPJPWANe+kAZ84Jc8ooJkzZ88Sw==}
     hasBin: true
 
   focus-trap@7.5.4:
@@ -1077,9 +1077,9 @@ snapshots:
 
   '@abaplint/cli@2.112.6': {}
 
-  '@abaplint/core@2.110.6':
+  '@abaplint/core@2.112.10':
     dependencies:
-      fast-xml-parser: 4.4.0
+      fast-xml-parser: 4.4.1
       json5: 2.2.3
       vscode-languageserver-types: 3.17.5
 
@@ -1089,9 +1089,9 @@ snapshots:
 
   '@abaplint/transpiler-cli@2.10.5': {}
 
-  '@abaplint/transpiler@2.10.5':
+  '@abaplint/transpiler@2.10.8':
     dependencies:
-      '@abaplint/core': 2.110.6
+      '@abaplint/core': 2.112.10
       source-map: 0.7.4
 
   '@algolia/autocomplete-core@1.9.3(@algolia/client-search@4.24.0)(algoliasearch@4.24.0)(search-insights@2.13.0)':
@@ -1800,7 +1800,7 @@ snapshots:
 
   estree-walker@2.0.2: {}
 
-  fast-xml-parser@4.4.0:
+  fast-xml-parser@4.4.1:
     dependencies:
       strnum: 1.0.5
 

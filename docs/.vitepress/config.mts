@@ -122,7 +122,9 @@ function sidebarDocumentation() {
       text: "Examples",
       collapsed: true,
       link: '/documentation/examples/',
-      items: []
+      items: [
+        { text: 'Material', link: '/documentation/examples/material' },
+      ]
     },
     {
       text: 'Development Objects',

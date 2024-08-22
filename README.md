@@ -1,7 +1,14 @@
 # odata-fw
 
+> An abap odata framework.
+
+![odata-fw Logo](./docs/public/odata_fw_logo_transparent.png)
+
 [![GitHub license](https://img.shields.io/github/license/miggi92/odata-fw?style=for-the-badge)](https://github.com/miggi92/odata-fw/blob/master/LICENSE.md)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/miggi92/odata-fw?style=for-the-badge)
 [![GitHub issues](https://img.shields.io/github/issues/miggi92/odata-fw?style=for-the-badge)](https://github.com/miggi92/odata-fw/issues)
+![GitHub last commit](https://img.shields.io/github/last-commit/miggi92/odata-fw?style=for-the-badge)
+
 
 ## Description
 
@@ -27,3 +34,7 @@ Please see our [LICENSE](./LICENSE.md) for copyright and license information.
 ## Download & Installation
 
 Pull the source code with [abapGit](https://github.com/abapGit/abapGit/) into your ABAP system. The latest abapGit build can be downloaded [here](https://raw.githubusercontent.com/abapGit/build/main/zabapgit.abap).
+
+## Sponsors
+
+![Sponsors](./sponsorkit/sponsors.svg)

@@ -31,10 +31,10 @@
     "@abaplint/transpiler": "^2.10.5",
     "@abaplint/transpiler-cli": "^2.10.5",
     "vitepress": "^1.3.0"
-    
   },
   "dependencies": {
     "mermaid": "^10.9.1",
+    "vitepress-plugin-image-viewer": "^1.1.5",
     "vitepress-plugin-mermaid": "^2.0.16"
   }
 }

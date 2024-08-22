@@ -7,6 +7,12 @@
 node_modules/
 dist/
 
+# Env
+.env
+
+# Private json files
+.*.json
+
 # Compiled Java class files
 *.class
 

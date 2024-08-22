@@ -119,6 +119,12 @@ function sidebarDocumentation() {
       ],
     },
     {
+      text: "Examples",
+      collapsed: true,
+      link: '/documentation/examples/',
+      items: []
+    },
+    {
       text: 'Development Objects',
       link: '/documentation/dev-objects/',
       collapsed: true,

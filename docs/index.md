@@ -19,4 +19,3 @@ features:
   - title: Focus on developer
     details: The framework is focused on the developer, making the development process easier.
 ---
-

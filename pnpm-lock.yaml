@@ -16,7 +16,7 @@ importers:
         version: 1.1.5
       vitepress-plugin-mermaid:
         specifier: ^2.0.16
-        version: 2.0.16(mermaid@10.9.1)(vitepress@1.3.3(@algolia/client-search@4.24.0)(postcss@8.4.41)(search-insights@2.13.0))
+        version: 2.0.16(mermaid@10.9.1)(vitepress@1.3.4(@algolia/client-search@4.24.0)(postcss@8.4.41)(search-insights@2.13.0))
     devDependencies:
       '@abaplint/cli':
         specifier: ^2.112.6
@@ -31,8 +31,8 @@ importers:
         specifier: ^2.10.5
         version: 2.10.9
       vitepress:
-        specifier: ^1.3.0
-        version: 1.3.3(@algolia/client-search@4.24.0)(postcss@8.4.41)(search-insights@2.13.0)
+        specifier: ^1.3.4
+        version: 1.3.4(@algolia/client-search@4.24.0)(postcss@8.4.41)(search-insights@2.13.0)
 
 packages:
 
@@ -1048,8 +1048,8 @@ packages:
       mermaid: '10'
       vitepress: ^1.0.0 || ^1.0.0-alpha
 
-  vitepress@1.3.3:
-    resolution: {integrity: sha512-6UzEw/wZ41S/CATby7ea7UlffvRER/uekxgN6hbEvSys9ukmLOKsz87Ehq9yOx1Rwiw+Sj97yjpivP8w1sUmng==}
+  vitepress@1.3.4:
+    resolution: {integrity: sha512-I1/F6OW1xl3kW4PaIMC6snxjWgf3qfziq2aqsDoFc/Gt41WbcRv++z8zjw8qGRIJ+I4bUW7ZcKFDHHN/jkH9DQ==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4
@@ -2155,14 +2155,14 @@ snapshots:
     dependencies:
       viewerjs: 1.11.6
 
-  vitepress-plugin-mermaid@2.0.16(mermaid@10.9.1)(vitepress@1.3.3(@algolia/client-search@4.24.0)(postcss@8.4.41)(search-insights@2.13.0)):
+  vitepress-plugin-mermaid@2.0.16(mermaid@10.9.1)(vitepress@1.3.4(@algolia/client-search@4.24.0)(postcss@8.4.41)(search-insights@2.13.0)):
     dependencies:
       mermaid: 10.9.1
-      vitepress: 1.3.3(@algolia/client-search@4.24.0)(postcss@8.4.41)(search-insights@2.13.0)
+      vitepress: 1.3.4(@algolia/client-search@4.24.0)(postcss@8.4.41)(search-insights@2.13.0)
     optionalDependencies:
       '@mermaid-js/mermaid-mindmap': 9.3.0
 
-  vitepress@1.3.3(@algolia/client-search@4.24.0)(postcss@8.4.41)(search-insights@2.13.0):
+  vitepress@1.3.4(@algolia/client-search@4.24.0)(postcss@8.4.41)(search-insights@2.13.0):
     dependencies:
       '@docsearch/css': 3.6.1
       '@docsearch/js': 3.6.1(@algolia/client-search@4.24.0)(search-insights@2.13.0)

@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/miggi92/odata-fw/blob/master/README.md",
   "devDependencies": {
-    "@abaplint/cli": "^2.112.6",
+    "@abaplint/cli": "^2.113.9",
     "@abaplint/runtime": "^2.10.5",
     "@abaplint/transpiler": "^2.10.5",
     "@abaplint/transpiler-cli": "^2.10.5",

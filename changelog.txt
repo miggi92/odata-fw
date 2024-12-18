@@ -8,6 +8,10 @@ Legend
 + : added
 - : removed
 
+2024-12-18 v1.2.1
+------------------
+* exceptions supporting systems <750 
+
 2024-07-12 v1.2.0
 ------------------
 + sadl support

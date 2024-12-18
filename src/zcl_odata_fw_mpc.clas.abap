@@ -33,7 +33,8 @@ CLASS zcl_odata_fw_mpc DEFINITION
     "! @raising   /iwbep/cx_mgw_med_exception | <p class="shorttext synchronized">Error</p>
     METHODS define_complex_type
       IMPORTING is_entity TYPE zodata_entity
-      RAISING   /iwbep/cx_mgw_med_exception.
+      RAISING   /iwbep/cx_mgw_med_exception
+                zcx_odata.
 
     "! <p class="shorttext synchronized">Define odata actions/ function imports</p>
     "!
@@ -47,14 +48,6 @@ CLASS zcl_odata_fw_mpc DEFINITION
     METHODS define_navigation_properties
       RAISING /iwbep/cx_mgw_med_exception.
 
-    "! <p class="shorttext synchronized">Override sap:lable texts</p>
-    "!
-    "! @parameter is_property | <p class="shorttext synchronized">Property</p>
-    "! @parameter io_prop_ref | <p class="shorttext synchronized">Property reference</p>
-    METHODS override_texts
-      IMPORTING is_property TYPE zodata_property
-                io_prop_ref TYPE REF TO /iwbep/if_mgw_odata_item.
-
     "! <p class="shorttext synchronized">Define odata entity</p>
     "!
     "! @parameter is_entity                   | <p class="shorttext synchronized">Customizing entity</p>
@@ -65,23 +58,6 @@ CLASS zcl_odata_fw_mpc DEFINITION
       RAISING   zcx_odata
                 /iwbep/cx_mgw_med_exception.
 
-    "! <p class="shorttext synchronized">Define value help annotations</p>
-    "! @parameter is_entity                   | <p class="shorttext synchronized">Entity</p>
-    "! @parameter is_property                 | <p class="shorttext synchronized">Property</p>
-    "! @raising   /iwbep/cx_mgw_med_exception | <p class="shorttext synchronized">Error</p>
-    METHODS define_search_help_annotations
-      IMPORTING is_entity   TYPE zodata_entity
-                is_property TYPE zodata_property
-      RAISING   /iwbep/cx_mgw_med_exception.
-
-    "!  <p class="shorttext synchronized">Change edm types for specific fields</p>
-    "! @parameter is_property  | <p class="shorttext synchronized">Property</p>
-    "! @parameter is_component | <p class="shorttext synchronized">Component</p>
-    "! @parameter io_property  | <p class="shorttext synchronized">Property </p>
-    METHODS change_edm_types
-      IMPORTING is_property  TYPE zodata_property
-                is_component TYPE abap_componentdescr
-                io_property  TYPE REF TO /iwbep/if_mgw_odata_property.
 ENDCLASS.
 
 
@@ -113,251 +89,17 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD define_complex_type.
-    DATA(lo_complex_type) = mo_model->create_complex_type( iv_cplx_type_name = is_entity-entity_name  ).
-    lo_complex_type->bind_structure( |{ is_entity-structure }| ).
-
-    LOOP AT mo_customizing->get_properties( ) ASSIGNING FIELD-SYMBOL(<ls_property>)
-         WHERE entity_name = is_entity-entity_name.
-
-      DATA(lo_property) = lo_complex_type->create_property( iv_property_name  = <ls_property>-property_name
-                                                            iv_abap_fieldname = <ls_property>-abap_name ).
-
-      override_texts( is_property = <ls_property>
-                      io_prop_ref = CAST #( lo_property ) ).
-    ENDLOOP.
+    DATA(lo_complex_type) = NEW zcl_odata_model_complex_entity( io_model       = mo_model
+                                                                io_customizing = mo_customizing
+                                                                io_anno_model  = mo_anno_model ).
+    lo_complex_type->create_entity( is_entity ).
   ENDMETHOD.
 
   METHOD define_entity.
-    DATA lo_structure  TYPE REF TO cl_abap_structdescr.
-    DATA lt_components TYPE cl_abap_structdescr=>component_table.
-
-    DATA(lo_entity) = mo_model->create_entity_type( iv_entity_type_name = is_entity-entity_name ).
-
-    lo_structure ?= cl_abap_structdescr=>describe_by_name( p_name = is_entity-structure ).
-    IF lo_structure->kind <> cl_abap_structdescr=>kind_struct.
-      RAISE EXCEPTION TYPE zcx_odata
-        EXPORTING textid = zcx_odata=>no_structure
-                  value  = |{ is_entity-structure }|.
-    ENDIF.
-
-    " bind_conversion only works for ddic structures
-    lo_structure->get_ddic_object( EXCEPTIONS not_found    = 1                " Type could not be found
-                                              no_ddic_type = 2                " Typ is not a dictionary type
-                                              OTHERS       = 3 ).
-    IF sy-subrc = 0. " is a ddic structure
-      DATA(lv_bind_conversion) = abap_true.
-    ENDIF.
-
-    lt_components = lo_structure->get_components( ).
-
-    IF    lo_structure->struct_kind = lo_structure->structkind_nested
-       OR line_exists( lt_components[ as_include = abap_true ] ). " is sometimes needed cause it doesn't recognizes includes
-      DATA(lt_nested) = lo_structure->get_components( ).
-      LOOP AT lt_nested ASSIGNING FIELD-SYMBOL(<ls_nested>) WHERE type->kind = cl_abap_structdescr=>kind_struct.
-        DATA(lo_nested_struct) = CAST cl_abap_structdescr( <ls_nested>-type ).
-        APPEND LINES OF lo_nested_struct->get_components( ) TO lt_components.
-      ENDLOOP.
-    ENDIF.
-
-    IF    is_entity-entity_name = zif_odata_constants=>gc_global_entities-documents
-       OR is_entity-entity_name = zif_odata_constants=>gc_global_entities-attachments.
-      lo_entity->set_is_media( ).
-    ENDIF.
-
-    lo_entity->bind_structure( iv_structure_name   = |{ is_entity-structure }|
-                               iv_bind_conversions = lv_bind_conversion ).    " Consider conversion exits
-    data(lo_entity_set) = lo_entity->create_entity_set( iv_entity_set_name = |{ is_entity-entity_name }Set| ).
-
-    LOOP AT mo_customizing->get_properties( ) ASSIGNING FIELD-SYMBOL(<ls_property>)
-         WHERE entity_name = is_entity-entity_name.
-      IF <ls_property>-complex_type IS NOT INITIAL.
-        DATA(lo_cmplx_type) = lo_entity->create_cmplx_type_property( iv_complex_type_name = <ls_property>-complex_type
-                                                                     iv_property_name     = <ls_property>-property_name
-                                                                     iv_abap_fieldname    = <ls_property>-abap_name ).
-
-        override_texts( is_property = <ls_property>
-                        io_prop_ref = CAST #( lo_cmplx_type ) ).
-      ELSE.
-        TRY.
-            DATA(ls_component) = lt_components[ name = <ls_property>-abap_name ].
-          CATCH cx_sy_itab_line_not_found INTO DATA(lo_error).
-            RAISE EXCEPTION TYPE zcx_odata
-              EXPORTING previous = lo_error
-                        textid   = zcx_odata=>component_not_in_structure
-                        value    = |{ <ls_property>-abap_name }|
-                        value2   = |{ is_entity-structure }|.
-        ENDTRY.
-        DATA(lo_property) = lo_entity->create_property( iv_property_name  = <ls_property>-property_name
-                                                        iv_abap_fieldname = <ls_property>-abap_name ).
-
-        change_edm_types( is_property  = <ls_property>
-                          is_component = ls_component
-                          io_property  = lo_property ).
-
-        override_texts( is_property = <ls_property>
-                        io_prop_ref = CAST #( lo_property ) ).
-
-        lo_property->set_is_key( <ls_property>-is_key ).
-
-        IF <ls_property>-as_etag = abap_true.
-          lo_property->set_as_etag( ).
-        ENDIF.
-
-        IF <ls_property>-not_filterable = abap_true.
-          lo_property->set_filterable( abap_false ).
-        ENDIF.
-      ENDIF.
-
-      IF <ls_property>-search_help IS NOT INITIAL.
-        define_search_help_annotations( is_entity   = is_entity
-                                        is_property = <ls_property> ).
-      ENDIF.
-
-      IF     (    is_entity-entity_name = zif_odata_constants=>gc_global_entities-documents
-               OR is_entity-entity_name = zif_odata_constants=>gc_global_entities-attachments )
-         AND <ls_property>-abap_name = zif_odata_constants=>gc_global_fieldnames-documents-mime_type.
-        lo_property->set_as_content_type( ).
-      ENDIF.
-
-      IF is_entity-deep_entity_structure IS NOT INITIAL.
-        lo_entity->bind_structure( |{ is_entity-deep_entity_structure }| ).
-      ENDIF.
-    ENDLOOP.
-  ENDMETHOD.
-
-  METHOD change_edm_types.
-    " TODO: parameter IS_PROPERTY is never used (ABAP cleaner)
-
-    is_component-type->get_ddic_header( RECEIVING  p_header     = DATA(ls_ddic_header)
-                                        EXCEPTIONS not_found    = 1                " Type could not be found
-                                                   no_ddic_type = 2                " Typ is not a dictionary type
-                                                   OTHERS       = 3 ).
-
-    CASE ls_ddic_header-refname.
-      WHEN 'TZNTSTMPL'.
-        io_property->set_type_edm_datetimeoffset( ).
-      WHEN 'DATUM'.
-        TRY.
-            zcl_odata_annotaion_sap=>create_from_property( io_property )->add_date_only_annotation( ).
-          CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
-        ENDTRY.
-    ENDCASE.
-
-    IF is_component-type->absolute_name CS 'GUID'.
-      io_property->set_type_edm_guid( ).
-    ENDIF.
-  ENDMETHOD.
-
-  METHOD define_search_help_annotations.
-    TRY.
-        DATA(lt_entities) = mo_customizing->get_entities( ).
-        IF NOT line_exists( lt_entities[ entity_name = is_property-search_help ] ).
-          RETURN.
-        ENDIF.
-
-        DATA(lt_sh_properties) = mo_customizing->get_properties( ).
-        DELETE lt_sh_properties WHERE entity_name <> is_property-search_help.
-        DATA(lv_first_key) = lt_sh_properties[ is_key = abap_true ]-property_name.
-        DATA(lo_annotation) = zcl_odata_annotation_shlp=>create(
-            io_vocan_model         = mo_anno_model
-            iv_namespace           = |{ mo_customizing->get_namespace( ) }|
-            iv_entitytype          = is_entity-entity_name
-            iv_property            = SWITCH #( is_property-complex_type
-                                               WHEN zif_odata_constants=>gc_global_cmplx_entities-value_description
-                                               THEN |{ is_property-property_name }/{ zif_odata_constants=>gc_global_properties-value_help-value }|
-                                               ELSE is_property-property_name )
-            iv_search_supported    = abap_false
-            iv_valuelist_entityset = |{ is_property-search_help }Set|
-            iv_valuelist_property  = SWITCH #( is_property-complex_type
-                                               WHEN zif_odata_constants=>gc_global_cmplx_entities-value_description
-                                               THEN |{ zif_odata_constants=>gc_global_properties-value_help-value }|
-                                               ELSE lv_first_key ) ).
-
-        IF is_property-complex_type = zif_odata_constants=>gc_global_cmplx_entities-value_description.
-          lo_annotation->add_display_parameter( |{ zif_odata_constants=>gc_global_properties-value_help-description }| ).
-        ELSE.
-          LOOP AT lt_sh_properties ASSIGNING FIELD-SYMBOL(<ls_sh_property>) WHERE property_name <> lv_first_key.
-
-            IF <ls_sh_property>-is_key = abap_true.
-              lo_annotation->add_inout_parameter( iv_property           = |{ <ls_sh_property>-property_name }|
-                                                  iv_valuelist_property = |{ <ls_sh_property>-property_name }| ).
-            ELSE.
-              lo_annotation->add_out_parameter( iv_property           = |{ <ls_sh_property>-property_name }|
-                                                iv_valuelist_property = |{ <ls_sh_property>-property_name }| ).
-            ENDIF.
-
-          ENDLOOP.
-        ENDIF.
-      CATCH cx_sy_itab_line_not_found.
-    ENDTRY.
-  ENDMETHOD.
-
-  METHOD override_texts.
-    DATA lo_data_element TYPE REF TO cl_abap_elemdescr.
-    DATA ls_ddic_field   TYPE dfies.
-
-    CHECK io_prop_ref IS BOUND.
-    TRY.
-        DATA(lt_property_texts) = mo_customizing->get_property_texts( ).
-        DATA(ls_label) = lt_property_texts[ entity_name   = is_property-entity_name
-                                            property_name = is_property-property_name
-                                            text_type     = 'L' ].
-
-        IF ls_label-text_id IS INITIAL AND ls_label-object_name IS INITIAL.
-          RAISE EXCEPTION TYPE cx_sy_itab_line_not_found.
-        ENDIF.
-
-        IF ls_label-text_id IS INITIAL AND ls_label-object_name IS NOT INITIAL.
-          " Todo: object_name = data element
-          lo_data_element = CAST cl_abap_elemdescr( cl_abap_elemdescr=>describe_by_name(
-                                                        p_name = ls_label-object_name ) ).
-
-          lo_data_element->get_ddic_field( RECEIVING  p_flddescr   = ls_ddic_field
-                                           EXCEPTIONS not_found    = 1                " Type could not be found
-                                                      no_ddic_type = 2                " Typ is not a dictionary type
-                                                      OTHERS       = 3 ).
-
-*          ls_ddic_field-scrtext_m
-          TRY.
-              DATA(lo_annotation) = zcl_odata_annotaion_sap=>create_from_property( CAST #( io_prop_ref ) ).
-              lo_annotation->get_annotation_object( )->add( iv_key   = 'label'
-                                                            iv_value = |{ ls_ddic_field-fieldtext }| ).
-            CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
-          ENDTRY.
-        ELSE.
-          io_prop_ref->set_label_from_text_element( iv_text_element_symbol    = |{ ls_label-text_id }|
-                                                    iv_text_element_container = |{ ls_label-object_name }| ).
-        ENDIF.
-
-      CATCH cx_sy_itab_line_not_found /iwbep/cx_mgw_med_exception.
-    ENDTRY.
-    TRY.
-        DATA(ls_heading) = lt_property_texts[ entity_name   = is_property-entity_name
-                                              property_name = is_property-property_name
-                                              text_type     = 'H' ].
-
-        IF ls_heading-text_id IS INITIAL AND ls_heading-object_name IS INITIAL.
-          RAISE EXCEPTION TYPE cx_sy_itab_line_not_found.
-        ENDIF.
-
-        IF ls_heading-text_id IS INITIAL AND ls_heading-object_name IS NOT INITIAL.
-          " Todo: object_name = data element
-          lo_data_element = CAST cl_abap_elemdescr( cl_abap_elemdescr=>describe_by_name(
-                                                        p_name = ls_label-object_name ) ).
-
-          lo_data_element->get_ddic_field( RECEIVING  p_flddescr   = ls_ddic_field
-                                           EXCEPTIONS not_found    = 1                " Type could not be found
-                                                      no_ddic_type = 2                " Typ is not a dictionary type
-                                                      OTHERS       = 3 ).
-
-*          ls_ddic_field-scrtext_m
-        ELSE.
-          io_prop_ref->set_heading_from_text_element( iv_text_element_symbol    = |{ ls_heading-text_id }|
-                                                      iv_text_element_container = |{ ls_heading-object_name }| ).
-        ENDIF.
-
-      CATCH cx_sy_itab_line_not_found /iwbep/cx_mgw_med_exception.
-    ENDTRY.
+    DATA(lo_entity) = NEW zcl_odata_model_entity( io_model       = mo_model
+                                                  io_customizing = mo_customizing
+                                                  io_anno_model  = mo_anno_model ).
+    lo_entity->create_entity( is_entity ).
   ENDMETHOD.
 
   METHOD define_navigation_properties.

@@ -143,8 +143,7 @@ CLASS zcl_odata_model_entity IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD append_nested_components.
-    IF    NOT io_structure->struct_kind = io_structure->structkind_nested
-       OR NOT line_exists( ct_components[ as_include = abap_true ] ). " is sometimes needed cause it doesn't recognizes includes
+    IF NOT line_exists( ct_components[ as_include = abap_true ] ). " is sometimes needed cause it doesn't recognizes includes
       RETURN.
     ENDIF.
 

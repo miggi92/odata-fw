@@ -18,10 +18,8 @@ CLASS zcl_odata_model_complex_prprty IMPLEMENTATION.
                                                                  iv_property_name     = is_property-property_name
                                                                  iv_abap_fieldname    = is_property-abap_name ).
 
-    mo_property = CAST #( lo_cmplx_type ).
-
     override_texts( is_property = is_property
-                    io_prop_ref = mo_property ).
+                    io_prop_ref = CAST #( lo_cmplx_type ) ).
 
     IF is_property-search_help IS NOT INITIAL.
       define_search_help_annotations( is_entity   = is_entity

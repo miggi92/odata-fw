@@ -26,15 +26,15 @@
   },
   "homepage": "https://github.com/miggi92/odata-fw/blob/master/README.md",
   "devDependencies": {
-    "@abaplint/cli": "^2.112.6",
-    "@abaplint/runtime": "^2.10.5",
-    "@abaplint/transpiler": "^2.10.5",
-    "@abaplint/transpiler-cli": "^2.10.5",
-    "vitepress": "^1.3.0"
+    "@abaplint/cli": "^2.113.82",
+    "@abaplint/runtime": "^2.10.23",
+    "@abaplint/transpiler": "^2.10.23",
+    "@abaplint/transpiler-cli": "^2.10.23",
+    "vitepress": "^1.5.0"
   },
   "dependencies": {
-    "mermaid": "^10.9.1",
+    "mermaid": "^11.4.1",
     "vitepress-plugin-image-viewer": "^1.1.5",
-    "vitepress-plugin-mermaid": "^2.0.16"
+    "vitepress-plugin-mermaid": "^2.0.17"
   }
 }

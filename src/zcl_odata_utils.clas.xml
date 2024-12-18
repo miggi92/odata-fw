@@ -74,6 +74,11 @@
      <DESCRIPT>Raise error within the Model</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
+    <CMPNAME>GET_USER_DETAIL</CMPNAME>
+     <LANGU>D</LANGU>
+     <DESCRIPT>Get user details</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>RAISE_MPC_ERROR</CMPNAME>
      <LANGU>E</LANGU>
      <DESCRIPT>Raise error within the Model</DESCRIPT>

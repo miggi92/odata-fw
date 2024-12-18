@@ -122,8 +122,7 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
         IF     filter IS INITIAL
            AND io_tech_request_context->get_entity_type_name( )  = zif_odata_constants=>gc_global_entities-value_help.
           RAISE EXCEPTION TYPE zcx_odata
-            EXPORTING
-              textid = zcx_odata=>no_filter_passed.
+            EXPORTING textid = zcx_odata=>no_filter_passed.
         ELSEIF filter IS NOT INITIAL.
           lt_filter_options = filter[ property = 'SEARCH_HELP' ]-select_options.
         ELSEIF io_tech_request_context->get_entity_type_name( ) <> zif_odata_constants=>gc_global_entities-value_help.
@@ -172,12 +171,10 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
 
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_odata
-        EXPORTING
-          textid = zcx_odata=>no_search_help_found.
+        EXPORTING textid = zcx_odata=>no_search_help_found.
     ELSEIF lines( search_helps ) > 1.
       RAISE EXCEPTION TYPE zcx_odata
-        EXPORTING
-          textid = zcx_odata=>only_one_filter_id.
+        EXPORTING textid = zcx_odata=>only_one_filter_id.
     ENDIF.
     r_sh_cust = search_helps[ 1 ].
   ENDMETHOD.
@@ -186,13 +183,32 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
     DATA description_component TYPE string.
     FIELD-SYMBOLS <table_values>    TYPE ANY TABLE.
     FIELD-SYMBOLS <texttable_value> TYPE ANY TABLE.
+    DATA lr_table      TYPE REF TO data.
+    DATA lr_ttable     TYPE REF TO data.
+    DATA lv_table_name TYPE tabname.
+    DATA lv_checkfield TYPE forfield.
 
     description_component = i_customizing-description_field.
+    lv_table_name = i_customizing-tabname.
+    CREATE DATA lr_table TYPE TABLE OF (lv_table_name).
+    ASSIGN lr_table->* TO <table_values>.
 
-    get_table_values_and_info( EXPORTING is_customizing      = i_customizing
-                               IMPORTING ev_checkfield       = DATA(lv_checkfield)
-                                         et_table_values     = <table_values>
-                                         et_texttable_values = <texttable_value> ).
+    DATA(lv_texttable) = get_texttable( lv_table_name ).
+
+    IF lv_texttable IS NOT INITIAL.
+      CREATE DATA lr_ttable TYPE TABLE OF (lv_texttable).
+      ASSIGN lr_ttable->* TO <texttable_value>.
+
+      get_table_values_and_info( EXPORTING is_customizing      = i_customizing
+                                 IMPORTING ev_checkfield       = lv_checkfield
+                                           et_table_values     = <table_values>
+                                           et_texttable_values = <texttable_value> ).
+    ELSE.
+
+      get_table_values_and_info( EXPORTING is_customizing  = i_customizing
+                                 IMPORTING ev_checkfield   = lv_checkfield
+                                           et_table_values = <table_values> ).
+    ENDIF.
 
     LOOP AT <table_values> ASSIGNING FIELD-SYMBOL(<table_value>).
       APPEND INITIAL LINE TO r_value_help ASSIGNING FIELD-SYMBOL(<value_help>).
@@ -235,24 +251,24 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
   METHOD get_table_values_and_info.
     DATA lv_table_name TYPE tabname.
     FIELD-SYMBOLS <lt_table_values> TYPE ANY TABLE.
-    DATA table TYPE REF TO data.
+    DATA lt_table TYPE REF TO data.
 
     lv_table_name = is_customizing-tabname.
 
-    CREATE DATA table TYPE TABLE OF (lv_table_name).
-    ASSIGN table->* TO <lt_table_values>.
+    CREATE DATA lt_table TYPE TABLE OF (lv_table_name).
+    ASSIGN lt_table->* TO <lt_table_values>.
 
-    DATA(where_cond) = build_where_condition( is_customizing ).
+    DATA(lt_where_cond) = build_where_condition( is_customizing ).
 
     IF check_table_contains_language( <lt_table_values> ).
 
       zcl_odata_value_help_dpc=>read_dyn_table_with_language( EXPORTING iv_table_name      = lv_table_name
-                                                                        it_where_condition = where_cond
+                                                                        it_where_condition = lt_where_cond
                                                               IMPORTING et_table_data      = <lt_table_values> ).
     ELSE.
 
       zcl_odata_value_help_dpc=>read_dyn_table( EXPORTING iv_table_name      = lv_table_name
-                                                          it_where_condition = where_cond
+                                                          it_where_condition = lt_where_cond
                                                 IMPORTING et_table_data      = <lt_table_values> ).
 
       DATA(lv_texttable) = get_texttable( EXPORTING i_table_name = lv_table_name
@@ -285,8 +301,7 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
                                                     OTHERS         = 3 ).
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_odata
-        EXPORTING
-          textid = zcx_odata=>convert_msg( ).
+        EXPORTING textid = zcx_odata=>convert_msg( ).
     ENDIF.
 
     LOOP AT fixed_values ASSIGNING FIELD-SYMBOL(<fixed_value>).

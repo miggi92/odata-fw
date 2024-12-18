@@ -70,12 +70,6 @@
      <FIELDNAME>OBJECT_NAME</FIELDNAME>
     </DD27P>
    </DD27P_TABLE>
-   <TABL_EXTRAS>
-    <TDDAT>
-     <TABNAME>ZODATA_V_PROPTXT</TABNAME>
-     <CCLASS>&amp;NC&amp;</CCLASS>
-    </TDDAT>
-   </TABL_EXTRAS>
   </asx:values>
  </asx:abap>
 </abapGit>

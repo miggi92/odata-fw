@@ -5,10 +5,10 @@ CLASS zcl_odata_value_help_dpc DEFINITION
 
   PUBLIC SECTION.
     TYPES:
-      BEGIN OF ty_s_clause,
+      BEGIN OF gty_s_clause,
         line TYPE c LENGTH 72,
-      END OF ty_s_clause,
-      ty_t_clause TYPE STANDARD TABLE OF ty_s_clause WITH EMPTY KEY.
+      END OF gty_s_clause,
+      gty_t_clause TYPE STANDARD TABLE OF gty_s_clause WITH EMPTY KEY.
 
     "! <p class="shorttext synchronized">Read dynamic table with language</p>
     "!
@@ -19,7 +19,7 @@ CLASS zcl_odata_value_help_dpc DEFINITION
     CLASS-METHODS read_dyn_table_with_language
       IMPORTING iv_spras           TYPE spras       DEFAULT sy-langu
                 iv_table_name      TYPE tabname
-                it_where_condition TYPE ty_t_clause OPTIONAL
+                it_where_condition TYPE gty_t_clause OPTIONAL
       EXPORTING et_table_data      TYPE ANY TABLE.
 
     "! <p class="shorttext synchronized">Read dynamic table</p>
@@ -29,7 +29,7 @@ CLASS zcl_odata_value_help_dpc DEFINITION
     "! @parameter et_table_data      | <p class="shorttext synchronized">Table data</p>
     CLASS-METHODS read_dyn_table
       IMPORTING iv_table_name      TYPE tabname
-                it_where_condition TYPE ty_t_clause OPTIONAL
+                it_where_condition TYPE gty_t_clause OPTIONAL
       EXPORTING et_table_data      TYPE ANY TABLE.
 
   PROTECTED SECTION.

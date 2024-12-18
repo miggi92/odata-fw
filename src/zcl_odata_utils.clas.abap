@@ -23,6 +23,7 @@ CLASS zcl_odata_utils DEFINITION
     "! <p class="shorttext synchronized">Get text from domain</p>
     CLASS-METHODS get_text_from_domain
       IMPORTING i_value       TYPE any
+                iv_langu      type spras OPTIONAL
       RETURNING VALUE(r_text) TYPE string
       RAISING   zcx_odata.
 
@@ -104,7 +105,10 @@ CLASS zcl_odata_utils IMPLEMENTATION.
       RETURN.
     ENDIF.
 
-    data_element->get_ddic_fixed_values( EXPORTING  p_langu        = sy-langu         " Current Language
+    data_element->get_ddic_fixed_values( EXPORTING  p_langu        = SWITCH #( iv_langu
+                                                                               WHEN ''
+                                                                               THEN |{ sy-langu }|
+                                                                               ELSE |{ iv_langu }| )
                                          RECEIVING  p_fixed_values = DATA(fixed_values)                 " Defaults
                                          EXCEPTIONS not_found      = 1                " Type could not be found
                                                     no_ddic_type   = 2                " Typ is not a dictionary type

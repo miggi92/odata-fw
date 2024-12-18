@@ -10,8 +10,6 @@ CLASS zcl_odata_model_complex_prprty DEFINITION
   PRIVATE SECTION.
 ENDCLASS.
 
-
-
 CLASS zcl_odata_model_complex_prprty IMPLEMENTATION.
   METHOD create_property.
     DATA(lo_cmplx_type) = io_entity->create_cmplx_type_property( iv_complex_type_name = is_property-complex_type
@@ -26,6 +24,4 @@ CLASS zcl_odata_model_complex_prprty IMPLEMENTATION.
                                       is_property = is_property ).
     ENDIF.
   ENDMETHOD.
-
-
 ENDCLASS.

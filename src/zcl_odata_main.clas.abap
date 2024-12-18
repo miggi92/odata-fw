@@ -337,8 +337,7 @@ CLASS zcl_odata_main IMPLEMENTATION.
             )->get_properties( ).
       CATCH /iwbep/cx_mgw_med_exception INTO DATA(error).
         RAISE EXCEPTION TYPE /iwbep/cx_mgw_med_exception
-          EXPORTING
-            previous = error.
+          EXPORTING previous = error.
     ENDTRY.
   ENDMETHOD.
 

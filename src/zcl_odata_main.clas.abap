@@ -456,9 +456,9 @@ CLASS zcl_odata_main IMPLEMENTATION.
     ls_dynamic_where_line-tablename = 'TEST'.
 
     ##TODO " line ist nur 72 zeichen lang. der osql string muss aufgeteilt werden.
-    DATA(length_osql) = strlen( lv_osql_where_clause ).
+    DATA(lv_length_osql) = strlen( lv_osql_where_clause ).
 
-    IF length_osql <= 72.
+    IF lv_length_osql <= 72.
       ls_dynamic_where_line-where_tab = VALUE #( ( |{ lv_osql_where_clause }| ) ).
       APPEND ls_dynamic_where_line TO rt_dynamic_where.
     ELSE.

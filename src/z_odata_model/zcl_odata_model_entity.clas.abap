@@ -5,6 +5,11 @@ CLASS zcl_odata_model_entity DEFINITION
   CREATE PUBLIC.
 
   PUBLIC SECTION.
+    "! <p class="shorttext synchronized">Create entity</p>
+    "!
+    "! @parameter is_entity                   | <p class="shorttext synchronized">Entity</p>
+    "! @raising   /iwbep/cx_mgw_med_exception | <p class="shorttext synchronized">OData error</p>
+    "! @raising   zcx_odata                   | <p class="shorttext synchronized">OData FW Error</p>
     METHODS create_entity
       IMPORTING is_entity TYPE zodata_entity
       RAISING   /iwbep/cx_mgw_med_exception

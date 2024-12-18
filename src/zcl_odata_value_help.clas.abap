@@ -121,7 +121,9 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
 
         IF     filter IS INITIAL
            AND io_tech_request_context->get_entity_type_name( )  = zif_odata_constants=>gc_global_entities-value_help.
-          RAISE EXCEPTION NEW zcx_odata( textid = zcx_odata=>no_filter_passed ).
+          RAISE EXCEPTION TYPE zcx_odata
+            EXPORTING
+              textid = zcx_odata=>no_filter_passed.
         ELSEIF filter IS NOT INITIAL.
           lt_filter_options = filter[ property = 'SEARCH_HELP' ]-select_options.
         ELSEIF io_tech_request_context->get_entity_type_name( ) <> zif_odata_constants=>gc_global_entities-value_help.
@@ -169,9 +171,13 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
       WHERE id IN @i_filter.
 
     IF sy-subrc <> 0.
-      RAISE EXCEPTION NEW zcx_odata( textid = zcx_odata=>no_search_help_found ).
+      RAISE EXCEPTION TYPE zcx_odata
+        EXPORTING
+          textid = zcx_odata=>no_search_help_found.
     ELSEIF lines( search_helps ) > 1.
-      RAISE EXCEPTION NEW zcx_odata( textid = zcx_odata=>only_one_filter_id ).
+      RAISE EXCEPTION TYPE zcx_odata
+        EXPORTING
+          textid = zcx_odata=>only_one_filter_id.
     ENDIF.
     r_sh_cust = search_helps[ 1 ].
   ENDMETHOD.
@@ -278,7 +284,9 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
                                                     no_ddic_type   = 2                " Typ is not a dictionary type
                                                     OTHERS         = 3 ).
     IF sy-subrc <> 0.
-      RAISE EXCEPTION NEW zcx_odata( textid = zcx_odata=>convert_msg( ) ).
+      RAISE EXCEPTION TYPE zcx_odata
+        EXPORTING
+          textid = zcx_odata=>convert_msg( ).
     ENDIF.
 
     LOOP AT fixed_values ASSIGNING FIELD-SYMBOL(<fixed_value>).

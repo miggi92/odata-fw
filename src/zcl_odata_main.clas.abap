@@ -336,7 +336,9 @@ CLASS zcl_odata_main IMPLEMENTATION.
           )->get_entity_type( iv_entity_name = io_tech_request_context->get_entity_type_name( )
             )->get_properties( ).
       CATCH /iwbep/cx_mgw_med_exception INTO DATA(error).
-        RAISE EXCEPTION NEW /iwbep/cx_mgw_med_exception( previous = error ).
+        RAISE EXCEPTION TYPE /iwbep/cx_mgw_med_exception
+          EXPORTING
+            previous = error.
     ENDTRY.
   ENDMETHOD.
 

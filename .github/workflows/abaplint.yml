@@ -3,9 +3,17 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'src/**'
+      - '.abaplint.json'
+      - '.github/workflows/abaplint.yml'
   pull_request:
     branches:
       - master
+    paths:
+      - 'src/**'
+      - '.abaplint.json'
+      - '.github/workflows/abaplint.yml'
 
 jobs:
   abaplint:

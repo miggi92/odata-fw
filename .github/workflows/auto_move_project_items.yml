@@ -1,0 +1,24 @@
+name: Move Project Items on Custom Field Set
+
+on:
+  issues:
+    types: [edited]
+
+jobs:
+  move_project_item:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Move project item based on custom field
+        run: |
+          node scripts/move_project_items.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

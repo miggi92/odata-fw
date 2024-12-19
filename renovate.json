@@ -2,7 +2,7 @@
     "extends": [
         "config:base"
     ],
-    "automerge": {
-        "minor": true
+    "minor": {
+        "automerge": true
     }
 }

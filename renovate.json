@@ -4,5 +4,12 @@
     ],
     "minor": {
         "automerge": true
-    }
+    },
+    "labels": [ "dependencies"],
+    "packageRules": [
+        {
+            "matchManagers": ["github-actions"],
+            "labels": ["github-actions", "dependencies"]
+        }
+    ]
 }

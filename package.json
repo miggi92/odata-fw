@@ -35,7 +35,7 @@
   "dependencies": {
     "@octokit/rest": "^21.0.2",
     "mermaid": "^11.4.1",
-    "vitepress-plugin-image-viewer": "^1.1.5",
+    "vitepress-plugin-image-viewer": "^1.1.6",
     "vitepress-plugin-mermaid": "^2.0.17"
   }
 }

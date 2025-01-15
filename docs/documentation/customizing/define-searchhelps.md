@@ -34,3 +34,10 @@ As a value help a table with the description and value fields can be specified. 
 You can also specify a simple where condition to your value help. The customizing is similar to the [value help from table](#valuehelp-from-table). But you must also fill in the columns "WHERE_DATA_ELEMENT1" and "WHERE_VALUE1".
 
 ![value help from table with where condition](./attachments/valuehelp_from_table_with_where.png)
+
+## Valuehelp with custom odata entity
+
+The search help can be created with an odata entity using the following customizing:
+
+![search help with an odata entity](./attachments/searchhelp_from_entity.png)
+

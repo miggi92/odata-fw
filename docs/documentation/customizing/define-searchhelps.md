@@ -38,5 +38,6 @@ You can also specify a simple where condition to your value help. The customizin
 ## Valuehelp with custom odata entity
 
 The search help can be created with an odata entity using the following customizing:
+
 ![search help with an odata entity](./attachments/searchhelp_from_entity.png)
 

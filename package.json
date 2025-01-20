@@ -30,7 +30,7 @@
     "@abaplint/runtime": "^2.10.23",
     "@abaplint/transpiler": "^2.10.23",
     "@abaplint/transpiler-cli": "^2.10.23",
-    "vitepress": "^1.5.0"
+    "vitepress": "^1.6.1"
   },
   "dependencies": {
     "@octokit/rest": "^21.0.2",

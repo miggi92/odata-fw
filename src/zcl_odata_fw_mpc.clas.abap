@@ -70,7 +70,7 @@ CLASS zcl_odata_fw_mpc IMPLEMENTATION.
 
   METHOD define_from_cust.
     TRY.
-        mo_model->set_schema_namespace( iv_namespace = |{ mo_customizing->get_namespace( ) }| ).
+        mo_model->set_schema_namespace( iv_namespace = |{ zcl_odata_utils=>escape_slashes( mo_customizing->get_namespace( ) ) }| ).
         mo_model->set_soft_state_enabled( iv_soft_state_enabled = abap_true ).
 
         LOOP AT mo_customizing->get_entities( ) ASSIGNING FIELD-SYMBOL(<ls_entity>).

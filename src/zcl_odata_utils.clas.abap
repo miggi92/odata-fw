@@ -23,7 +23,7 @@ CLASS zcl_odata_utils DEFINITION
     "! <p class="shorttext synchronized">Get text from domain</p>
     CLASS-METHODS get_text_from_domain
       IMPORTING i_value       TYPE any
-                iv_langu      type spras OPTIONAL
+                iv_langu      TYPE spras OPTIONAL
       RETURNING VALUE(r_text) TYPE string
       RAISING   zcx_odata.
 
@@ -65,6 +65,11 @@ CLASS zcl_odata_utils DEFINITION
       RETURNING VALUE(rv_data_element) TYPE string
       RAISING   zcx_odata.
 
+    CLASS-METHODS escape_slashes
+      IMPORTING iv_string         TYPE string
+      RETURNING VALUE(rv_escaped) TYPE string.
+
+
 ENDCLASS.
 
 
@@ -73,12 +78,15 @@ CLASS zcl_odata_utils IMPLEMENTATION.
     DATA return TYPE bapiret2.
 
     CALL FUNCTION 'BAPI_USER_EXISTENCE_CHECK'
-      EXPORTING username = i_uname                 " Benutzername
-      IMPORTING return   = return.                 " Rückgabe
+      EXPORTING
+        username = i_uname                 " Benutzername
+      IMPORTING
+        return   = return.                 " Rückgabe
 
     IF return-id = '01' AND return-number = '124'. " user doesn't exists
       RAISE EXCEPTION TYPE zcx_odata
-        EXPORTING textid = zcx_odata=>convert_bapiret2( return ).
+        EXPORTING
+          textid = zcx_odata=>convert_bapiret2( return ).
     ENDIF.
 
     DATA(user) = NEW zcl_odata_bo_user( i_uname ).
@@ -90,9 +98,10 @@ CLASS zcl_odata_utils IMPLEMENTATION.
 
   METHOD raise_mpc_error.
     RAISE EXCEPTION TYPE /iwbep/cx_mgw_med_exception
-      EXPORTING previous          = i_error
-                message_unlimited = i_error->get_longtext( )
-                textid            = /iwbep/cx_mgw_med_exception=>external_error.
+      EXPORTING
+        previous          = i_error
+        message_unlimited = i_error->get_longtext( )
+        textid            = /iwbep/cx_mgw_med_exception=>external_error.
   ENDMETHOD.
 
   METHOD get_text_from_domain.
@@ -115,7 +124,8 @@ CLASS zcl_odata_utils IMPLEMENTATION.
                                                     OTHERS         = 3 ).
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_odata
-        EXPORTING textid = zcx_odata=>convert_msg( ).
+        EXPORTING
+          textid = zcx_odata=>convert_msg( ).
     ENDIF.
 
     TRY.
@@ -174,10 +184,16 @@ CLASS zcl_odata_utils IMPLEMENTATION.
         rv_data_element = lo_column->get_relative_name( ).
       CATCH cx_sy_itab_line_not_found INTO DATA(lo_error).
         RAISE EXCEPTION TYPE zcx_odata
-          EXPORTING textid   = zcx_odata=>gc_column_not_found_in_table
-                    previous = lo_error
-                    value    = |{ iv_column }|
-                    value2   = |{ iv_table_name }|.
+          EXPORTING
+            textid   = zcx_odata=>gc_column_not_found_in_table
+            previous = lo_error
+            value    = |{ iv_column }|
+            value2   = |{ iv_table_name }|.
     ENDTRY.
+  ENDMETHOD.
+
+  METHOD escape_slashes.
+    rv_escaped = iv_string.
+    REPLACE ALL OCCURRENCES OF '/' IN rv_escaped WITH '_'.
   ENDMETHOD.
 ENDCLASS.

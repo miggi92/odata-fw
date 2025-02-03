@@ -136,7 +136,7 @@ CLASS zcl_odata_model_property IMPLEMENTATION.
         DATA(lv_first_key) = lt_sh_properties[ is_key = abap_true ]-property_name.
         DATA(lo_annotation) = zcl_odata_annotation_shlp=>create(
             io_vocan_model         = mo_anno_model
-            iv_namespace           = |{ mo_customizing->get_namespace( ) }|
+            iv_namespace           = |{ zcl_odata_utils=>escape_slashes( mo_customizing->get_namespace( ) ) }|
             iv_entitytype          = is_entity-entity_name
             iv_property            = SWITCH #( is_property-complex_type
                                                WHEN zif_odata_constants=>gc_global_cmplx_entities-value_description
@@ -167,4 +167,5 @@ CLASS zcl_odata_model_property IMPLEMENTATION.
       CATCH cx_sy_itab_line_not_found.
     ENDTRY.
   ENDMETHOD.
+
 ENDCLASS.

@@ -112,9 +112,9 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entityset.
-    DATA value_help        TYPE tty_t_value_help.
-    DATA ls_customizing    TYPE zodata_searchhlp.
     DATA lt_filter_options TYPE /iwbep/s_mgw_select_option-select_options.
+    DATA ls_customizing    TYPE zodata_searchhlp.
+    DATA value_help        TYPE tty_t_value_help.
 
     TRY.
         DATA(filter) = io_tech_request_context->get_filter( )->get_filter_select_options( ).
@@ -124,7 +124,20 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
           RAISE EXCEPTION TYPE zcx_odata
             EXPORTING textid = zcx_odata=>no_filter_passed.
         ELSEIF filter IS NOT INITIAL.
-          lt_filter_options = filter[ property = 'SEARCH_HELP' ]-select_options.
+          TRY.
+              lt_filter_options = filter[ property = 'SEARCH_HELP' ]-select_options.
+            CATCH cx_sy_itab_line_not_found.
+              IF lines( filter[ property = 'VALUE' ]-select_options ) > 0. " Search function in value help
+                DATA(lv_entity) = io_tech_request_context->get_entity_set_name_external( ).
+                APPEND VALUE #( sign   = 'I'
+                                option = 'EQ'
+                                low    = replace( val  = lv_entity
+                                                  sub  = 'Set'
+                                                  with = ''
+                                                  occ  = 0 )
+                                high   = '' ) TO lt_filter_options.
+              ENDIF.
+          ENDTRY.
         ELSEIF io_tech_request_context->get_entity_type_name( ) <> zif_odata_constants=>gc_global_entities-value_help.
           lt_filter_options = VALUE #( ( low    = io_tech_request_context->get_entity_type_name( )
                                          sign   = 'I'
@@ -159,9 +172,11 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
   METHOD get_texttable.
     " look if there is a texttable
     CALL FUNCTION 'DDUT_TEXTTABLE_GET'
-      EXPORTING tabname    = i_table_name                 " Name of Table for Text Table Search
-      IMPORTING texttable  = r_texttable                 " Text Table if it Exists. Otherwise SPACE.
-                checkfield = e_checkfield.                 " Poss. Check Field to which Text Key is Appended
+      EXPORTING
+        tabname    = i_table_name                 " Name of Table for Text Table Search
+      IMPORTING
+        texttable  = r_texttable                 " Text Table if it Exists. Otherwise SPACE.
+        checkfield = e_checkfield.                 " Poss. Check Field to which Text Key is Appended
   ENDMETHOD.
 
   METHOD get_customizing.
@@ -171,10 +186,12 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
 
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_odata
-        EXPORTING textid = zcx_odata=>no_search_help_found.
+        EXPORTING
+          textid = zcx_odata=>no_search_help_found.
     ELSEIF lines( search_helps ) > 1.
       RAISE EXCEPTION TYPE zcx_odata
-        EXPORTING textid = zcx_odata=>only_one_filter_id.
+        EXPORTING
+          textid = zcx_odata=>only_one_filter_id.
     ENDIF.
     r_sh_cust = search_helps[ 1 ].
   ENDMETHOD.
@@ -301,7 +318,8 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
                                                     OTHERS         = 3 ).
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_odata
-        EXPORTING textid = zcx_odata=>convert_msg( ).
+        EXPORTING
+          textid = zcx_odata=>convert_msg( ).
     ENDIF.
 
     LOOP AT fixed_values ASSIGNING FIELD-SYMBOL(<fixed_value>).
@@ -328,14 +346,17 @@ CLASS zcl_odata_value_help IMPLEMENTATION.
     ENDIF.
 
     CALL FUNCTION 'RH_DYNAMIC_WHERE_BUILD'
-      EXPORTING  dbtable         = i_customizing-tabname                 " Database Table
-      TABLES     condtab         = cond_tab                 " Condition Table
-                 where_clause    = r_where_cond                  " Where Clause
-      EXCEPTIONS empty_condtab   = 1
-                 no_db_field     = 2
-                 unknown_db      = 3
-                 wrong_condition = 4
-                 OTHERS          = 5.
+      EXPORTING
+        dbtable         = i_customizing-tabname                 " Database Table
+      TABLES
+        condtab         = cond_tab                 " Condition Table
+        where_clause    = r_where_cond                  " Where Clause
+      EXCEPTIONS
+        empty_condtab   = 1
+        no_db_field     = 2
+        unknown_db      = 3
+        wrong_condition = 4
+        OTHERS          = 5.
 
     IF sy-subrc <> 0.
       RETURN. " maybe an exception?

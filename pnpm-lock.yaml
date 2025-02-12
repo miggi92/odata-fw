@@ -29,7 +29,7 @@ importers:
         version: 2.10.23
       '@abaplint/transpiler':
         specifier: ^2.10.23
-        version: 2.10.23
+        version: 2.10.24
       '@abaplint/transpiler-cli':
         specifier: ^2.10.23
         version: 2.10.23
@@ -44,8 +44,8 @@ packages:
     engines: {node: '>=12.0.0'}
     hasBin: true
 
-  '@abaplint/core@2.113.82':
-    resolution: {integrity: sha512-EYoMyXcdyrnGIXL5iFJ4gBMaCVoZuHjbG4PI5xE1vEFBIkGbnsF8/NA5sIE4GUMGuTEV4th2a2b+zWxza6i35Q==}
+  '@abaplint/core@2.113.101':
+    resolution: {integrity: sha512-JPcTNluFeGTEHkJNJFsAC5GL5tBN4fSWdgqFaDe69EgDvUHUltV35dv3NaKHsLkkGtj3I7RavA/ctzSkPT7l2g==}
     engines: {node: '>=12.0.0'}
 
   '@abaplint/runtime@2.10.23':
@@ -55,8 +55,8 @@ packages:
     resolution: {integrity: sha512-limia9M7GWAbw019lSKbrJRHhxOVyINyv8aA4ag0WIUjl2EHSCju7PEJbODW7R9q6GDefHi4taZH+pxRn+PQHQ==}
     hasBin: true
 
-  '@abaplint/transpiler@2.10.23':
-    resolution: {integrity: sha512-f/tzEG7aInxbCL/N8sxtTm5gtxU5akUC9rRgaVIzT03mizk5YejzzSPiXYv+3lmrPjysqCrWGAgXGoAHq23Dfw==}
+  '@abaplint/transpiler@2.10.24':
+    resolution: {integrity: sha512-HXiqspTiQ1KtluHw1eyPXQStq6UhpqMsmjLj9K5Qzp0kFCqznIYbWgZ2uvjwcqUk+wqpCDE0Or8XWar8B4C9pg==}
 
   '@algolia/autocomplete-core@1.17.7':
     resolution: {integrity: sha512-BjiPOW6ks90UKl7TwMv7oNQMnzU+t/wk9mgIDi6b1tXpUek7MW0lbNOUHpvam9pe3lVCf4xPFT+lK7s+e+fs7Q==}
@@ -1370,7 +1370,7 @@ snapshots:
 
   '@abaplint/cli@2.113.82': {}
 
-  '@abaplint/core@2.113.82':
+  '@abaplint/core@2.113.101':
     dependencies:
       fast-xml-parser: 4.5.1
       json5: 2.2.3
@@ -1382,9 +1382,9 @@ snapshots:
 
   '@abaplint/transpiler-cli@2.10.23': {}
 
-  '@abaplint/transpiler@2.10.23':
+  '@abaplint/transpiler@2.10.24':
     dependencies:
-      '@abaplint/core': 2.113.82
+      '@abaplint/core': 2.113.101
       source-map: 0.7.4
 
   '@algolia/autocomplete-core@1.17.7(@algolia/client-search@5.20.1)(algoliasearch@5.20.1)(search-insights@2.13.0)':

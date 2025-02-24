@@ -22,8 +22,8 @@ importers:
         version: 2.0.17(mermaid@11.4.1)(vitepress@1.6.3(@algolia/client-search@5.20.1)(postcss@8.5.1)(search-insights@2.13.0))
     devDependencies:
       '@abaplint/cli':
-        specifier: ^2.113.82
-        version: 2.113.82
+        specifier: ^2.113.104
+        version: 2.113.104
       '@abaplint/runtime':
         specifier: ^2.10.23
         version: 2.10.23
@@ -39,8 +39,8 @@ importers:
 
 packages:
 
-  '@abaplint/cli@2.113.82':
-    resolution: {integrity: sha512-gGB0QbQMEnX7cq6voJrB37X7wPzdcjyJAm+xKWrEaN3SZ7iVcP7Z7SVtQw6W5UfFVpD+XCUbjRycY057cOjYbg==}
+  '@abaplint/cli@2.113.104':
+    resolution: {integrity: sha512-JFFqyBdy/B4vtfz32e74ZUFQEQFyiUKg8jdDrfNjJPSOBIeVjPZzW5YxIjfym6e4DZHViNW5ctFCx8KvNoXclA==}
     engines: {node: '>=12.0.0'}
     hasBin: true
 
@@ -1368,7 +1368,7 @@ packages:
 
 snapshots:
 
-  '@abaplint/cli@2.113.82': {}
+  '@abaplint/cli@2.113.104': {}
 
   '@abaplint/core@2.113.82':
     dependencies:

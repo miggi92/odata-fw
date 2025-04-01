@@ -87,6 +87,10 @@ CLASS zcl_odata_model_property IMPLEMENTATION.
       mo_property->set_filterable( abap_false ).
     ENDIF.
 
+    IF is_property-not_editable = abap_true.
+      mo_property->set_updatable( abap_false ).
+    ENDIF.
+
     IF     (    is_entity-entity_name = zif_odata_constants=>gc_global_entities-documents
              OR is_entity-entity_name = zif_odata_constants=>gc_global_entities-attachments )
        AND is_property-abap_name = zif_odata_constants=>gc_global_fieldnames-documents-mime_type.

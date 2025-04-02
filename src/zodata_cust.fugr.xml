@@ -600,6 +600,7 @@
     </item>
     <item>
      <FUNCNAME>VIEWFRAME_ZODATA_V_PROP</FUNCNAME>
+     <SHORT_TEXT>erweiterte Tabellenpflege obere Ebene</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>VIEW_ACTION</PARAMETER>
@@ -649,42 +650,52 @@
       <RSFDO>
        <PARAMETER>VIEW_ACTION</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Aktion mit dem View: anzeigen/ändern (S/U)</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_NAME</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Name des Views</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_NUMBER</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DBA_SELLIST</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DPL_SELLIST</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Tabelle mit dynam. zu deaktivierenden CUA-Funkt.</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_HEADER</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Kontrollblocktabelle für den View</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_NAMTAB</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Kontrollblocktabelle für die View-Felder</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>NO_VALUE_FOR_SUBSET_IDENT</PARAMETER>
        <KIND>X</KIND>
+       <STEXT>für &apos;SUBSET&apos;-Feld wurde kein Wert vorgegeben</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
        <KIND>X</KIND>
+       <STEXT>Korrekturnummer fehlt</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
@@ -1385,6 +1396,7 @@
     <item>
      <FUNCNAME>VIEWPROC_ZODATA_V_PROP</FUNCNAME>
      <GLOBAL_FLAG>X</GLOBAL_FLAG>
+     <SHORT_TEXT>erweiterte Tabellenpflege untere Ebene</SHORT_TEXT>
      <IMPORT>
       <RSIMP>
        <PARAMETER>FCODE</PARAMETER>
@@ -1462,74 +1474,92 @@
       <RSFDO>
        <PARAMETER>FCODE</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>gewünschte Funktion des Bausteins</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_ACTION</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Aktion mit dem View: anzeigen/ändern (S/U)</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>VIEW_NAME</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Name des Views</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_NUMBER</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Korrekturnummer für durchgeführte Änderungen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>LAST_ACT_ENTRY</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Index der Cursorposition in der Anzeigetabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UCOMM</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>letztes User-command innerhalb der Viewpflege</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UPDATE_REQUIRED</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Flag: Einträge verändert, Sichern erforderlich</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CORR_KEYTAB</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Tabelle mit den Keys der zu transport. Einträge</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DBA_SELLIST</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Selektionsbedingungen für den DB-Zugriff</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DPL_SELLIST</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Selektionsbedingungen für die Anzeige</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXCL_CUA_FUNCT</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Tab. der nicht zu aktivierenden CUA-Funktionen</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EXTRACT</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Tab. der gerade sichtbaren Daten (Anzeigetabelle</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>TOTAL</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Tabelle, mit allen von der DB gelesenen Daten</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_HEADER</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Kontrollblocktabelle für den View</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>X_NAMTAB</PARAMETER>
        <KIND>P</KIND>
+       <STEXT>Kontrollblocktabelle für die View-Felder</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>NO_VALUE_FOR_SUBSET_IDENT</PARAMETER>
        <KIND>X</KIND>
+       <STEXT>für ein &apos;SUBSET&apos;-Feld wurde kein Wert vorgegeben</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>MISSING_CORR_NUMBER</PARAMETER>
        <KIND>X</KIND>
+       <STEXT>Korrekturnummer fehlt</STEXT>
       </RSFDO>
       <RSFDO>
        <PARAMETER>SAVING_CORRECTION_FAILED</PARAMETER>
        <KIND>X</KIND>
+       <STEXT>Fehler beim Sichern der Korrektureinträge</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
@@ -2963,11 +2993,11 @@
       <PROGRAM>SAPLZODATA_CUST</PROGRAM>
       <SCREEN>0005</SCREEN>
       <LANGUAGE>D</LANGUAGE>
-      <DESCRIPT>View Maintenance: Overview Screen ZODATA_V_PROP</DESCRIPT>
+      <DESCRIPT>Viewpflege: Übersichtsbild ZODATA_V_PROP</DESCRIPT>
       <TYPE>N</TYPE>
       <NEXTSCREEN>0005</NEXTSCREEN>
       <LINES>061</LINES>
-      <COLUMNS>203</COLUMNS>
+      <COLUMNS>083</COLUMNS>
      </HEADER>
      <CONTAINERS>
       <RPY_DYCATT>
@@ -2980,7 +3010,7 @@
        <ELEMENT_OF>SCREEN</ELEMENT_OF>
        <LINE>004</LINE>
        <COLUMN>001</COLUMN>
-       <LENGTH>202</LENGTH>
+       <LENGTH>083</LENGTH>
        <HEIGHT>056</HEIGHT>
        <C_RESIZE_V>X</C_RESIZE_V>
        <C_RESIZE_H>X</C_RESIZE_H>
@@ -3136,13 +3166,14 @@
        <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_PROP-PROPERTY_NAME</NAME>
-       <TEXT>+_______________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>040</LENGTH>
        <VISLENGTH>040</VISLENGTH>
        <HEIGHT>001</HEIGHT>
        <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>V</MODIFIC>
        <REQU_ENTRY>N</REQU_ENTRY>
        <TC_HEADING>X</TC_HEADING>
       </RPY_DYFATC>
@@ -3231,13 +3262,30 @@
        <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
        <TYPE>TEXT</TYPE>
        <NAME>*ZODATA_V_PROP-NOT_FILTERABLE</NAME>
-       <TEXT>+_______________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>007</COLUMN>
        <LENGTH>040</LENGTH>
-       <VISLENGTH>003</VISLENGTH>
+       <VISLENGTH>010</VISLENGTH>
        <HEIGHT>001</HEIGHT>
        <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>1</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <TC_HEADING>X</TC_HEADING>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>*ZODATA_V_PROP-NOT_EDITABLE</NAME>
+       <LINE>001</LINE>
+       <COLUMN>008</COLUMN>
+       <LENGTH>040</LENGTH>
+       <VISLENGTH>010</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>1</MODIFIC>
        <REQU_ENTRY>N</REQU_ENTRY>
        <TC_HEADING>X</TC_HEADING>
       </RPY_DYFATC>
@@ -3366,7 +3414,24 @@
        <LINE>001</LINE>
        <COLUMN>007</COLUMN>
        <LENGTH>001</LENGTH>
-       <VISLENGTH>003</VISLENGTH>
+       <VISLENGTH>010</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>X</MODIFIC>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <DICT_I_VAL>X</DICT_I_VAL>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>TABLE_CTRL</CONT_TYPE>
+       <CONT_NAME>TCTRL_ZODATA_V_PROP</CONT_NAME>
+       <TYPE>CHECK</TYPE>
+       <NAME>ZODATA_V_PROP-NOT_EDITABLE</NAME>
+       <LINE>001</LINE>
+       <COLUMN>008</COLUMN>
+       <LENGTH>001</LENGTH>
+       <VISLENGTH>010</VISLENGTH>
        <HEIGHT>001</HEIGHT>
        <FORMAT>CHAR</FORMAT>
        <FROM_DICT>X</FROM_DICT>
@@ -3439,6 +3504,9 @@
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>    FIELD ZODATA_V_PROP-NOT_FILTERABLE .</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    FIELD ZODATA_V_PROP-NOT_EDITABLE .</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>    MODULE SET_UPDATE_FLAG ON CHAIN-REQUEST.</LINE>

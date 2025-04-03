@@ -29,7 +29,7 @@ importers:
         version: 2.10.23
       '@abaplint/transpiler':
         specifier: ^2.10.23
-        version: 2.10.23
+        version: 2.10.37
       '@abaplint/transpiler-cli':
         specifier: ^2.10.23
         version: 2.10.23
@@ -44,8 +44,8 @@ packages:
     engines: {node: '>=12.0.0'}
     hasBin: true
 
-  '@abaplint/core@2.113.82':
-    resolution: {integrity: sha512-EYoMyXcdyrnGIXL5iFJ4gBMaCVoZuHjbG4PI5xE1vEFBIkGbnsF8/NA5sIE4GUMGuTEV4th2a2b+zWxza6i35Q==}
+  '@abaplint/core@2.113.108':
+    resolution: {integrity: sha512-Ny/hEDh7tKSaX9kO3y84rY2BRuYVNJljiKQQCrfamzVoDYb5Dr0R6aglQbe/SIg+x5bdTrnhEHAdtW3Ha+zlCw==}
     engines: {node: '>=12.0.0'}
 
   '@abaplint/runtime@2.10.23':
@@ -55,8 +55,8 @@ packages:
     resolution: {integrity: sha512-limia9M7GWAbw019lSKbrJRHhxOVyINyv8aA4ag0WIUjl2EHSCju7PEJbODW7R9q6GDefHi4taZH+pxRn+PQHQ==}
     hasBin: true
 
-  '@abaplint/transpiler@2.10.23':
-    resolution: {integrity: sha512-f/tzEG7aInxbCL/N8sxtTm5gtxU5akUC9rRgaVIzT03mizk5YejzzSPiXYv+3lmrPjysqCrWGAgXGoAHq23Dfw==}
+  '@abaplint/transpiler@2.10.37':
+    resolution: {integrity: sha512-rvyQHoVGY3TWo8W8CRr+2E1mVeVQbuAtCiYAL4i6KngBIeLI3RT6Di5D84I3SYhtDh9Xkpv9/wZ2MH5u59iYvQ==}
 
   '@algolia/autocomplete-core@1.17.7':
     resolution: {integrity: sha512-BjiPOW6ks90UKl7TwMv7oNQMnzU+t/wk9mgIDi6b1tXpUek7MW0lbNOUHpvam9pe3lVCf4xPFT+lK7s+e+fs7Q==}
@@ -1000,8 +1000,8 @@ packages:
   estree-walker@2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
 
-  fast-xml-parser@4.5.1:
-    resolution: {integrity: sha512-y655CeyUQ+jj7KBbYMc4FG01V8ZQqjN+gDYGJ50RtfsUB8iG9AmwmwoAgeKLJdmueKKMrH1RJ7yXHTSoczdv5w==}
+  fast-xml-parser@5.2.0:
+    resolution: {integrity: sha512-Uw9+Mjt4SBRud1IcaYuW/O0lW8SKKdMl5g7g24HiIuyH5fQSD+AVLybSlJtqLYEbytVFjWQa5DMGcNgeksdRBg==}
     hasBin: true
 
   focus-trap@7.6.4:
@@ -1220,8 +1220,8 @@ packages:
   stringify-entities@4.0.4:
     resolution: {integrity: sha512-IwfBptatlO+QCJUo19AqvrPNqlVMpW9YEL2LIVY+Rpv2qsjCGxaDLNRgeGsQWJhfItebuJhsGSLjaBbNSQ+ieg==}
 
-  strnum@1.0.5:
-    resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
+  strnum@2.0.5:
+    resolution: {integrity: sha512-YAT3K/sgpCUxhxNMrrdhtod3jckkpYwH6JAuwmUdXZsmzH1wUyzTMrrK2wYCEEqlKwrWDd35NeuUkbBy/1iK+Q==}
 
   stylis@4.3.2:
     resolution: {integrity: sha512-bhtUjWd/z6ltJiQwg0dUfxEJ+W+jdqQd8TbWLWyeIJHlnsqmGLRFFd8e5mA0AZi/zx90smXRlN66YMTcaSFifg==}
@@ -1370,9 +1370,9 @@ snapshots:
 
   '@abaplint/cli@2.113.82': {}
 
-  '@abaplint/core@2.113.82':
+  '@abaplint/core@2.113.108':
     dependencies:
-      fast-xml-parser: 4.5.1
+      fast-xml-parser: 5.2.0
       json5: 2.2.3
       vscode-languageserver-types: 3.17.5
 
@@ -1382,9 +1382,9 @@ snapshots:
 
   '@abaplint/transpiler-cli@2.10.23': {}
 
-  '@abaplint/transpiler@2.10.23':
+  '@abaplint/transpiler@2.10.37':
     dependencies:
-      '@abaplint/core': 2.113.82
+      '@abaplint/core': 2.113.108
       source-map: 0.7.4
 
   '@algolia/autocomplete-core@1.17.7(@algolia/client-search@5.20.1)(algoliasearch@5.20.1)(search-insights@2.13.0)':
@@ -2372,9 +2372,9 @@ snapshots:
 
   estree-walker@2.0.2: {}
 
-  fast-xml-parser@4.5.1:
+  fast-xml-parser@5.2.0:
     dependencies:
-      strnum: 1.0.5
+      strnum: 2.0.5
 
   focus-trap@7.6.4:
     dependencies:
@@ -2643,7 +2643,7 @@ snapshots:
       character-entities-html4: 2.1.0
       character-entities-legacy: 3.0.0
 
-  strnum@1.0.5: {}
+  strnum@2.0.5: {}
 
   stylis@4.3.2: {}
 

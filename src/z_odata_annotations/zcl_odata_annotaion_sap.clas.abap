@@ -22,6 +22,10 @@ CLASS zcl_odata_annotaion_sap DEFINITION
     METHODS add_label_annotation
       IMPORTING iv_label_text TYPE /iwbep/med_annotation_value.
 
+    "! <p class="shorttext synchronized" lang="de">Add required in filter annotation</p>
+    "!
+    METHODS add_required_filter_annotation.
+
     "! <p class="shorttext synchronized">Create from property</p>
     "!
     "! @parameter io_property                 | <p class="shorttext synchronized">Property</p>
@@ -59,5 +63,10 @@ CLASS zcl_odata_annotaion_sap IMPLEMENTATION.
   METHOD add_label_annotation.
     mo_annotation->add( iv_key   = 'label'
                         iv_value = iv_label_text ).
+  ENDMETHOD.
+
+  METHOD add_required_filter_annotation.
+    mo_annotation->add( iv_key   = 'required-in-filter'
+                        iv_value = 'true' ).
   ENDMETHOD.
 ENDCLASS.

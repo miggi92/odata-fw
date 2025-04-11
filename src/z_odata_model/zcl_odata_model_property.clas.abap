@@ -22,10 +22,11 @@ CLASS zcl_odata_model_property DEFINITION
     "! @raising   /iwbep/cx_mgw_med_exception | <p class="shorttext synchronized">OData Error</p>
     "! @raising   zcx_odata                   | <p class="shorttext synchronized">OData FW Error</p>
     METHODS create_property
-      IMPORTING io_entity     TYPE REF TO /iwbep/if_mgw_odata_entity_typ
-                it_components TYPE cl_abap_structdescr=>component_table
-                is_property   TYPE zodata_property
-                is_entity     TYPE zodata_entity
+      IMPORTING io_entity        TYPE REF TO /iwbep/if_mgw_odata_entity_typ
+                it_components    TYPE cl_abap_structdescr=>component_table
+                is_property      TYPE zodata_property
+                is_entity        TYPE zodata_entity
+                io_ui_annotation TYPE REF TO zcl_odata_annotation_ui
       RAISING   /iwbep/cx_mgw_med_exception
                 zcx_odata.
 
@@ -98,6 +99,10 @@ CLASS zcl_odata_model_property IMPLEMENTATION.
     IF is_property-search_help IS NOT INITIAL.
       define_search_help_annotations( is_entity   = is_entity
                                       is_property = is_property ).
+    ENDIF.
+
+    IF is_property-sort_order IS NOT INITIAL.
+      io_ui_annotation->create_initial_visible_columns( iv_property_name = is_property-property_name ).
     ENDIF.
   ENDMETHOD.
 

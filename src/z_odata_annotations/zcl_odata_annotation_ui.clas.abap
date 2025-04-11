@@ -18,7 +18,7 @@ CLASS zcl_odata_annotation_ui DEFINITION
 
 
   PROTECTED SECTION.
-  DATA mo_ann_target TYPE REF TO /iwbep/if_mgw_vocan_ann_target. " Vocabulary Annotation Target
+    DATA mo_ann_target TYPE REF TO /iwbep/if_mgw_vocan_ann_target. " Vocabulary Annotation Target
       DATA mo_annotation TYPE REF TO /iwbep/if_mgw_vocan_annotation. " Vocabulary Annotation
     DATA mo_collection TYPE REF TO /iwbep/if_mgw_vocan_collection. " Vocabulary Annotation Collection
 

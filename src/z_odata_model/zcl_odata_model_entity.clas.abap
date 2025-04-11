@@ -141,8 +141,7 @@ CLASS zcl_odata_model_entity IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD check_if_is_media.
-    IF    is_entity-entity_name = zif_odata_constants=>gc_global_entities-documents
-       OR is_entity-entity_name = zif_odata_constants=>gc_global_entities-attachments.
+    IF is_entity-is_media = abap_true.
       io_entity->set_is_media( ).
     ENDIF.
   ENDMETHOD.

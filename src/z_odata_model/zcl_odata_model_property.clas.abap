@@ -91,9 +91,7 @@ CLASS zcl_odata_model_property IMPLEMENTATION.
       mo_property->set_updatable( abap_false ).
     ENDIF.
 
-    IF     (    is_entity-entity_name = zif_odata_constants=>gc_global_entities-documents
-             OR is_entity-entity_name = zif_odata_constants=>gc_global_entities-attachments )
-       AND is_property-abap_name = zif_odata_constants=>gc_global_fieldnames-documents-mime_type.
+    IF is_entity-is_media = abap_true.
       mo_property->set_as_content_type( ).
     ENDIF.
 

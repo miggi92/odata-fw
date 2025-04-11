@@ -128,103 +128,161 @@ CLASS zcl_odata_main DEFINITION
 ENDCLASS.
 
 
-CLASS zcl_odata_main IMPLEMENTATION.
+
+CLASS ZCL_ODATA_MAIN IMPLEMENTATION.
+
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~batch_begin.
     RETURN.
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~batch_end.
     RETURN.
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_begin.
     RETURN.
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_end.
     RETURN.
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~changeset_process.
     RETURN.
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~create_deep_entity.
     RETURN.
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~create_entity.
     RETURN.
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~create_stream.
     RETURN.
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~delete_entity.
     RETURN.
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~delete_stream.
     RETURN.
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~execute_action.
     RETURN.
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entity.
     RETURN.
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entityset.
-    RETURN.
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_entityset_delta.
     RETURN.
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_expanded_entity.
     RETURN.
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_expanded_entityset.
     RETURN.
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_is_conditional_implemented.
     RETURN.
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_is_condi_imple_for_action.
     RETURN.
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~get_stream.
     RETURN.
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~patch_entity.
     RETURN.
   ENDMETHOD.
 
+
   METHOD /iwbep/if_mgw_appl_srv_runtime~update_entity.
     RETURN.
   ENDMETHOD.
+
 
   METHOD /iwbep/if_mgw_appl_srv_runtime~update_stream.
     RETURN.
   ENDMETHOD.
 
+
   METHOD before_processing.
     RETURN. " can be redefined and used for dpc_ext class
   ENDMETHOD.
+
 
   METHOD constructor.
     dpc_object = io_dpc_object.
     mv_namespace = iv_namespace.
   ENDMETHOD.
+
+
+  METHOD convert_dynamic_where.
+    DATA ls_dynamic_where_line LIKE LINE OF rt_dynamic_where.
+
+    DATA(lv_osql_where_clause) = io_tech_request_context->get_osql_where_clause_convert( ).
+    IF lv_osql_where_clause IS INITIAL.
+      RETURN.
+    ENDIF.
+    REPLACE ALL OCCURRENCES OF '(' IN lv_osql_where_clause WITH ''.
+    REPLACE ALL OCCURRENCES OF ')' IN lv_osql_where_clause WITH ''.
+    REPLACE ALL OCCURRENCES OF | OR | IN lv_osql_where_clause WITH | AND |.
+    ls_dynamic_where_line-tablename = 'TEST'.
+
+    ##TODO " line ist nur 72 zeichen lang. der osql string muss aufgeteilt werden.
+    DATA(lv_length_osql) = strlen( lv_osql_where_clause ).
+
+    IF lv_length_osql <= 72.
+      ls_dynamic_where_line-where_tab = VALUE #( ( |{ lv_osql_where_clause }| ) ).
+      APPEND ls_dynamic_where_line TO rt_dynamic_where.
+    ELSE.
+      SPLIT lv_osql_where_clause AT 'AND' INTO TABLE DATA(lt_split_osql).
+
+      LOOP AT lt_split_osql ASSIGNING FIELD-SYMBOL(<lv_split_osql>).
+        APPEND |{ <lv_split_osql> } {
+            COND char03( WHEN sy-tabix = lines( lt_split_osql )
+                         THEN ''
+                         ELSE 'AND' ) }| TO ls_dynamic_where_line-where_tab.
+      ENDLOOP.
+    ENDIF.
+    APPEND ls_dynamic_where_line TO rt_dynamic_where.
+  ENDMETHOD.
+
 
   METHOD copy_data_to_ref.
     DATA header TYPE ihttpnvp.
@@ -253,6 +311,7 @@ CLASS zcl_odata_main IMPLEMENTATION.
     dpc_object->set_header( is_header = header ).
   ENDMETHOD.
 
+
   METHOD entityset_filter_page_order.
     filter_collection( EXPORTING io_tech_request_context = io_tech_request_context
                        CHANGING  c_data                  = c_data ).
@@ -261,6 +320,7 @@ CLASS zcl_odata_main IMPLEMENTATION.
     paginate_collection( EXPORTING io_tech_request_context = io_tech_request_context
                          CHANGING  c_data                  = c_data ).
   ENDMETHOD.
+
 
   METHOD filter_collection.
     DATA field_ranges TYPE rsds_trange.
@@ -327,6 +387,33 @@ CLASS zcl_odata_main IMPLEMENTATION.
     ENDTRY.
   ENDMETHOD.
 
+
+  METHOD get_orderby_clause.
+    DATA lt_order_properties TYPE TABLE OF string.
+
+    DATA(lt_orderby) = io_tech_request_context->get_orderby( ).
+
+    " Append all order properties to a string table
+    IF lt_orderby IS INITIAL.
+      RETURN.
+    ENDIF.
+
+    LOOP AT lt_orderby ASSIGNING FIELD-SYMBOL(<lv_orderby>).
+      DATA(lv_sort_order) = COND #( WHEN <lv_orderby>-order = 'desc' THEN 'DESCENDING' ).
+      IF <lv_orderby>-property IS NOT INITIAL.
+        DATA(lv_order_property) = |{ <lv_orderby>-property } { lv_sort_order }|.
+      ELSE.
+        lv_order_property = |{ <lv_orderby>-property_path } { lv_sort_order }|.
+      ENDIF.
+      APPEND lv_order_property TO lt_order_properties.
+    ENDLOOP.
+
+    " Concatenate all order properties with comma separation
+    rv_orderby_clause = concat_lines_of( table = lt_order_properties
+                                         sep   = ', ' ).
+  ENDMETHOD.
+
+
   METHOD get_properties.
     DATA facade TYPE REF TO /iwbep/cl_mgw_dp_facade.
 
@@ -341,12 +428,44 @@ CLASS zcl_odata_main IMPLEMENTATION.
     ENDTRY.
   ENDMETHOD.
 
+
   METHOD get_request_header.
     DATA facade TYPE REF TO /iwbep/if_mgw_dp_int_facade.
 
     facade ?= dpc_object->/iwbep/if_mgw_conv_srv_runtime~get_dp_facade( ).
     r_request_headers = facade->get_request_header( ).
   ENDMETHOD.
+
+
+  METHOD if_sadl_gw_dpc_util~get_dpc.
+    DATA lv_current_timestamp TYPE if_sadl_types=>ty_timestamp.
+
+    TRY.
+        DATA(lo_fw) = NEW zcl_odata_fw_controller( mv_namespace ).
+        DATA(lv_sadl_xml) = lo_fw->define_sadl_xml( ).
+
+        GET TIME STAMP FIELD lv_current_timestamp.
+        ro_dpc = cl_sadl_gw_dpc_factory=>create_for_sadl( iv_sadl_xml          = lv_sadl_xml
+                                                          iv_timestamp         = lv_current_timestamp
+                                                          iv_uuid              = |{ mv_namespace }|
+                                                          io_query_control     = me
+                                                          io_extension_control = me
+                                                          io_context           = mo_context ).
+
+      CATCH zcx_odata.
+    ENDTRY.
+  ENDMETHOD.
+
+
+  METHOD if_sadl_gw_extension_control~set_extension_mapping.
+    RETURN.
+  ENDMETHOD.
+
+
+  METHOD if_sadl_gw_query_control~set_query_options.
+    RETURN.
+  ENDMETHOD.
+
 
   METHOD order_collection.
     DATA sortorder TYPE abap_sortorder_tab.
@@ -370,26 +489,6 @@ CLASS zcl_odata_main IMPLEMENTATION.
     SORT c_data BY (sortorder).
   ENDMETHOD.
 
-  METHOD get_orderby_clause.
-    DATA(lt_orderby) = io_tech_request_context->get_orderby( ).
-
-    " Append all order properties to a string table
-    IF lt_orderby IS INITIAL.
-      RETURN.
-    ENDIF.
-
-    DATA lt_order_properties TYPE TABLE OF string.
-
-    LOOP AT lt_orderby ASSIGNING FIELD-SYMBOL(<lv_orderby>).
-      DATA(lv_sort_order) = COND #( WHEN <lv_orderby>-order = 'desc' THEN 'DESCENDING' ).
-      DATA(lv_order_property) = |{ <lv_orderby>-property } { lv_sort_order }|.
-      APPEND lv_order_property TO lt_order_properties.
-    ENDLOOP.
-
-    " Concatenate all order properties with comma separation
-    rv_orderby_clause = concat_lines_of( table = lt_order_properties
-                                         sep   = ', ' ).
-  ENDMETHOD.
 
   METHOD paginate_collection.
     DATA(top) = io_tech_request_context->get_top( ).
@@ -407,69 +506,13 @@ CLASS zcl_odata_main IMPLEMENTATION.
     ENDIF.
   ENDMETHOD.
 
+
   METHOD raise_error.
     NEW zcl_odata_error_handler( me->dpc_object )->raise_exception_object( i_exception = i_error ).
   ENDMETHOD.
 
-  METHOD if_sadl_gw_dpc_util~get_dpc.
-    DATA lv_current_timestamp TYPE if_sadl_types=>ty_timestamp.
-
-    TRY.
-        DATA(lo_fw) = NEW zcl_odata_fw_controller( mv_namespace ).
-        DATA(lv_sadl_xml) = lo_fw->define_sadl_xml( ).
-
-        GET TIME STAMP FIELD lv_current_timestamp.
-        ro_dpc = cl_sadl_gw_dpc_factory=>create_for_sadl( iv_sadl_xml          = lv_sadl_xml
-                                                          iv_timestamp         = lv_current_timestamp
-                                                          iv_uuid              = |{ mv_namespace }|
-                                                          io_query_control     = me
-                                                          io_extension_control = me
-                                                          io_context           = mo_context ).
-
-      CATCH zcx_odata.
-    ENDTRY.
-  ENDMETHOD.
-
-  METHOD if_sadl_gw_extension_control~set_extension_mapping.
-    RETURN.
-  ENDMETHOD.
-
-  METHOD if_sadl_gw_query_control~set_query_options.
-    RETURN.
-  ENDMETHOD.
 
   METHOD set_context.
     mo_context = io_context.
-  ENDMETHOD.
-
-  METHOD convert_dynamic_where.
-    DATA ls_dynamic_where_line LIKE LINE OF rt_dynamic_where.
-
-    DATA(lv_osql_where_clause) = io_tech_request_context->get_osql_where_clause_convert( ).
-    IF lv_osql_where_clause IS INITIAL.
-      RETURN.
-    ENDIF.
-    REPLACE ALL OCCURRENCES OF '(' IN lv_osql_where_clause WITH ''.
-    REPLACE ALL OCCURRENCES OF ')' IN lv_osql_where_clause WITH ''.
-    REPLACE ALL OCCURRENCES OF | OR | IN lv_osql_where_clause WITH | AND |.
-    ls_dynamic_where_line-tablename = 'TEST'.
-
-    ##TODO " line ist nur 72 zeichen lang. der osql string muss aufgeteilt werden.
-    DATA(lv_length_osql) = strlen( lv_osql_where_clause ).
-
-    IF lv_length_osql <= 72.
-      ls_dynamic_where_line-where_tab = VALUE #( ( |{ lv_osql_where_clause }| ) ).
-      APPEND ls_dynamic_where_line TO rt_dynamic_where.
-    ELSE.
-      SPLIT lv_osql_where_clause AT 'AND' INTO TABLE DATA(lt_split_osql).
-
-      LOOP AT lt_split_osql ASSIGNING FIELD-SYMBOL(<lv_split_osql>).
-        APPEND |{ <lv_split_osql> } {
-            COND char03( WHEN sy-tabix = lines( lt_split_osql )
-                         THEN ''
-                         ELSE 'AND' ) }| TO ls_dynamic_where_line-where_tab.
-      ENDLOOP.
-    ENDIF.
-    APPEND ls_dynamic_where_line TO rt_dynamic_where.
   ENDMETHOD.
 ENDCLASS.

@@ -13,14 +13,26 @@ CLASS zcl_odata_annotation_ui DEFINITION
                 iv_entity_name          TYPE /iwbep/if_mgw_med_odata_types=>ty_e_med_entity_name
       RETURNING VALUE(ro_ui_annotation) TYPE REF TO zcl_odata_annotation_ui.
 
+    "! <p class="shorttext synchronized">Create columns displayed by default</p>
+    "!
+    "! @parameter iv_property_name | <p class="shorttext synchronized">Property name</p>
+    "! @parameter iv_sort_order    | <p class="shorttext synchronized">Sort order</p>
     METHODS create_initial_visible_columns
-      IMPORTING iv_property_name TYPE z_odata_property_name.
+      IMPORTING iv_property_name TYPE z_odata_property_name
+                iv_sort_order    TYPE int8.
 
+    "! <p class="shorttext synchronized">Create filter for filterbar</p>
+    "!
+    "! @parameter iv_property_name | <p class="shorttext synchronized">Property name</p>
+    METHODS create_filter_for_filterbar
+      IMPORTING iv_property_name TYPE z_odata_property_name.
 
   PROTECTED SECTION.
     DATA mo_ann_target TYPE REF TO /iwbep/if_mgw_vocan_ann_target. " Vocabulary Annotation Target
-      DATA mo_annotation TYPE REF TO /iwbep/if_mgw_vocan_annotation. " Vocabulary Annotation
-    DATA mo_collection TYPE REF TO /iwbep/if_mgw_vocan_collection. " Vocabulary Annotation Collection
+    DATA mo_annotation_line_item TYPE REF TO /iwbep/if_mgw_vocan_annotation. " Vocabulary Annotation
+    DATA mo_collection_line_item TYPE REF TO /iwbep/if_mgw_vocan_collection. " Vocabulary Annotation Collection
+    DATA mo_annotation_sf TYPE REF TO /iwbep/if_mgw_vocan_annotation. " Vocabulary Annotation
+    DATA mo_collection_sf TYPE REF TO /iwbep/if_mgw_vocan_collection. " Vocabulary Annotation Collection
 
   PRIVATE SECTION.
 ENDCLASS.
@@ -51,16 +63,27 @@ CLASS zcl_odata_annotation_ui IMPLEMENTATION.
     DATA lo_property   TYPE REF TO /iwbep/if_mgw_vocan_property.   " Vocabulary Annotation Property
     DATA lo_simp_value TYPE REF TO /iwbep/if_mgw_vocan_simple_val. " Vocabulary Annotation Simple Value
 
-    " Columns to be displayed by default
-    IF mo_collection IS INITIAL.
-      mo_annotation = mo_ann_target->create_annotation( iv_term = 'UI.LineItem' ).
-      mo_collection = mo_annotation->create_collection( ).
+    IF iv_sort_order = 1.
+      mo_annotation_line_item = mo_ann_target->create_annotation( iv_term = 'UI.LineItem' ).
+      mo_collection_line_item = mo_annotation_line_item->create_collection( ).
     ENDIF.
 
-    lo_record = mo_collection->create_record( iv_record_type = 'UI.DataField' ).
+    lo_record = mo_collection_line_item->create_record( iv_record_type = 'UI.DataField' ).
     lo_property = lo_record->create_property( 'Value' ).
     lo_simp_value = lo_property->create_simple_value( ).
     lo_simp_value->set_path( |{ iv_property_name }| ).
+  ENDMETHOD.
+
+  METHOD create_filter_for_filterbar.
+    DATA lo_simp_value TYPE REF TO /iwbep/if_mgw_vocan_simple_val. " Vocabulary Annotation Simple Value
+
+    IF mo_collection_sf IS INITIAL.
+      mo_annotation_sf = mo_ann_target->create_annotation( iv_term = 'UI.SelectionFields' ).
+      mo_collection_sf = mo_annotation_sf->create_collection( ).
+    ENDIF.
+
+    lo_simp_value = mo_collection_sf->create_simple_value( ).
+    lo_simp_value->set_property_path( iv_value = |{ iv_property_name }| ).
   ENDMETHOD.
 
 ENDCLASS.

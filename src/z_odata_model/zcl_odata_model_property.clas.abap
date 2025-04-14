@@ -102,7 +102,16 @@ CLASS zcl_odata_model_property IMPLEMENTATION.
     ENDIF.
 
     IF is_property-sort_order IS NOT INITIAL.
-      io_ui_annotation->create_initial_visible_columns( iv_property_name = is_property-property_name ).
+      io_ui_annotation->create_initial_visible_columns( iv_property_name = is_property-property_name
+                                                        iv_sort_order    = is_property-sort_order ).
+    ENDIF.
+
+    IF is_property-filter_in_filterbar = abap_true.
+      io_ui_annotation->create_filter_for_filterbar( is_property-property_name ).
+    ENDIF.
+
+    IF is_property-mandatory_filter = abap_true.
+      zcl_odata_annotaion_sap=>create_from_property( mo_property )->add_required_filter_annotation( ).
     ENDIF.
   ENDMETHOD.
 

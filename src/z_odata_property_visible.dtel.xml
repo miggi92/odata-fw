@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>Z_ODATA_PROPERTY_VISIBLE</ROLLNAME>
+    <DDLANGUAGE>D</DDLANGUAGE>
+    <DOMNAME>OS_BOOLEAN</DOMNAME>
+    <HEADLEN>55</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>20</SCRLEN2>
+    <SCRLEN3>40</SCRLEN3>
+    <DDTEXT>OData Property nicht sichtbar im UI</DDTEXT>
+    <REPTEXT>Nicht sichtbar im UI</REPTEXT>
+    <SCRTEXT_S>N. sichtb.</SCRTEXT_S>
+    <SCRTEXT_M>Nicht sichtbar im UI</SCRTEXT_M>
+    <SCRTEXT_L>Nicht sichtbar im UI</SCRTEXT_L>
+    <DTELMASTER>D</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>E</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DDTEXT>OData property not visible in the UI</DDTEXT>
+     <REPTEXT>Not visible in the UI</REPTEXT>
+     <SCRTEXT_S>N. visible</SCRTEXT_S>
+     <SCRTEXT_M>Not visible in UI</SCRTEXT_M>
+     <SCRTEXT_L>Not visible in the UI</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

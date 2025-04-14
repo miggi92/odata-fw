@@ -38,6 +38,11 @@
      <DESCRIPT>Add required in filter annotation</DESCRIPT>
     </SEOCOMPOTX>
     <SEOCOMPOTX>
+     <CMPNAME>ADD_VISIBLE_FALSE_ANNOTATION</CMPNAME>
+     <LANGU>D</LANGU>
+     <DESCRIPT>Add visible = false annotation</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
      <CMPNAME>CREATE_FROM_PROPERTY</CMPNAME>
      <LANGU>D</LANGU>
      <DESCRIPT>Create from property</DESCRIPT>

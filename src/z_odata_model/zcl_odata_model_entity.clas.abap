@@ -67,13 +67,24 @@ CLASS zcl_odata_model_entity DEFINITION
       EXPORTING et_components      TYPE cl_abap_structdescr=>component_table
                 ev_bind_conversion TYPE abap_bool
       RAISING   zcx_odata.
+
+    METHODS sort_properties
+      CHANGING ct_properties TYPE zodata_property_tt.
 ENDCLASS.
 
 
 CLASS zcl_odata_model_entity IMPLEMENTATION.
   METHOD create_entity.
+    TYPES: BEGIN OF ty_property.
+             INCLUDE TYPE zodata_property.
+    TYPES: END OF ty_property.
+
+    TYPES ty_property_tt TYPE SORTED TABLE OF ty_property WITH NON-UNIQUE KEY entity_name.
+
     DATA lt_components      TYPE cl_abap_structdescr=>component_table.
     DATA lv_bind_conversion TYPE abap_bool.
+    DATA lt_all_properties  TYPE ty_property_tt.
+    DATA lt_properties      TYPE zodata_property_tt.
     DATA lo_property        TYPE REF TO zcl_odata_model_property.
 
     mo_entity = mo_model->create_entity_type( iv_entity_type_name = is_entity-entity_name ).
@@ -89,7 +100,21 @@ CLASS zcl_odata_model_entity IMPLEMENTATION.
                                iv_bind_conversions = lv_bind_conversion ).    " Consider conversion exits
     mo_entity_set = mo_entity->create_entity_set( iv_entity_set_name = |{ is_entity-entity_name }Set| ).
 
-    LOOP AT mo_customizing->get_properties( ) ASSIGNING FIELD-SYMBOL(<ls_property>)
+    DATA(lo_ui_annotation) = zcl_odata_annotation_ui=>create( io_vocan_model = mo_anno_model
+                                                              iv_entity_name = is_entity-entity_name
+                                                              iv_namespace   = |{ is_entity-namespace }| ).
+
+    INSERT LINES OF mo_customizing->get_properties( ) INTO TABLE lt_all_properties.
+
+    DATA(lt_filtered_properties) = FILTER ty_property_tt(
+      lt_all_properties
+      WHERE entity_name = is_entity-entity_name ).
+
+    lt_properties = lt_filtered_properties.
+
+    sort_properties( CHANGING ct_properties = lt_properties ).
+
+    LOOP AT lt_properties ASSIGNING FIELD-SYMBOL(<ls_property>)
          WHERE entity_name = is_entity-entity_name.
       IF <ls_property>-complex_type IS NOT INITIAL.
         lo_property ?= NEW zcl_odata_model_complex_prprty( io_model       = mo_model
@@ -101,10 +126,11 @@ CLASS zcl_odata_model_entity IMPLEMENTATION.
                                                      io_customizing = mo_customizing
                                                      io_anno_model  = mo_anno_model ).
       ENDIF.
-      lo_property->create_property( io_entity     = mo_entity
-                                    it_components = lt_components
-                                    is_property   = <ls_property>
-                                    is_entity     = is_entity ).
+      lo_property->create_property( io_entity        = mo_entity
+                                    it_components    = lt_components
+                                    is_property      = <ls_property>
+                                    is_entity        = is_entity
+                                    io_ui_annotation = lo_ui_annotation ).
 
       INSERT VALUE #( property   = <ls_property>-property_name
                       cmplx_type = <ls_property>-complex_type
@@ -168,5 +194,33 @@ CLASS zcl_odata_model_entity IMPLEMENTATION.
 
   METHOD get_properties_type.
     rt_properties = mt_properties.
+  ENDMETHOD.
+
+  METHOD sort_properties.
+*    TYPES: BEGIN OF lty_data_properties,
+*             sort_order TYPE i.
+*             INCLUDE TYPE zcl_odata_model_property=>gty_property.
+*    TYPES: END OF lty_data_properties,
+*
+*           lty_data_properties_tt TYPE STANDARD TABLE OF lty_data_properties WITH KEY property.
+*
+*    DATA lt_properties TYPE lty_data_properties_tt.
+*
+*    lt_properties = CORRESPONDING #( ct_properties ).
+*
+*    LOOP AT lt_properties ASSIGNING FIELD-SYMBOL(<ls_property>).
+*      READ TABLE mo_customizing->get_properties( ) WITH KEY property_name = <ls_property>-property INTO DATA(ls_customizing_property).
+*
+*      IF ls_customizing_property-sort_order IS INITIAL.
+*        <ls_property>-sort_order = 9999.
+*      ELSE.
+*        <ls_property>-sort_order = ls_customizing_property-sort_order.
+*      ENDIF.
+*    ENDLOOP.
+
+    SORT ct_properties BY entity_name
+                          sort_order.
+
+*    ct_properties = CORRESPONDING #( lt_properties ).
   ENDMETHOD.
 ENDCLASS.

@@ -113,6 +113,10 @@ CLASS zcl_odata_model_property IMPLEMENTATION.
     IF is_property-mandatory_filter = abap_true.
       zcl_odata_annotaion_sap=>create_from_property( mo_property )->add_required_filter_annotation( ).
     ENDIF.
+
+    IF is_property-not_visible = abap_true.
+      zcl_odata_annotaion_sap=>create_from_property( mo_property )->add_visible_false_annotation( ).
+    ENDIF.
   ENDMETHOD.
 
   METHOD get_property_type.

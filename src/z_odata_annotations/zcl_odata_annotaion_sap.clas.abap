@@ -26,6 +26,10 @@ CLASS zcl_odata_annotaion_sap DEFINITION
     "!
     METHODS add_required_filter_annotation.
 
+    "! <p class="shorttext synchronized" lang="de">Add visible = false annotation</p>
+    "!
+    METHODS add_visible_false_annotation.
+
     "! <p class="shorttext synchronized">Create from property</p>
     "!
     "! @parameter io_property                 | <p class="shorttext synchronized">Property</p>
@@ -69,4 +73,10 @@ CLASS zcl_odata_annotaion_sap IMPLEMENTATION.
     mo_annotation->add( iv_key   = 'required-in-filter'
                         iv_value = 'true' ).
   ENDMETHOD.
+
+  METHOD add_visible_false_annotation.
+    mo_annotation->add( iv_key   = 'visible'
+                        iv_value = 'false' ).
+  ENDMETHOD.
+
 ENDCLASS.

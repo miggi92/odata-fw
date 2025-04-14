@@ -28,8 +28,8 @@ importers:
         specifier: ^2.10.42
         version: 2.10.42
       '@abaplint/transpiler':
-        specifier: ^2.10.42
-        version: 2.10.42
+        specifier: ^2.10.43
+        version: 2.10.43
       '@abaplint/transpiler-cli':
         specifier: ^2.10.42
         version: 2.10.42
@@ -55,8 +55,8 @@ packages:
     resolution: {integrity: sha512-gdgzYfN4uCX6XUX0XfR6p67TQilqghLJ/sU6JBzzn3EIx2cbi2orC3/xsV4xtoFnV9F0jDx+RCCzYcYGHzwSyg==}
     hasBin: true
 
-  '@abaplint/transpiler@2.10.42':
-    resolution: {integrity: sha512-BhfU/hrjrtnwsgM+W+z6yLKYCbXsw1RtNmkUa98cxpg1Ir6uumSuwhyWdjwmbNWIEyKgHj7J9qbw1JcIuRgqbA==}
+  '@abaplint/transpiler@2.10.43':
+    resolution: {integrity: sha512-kPnb3FMCRCoYIUUloaS6N4UVa1tC07y7cSA4snnNaU12eMFTt/b88Vbp43X/cOsi6R0dfsxogoo/AOBnpADvdA==}
 
   '@algolia/autocomplete-core@1.17.7':
     resolution: {integrity: sha512-BjiPOW6ks90UKl7TwMv7oNQMnzU+t/wk9mgIDi6b1tXpUek7MW0lbNOUHpvam9pe3lVCf4xPFT+lK7s+e+fs7Q==}
@@ -1391,7 +1391,7 @@ snapshots:
 
   '@abaplint/transpiler-cli@2.10.42': {}
 
-  '@abaplint/transpiler@2.10.42':
+  '@abaplint/transpiler@2.10.43':
     dependencies:
       '@abaplint/core': 2.113.108
       source-map: 0.7.4

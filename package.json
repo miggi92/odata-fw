@@ -28,7 +28,7 @@
   "devDependencies": {
     "@abaplint/cli": "^2.113.108",
     "@abaplint/runtime": "^2.10.42",
-    "@abaplint/transpiler": "^2.10.42",
+    "@abaplint/transpiler": "^2.10.43",
     "@abaplint/transpiler-cli": "^2.10.42",
     "vitepress": "^1.6.3"
   },

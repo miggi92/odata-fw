@@ -22,41 +22,41 @@ importers:
         version: 2.0.17(mermaid@11.6.0)(vitepress@1.6.3(@algolia/client-search@5.20.1)(postcss@8.5.1)(search-insights@2.13.0))
     devDependencies:
       '@abaplint/cli':
-        specifier: ^2.113.108
-        version: 2.113.108
+        specifier: ^2.113.110
+        version: 2.113.110
       '@abaplint/runtime':
-        specifier: ^2.10.42
-        version: 2.10.42
+        specifier: ^2.10.44
+        version: 2.10.44
       '@abaplint/transpiler':
-        specifier: ^2.10.42
-        version: 2.10.42
+        specifier: ^2.10.44
+        version: 2.10.44
       '@abaplint/transpiler-cli':
-        specifier: ^2.10.42
-        version: 2.10.42
+        specifier: ^2.10.44
+        version: 2.10.44
       vitepress:
         specifier: ^1.6.3
         version: 1.6.3(@algolia/client-search@5.20.1)(postcss@8.5.1)(search-insights@2.13.0)
 
 packages:
 
-  '@abaplint/cli@2.113.108':
-    resolution: {integrity: sha512-Qigo5UBwb0a2yskWJwYGgRfj7hx9rZ45sUb6kxQuMG/ZUT4xAIKIXxYf/hWQMqM+xSP4p85uIjDAs64rNzDQ9A==}
+  '@abaplint/cli@2.113.110':
+    resolution: {integrity: sha512-EY5mP6dE/kv0FGcTMT3QhwWrcs4v3JXv9ZvjpTDJu6ncA0Z4v+nMJy0f66Ug+LHPmcUZHjevH+UTRuSYFlYYXQ==}
     engines: {node: '>=12.0.0'}
     hasBin: true
 
-  '@abaplint/core@2.113.108':
-    resolution: {integrity: sha512-Ny/hEDh7tKSaX9kO3y84rY2BRuYVNJljiKQQCrfamzVoDYb5Dr0R6aglQbe/SIg+x5bdTrnhEHAdtW3Ha+zlCw==}
+  '@abaplint/core@2.113.110':
+    resolution: {integrity: sha512-x8eZlfpeBQkbHrFw2DWk1IIRFnYwGdrizoJSFgtCCBBci8pzInjmLN16l0zFRT0gxtOCU3mMmts2MPdJfRIR9g==}
     engines: {node: '>=12.0.0'}
 
-  '@abaplint/runtime@2.10.42':
-    resolution: {integrity: sha512-dXjCY4DSfd5NKPe3mt7wXJsi/MTHUsRppDfX4f/dypRueQTkxdX8J2GbUl+hKwF+xE841g1LzxZQmkzNRt/odw==}
+  '@abaplint/runtime@2.10.44':
+    resolution: {integrity: sha512-D3z0+tiz5llaJwzFgt05HQLQAd6k/5PBY883TRkU+39t/DCHXtvSQ7cd03Myr19tSSAwmsPkEPrM7kVkToIdsg==}
 
-  '@abaplint/transpiler-cli@2.10.42':
-    resolution: {integrity: sha512-gdgzYfN4uCX6XUX0XfR6p67TQilqghLJ/sU6JBzzn3EIx2cbi2orC3/xsV4xtoFnV9F0jDx+RCCzYcYGHzwSyg==}
+  '@abaplint/transpiler-cli@2.10.44':
+    resolution: {integrity: sha512-DsJOQ3CLwP8o1LPyT19q8AUbqJxc2bqFlDAX4W57JLVqew4z9HsQf06lTxgN0Wo+khuJBfVEARePBzXJQl/pjQ==}
     hasBin: true
 
-  '@abaplint/transpiler@2.10.42':
-    resolution: {integrity: sha512-BhfU/hrjrtnwsgM+W+z6yLKYCbXsw1RtNmkUa98cxpg1Ir6uumSuwhyWdjwmbNWIEyKgHj7J9qbw1JcIuRgqbA==}
+  '@abaplint/transpiler@2.10.44':
+    resolution: {integrity: sha512-FRIP1JIY12qAplmp0vTGaSeYNbc/DmS/P55mnyy3aE/Vju7rgvQ7VslmgV0EwOoRmGAhkPhAeY9bvS8hA2oflQ==}
 
   '@algolia/autocomplete-core@1.17.7':
     resolution: {integrity: sha512-BjiPOW6ks90UKl7TwMv7oNQMnzU+t/wk9mgIDi6b1tXpUek7MW0lbNOUHpvam9pe3lVCf4xPFT+lK7s+e+fs7Q==}
@@ -1377,23 +1377,23 @@ packages:
 
 snapshots:
 
-  '@abaplint/cli@2.113.108': {}
+  '@abaplint/cli@2.113.110': {}
 
-  '@abaplint/core@2.113.108':
+  '@abaplint/core@2.113.110':
     dependencies:
       fast-xml-parser: 5.2.0
       json5: 2.2.3
       vscode-languageserver-types: 3.17.5
 
-  '@abaplint/runtime@2.10.42':
+  '@abaplint/runtime@2.10.44':
     dependencies:
       temporal-polyfill: 0.2.5
 
-  '@abaplint/transpiler-cli@2.10.42': {}
+  '@abaplint/transpiler-cli@2.10.44': {}
 
-  '@abaplint/transpiler@2.10.42':
+  '@abaplint/transpiler@2.10.44':
     dependencies:
-      '@abaplint/core': 2.113.108
+      '@abaplint/core': 2.113.110
       source-map: 0.7.4
 
   '@algolia/autocomplete-core@1.17.7(@algolia/client-search@5.20.1)(algoliasearch@5.20.1)(search-insights@2.13.0)':

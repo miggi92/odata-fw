@@ -8,10 +8,17 @@ Legend
 + : added
 - : removed
 
-2024-12-31 v1.3.0
-------------------
-! split mpc class 
+2025-04-22 v1.3.0
+------------------ 
 + Model package with classes
++ display columns 
++ visible annotation
++ update annotation
+! split mpc class
+! is media enitites
+* abaplint errors
+* slashes in namespace not working
+
 
 2024-12-18 v1.2.1
 ------------------

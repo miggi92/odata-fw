@@ -23,24 +23,24 @@ importers:
     devDependencies:
       '@abaplint/cli':
         specifier: ^2.113.110
-        version: 2.113.110
+        version: 2.113.114
       '@abaplint/runtime':
         specifier: ^2.10.44
-        version: 2.10.44
+        version: 2.10.49
       '@abaplint/transpiler':
         specifier: ^2.10.44
-        version: 2.10.44
+        version: 2.10.49
       '@abaplint/transpiler-cli':
         specifier: ^2.10.44
-        version: 2.10.44
+        version: 2.10.49
       vitepress:
         specifier: ^1.6.3
         version: 1.6.3(@algolia/client-search@5.20.1)(postcss@8.5.1)(search-insights@2.13.0)
 
 packages:
 
-  '@abaplint/cli@2.113.110':
-    resolution: {integrity: sha512-EY5mP6dE/kv0FGcTMT3QhwWrcs4v3JXv9ZvjpTDJu6ncA0Z4v+nMJy0f66Ug+LHPmcUZHjevH+UTRuSYFlYYXQ==}
+  '@abaplint/cli@2.113.114':
+    resolution: {integrity: sha512-mxVwgBHUgVDMxIMVrkj1AtKYKc8KlEo8qUfth4Q6nzm+J42GY8/cC4WzUZ9sDgS8YV9z//fKqM/MN761I4C8Og==}
     engines: {node: '>=12.0.0'}
     hasBin: true
 
@@ -48,15 +48,15 @@ packages:
     resolution: {integrity: sha512-x8eZlfpeBQkbHrFw2DWk1IIRFnYwGdrizoJSFgtCCBBci8pzInjmLN16l0zFRT0gxtOCU3mMmts2MPdJfRIR9g==}
     engines: {node: '>=12.0.0'}
 
-  '@abaplint/runtime@2.10.44':
-    resolution: {integrity: sha512-D3z0+tiz5llaJwzFgt05HQLQAd6k/5PBY883TRkU+39t/DCHXtvSQ7cd03Myr19tSSAwmsPkEPrM7kVkToIdsg==}
+  '@abaplint/runtime@2.10.49':
+    resolution: {integrity: sha512-io0w1rvJDHnkxoDeK6DrXRvQYMFNgSfg82GYWPY5gwEeXfQR5MniIMsPNXBVGmBB+NkTY3MvWMcwRHmgXGuWPg==}
 
-  '@abaplint/transpiler-cli@2.10.44':
-    resolution: {integrity: sha512-DsJOQ3CLwP8o1LPyT19q8AUbqJxc2bqFlDAX4W57JLVqew4z9HsQf06lTxgN0Wo+khuJBfVEARePBzXJQl/pjQ==}
+  '@abaplint/transpiler-cli@2.10.49':
+    resolution: {integrity: sha512-Nr3Bg0eaoRCfQMYgqBHEDw+03L/M3zV/9dTX35PjkWQL8RZn31MQLUqtw0J4x7ThizKgD5SANPbYvMYTBLsjkg==}
     hasBin: true
 
-  '@abaplint/transpiler@2.10.44':
-    resolution: {integrity: sha512-FRIP1JIY12qAplmp0vTGaSeYNbc/DmS/P55mnyy3aE/Vju7rgvQ7VslmgV0EwOoRmGAhkPhAeY9bvS8hA2oflQ==}
+  '@abaplint/transpiler@2.10.49':
+    resolution: {integrity: sha512-SQ6UFCvq5jG2AbjrSLu0uRwHrqjzCJQ0VII8BFWNOhwRopd6je4D317HDtmq7YDv7/Mr7ysmHHXKLostTyzq4g==}
 
   '@algolia/autocomplete-core@1.17.7':
     resolution: {integrity: sha512-BjiPOW6ks90UKl7TwMv7oNQMnzU+t/wk9mgIDi6b1tXpUek7MW0lbNOUHpvam9pe3lVCf4xPFT+lK7s+e+fs7Q==}
@@ -1377,7 +1377,7 @@ packages:
 
 snapshots:
 
-  '@abaplint/cli@2.113.110': {}
+  '@abaplint/cli@2.113.114': {}
 
   '@abaplint/core@2.113.110':
     dependencies:
@@ -1385,13 +1385,13 @@ snapshots:
       json5: 2.2.3
       vscode-languageserver-types: 3.17.5
 
-  '@abaplint/runtime@2.10.44':
+  '@abaplint/runtime@2.10.49':
     dependencies:
       temporal-polyfill: 0.2.5
 
-  '@abaplint/transpiler-cli@2.10.44': {}
+  '@abaplint/transpiler-cli@2.10.49': {}
 
-  '@abaplint/transpiler@2.10.44':
+  '@abaplint/transpiler@2.10.49':
     dependencies:
       '@abaplint/core': 2.113.110
       source-map: 0.7.4

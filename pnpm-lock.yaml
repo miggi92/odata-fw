@@ -32,7 +32,7 @@ importers:
         version: 2.10.44
       '@abaplint/transpiler-cli':
         specifier: ^2.10.44
-        version: 2.10.44
+        version: 2.10.59
       vitepress:
         specifier: ^1.6.3
         version: 1.6.3(@algolia/client-search@5.20.1)(postcss@8.5.1)(search-insights@2.13.0)
@@ -51,8 +51,8 @@ packages:
   '@abaplint/runtime@2.10.44':
     resolution: {integrity: sha512-D3z0+tiz5llaJwzFgt05HQLQAd6k/5PBY883TRkU+39t/DCHXtvSQ7cd03Myr19tSSAwmsPkEPrM7kVkToIdsg==}
 
-  '@abaplint/transpiler-cli@2.10.44':
-    resolution: {integrity: sha512-DsJOQ3CLwP8o1LPyT19q8AUbqJxc2bqFlDAX4W57JLVqew4z9HsQf06lTxgN0Wo+khuJBfVEARePBzXJQl/pjQ==}
+  '@abaplint/transpiler-cli@2.10.59':
+    resolution: {integrity: sha512-gH+irLPGKAmBjAQZYAOWamVqynMyOZmJAr7OSYueZ/KMgq5904bqY+GfM4hvx4LX7EG/93Upv8BlatexOZa4aQ==}
     hasBin: true
 
   '@abaplint/transpiler@2.10.44':
@@ -1389,7 +1389,7 @@ snapshots:
     dependencies:
       temporal-polyfill: 0.2.5
 
-  '@abaplint/transpiler-cli@2.10.44': {}
+  '@abaplint/transpiler-cli@2.10.59': {}
 
   '@abaplint/transpiler@2.10.44':
     dependencies:

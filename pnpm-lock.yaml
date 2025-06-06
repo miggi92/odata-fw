@@ -23,7 +23,7 @@ importers:
     devDependencies:
       '@abaplint/cli':
         specifier: ^2.113.110
-        version: 2.113.110
+        version: 2.113.126
       '@abaplint/runtime':
         specifier: ^2.10.44
         version: 2.10.44
@@ -39,8 +39,8 @@ importers:
 
 packages:
 
-  '@abaplint/cli@2.113.110':
-    resolution: {integrity: sha512-EY5mP6dE/kv0FGcTMT3QhwWrcs4v3JXv9ZvjpTDJu6ncA0Z4v+nMJy0f66Ug+LHPmcUZHjevH+UTRuSYFlYYXQ==}
+  '@abaplint/cli@2.113.126':
+    resolution: {integrity: sha512-Izm1h40QXu/3ntwMK2Bv+0Sawi9T0bmktkqPhY6I0l49owExLY9KrpVMGLxam80mI6BGX9qOdg0GmDCp7DblHw==}
     engines: {node: '>=12.0.0'}
     hasBin: true
 
@@ -1377,7 +1377,7 @@ packages:
 
 snapshots:
 
-  '@abaplint/cli@2.113.110': {}
+  '@abaplint/cli@2.113.126': {}
 
   '@abaplint/core@2.113.110':
     dependencies:

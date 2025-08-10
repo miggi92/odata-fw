@@ -33,7 +33,7 @@
     "vitepress": "^1.6.3"
   },
   "dependencies": {
-    "@octokit/rest": "^21.1.1",
+    "@octokit/rest": "^22.0.0",
     "mermaid": "^11.6.0",
     "vitepress-plugin-image-viewer": "^1.1.6",
     "vitepress-plugin-mermaid": "^2.0.17"

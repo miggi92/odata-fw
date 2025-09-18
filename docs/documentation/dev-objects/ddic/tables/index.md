@@ -1,5 +1,0 @@
----
-title: Tables
----
-
-#  {{ $frontmatter.title }}

@@ -12,15 +12,15 @@ export default defineAppConfig({
     }
   },
   seo: {
-    siteName: 'Nuxt Docs Template'
+    siteName: 'OData FW Documentation',
   },
   header: {
-    title: '',
+    title: 'OData FW Documentation',
     to: '/',
     logo: {
-      alt: '',
-      light: '',
-      dark: ''
+      alt: 'OData FW Logo',
+      light: 'odata_fw_logo_transparent.png',
+      dark: 'odata_fw_logo_transparent.png'
     },
     search: true,
     colorMode: true,

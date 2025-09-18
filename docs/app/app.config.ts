@@ -19,8 +19,8 @@ export default defineAppConfig({
     to: '/',
     logo: {
       alt: 'OData FW Logo',
-      light: 'odata_fw_logo_transparent.png',
-      dark: 'odata_fw_logo_transparent.png'
+      light: 'logo.svg',
+      dark: 'logo.svg'
     },
     search: true,
     colorMode: true,

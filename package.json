@@ -8,7 +8,9 @@
   "scripts": {
     "unit": "rm -rf output && abap_transpile abap_transpile.json && echo RUNNING && node output/index.mjs",
     "test": "npm run unit",
-    "abaplint": "abaplint --format codeframe"
+    "abaplint": "abaplint --format codeframe",
+    "docs:dev": "cd docs && npm run dev",
+    "docs:build": "cd docs && npm run build"
   },
   "repository": "github:miggi92/odata-fw",
   "keywords": [
@@ -29,5 +31,6 @@
     "@abaplint/transpiler-cli": "^2.10.44"
   },
   "dependencies": {
-  }
+  },
+  "packageManager": "pnpm@10.17.0"
 }

@@ -5,16 +5,14 @@ navigation:
   icon: i-lucide-box
 ---
 
-#  {{ $frontmatter.title }}
-
 This is an example implementation of a material entity. 
 
 ## Prerequisites
 
-1. First you need to create a [SEGW project](../Creating-a-service#create-a-segw-project).
+1. First you need to create a [SEGW project](/documentation/creating-a-service#create-a-segw-project).
 1. Implement the Framework classes
-    1. [MPC](../Creating-a-service#implement-the-mpc-class)
-    1. [DPC](../Creating-a-service#implement-the-dpc-class)
+    1. [MPC](/documentation/creating-a-service#implement-the-mpc-class)
+    1. [DPC](/documentation/creating-a-service#implement-the-dpc-class)
 
 
 ## Create the entity class
@@ -138,7 +136,7 @@ ENDCLASS.
 ## Update the DPC_EXT class
 
 The DPC_EXT class should be updated to call the methods of the material class.
-You can find the boilerplate code in the [DPC boilerplate code](../DPC-boilerplate-code) section of the documentation.
+You can find the boilerplate code in the [DPC boilerplate code](/documentation/dpc-boilerplate-code) section of the documentation.
 This would be the full dpc_ext class:
 
 ```abap

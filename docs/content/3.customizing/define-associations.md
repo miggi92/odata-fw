@@ -2,8 +2,6 @@
 title: Define navigation properties
 ---
 
-#  {{ $frontmatter.title }}
-
 A navigation property also known as association can easily be created via customizing. The navigation properties are defined under an entity. 
 
 ![navigation property tree](pictures/customizing/cust_nav_prop_tree.png)

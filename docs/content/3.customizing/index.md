@@ -2,7 +2,6 @@
 title: OData Customizing
 description: OData Customizing
 ---
-#  {{ $frontmatter.title }}
 
 ## Transaction
 

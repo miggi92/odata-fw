@@ -1,7 +1,6 @@
 ---
 title: SADL
 ---
-# {{ $frontmatter.title }}
 
 The Service Adaptation Definition Language or SADL feature was introduced with version [1.2.0](https://github.com/miggi92/odata-fw/releases/tag/v1.2.0) of this framework.
 And is used for the [Analytical table](https://experience.sap.com/fiori-design-web/analytical-table-alv/) in UI5. 

@@ -2,8 +2,6 @@
 title: Define search/value helps
 ---
 
-#  {{ $frontmatter.title }}
-
 Search helps are currently ment to be global available. But the search help entity will only be generated if any property has an value in the "search help" column.
 
 ![customizing tree search helps](pictures/customizing/search_help_tree.png)

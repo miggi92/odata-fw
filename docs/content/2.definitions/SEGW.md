@@ -2,7 +2,6 @@
 title: SEGW
 description: Definition transaction SEGW
 ---
-#  {{ $frontmatter.title }}
 
 This is a SAP Transaction to create an OData service.
 

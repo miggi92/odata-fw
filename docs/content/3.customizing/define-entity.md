@@ -2,8 +2,6 @@
 title: Define entity
 ---
 
-#  {{ $frontmatter.title }}
-
 To define entities you need to select the namespace you want to define an entity for.
 
 ![define entity](pictures/customizing/cust_define_entity.png)

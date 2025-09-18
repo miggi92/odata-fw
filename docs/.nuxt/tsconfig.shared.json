@@ -1,0 +1,193 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "nitropack/types": [
+        "../node_modules/.pnpm/nitropack@2.12.6_@netlify+blobs@9.1.2_better-sqlite3@12.2.0/node_modules/nitropack/types"
+      ],
+      "nitropack/runtime": [
+        "../node_modules/.pnpm/nitropack@2.12.6_@netlify+blobs@9.1.2_better-sqlite3@12.2.0/node_modules/nitropack/runtime"
+      ],
+      "nitropack": [
+        "../node_modules/.pnpm/nitropack@2.12.6_@netlify+blobs@9.1.2_better-sqlite3@12.2.0/node_modules/nitropack"
+      ],
+      "defu": [
+        "../node_modules/.pnpm/defu@6.1.4/node_modules/defu"
+      ],
+      "h3": [
+        "../node_modules/.pnpm/h3@1.15.4/node_modules/h3"
+      ],
+      "consola": [
+        "../node_modules/.pnpm/consola@3.4.2/node_modules/consola"
+      ],
+      "ofetch": [
+        "../node_modules/.pnpm/ofetch@1.4.1/node_modules/ofetch"
+      ],
+      "@unhead/vue": [
+        "../node_modules/.pnpm/@unhead+vue@2.0.14_vue@3.5.21_typescript@5.9.2_/node_modules/@unhead/vue"
+      ],
+      "@nuxt/devtools": [
+        "../node_modules/.pnpm/@nuxt+devtools@2.6.3_vite@7_4c4832c76266701812c27a627bbcb706/node_modules/@nuxt/devtools"
+      ],
+      "vue": [
+        "../node_modules/.pnpm/vue@3.5.21_typescript@5.9.2/node_modules/vue"
+      ],
+      "@vue/runtime-core": [
+        "../node_modules/.pnpm/@vue+runtime-core@3.5.21/node_modules/@vue/runtime-core"
+      ],
+      "@vue/compiler-sfc": [
+        "../node_modules/.pnpm/@vue+compiler-sfc@3.5.21/node_modules/@vue/compiler-sfc"
+      ],
+      "vue-router": [
+        "../node_modules/.pnpm/vue-router@4.5.1_vue@3.5.21_typescript@5.9.2_/node_modules/vue-router"
+      ],
+      "vue-router/auto-routes": [
+        "../node_modules/.pnpm/vue-router@4.5.1_vue@3.5.21_typescript@5.9.2_/node_modules/vue-router/vue-router-auto-routes"
+      ],
+      "unplugin-vue-router/client": [
+        "../node_modules/.pnpm/unplugin-vue-router@0.15.0__2161aad60b364daeb6b7445dc53364e8/node_modules/unplugin-vue-router/client"
+      ],
+      "@nuxt/schema": [
+        "../node_modules/.pnpm/@nuxt+schema@4.0.3/node_modules/@nuxt/schema"
+      ],
+      "nuxt": [
+        "../node_modules/.pnpm/nuxt@4.1.2_@netlify+blobs@9_f516031233e580fab9a39a18d32067b6/node_modules/nuxt"
+      ],
+      "vite/client": [
+        "../node_modules/.pnpm/vite@7.1.6_@types+node@24.0_a28a121b040572f6db3194735926ecfb/node_modules/vite/client"
+      ],
+      "~": [
+        "../app"
+      ],
+      "~/*": [
+        "../app/*"
+      ],
+      "@": [
+        "../app"
+      ],
+      "@/*": [
+        "../app/*"
+      ],
+      "~~": [
+        ".."
+      ],
+      "~~/*": [
+        "../*"
+      ],
+      "@@": [
+        ".."
+      ],
+      "@@/*": [
+        "../*"
+      ],
+      "#shared": [
+        "../shared"
+      ],
+      "#shared/*": [
+        "../shared/*"
+      ],
+      "#app": [
+        "../node_modules/.pnpm/nuxt@4.1.2_@netlify+blobs@9_f516031233e580fab9a39a18d32067b6/node_modules/nuxt/dist/app"
+      ],
+      "#app/*": [
+        "../node_modules/.pnpm/nuxt@4.1.2_@netlify+blobs@9_f516031233e580fab9a39a18d32067b6/node_modules/nuxt/dist/app/*"
+      ],
+      "vue-demi": [
+        "../node_modules/.pnpm/nuxt@4.1.2_@netlify+blobs@9_f516031233e580fab9a39a18d32067b6/node_modules/nuxt/dist/app/compat/vue-demi"
+      ],
+      "#image": [
+        "../node_modules/.pnpm/@nuxt+image@1.11.0_@netlify_aaa2e2584eca91dd023fef849109c2ee/node_modules/@nuxt/image/dist/runtime"
+      ],
+      "#image/*": [
+        "../node_modules/.pnpm/@nuxt+image@1.11.0_@netlify_aaa2e2584eca91dd023fef849109c2ee/node_modules/@nuxt/image/dist/runtime/*"
+      ],
+      "#ui": [
+        "../node_modules/.pnpm/@nuxt+ui@4.0.0-alpha.2_@bab_3a86525c98d2ac26fc4c067331bfefa3/node_modules/@nuxt/ui/dist/runtime"
+      ],
+      "#ui/*": [
+        "../node_modules/.pnpm/@nuxt+ui@4.0.0-alpha.2_@bab_3a86525c98d2ac26fc4c067331bfefa3/node_modules/@nuxt/ui/dist/runtime/*"
+      ],
+      "#color-mode-options": [
+        "./color-mode-options.mjs"
+      ],
+      "#content/components": [
+        "./content/components"
+      ],
+      "#content/manifest": [
+        "./content/manifest"
+      ],
+      "#mdc-configs": [
+        "./mdc-configs"
+      ],
+      "#mdc-highlighter": [
+        "./mdc-highlighter"
+      ],
+      "#mdc-imports": [
+        "./mdc-imports"
+      ],
+      "#og-image": [
+        "../node_modules/.pnpm/nuxt-og-image@5.1.11_@unhea_731cc44203b8d07e639e852ded8c5ff5/node_modules/nuxt-og-image/dist/runtime"
+      ],
+      "#og-image/*": [
+        "../node_modules/.pnpm/nuxt-og-image@5.1.11_@unhea_731cc44203b8d07e639e852ded8c5ff5/node_modules/nuxt-og-image/dist/runtime/*"
+      ],
+      "#og-image-cache": [
+        "../node_modules/.pnpm/nuxt-og-image@5.1.11_@unhea_731cc44203b8d07e639e852ded8c5ff5/node_modules/nuxt-og-image/dist/runtime/server/og-image/cache/lru"
+      ],
+      "#nuxt-og-image-utils": [
+        "../node_modules/.pnpm/nuxt-og-image@5.1.11_@unhea_731cc44203b8d07e639e852ded8c5ff5/node_modules/nuxt-og-image/dist/runtime/shared"
+      ],
+      "#site-config": [
+        "../node_modules/.pnpm/nuxt-site-config@3.2.8_h3@1_0c9b73547c7afb2d510d79e85f50eaa8/node_modules/nuxt-site-config/dist/runtime"
+      ],
+      "#site-config/*": [
+        "../node_modules/.pnpm/nuxt-site-config@3.2.8_h3@1_0c9b73547c7afb2d510d79e85f50eaa8/node_modules/nuxt-site-config/dist/runtime/*"
+      ],
+      "#vue-router": [
+        "../node_modules/.pnpm/vue-router@4.5.1_vue@3.5.21_typescript@5.9.2_/node_modules/vue-router"
+      ],
+      "#unhead/composables": [
+        "../node_modules/.pnpm/nuxt@4.1.2_@netlify+blobs@9_f516031233e580fab9a39a18d32067b6/node_modules/nuxt/dist/head/runtime/composables"
+      ],
+      "#imports": [
+        "./imports"
+      ],
+      "#app-manifest": [
+        "./manifest/meta/dev.json"
+      ],
+      "#build": [
+        "."
+      ],
+      "#build/*": [
+        "./*"
+      ]
+    },
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "ESNext",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitOverride": true,
+    "module": "preserve",
+    "noEmit": true,
+    "types": [],
+    "moduleResolution": "Bundler",
+    "useDefineForClassFields": true,
+    "noImplicitThis": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "./nuxt.shared.d.ts",
+    "../shared/**/*",
+    "../modules/*/shared/**/*",
+    "../layers/*/shared/**/*",
+    "../*.d.ts",
+    "../layers/*/*.d.ts"
+  ],
+  "exclude": []
+}

@@ -1,4 +1,4 @@
-name: Deploy Docs site to Pages
+name: Deploy Docs to Pages
 
 on:
   push:
@@ -46,11 +46,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install 
       - name: Build Docs
-        run: pnpm build
+        run: pnpm build --preset github_pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .output/public
+          path: docs/.output/public
 
   # Deployment job
   deploy:

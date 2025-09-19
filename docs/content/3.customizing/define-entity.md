@@ -1,5 +1,6 @@
 ---
 title: Define entity
+description: Define entities for your OData service.
 ---
 
 To define entities you need to select the namespace you want to define an entity for.

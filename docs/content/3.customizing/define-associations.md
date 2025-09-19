@@ -1,5 +1,6 @@
 ---
 title: Define navigation properties
+description: Define navigation properties (associations) between entities in your OData service.
 ---
 
 A navigation property also known as association can easily be created via customizing. The navigation properties are defined under an entity. 

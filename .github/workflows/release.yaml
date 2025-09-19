@@ -21,7 +21,15 @@ jobs:
         uses: pnpm/action-setup@v4
       - name: Install dependencies
         run: pnpm install
+      - name: Configure Git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
       - name: Create changelog and tag release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx changelogen --release --hideAuthorEmail
+      - name: Push changes and tags
+        run: |
+          git push origin HEAD
+          git push origin --tags

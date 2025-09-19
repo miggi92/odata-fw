@@ -1,5 +1,6 @@
 ---
 title: Define search/value helps
+description: Define search and value helps for your OData service.
 ---
 
 Search helps are currently ment to be global available. But the search help entity will only be generated if any property has an value in the "search help" column.

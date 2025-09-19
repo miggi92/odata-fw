@@ -12,12 +12,12 @@ This class inherits from [ZCL_ODATA_MAIN](zcl_odata_main).
 
 #### get_entityset
 
-This method is redefined from the super class with the interface [/IWBEP/IF_MGW_APPL_SRV_RUNTIME](../sap-objects/-IWBEP-IF_MGW_APPL_SRV_RUNTIME).
+This method is redefined from the super class with the interface [/IWBEP/IF_MGW_APPL_SRV_RUNTIME](/dev-objects/sap-objects/iwbep-if_mgw_appl_srv_runtime).
 This method reads out the values for the value help and returns them.
 
 #### get_entity
 
-This method is redefined from the super class with the interface [/IWBEP/IF_MGW_APPL_SRV_RUNTIME](../sap-objects/-IWBEP-IF_MGW_APPL_SRV_RUNTIME).
+This method is redefined from the super class with the interface [/IWBEP/IF_MGW_APPL_SRV_RUNTIME](/dev-objects/sap-objects/iwbep-if_mgw_appl_srv_runtime).
 This method returns the value help for a specific value.
 
 ### Private

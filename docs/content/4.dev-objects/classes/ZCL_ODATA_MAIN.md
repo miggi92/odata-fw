@@ -17,7 +17,7 @@ For calling other methods of the dpc_ext class you can use the protected attribu
 
 ### BEFORE_PROCESSING
 
-This method can be used and redefined.  Just add this method before calling the entity class.
+This method can be used and redefined. Just add this method before calling the entity class.
 Here you can add some logic that should be executed before calling the odata methods.
 
 ### RAISE_ERROR
@@ -36,15 +36,16 @@ Reads out the header attributes of the request.
 
 This method applies dynamic filtering, pagination and sorting to the current entity set table. This is ment to be called after selecting the entries.
 
-> [!attention]
-> This can be heavily non performant. If you can, please filter and paginate your entries before or while selecting.
-> This is a lazy option without caring about performance.
+::caution
+This can be heavily non performant. If you can, please filter and paginate your entries before or while selecting.
+This is a lazy option without caring about performance.
+::
 
 The options can also be called separate.
 
-- [PAGINATE_COLLECTION](#PAGINATE_COLLECTION)
-- [FILTER_COLLECTION](#FILTER_COLLECTION)
-- [ORDER_COLLECTION](#ORDER_COLLECTION)
+- [PAGINATE_COLLECTION](#paginate_collection)
+- [FILTER_COLLECTION](#filter_collection)
+- [ORDER_COLLECTION](#order_collection)
 
 ### PAGINATE_COLLECTION
 

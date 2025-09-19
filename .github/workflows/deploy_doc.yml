@@ -50,7 +50,7 @@ jobs:
         env:
           NUXT_APP_BASE_URL: /odata-fw/
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: docs/.output/public
 

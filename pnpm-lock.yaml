@@ -13,7 +13,7 @@ importers:
         version: 2.113.110
       '@abaplint/runtime':
         specifier: ^2.10.44
-        version: 2.10.44
+        version: 2.11.92
       '@abaplint/transpiler':
         specifier: ^2.10.44
         version: 2.10.44
@@ -32,8 +32,8 @@ packages:
     resolution: {integrity: sha512-x8eZlfpeBQkbHrFw2DWk1IIRFnYwGdrizoJSFgtCCBBci8pzInjmLN16l0zFRT0gxtOCU3mMmts2MPdJfRIR9g==}
     engines: {node: '>=12.0.0'}
 
-  '@abaplint/runtime@2.10.44':
-    resolution: {integrity: sha512-D3z0+tiz5llaJwzFgt05HQLQAd6k/5PBY883TRkU+39t/DCHXtvSQ7cd03Myr19tSSAwmsPkEPrM7kVkToIdsg==}
+  '@abaplint/runtime@2.11.92':
+    resolution: {integrity: sha512-bIt8Mwzxz+Flt5htwh6XcT6EP0tBItqMRux5fNli/e9LaJnYV3c6zaKHYdoKMRx42MU5VQtIADBUWEk2TylJZw==}
 
   '@abaplint/transpiler-cli@2.10.44':
     resolution: {integrity: sha512-DsJOQ3CLwP8o1LPyT19q8AUbqJxc2bqFlDAX4W57JLVqew4z9HsQf06lTxgN0Wo+khuJBfVEARePBzXJQl/pjQ==}
@@ -58,11 +58,11 @@ packages:
   strnum@2.0.5:
     resolution: {integrity: sha512-YAT3K/sgpCUxhxNMrrdhtod3jckkpYwH6JAuwmUdXZsmzH1wUyzTMrrK2wYCEEqlKwrWDd35NeuUkbBy/1iK+Q==}
 
-  temporal-polyfill@0.2.5:
-    resolution: {integrity: sha512-ye47xp8Cb0nDguAhrrDS1JT1SzwEV9e26sSsrWzVu+yPZ7LzceEcH0i2gci9jWfOfSCCgM3Qv5nOYShVUUFUXA==}
+  temporal-polyfill@0.3.0:
+    resolution: {integrity: sha512-qNsTkX9K8hi+FHDfHmf22e/OGuXmfBm9RqNismxBrnSmZVJKegQ+HYYXT+R7Ha8F/YSm2Y34vmzD4cxMu2u95g==}
 
-  temporal-spec@0.2.4:
-    resolution: {integrity: sha512-lDMFv4nKQrSjlkHKAlHVqKrBG4DyFfa9F74cmBZ3Iy3ed8yvWnlWSIdi4IKfSqwmazAohBNwiN64qGx4y5Q3IQ==}
+  temporal-spec@0.3.0:
+    resolution: {integrity: sha512-n+noVpIqz4hYgFSMOSiINNOUOMFtV5cZQNCmmszA6GiVFVRt3G7AqVyhXjhCSmowvQn+NsGn+jMDMKJYHd3bSQ==}
 
   vscode-languageserver-types@3.17.5:
     resolution: {integrity: sha512-Ld1VelNuX9pdF39h2Hgaeb5hEZM2Z3jUrrMgWQAu82jMtZp7p3vJT3BzToKtZI7NgQssZje5o0zryOrhQvzQAg==}
@@ -77,9 +77,9 @@ snapshots:
       json5: 2.2.3
       vscode-languageserver-types: 3.17.5
 
-  '@abaplint/runtime@2.10.44':
+  '@abaplint/runtime@2.11.92':
     dependencies:
-      temporal-polyfill: 0.2.5
+      temporal-polyfill: 0.3.0
 
   '@abaplint/transpiler-cli@2.10.44': {}
 
@@ -98,10 +98,10 @@ snapshots:
 
   strnum@2.0.5: {}
 
-  temporal-polyfill@0.2.5:
+  temporal-polyfill@0.3.0:
     dependencies:
-      temporal-spec: 0.2.4
+      temporal-spec: 0.3.0
 
-  temporal-spec@0.2.4: {}
+  temporal-spec@0.3.0: {}
 
   vscode-languageserver-types@3.17.5: {}

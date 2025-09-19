@@ -1,6 +1,6 @@
 {
   "name": "odata-fw",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "OData framework",
   "directories": {
     "doc": "docs"
@@ -30,7 +30,6 @@
     "@abaplint/transpiler": "^2.10.44",
     "@abaplint/transpiler-cli": "^2.10.44"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "packageManager": "pnpm@10.17.0"
 }

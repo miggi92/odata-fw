@@ -21,7 +21,21 @@ jobs:
         uses: pnpm/action-setup@v4
       - name: Install dependencies
         run: pnpm install
+      - name: Configure Git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
       - name: Create changelog and tag release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx changelogen --release --hideAuthorEmail
+      - name: Create Pull Request with changes
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(release): 🔖 update changelog and bump version"
+          branch: chore/release-${{ github.run_id }}
+          title: "chore(release): 🔖 prepare release"
+          body: "Automated changelog and version bump — please review."
+          base: master
+          labels: release

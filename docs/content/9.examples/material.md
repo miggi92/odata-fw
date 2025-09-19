@@ -215,14 +215,14 @@ ENDCLASS.
 
 Now the Class name and the structure need to be added to the entity customizing.
 Structure = `MARA` and Class = `ZCL_ODATA_MATERIAL`.
-![Entiy Customizing](/pictures/examples/material_entity_customizing.png)
+![Entiy Customizing](pictures/examples/material_entity_customizing.png)
 
 ## Customize the Properties
 
 After you declared the entity you need to add the properties to the entity. This can be archived in the customizing.
 Just click on the next folder in the customizing view. At least one property should be added to the entity and the key should be defined.
 
-![Property Customizing](/pictures/examples/material_entity_props_customizing.png)
+![Property Customizing](pictures/examples/material_entity_props_customizing.png)
 
 In this example the `matnr` is the key property. The fieldname should be the same as the fieldname in the structure.
 

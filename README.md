@@ -2,7 +2,8 @@
 
 > An abap odata framework.
 
-![odata-fw Logo](./docs/public/odata_fw_logo_transparent.png)
+<img src="./docs/public/logo.svg" alt="OData FW Logo" width="250">
+
 
 [![GitHub license](https://img.shields.io/github/license/miggi92/odata-fw?style=for-the-badge)](https://github.com/miggi92/odata-fw/blob/master/LICENSE.md)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/miggi92/odata-fw?style=for-the-badge)

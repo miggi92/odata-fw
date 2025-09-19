@@ -12,6 +12,9 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true
   },
+  app: {
+    baseURL: '/odata-fw/'
+  },
 
   css: ['~/assets/css/main.css'],
 

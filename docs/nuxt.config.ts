@@ -23,6 +23,9 @@ export default defineNuxtConfig({
       markdown: {
         toc: {
           searchDepth: 1
+        },
+        highlight: {
+          langs: ['json', 'js', 'ts', 'html', 'css', 'vue', 'shell', 'mdc', 'md', 'yaml', 'abap']
         }
       }
     }

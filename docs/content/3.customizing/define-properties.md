@@ -2,5 +2,6 @@
 title: Define properties
 ---
 
->[!warning]
->Still not documented
+::warning
+Still not documented
+::

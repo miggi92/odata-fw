@@ -29,7 +29,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx changelogen --release --hideAuthorEmail
-      - name: Push changes and tags
-        run: |
-          git push origin HEAD
-          git push origin --tags
+      - name: Create Pull Request with changes
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(release): 🔖 update changelog and bump version"
+          branch: chore/release-${{ github.run_id }}
+          title: "chore(release): 🔖 prepare release"
+          body: "Automated changelog and version bump — please review."
+          base: master
+          labels: release

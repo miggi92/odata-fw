@@ -42,7 +42,7 @@ PUBLIC SECTION.
 	METHODS define REDEFINITION.
 ```
 
-Next we add the OData framework by calling the "define_mpc" method of the framework class ([ZCL_ODATA_FW_CONTROLLER](/dev-objects/classes/ZCL_ODATA_FW_CONTROLLER)). Notice, that 'Z_MY_PROJECT' is the namespace, that we need to use in the framework view cluster.
+Next we add the OData framework by calling the "define_mpc" method of the framework class ([ZCL_ODATA_FW_CONTROLLER](/dev-objects/classes/zcl_odata_fw_controller)). Notice, that 'Z_MY_PROJECT' is the namespace, that we need to use in the framework view cluster.
 
 ```abap
 METHOD define.
@@ -89,4 +89,4 @@ For the boilerplate code, that has to be inserted into the OData methods you can
 ## Customize Your Service
 
 Implement your odata service customizing. By calling the **ZODATA_CUST** transaction.
-For a detailed documentation you can look into the [OData Customizing](/customizing/index) file.
+For a detailed documentation you can look into the [OData Customizing](/customizing) file.

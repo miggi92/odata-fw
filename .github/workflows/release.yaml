@@ -7,6 +7,7 @@ on:
 
 jobs:
   release:
+    if: github.repository == 'miggi92/odata-fw'  # only run on the main repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,7 +17,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version: 'lts/*'
+          cache: 'pnpm'
       - name: Install pnpm
         uses: pnpm/action-setup@v4
       - name: Install dependencies

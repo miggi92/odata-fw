@@ -31,5 +31,5 @@
     "@abaplint/transpiler-cli": "^2.11.92"
   },
   "dependencies": {},
-  "packageManager": "pnpm@10.17.0"
+  "packageManager": "pnpm@10.17.1"
 }

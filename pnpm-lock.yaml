@@ -16,7 +16,7 @@ importers:
         version: 2.11.92
       '@abaplint/transpiler':
         specifier: ^2.11.92
-        version: 2.11.92
+        version: 2.12.26
       '@abaplint/transpiler-cli':
         specifier: ^2.11.92
         version: 2.11.92
@@ -28,8 +28,8 @@ packages:
     engines: {node: '>=12.0.0'}
     hasBin: true
 
-  '@abaplint/core@2.113.204':
-    resolution: {integrity: sha512-L9wnNH5tlz95uBbiYIsngk07fRwxECKqHy7rjB3O4u/kjpmL2VtxOJL73KZIRxKOJ5+H1JfrROjecoEv2mTp4g==}
+  '@abaplint/core@2.115.17':
+    resolution: {integrity: sha512-oPCR5LzESJ1o3Lj/dTlEvMPYx6APiA5fUA/eaCfHmecNBcFeVEl1c/3Ddz7NfAERQYIj0aOlM+Ze3Ow4Bd9vgQ==}
     engines: {node: '>=12.0.0'}
 
   '@abaplint/runtime@2.11.92':
@@ -39,11 +39,11 @@ packages:
     resolution: {integrity: sha512-Dj5LqKAomx1Kwp29Q27ZZQS214QuspcvIVU6F/GePkR6dJp1jKHQ3RSFzsmagAJ4Yz8MJbJDCM9+WqpNqCbkVw==}
     hasBin: true
 
-  '@abaplint/transpiler@2.11.92':
-    resolution: {integrity: sha512-pQR7Q4Qcs0/hXNqQUNXLf5615CmqYd5Mi4wUht5hxvPjbNdqkZYr4yh73kXF54g+gmfABTLt5k5H9d/iHBcmVg==}
+  '@abaplint/transpiler@2.12.26':
+    resolution: {integrity: sha512-v2qA30ljNTGLvBOLz/T4sPfwaR+tk42Z2aVLdxdATtiZzuhqHQnXFbsKeTcKXYL4+16v/jbbKkM+E4pYqjKncA==}
 
-  fast-xml-parser@5.2.5:
-    resolution: {integrity: sha512-pfX9uG9Ki0yekDHx2SiuRIyFdyAr1kMIMitPvb0YBo8SUfKvia7w7FIyd/l6av85pFYRhZscS75MwMnbvY+hcQ==}
+  fast-xml-parser@5.3.3:
+    resolution: {integrity: sha512-2O3dkPAAC6JavuMm8+4+pgTk+5hoAs+CjZ+sWcQLkX9+/tHRuTkQh/Oaifr8qDmZ8iEHb771Ea6G8CdwkrgvYA==}
     hasBin: true
 
   json5@2.2.3:
@@ -55,8 +55,8 @@ packages:
     resolution: {integrity: sha512-i5uvt8C3ikiWeNZSVZNWcfZPItFQOsYTUAOkcUPGd8DqDy1uOUikjt5dG+uRlwyvR108Fb9DOd4GvXfT0N2/uQ==}
     engines: {node: '>= 12'}
 
-  strnum@2.1.1:
-    resolution: {integrity: sha512-7ZvoFTiCnGxBtDqJ//Cu6fWtZtc7Y3x+QOirG15wztbdngGSkht27o2pyGWrVy0b4WAy3jbKmnoK6g5VlVNUUw==}
+  strnum@2.1.2:
+    resolution: {integrity: sha512-l63NF9y/cLROq/yqKXSLtcMeeyOfnSQlfMSlzFt/K73oIaD8DGaQWd7Z34X9GPiKqP5rbSh84Hl4bOlLcjiSrQ==}
 
   temporal-polyfill@0.3.0:
     resolution: {integrity: sha512-qNsTkX9K8hi+FHDfHmf22e/OGuXmfBm9RqNismxBrnSmZVJKegQ+HYYXT+R7Ha8F/YSm2Y34vmzD4cxMu2u95g==}
@@ -71,9 +71,9 @@ snapshots:
 
   '@abaplint/cli@2.113.204': {}
 
-  '@abaplint/core@2.113.204':
+  '@abaplint/core@2.115.17':
     dependencies:
-      fast-xml-parser: 5.2.5
+      fast-xml-parser: 5.3.3
       json5: 2.2.3
       vscode-languageserver-types: 3.17.5
 
@@ -83,20 +83,20 @@ snapshots:
 
   '@abaplint/transpiler-cli@2.11.92': {}
 
-  '@abaplint/transpiler@2.11.92':
+  '@abaplint/transpiler@2.12.26':
     dependencies:
-      '@abaplint/core': 2.113.204
+      '@abaplint/core': 2.115.17
       source-map: 0.7.6
 
-  fast-xml-parser@5.2.5:
+  fast-xml-parser@5.3.3:
     dependencies:
-      strnum: 2.1.1
+      strnum: 2.1.2
 
   json5@2.2.3: {}
 
   source-map@0.7.6: {}
 
-  strnum@2.1.1: {}
+  strnum@2.1.2: {}
 
   temporal-polyfill@0.3.0:
     dependencies:

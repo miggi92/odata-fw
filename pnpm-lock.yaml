@@ -13,7 +13,7 @@ importers:
         version: 2.113.204
       '@abaplint/runtime':
         specifier: ^2.11.92
-        version: 2.11.92
+        version: 2.12.26
       '@abaplint/transpiler':
         specifier: ^2.11.92
         version: 2.11.92
@@ -32,8 +32,8 @@ packages:
     resolution: {integrity: sha512-L9wnNH5tlz95uBbiYIsngk07fRwxECKqHy7rjB3O4u/kjpmL2VtxOJL73KZIRxKOJ5+H1JfrROjecoEv2mTp4g==}
     engines: {node: '>=12.0.0'}
 
-  '@abaplint/runtime@2.11.92':
-    resolution: {integrity: sha512-bIt8Mwzxz+Flt5htwh6XcT6EP0tBItqMRux5fNli/e9LaJnYV3c6zaKHYdoKMRx42MU5VQtIADBUWEk2TylJZw==}
+  '@abaplint/runtime@2.12.26':
+    resolution: {integrity: sha512-jIuymk5ogWsl9N5utI1Ingqm652WQGu0zPA2ZfZa8GzmboMrSeatz3lw0GoBPlheWpk11hTq05wWleV977F++w==}
 
   '@abaplint/transpiler-cli@2.11.92':
     resolution: {integrity: sha512-Dj5LqKAomx1Kwp29Q27ZZQS214QuspcvIVU6F/GePkR6dJp1jKHQ3RSFzsmagAJ4Yz8MJbJDCM9+WqpNqCbkVw==}
@@ -77,7 +77,7 @@ snapshots:
       json5: 2.2.3
       vscode-languageserver-types: 3.17.5
 
-  '@abaplint/runtime@2.11.92':
+  '@abaplint/runtime@2.12.26':
     dependencies:
       temporal-polyfill: 0.3.0
 

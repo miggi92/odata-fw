@@ -1,0 +1,22 @@
+{
+  "input_folder": "src",
+  "input_filter": [],
+  "output_folder": "output",
+   "libs": [
+    {
+      "url": "https://github.com/open-abap/open-abap-core"
+    },
+    {
+      "url": "https://github.com/open-abap/open-abap-odata"
+    }
+  ],
+  "write_unit_tests": true,
+  "write_source_map": true,
+  "options": {
+    "ignoreSyntaxCheck": false,
+    "addFilenames": true,
+    "addCommonJS": true,
+    "unknownTypes": "runtimeError",
+    "skip": []
+  }
+}

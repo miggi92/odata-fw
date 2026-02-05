@@ -49,6 +49,7 @@ jobs:
         run: pnpm build --preset github_pages
         env:
           NUXT_APP_BASE_URL: /odata-fw/
+          NUXT_SITE_URL:  ${{ vars.NUXT_SITE_URL }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:

@@ -7,7 +7,7 @@ navigation:
 
 ## Class UML
 
-```mermaid
+::mermaid
 classDiagram
 
 	ZCL_ODATA_ANNOTATION_COMMON <|-- ZCL_ODATA_ANNOTATION_SHLP
@@ -22,5 +22,5 @@ classDiagram
 		+add_out_parameter()
 	}
 
-```
+::
 

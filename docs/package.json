@@ -21,7 +21,7 @@
     "better-sqlite3": "^12.6.2",
     "mermaid": "^11.12.2",
     "nuxt": "^4.3.0",
-    "nuxt-llms": "0.2.0",
+    "nuxt-llms": "^0.2.0",
     "nuxt-og-image": "^5.1.13",
     "tailwindcss": "^4.1.18"
   },

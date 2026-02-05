@@ -15,7 +15,7 @@
     "@iconify-json/lucide": "^1.2.88",
     "@iconify-json/simple-icons": "^1.2.69",
     "@iconify-json/vscode-icons": "^1.2.40",
-    "@nuxt/content": "^3.11.1",
+    "@nuxt/content": "^3.11.2",
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.4.0",
     "better-sqlite3": "^12.6.2",
@@ -24,7 +24,6 @@
     "nuxt-llms": "0.2.0",
     "nuxt-og-image": "^5.1.13",
     "tailwindcss": "^4.1.18"
-
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.13.0",

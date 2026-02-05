@@ -15,7 +15,9 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/odata-fw/'
   },
-
+  site: {
+    title: 'OData Framework docs',
+  },
   css: ['~/assets/css/main.css'],
 
   content: {

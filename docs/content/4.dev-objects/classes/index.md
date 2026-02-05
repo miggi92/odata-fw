@@ -15,7 +15,8 @@ description: Overview of the classes of the framework
 
 #### UML
 
-```mermaid
+
+::mermaid
 classDiagram
 
 	ZCL_ODATA_FW_MPC <-- ZCL_ODATA_FW_CONTROLLER
@@ -59,7 +60,7 @@ classDiagram
 		+get_action_parameter()
 		-load_customizing()
 	}
-```
+::
 
 ### Helper classes
 

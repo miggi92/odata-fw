@@ -77,7 +77,7 @@ CLASS zcl_odata_model_entity IMPLEMENTATION.
   METHOD create_entity.
     TYPES: BEGIN OF ty_property.
              INCLUDE TYPE zodata_property.
-    TYPES: END OF ty_property.
+           TYPES: END OF ty_property.
 
     TYPES ty_property_tt TYPE SORTED TABLE OF ty_property WITH NON-UNIQUE KEY entity_name.
 
@@ -148,8 +148,9 @@ CLASS zcl_odata_model_entity IMPLEMENTATION.
     lo_structure ?= cl_abap_structdescr=>describe_by_name( p_name = iv_structure ).
     IF lo_structure->kind <> cl_abap_structdescr=>kind_struct.
       RAISE EXCEPTION TYPE zcx_odata
-        EXPORTING textid = zcx_odata=>no_structure
-                  value  = |{ iv_structure }|.
+        EXPORTING
+          textid = zcx_odata=>no_structure
+          value  = |{ iv_structure }|.
     ENDIF.
 
     " bind_conversion only works for ddic structures
@@ -219,7 +220,9 @@ CLASS zcl_odata_model_entity IMPLEMENTATION.
 *    ENDLOOP.
 
     SORT ct_properties BY entity_name
-                          sort_order.
+                          sort_order ASCENDING
+                          is_key DESCENDING
+                          property_name ASCENDING.
 
 *    ct_properties = CORRESPONDING #( lt_properties ).
   ENDMETHOD.

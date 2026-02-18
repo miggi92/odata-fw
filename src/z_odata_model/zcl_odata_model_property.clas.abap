@@ -127,23 +127,25 @@ CLASS zcl_odata_model_property IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD change_edm_types.
-    is_component-type->get_ddic_header( RECEIVING  p_header     = DATA(ls_ddic_header)
-                                        EXCEPTIONS not_found    = 1                " Type could not be found
-                                                   no_ddic_type = 2                " Typ is not a dictionary type
-                                                   OTHERS       = 3 ).
+    " DATS
+    IF is_component-type->type_kind = cl_abap_typedescr=>typekind_date.
+      TRY.
+          zcl_odata_annotaion_sap=>create_from_property( mo_property )->add_date_only_annotation( ).
+        CATCH /iwbep/cx_mgw_med_exception.
+      ENDTRY.
 
-    CASE ls_ddic_header-refname.
-      WHEN 'TZNTSTMPL'.
-        mo_property->set_type_edm_datetimeoffset( ).
-      WHEN 'DATUM'.
-        TRY.
-            zcl_odata_annotaion_sap=>create_from_property( mo_property )->add_date_only_annotation( ).
-          CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
-        ENDTRY.
-    ENDCASE.
-
-    IF is_component-type->absolute_name CS 'GUID'.
+    " GUID
+    ELSEIF     is_component-type->type_kind = cl_abap_typedescr=>typekind_hex
+           AND is_component-type->length    = 16.
       mo_property->set_type_edm_guid( ).
+
+    " Timestamp
+    ELSEIF     is_component-type->type_kind = cl_abap_typedescr=>typekind_packed
+           AND is_component-type->decimals  = 0
+           AND ( is_component-type->length = 8 OR is_component-type->length = 11 ).
+
+      mo_property->set_type_edm_datetimeoffset( ).
+      mo_property->set_precison( COND #( WHEN is_component-type->length = 11 THEN 7 ELSE 0 ) ).
     ENDIF.
   ENDMETHOD.
 

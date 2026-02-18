@@ -22,11 +22,12 @@ CLASS zcl_odata_model_property DEFINITION
     "! @raising   /iwbep/cx_mgw_med_exception | <p class="shorttext synchronized">OData Error</p>
     "! @raising   zcx_odata                   | <p class="shorttext synchronized">OData FW Error</p>
     METHODS create_property
-      IMPORTING io_entity        TYPE REF TO /iwbep/if_mgw_odata_entity_typ
-                it_components    TYPE cl_abap_structdescr=>component_table
-                is_property      TYPE zodata_property
-                is_entity        TYPE zodata_entity
-                io_ui_annotation TYPE REF TO zcl_odata_annotation_ui
+      IMPORTING io_entity           TYPE REF TO /iwbep/if_mgw_odata_entity_typ
+                it_components       TYPE cl_abap_structdescr=>component_table
+                is_property         TYPE zodata_property
+                is_entity           TYPE zodata_entity
+                io_ui_annotation    TYPE REF TO zcl_odata_annotation_ui
+                io_odata_annotation TYPE REF TO zcl_odata_annotation_odata
       RAISING   /iwbep/cx_mgw_med_exception
                 zcx_odata.
 
@@ -86,6 +87,7 @@ CLASS zcl_odata_model_property IMPLEMENTATION.
 
     IF is_property-not_filterable = abap_true.
       mo_property->set_filterable( abap_false ).
+      io_odata_annotation->add_property_to_non_filterable( is_property-property_name ).
     ENDIF.
 
     IF is_property-not_editable = abap_true.
@@ -112,6 +114,7 @@ CLASS zcl_odata_model_property IMPLEMENTATION.
 
     IF is_property-mandatory_filter = abap_true.
       zcl_odata_annotaion_sap=>create_from_property( mo_property )->add_required_filter_annotation( ).
+      io_odata_annotation->add_property_to_required( is_property-property_name ).
     ENDIF.
 
     IF is_property-not_visible = abap_true.

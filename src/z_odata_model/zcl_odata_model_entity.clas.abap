@@ -104,6 +104,12 @@ CLASS zcl_odata_model_entity IMPLEMENTATION.
                                                               iv_entity_name = is_entity-entity_name
                                                               iv_namespace   = |{ is_entity-namespace }| ).
 
+    DATA(lo_odata_annotation) = zcl_odata_annotation_odata=>create(
+                                    io_vocan_model      = mo_anno_model
+                                    iv_namespace        = |{ is_entity-namespace }|
+                                    iv_entity_name      = is_entity-entity_name
+                                    iv_entity_container = |{ is_entity-namespace }_Entities| ).
+
     INSERT LINES OF mo_customizing->get_properties( ) INTO TABLE lt_all_properties.
 
     DATA(lt_filtered_properties) = FILTER ty_property_tt(
@@ -126,11 +132,12 @@ CLASS zcl_odata_model_entity IMPLEMENTATION.
                                                      io_customizing = mo_customizing
                                                      io_anno_model  = mo_anno_model ).
       ENDIF.
-      lo_property->create_property( io_entity        = mo_entity
-                                    it_components    = lt_components
-                                    is_property      = <ls_property>
-                                    is_entity        = is_entity
-                                    io_ui_annotation = lo_ui_annotation ).
+      lo_property->create_property( io_entity           = mo_entity
+                                    it_components       = lt_components
+                                    is_property         = <ls_property>
+                                    is_entity           = is_entity
+                                    io_ui_annotation    = lo_ui_annotation
+                                    io_odata_annotation = lo_odata_annotation ).
 
       INSERT VALUE #( property   = <ls_property>-property_name
                       cmplx_type = <ls_property>-complex_type
@@ -139,6 +146,12 @@ CLASS zcl_odata_model_entity IMPLEMENTATION.
       IF is_entity-deep_entity_structure IS NOT INITIAL.
         mo_entity->bind_structure( |{ is_entity-deep_entity_structure }| ).
       ENDIF.
+    ENDLOOP.
+
+    DATA(lt_nav_properties) = mo_customizing->get_navigation( ).
+
+    LOOP AT lt_nav_properties ASSIGNING FIELD-SYMBOL(<ls_nav_properties>) WHERE from_entity = is_entity-entity_name.
+      lo_odata_annotation->add_property_to_non_filterable( <ls_nav_properties>-nav_prop ).
     ENDLOOP.
   ENDMETHOD.
 

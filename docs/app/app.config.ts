@@ -45,7 +45,7 @@ export default defineAppConfig({
     title: 'Table of Contents',
     bottom: {
       title: 'Community',
-      edit: 'https://github.com/miggi92/odata-fw/edit/master/content',
+      edit: 'https://github.com/miggi92/odata-fw/edit/master/docs/content',
       links: [{
         icon: 'i-lucide-star',
         label: 'Star on GitHub',

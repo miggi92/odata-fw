@@ -5,8 +5,6 @@ const route = useRoute()
 const toast = useToast()
 const { copy, copied } = useClipboard()
 const site = useSiteConfig()
-const isCopying = ref(false)
-console.log(site)
 
 const mdPath = computed(() => `${site.url}/raw${route.path}.md`)
 
@@ -43,42 +41,25 @@ const items = [
 ]
 
 async function copyPage() {
-  isCopying.value = true
   copy(await $fetch<string>(`/raw${route.path}.md`))
-  isCopying.value = false
 }
 </script>
 
 <template>
-  <UButtonGroup>
-    <UButton
-      label="Copy page"
-      :icon="copied ? 'i-lucide-copy-check' : 'i-lucide-copy'"
-      color="neutral"
-      variant="outline"
-      :loading="isCopying"
-      :ui="{
+  <UFieldGroup>
+    <UButton label="Copy page" :icon="copied ? 'i-lucide-copy-check' : 'i-lucide-copy'" color="neutral"
+      variant="outline" :ui="{
         leadingIcon: [copied ? 'text-primary' : 'text-neutral', 'size-3.5']
-      }"
-      @click="copyPage"
-    />
-    <UDropdownMenu
-      :items="items"
-      :content="{
-        align: 'end',
-        side: 'bottom',
-        sideOffset: 8
-      }"
-      :ui="{
+      }" @click="copyPage" />
+    <UDropdownMenu :items="items" :content="{
+      align: 'end',
+      side: 'bottom',
+      sideOffset: 8
+    }" :ui="{
         content: 'w-48'
-      }"
-    >
-      <UButton
-        icon="i-lucide-chevron-down"
-        size="sm"
-        color="neutral"
-        variant="outline"
-      />
+      }">
+      <UButton icon="i-lucide-chevron-down" size="sm" color="neutral" variant="outline"
+        aria-label="Open copy actions menu" />
     </UDropdownMenu>
-  </UButtonGroup>
+  </UFieldGroup>
 </template>

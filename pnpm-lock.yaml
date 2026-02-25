@@ -13,7 +13,7 @@ importers:
         version: 2.115.20
       '@abaplint/runtime':
         specifier: ^2.12.26
-        version: 2.12.26
+        version: 2.12.32
       '@abaplint/transpiler':
         specifier: ^2.12.26
         version: 2.12.26
@@ -84,8 +84,8 @@ packages:
     resolution: {integrity: sha512-FItEtk5Fh2Ew2cW+ASrbYBY04uY6U4qkfU/tH5eMbF5pJU6bPUzniBg1FF7v90Z4gNHT9wlImvuSWXa5t+VWWA==}
     engines: {node: '>=12.0.0'}
 
-  '@abaplint/runtime@2.12.26':
-    resolution: {integrity: sha512-jIuymk5ogWsl9N5utI1Ingqm652WQGu0zPA2ZfZa8GzmboMrSeatz3lw0GoBPlheWpk11hTq05wWleV977F++w==}
+  '@abaplint/runtime@2.12.32':
+    resolution: {integrity: sha512-Opa9H7Svq9m19jDXSKQpXzrm0T1bplnZT/JlCA2Z3DRVfW+PTGuKT3vKwYURV0sXQw7rzcNh9caCzDoKm7pdOA==}
 
   '@abaplint/transpiler-cli@2.12.26':
     resolution: {integrity: sha512-do8rmLaU/vbUcqfqqPLcSTaVHp1ruDuGgs419yjOhwLVoiC9WP76AxgEVhNjyRwCenk/phmoxBBQWVEv5CItNA==}
@@ -5616,6 +5616,7 @@ packages:
   prebuild-install@7.1.3:
     resolution: {integrity: sha512-8Mf2cbV7x1cXPUILADGI3wuhfqWvtiLA1iclTDbFRZkgRQS0NqsPZphna9V+HyTEadheuPmjaJMsbzKQFOzLug==}
     engines: {node: '>=10'}
+    deprecated: No longer maintained. Please contact the author of the relevant native addon; alternatives are available.
     hasBin: true
 
   prelude-ls@1.2.1:
@@ -6227,6 +6228,7 @@ packages:
   tar@7.5.7:
     resolution: {integrity: sha512-fov56fJiRuThVFXD6o6/Q354S7pnWMJIVlDBYijsTNx6jKSE4pvrDTs6lUnmGvNyfJwFQQwWy3owKz1ucIhveQ==}
     engines: {node: '>=18'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   temporal-polyfill@0.3.0:
     resolution: {integrity: sha512-qNsTkX9K8hi+FHDfHmf22e/OGuXmfBm9RqNismxBrnSmZVJKegQ+HYYXT+R7Ha8F/YSm2Y34vmzD4cxMu2u95g==}
@@ -6429,6 +6431,7 @@ packages:
 
   unplugin-vue-router@0.19.2:
     resolution: {integrity: sha512-u5dgLBarxE5cyDK/hzJGfpCTLIAyiTXGlo85COuD4Nssj6G7NxS+i9mhCWz/1p/ud1eMwdcUbTXehQe41jYZUA==}
+    deprecated: 'Merged into vuejs/router. Migrate: https://router.vuejs.org/guide/migration/v4-to-v5.html'
     peerDependencies:
       '@vue/compiler-sfc': ^3.5.17
       vue-router: ^4.6.0
@@ -6906,7 +6909,7 @@ snapshots:
       json5: 2.2.3
       vscode-languageserver-types: 3.17.5
 
-  '@abaplint/runtime@2.12.26':
+  '@abaplint/runtime@2.12.32':
     dependencies:
       temporal-polyfill: 0.3.0
 

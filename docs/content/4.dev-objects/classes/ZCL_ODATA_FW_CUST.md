@@ -5,6 +5,10 @@ title: ZCL_ODATA_FW_CUST
 
 This class reads out the customizing and stores it for the other classes.
 
+::note
+See the [auto-generated API reference](_generated/zcl_odata_fw_cust) for a full list of methods and parameters extracted from the ABAP source.
+::
+
 ## Methods
 
 ### Public

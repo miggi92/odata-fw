@@ -3,7 +3,7 @@ title: Define search/value helps
 description: Define search and value helps for your OData service.
 ---
 
-Search helps are currently ment to be global available. But the search help entity will only be generated if any property has an value in the "search help" column.
+Search helps are currently meant to be globally available. But the search help entity will only be generated if any property has a value in the "search help" column.
 
 ![customizing tree search helps](pictures/customizing/search_help_tree.png)
 
@@ -18,7 +18,7 @@ The fixed domain values can be created as a value help with following customizin
 
 So to get it to work you only need to enter the data element into the "data_element" column.
 
-The framework automatically propergates the values.
+The framework automatically propagates the values.
 
 In the example the value help enity will be: **fixedDomainValueHelpSet**
 

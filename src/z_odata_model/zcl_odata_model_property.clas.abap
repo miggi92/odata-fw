@@ -22,11 +22,12 @@ CLASS zcl_odata_model_property DEFINITION
     "! @raising   /iwbep/cx_mgw_med_exception | <p class="shorttext synchronized">OData Error</p>
     "! @raising   zcx_odata                   | <p class="shorttext synchronized">OData FW Error</p>
     METHODS create_property
-      IMPORTING io_entity        TYPE REF TO /iwbep/if_mgw_odata_entity_typ
-                it_components    TYPE cl_abap_structdescr=>component_table
-                is_property      TYPE zodata_property
-                is_entity        TYPE zodata_entity
-                io_ui_annotation TYPE REF TO zcl_odata_annotation_ui
+      IMPORTING io_entity           TYPE REF TO /iwbep/if_mgw_odata_entity_typ
+                it_components       TYPE cl_abap_structdescr=>component_table
+                is_property         TYPE zodata_property
+                is_entity           TYPE zodata_entity
+                io_ui_annotation    TYPE REF TO zcl_odata_annotation_ui
+                io_odata_annotation TYPE REF TO zcl_odata_annotation_odata
       RAISING   /iwbep/cx_mgw_med_exception
                 zcx_odata.
 
@@ -86,6 +87,7 @@ CLASS zcl_odata_model_property IMPLEMENTATION.
 
     IF is_property-not_filterable = abap_true.
       mo_property->set_filterable( abap_false ).
+      io_odata_annotation->add_property_to_non_filterable( is_property-property_name ).
     ENDIF.
 
     IF is_property-not_editable = abap_true.
@@ -112,6 +114,7 @@ CLASS zcl_odata_model_property IMPLEMENTATION.
 
     IF is_property-mandatory_filter = abap_true.
       zcl_odata_annotaion_sap=>create_from_property( mo_property )->add_required_filter_annotation( ).
+      io_odata_annotation->add_property_to_required( is_property-property_name ).
     ENDIF.
 
     IF is_property-not_visible = abap_true.
@@ -124,23 +127,25 @@ CLASS zcl_odata_model_property IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD change_edm_types.
-    is_component-type->get_ddic_header( RECEIVING  p_header     = DATA(ls_ddic_header)
-                                        EXCEPTIONS not_found    = 1                " Type could not be found
-                                                   no_ddic_type = 2                " Typ is not a dictionary type
-                                                   OTHERS       = 3 ).
+    " DATS
+    IF is_component-type->type_kind = cl_abap_typedescr=>typekind_date.
+      TRY.
+          zcl_odata_annotaion_sap=>create_from_property( mo_property )->add_date_only_annotation( ).
+        CATCH /iwbep/cx_mgw_med_exception.
+      ENDTRY.
 
-    CASE ls_ddic_header-refname.
-      WHEN 'TZNTSTMPL'.
-        mo_property->set_type_edm_datetimeoffset( ).
-      WHEN 'DATUM'.
-        TRY.
-            zcl_odata_annotaion_sap=>create_from_property( mo_property )->add_date_only_annotation( ).
-          CATCH /iwbep/cx_mgw_med_exception. " Meta data exception
-        ENDTRY.
-    ENDCASE.
-
-    IF is_component-type->absolute_name CS 'GUID'.
+    " GUID
+    ELSEIF     is_component-type->type_kind = cl_abap_typedescr=>typekind_hex
+           AND is_component-type->length    = 16.
       mo_property->set_type_edm_guid( ).
+
+    " Timestamp
+    ELSEIF     is_component-type->type_kind = cl_abap_typedescr=>typekind_packed
+           AND is_component-type->decimals  = 0
+           AND ( is_component-type->length = 8 OR is_component-type->length = 11 ).
+
+      mo_property->set_type_edm_datetimeoffset( ).
+      mo_property->set_precison( COND #( WHEN is_component-type->length = 11 THEN 7 ELSE 0 ) ).
     ENDIF.
   ENDMETHOD.
 

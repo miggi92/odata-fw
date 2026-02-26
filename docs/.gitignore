@@ -6,6 +6,9 @@
 .cache
 dist
 
+# Auto-generated ABAP docs
+content/4.dev-objects/classes/_generated/
+
 # Node dependencies
 node_modules
 

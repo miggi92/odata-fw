@@ -57,90 +57,43 @@ const starLayers = computed(() => [
 
 <template>
   <div class="absolute pointer-events-none z-[-1] inset-y-0 inset-x-5 sm:inset-x-7 lg:inset-x-9 overflow-hidden">
-    <svg
-      class="absolute inset-0 pointer-events-none"
-      viewBox="0 0 1017 181"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg class="absolute inset-0 pointer-events-none" viewBox="0 0 1017 181" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
       <g opacity="0.5">
-        <mask
-          id="path-1-inside-1_846_160841"
-          fill="white"
-        >
+        <mask id="path-1-inside-1_846_160841" fill="white">
           <path d="M0 0H1017V181H0V0Z" />
         </mask>
-        <path
-          d="M0 0H1017V181H0V0Z"
-          fill="url(#paint0_radial_846_160841)"
-          fill-opacity="0.22"
-        />
+        <path d="M0 0H1017V181H0V0Z" fill="url(#paint0_radial_846_160841)" fill-opacity="0.22" />
       </g>
       <defs>
-        <radialGradient
-          id="paint0_radial_846_160841"
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(508.999 19.5) rotate(90.177) scale(161.501 509.002)"
-        >
+        <radialGradient id="paint0_radial_846_160841" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(508.999 19.5) rotate(90.177) scale(161.501 509.002)">
           <stop stop-color="var(--ui-primary)" />
-          <stop
-            offset="1"
-            stop-color="var(--ui-primary)"
-            stop-opacity="0"
-          />
+          <stop offset="1" stop-color="var(--ui-primary)" stop-opacity="0" />
         </radialGradient>
-        <linearGradient
-          id="paint1_linear_846_160841"
-          x1="10.9784"
-          y1="91"
-          x2="1017"
-          y2="90.502"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop
-            stop-color="var(--ui-primary)"
-            stop-opacity="0"
-          />
-          <stop
-            offset="0.395"
-            stop-color="var(--ui-primary)"
-          />
-          <stop
-            offset="1"
-            stop-color="var(--ui-primary)"
-            stop-opacity="0"
-          />
+        <linearGradient id="paint1_linear_846_160841" x1="10.9784" y1="91" x2="1017" y2="90.502"
+          gradientUnits="userSpaceOnUse">
+          <stop stop-color="var(--ui-primary)" stop-opacity="0" />
+          <stop offset="0.395" stop-color="var(--ui-primary)" />
+          <stop offset="1" stop-color="var(--ui-primary)" stop-opacity="0" />
         </linearGradient>
       </defs>
     </svg>
 
     <div class="stars size-full absolute inset-x-0 top-0">
-      <div
-        v-for="(layer, index) in starLayers"
-        :key="index"
-        class="star-layer"
-        :style="{
-          '--star-duration': `${layer.duration}s`,
-          '--star-opacity': layer.opacity,
-          '--star-color': color
-        }"
-      >
-        <div
-          v-for="(star, starIndex) in layer.stars"
-          :key="starIndex"
-          class="star absolute rounded-full"
-          :style="{
-            left: `${star.x}px`,
-            top: `${star.y}px`,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-            backgroundColor: 'var(--star-color)',
-            opacity: 'var(--star-opacity)'
-          }"
-        />
+      <div v-for="(layer, index) in starLayers" :key="index" class="star-layer" :style="{
+        '--star-duration': `${layer.duration}s`,
+        '--star-opacity': layer.opacity,
+        '--star-color': color
+      }">
+        <div v-for="(star, starIndex) in layer.stars" :key="starIndex" class="star absolute rounded-full" :style="{
+          left: `${star.x}px`,
+          top: `${star.y}px`,
+          width: `${star.size}px`,
+          height: `${star.size}px`,
+          backgroundColor: 'var(--star-color)',
+          opacity: 'var(--star-opacity)'
+        }" />
       </div>
     </div>
   </div>
@@ -176,6 +129,7 @@ const starLayers = computed(() => [
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(-2000px);
   }

@@ -13,15 +13,11 @@ useSeoMeta({
   ogTitle: title,
   description,
   ogDescription: description,
-  ogImage: 'https://ui4.nuxt.com/assets/templates/nuxt/docs-light.png',
-  twitterImage: 'https://ui4.nuxt.com/assets/templates/nuxt/docs-light.png'
+  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/docs-light.png',
+  twitterImage: 'https://ui.nuxt.com/assets/templates/nuxt/docs-light.png'
 })
 </script>
 
 <template>
-  <ContentRenderer
-    v-if="page"
-    :value="page"
-    :prose="false"
-  />
+  <ContentRenderer v-if="page" :value="page" :prose="false" />
 </template>

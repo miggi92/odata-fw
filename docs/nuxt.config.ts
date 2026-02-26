@@ -6,7 +6,8 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/content',
     'nuxt-og-image',
-    'nuxt-llms'
+    'nuxt-llms',
+    '@nuxtjs/mcp-toolkit'
   ],
 
   devtools: {
@@ -15,7 +16,9 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/odata-fw/'
   },
-
+  site: {
+    title: 'OData Framework docs',
+  },
   css: ['~/assets/css/main.css'],
 
   content: {
@@ -29,6 +32,9 @@ export default defineNuxtConfig({
         }
       }
     }
+  },
+  experimental: {
+    asyncContext: true
   },
 
   compatibilityDate: '2024-07-11',
@@ -73,5 +79,8 @@ export default defineNuxtConfig({
         ]
       }
     ]
+  },
+  mcp: {
+    name: 'Docs template'
   }
 })

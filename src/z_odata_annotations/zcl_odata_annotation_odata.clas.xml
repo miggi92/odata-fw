@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_ODATA_ANNOTATION_ODATA</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>SAP OData Capabilities annotation</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS_CLASS>
+    <SEOCLASSTX>
+     <LANGU>E</LANGU>
+     <DESCRIPT>SAP OData Capabilities annotation</DESCRIPT>
+    </SEOCLASSTX>
+   </DESCRIPTIONS_CLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_PROPERTY_TO_NON_FILTERABLE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Adds a property to the NonFilterableProperties collection</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_PROPERTY_TO_REQUIRED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Adds a property to the RequiredProperties collection</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Creates an instance for a specific entity set</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_FILTER_RECORD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Lazy-loading for the FilterRestrictions record</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>ADD_PROPERTY_TO_NON_FILTERABLE</CMPNAME>
+     <SCONAME>IV_PROPERTY_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of the property (or Nav-Prop)</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>ADD_PROPERTY_TO_REQUIRED</CMPNAME>
+     <SCONAME>IV_PROPERTY_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of the property (or Nav-Prop)</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE</CMPNAME>
+     <SCONAME>IO_VOCAN_MODEL</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Vocabulary Annotation Model</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE</CMPNAME>
+     <SCONAME>IV_ENTITY_CONTAINER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of the Entity Container</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE</CMPNAME>
+     <SCONAME>IV_ENTITY_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of the Entity</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE</CMPNAME>
+     <SCONAME>IV_NAMESPACE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Service Namespace</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE</CMPNAME>
+     <SCONAME>RO_ODATA_ANNOTATION</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Created annotation instance</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_FILTER_RECORD</CMPNAME>
+     <SCONAME>RO_RECORD</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>The FilterRestrictions record instance</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

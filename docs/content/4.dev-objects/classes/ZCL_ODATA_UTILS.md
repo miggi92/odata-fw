@@ -4,6 +4,10 @@ title: ZCL_ODATA_UTILS
 
 This class contains some utility methods for the odata framework.
 
+::note
+See the [auto-generated API reference](_generated/zcl_odata_utils) for a full list of methods and parameters extracted from the ABAP source.
+::
+
 ## Methods
 
 ### Public Static

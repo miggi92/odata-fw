@@ -32,7 +32,7 @@ export default defineAppConfig({
     }]
   },
   footer: {
-    credits: `Built with Nuxt UI • © 2019 - ${new Date().getFullYear()}`,
+    credits: `miggi92 • © 2019 - ${new Date().getFullYear()}`,
     colorMode: false,
     links: [{
       'icon': 'i-simple-icons-github',
@@ -45,16 +45,11 @@ export default defineAppConfig({
     title: 'Table of Contents',
     bottom: {
       title: 'Community',
-      edit: 'https://github.com/miggi92/odata-fw/edit/master/content',
+      edit: 'https://github.com/miggi92/odata-fw/edit/master/docs/content',
       links: [{
         icon: 'i-lucide-star',
         label: 'Star on GitHub',
         to: 'https://github.com/miggi92/odata-fw',
-        target: '_blank'
-      }, {
-        icon: 'i-lucide-book-open',
-        label: 'Nuxt UI docs',
-        to: 'https://ui4.nuxt.com/docs/getting-started/installation/nuxt',
         target: '_blank'
       }]
     }

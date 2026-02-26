@@ -2,14 +2,33 @@
     "extends": [
         "config:recommended"
     ],
-    "minor": {
-        "automerge": true
-    },
-    "labels": [ "dependencies"],
+    "labels": [
+        "dependencies"
+    ],
     "packageRules": [
         {
-            "matchManagers": ["github-actions"],
-            "labels": ["github-actions", "dependencies"]
+            "matchManagers": [
+                "github-actions"
+            ],
+            "labels": [
+                "github-actions",
+                "dependencies"
+            ]
+        },
+        {
+            "description": "Group ABAP toolchain updates into one PR",
+            "matchManagers": [
+                "npm"
+            ],
+            "matchPackagePatterns": [
+                "^@abaplint/"
+            ],
+            "groupName": "abaplint toolchain",
+            "groupSlug": "abaplint-toolchain",
+            "labels": [
+                "abap",
+                "dependencies"
+            ]
         }
     ]
 }

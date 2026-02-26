@@ -7,7 +7,7 @@ This class is used for the [global value help](/global/global-value-help) entity
 This class inherits from [ZCL_ODATA_MAIN](zcl_odata_main).
 
 ::note
-See the [auto-generated API reference](classes/_generated/zcl_odata_value_help) for a full list of methods and parameters extracted from the ABAP source.
+See the [auto-generated API reference](_generated/zcl_odata_value_help) for a full list of methods and parameters extracted from the ABAP source.
 ::
 
 ## Methods

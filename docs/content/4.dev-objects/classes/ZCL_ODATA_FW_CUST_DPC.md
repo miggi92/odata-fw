@@ -4,7 +4,7 @@ description: DPC Class
 ---
 
 ::note
-See the [auto-generated API reference](classes/_generated/zcl_odata_fw_cust_dpc) for a full list of methods and parameters extracted from the ABAP source.
+See the [auto-generated API reference](_generated/zcl_odata_fw_cust_dpc) for a full list of methods and parameters extracted from the ABAP source.
 ::
 
 ## Methods

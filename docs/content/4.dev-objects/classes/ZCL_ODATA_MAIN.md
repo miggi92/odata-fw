@@ -6,7 +6,7 @@ description: Class ZCL_ODATA_MAIN
 This abstract class is the blueprint for every entity class used by this framework.
 
 ::note
-See the [auto-generated API reference](classes/_generated/zcl_odata_main) for a full list of methods and parameters extracted from the ABAP source.
+See the [auto-generated API reference](_generated/zcl_odata_main) for a full list of methods and parameters extracted from the ABAP source.
 ::
 
 ## [/IWBEP/IF_MGW_APPL_SRV_RUNTIME](/dev-objects/sap-objects/iwbep-if_mgw_appl_srv_runtime)

@@ -8,7 +8,7 @@ It contains an abstract document entity for the odata service.
 This class helps to handle the an document entity in the odata service.
 
 ::note
-See the [auto-generated API reference](classes/_generated/zcl_odata_documents) for a full list of methods and parameters extracted from the ABAP source.
+See the [auto-generated API reference](_generated/zcl_odata_documents) for a full list of methods and parameters extracted from the ABAP source.
 ::
 
 ## Methods

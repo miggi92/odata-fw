@@ -5,7 +5,7 @@ title: ZCL_ODATA_DATA_PROVIDER
 This class contains the data provider classes for the odata service. Every data provider needs to inherit from the [ZCL_ODATA_MAIN](zcl_odata_main) class.
 
 ::note
-See the [auto-generated API reference](classes/_generated/zcl_odata_data_provider) for a full list of methods and parameters extracted from the ABAP source.
+See the [auto-generated API reference](_generated/zcl_odata_data_provider) for a full list of methods and parameters extracted from the ABAP source.
 ::
 
 ## Methods

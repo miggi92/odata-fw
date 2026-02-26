@@ -6,7 +6,7 @@ description: OData Error Handler class
 This class converts ABAP exceptions into OData-compatible error responses. It should be used in the DPC_EXT constructor to handle framework exceptions.
 
 ::note
-See the [auto-generated API reference](classes/_generated/zcl_odata_error_handler) for a full list of methods and parameters extracted from the ABAP source.
+See the [auto-generated API reference](_generated/zcl_odata_error_handler) for a full list of methods and parameters extracted from the ABAP source.
 ::
 
 ## Usage

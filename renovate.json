@@ -41,5 +41,8 @@
                 "/^@abaplint//"
             ]
         }
-    ]
+    ],
+    "vulnerabilityAlerts": {
+        "enabled": true
+      }
 }

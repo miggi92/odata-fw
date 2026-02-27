@@ -31,14 +31,14 @@
             "matchManagers": [
                 "npm"
             ],
-            "matchPackagePatterns": [
-                "^@abaplint/"
-            ],
             "groupName": "abaplint toolchain",
             "groupSlug": "abaplint-toolchain",
             "labels": [
                 "abap",
                 "dependencies"
+            ],
+            "matchPackageNames": [
+                "/^@abaplint//"
             ]
         }
     ]

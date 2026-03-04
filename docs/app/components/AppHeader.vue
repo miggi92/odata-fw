@@ -19,14 +19,6 @@ const { header } = useAppConfig()
       </span>
     </template>
 
-    <template v-else #left>
-      <NuxtLink :to="header?.to || '/'">
-        <AppLogo class="w-auto h-6 shrink-0" />
-      </NuxtLink>
-
-      <TemplateMenu />
-    </template>
-
     <template #right>
       <UContentSearchButton v-if="header?.search" class="lg:hidden" />
 

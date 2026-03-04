@@ -3,6 +3,7 @@ import { AbapDocUtils } from './utils.mjs'
 
 export class AbapClassModel {
   constructor() {
+    this.objectType = 'class'
     this.name = ''
     this.description = ''
     this.isAbstract = false
@@ -39,8 +40,8 @@ export class AbapClassParser {
         continue
       }
 
-      if (this.tryParseClassDefinition(trimmed)) continue
-      if (this.isImplementationStart(trimmed)) break
+      if (this.tryParseObjectDefinition(trimmed)) continue
+      if (this.model.objectType === 'class' && this.isImplementationStart(trimmed)) break
       if (this.tryParseSection(trimmed)) continue
       if (this.tryParseInterface(trimmed)) continue
       if (this.tryParseColonMethods(trimmed, line)) continue
@@ -68,23 +69,36 @@ export class AbapClassParser {
     return true
   }
 
-  tryParseClassDefinition(trimmed) {
-    const classDefMatch = trimmed.match(/^CLASS\s+(\S+)\s+DEFINITION/i)
-    if (!classDefMatch || this.model.name) return false
+  tryParseObjectDefinition(trimmed) {
+    if (this.model.name) return false
 
-    this.model.name = classDefMatch[1].toUpperCase()
+    const classDefMatch = trimmed.match(/^CLASS\s+(\S+)\s+DEFINITION/i)
+    const interfaceDefMatch = trimmed.match(/^INTERFACE\s+(\S+)/i)
+    if (!classDefMatch && !interfaceDefMatch) return false
+
+    if (classDefMatch) {
+      this.model.objectType = 'class'
+      this.model.name = classDefMatch[1].toUpperCase()
+    } else {
+      this.model.objectType = 'interface'
+      this.model.name = interfaceDefMatch[1].replace(/[\.,:]$/, '').toUpperCase()
+      this.currentSection = 'public'
+    }
+
     if (this.currentDocBlock.length > 0) {
       this.model.description = AbapDocUtils.parseDocBlock(this.currentDocBlock).description
     }
     this.currentDocBlock = []
 
-    const defBlock = this.collectDefinitionHeader(this.index)
-    if (/\bABSTRACT\b/i.test(defBlock)) this.model.isAbstract = true
-    if (/\bFINAL\b/i.test(defBlock)) this.model.isFinal = true
+    if (this.model.objectType === 'class') {
+      const defBlock = this.collectDefinitionHeader(this.index)
+      if (/\bABSTRACT\b/i.test(defBlock)) this.model.isAbstract = true
+      if (/\bFINAL\b/i.test(defBlock)) this.model.isFinal = true
 
-    const inheritMatch = defBlock.match(/INHERITING\s+FROM\s+(\S+)/i)
-    if (inheritMatch) {
-      this.model.inheritsFrom = inheritMatch[1].toUpperCase()
+      const inheritMatch = defBlock.match(/INHERITING\s+FROM\s+(\S+)/i)
+      if (inheritMatch) {
+        this.model.inheritsFrom = inheritMatch[1].toUpperCase()
+      }
     }
 
     this.index++
@@ -121,11 +135,11 @@ export class AbapClassParser {
   }
 
   tryParseInterface(trimmed) {
-    if (!this.currentSection || !/^\s*INTERFACES\s+/i.test(trimmed)) return false
+    if (this.model.objectType !== 'class' || !this.currentSection || !/^\s*INTERFACES\s+/i.test(trimmed)) return false
 
     const ifMatch = trimmed.match(/INTERFACES\s+(\S+)/i)
     if (ifMatch) {
-      this.model.interfaces.push(ifMatch[1].replace(/[\.,:]$/, ''))
+      this.model.interfaces.push(ifMatch[1].replace(/[\.,:]$/, '').toUpperCase())
     }
 
     this.currentDocBlock = []

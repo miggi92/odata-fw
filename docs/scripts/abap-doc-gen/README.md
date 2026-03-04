@@ -12,9 +12,10 @@ This folder contains the modular implementation of the ABAP Doc → Markdown gen
 - Coordinates parser + renderer
 
 ### `parser.mjs`
-- Parses `.clas.abap` source into an in-memory class model
+- Parses `.clas.abap` and `.intf.abap` source into an in-memory API model
 - Extracts:
-  - class metadata (name, abstract/final, inheritance, interfaces)
+  - object metadata (name, type)
+  - class metadata (abstract/final, inheritance, interfaces)
   - methods per section (`public`, `protected`, `private`)
   - ABAP Doc blocks (`"!`, `@parameter`, `@raising`)
 - Supports both method declaration styles:
@@ -36,7 +37,7 @@ This folder contains the modular implementation of the ABAP Doc → Markdown gen
 
 ## Data Flow
 
-1. `GeneratorApp` discovers ABAP class files
+1. `GeneratorApp` discovers ABAP class/interface files
 2. `AbapClassParser` parses each file into a model
 3. `MarkdownRenderer` renders the model to Markdown
 4. `GeneratorApp` writes files to `content/4.dev-objects/classes/_generated`
@@ -63,7 +64,7 @@ Or via npm scripts:
 - Keep model structure stable to avoid parser coupling
 
 ### Filter generated classes
-- Update `GeneratorApp.getClassFiles()` in `app.mjs`
+- Update `GeneratorApp.getSourceFiles()` in `app.mjs`
 
 ### Add additional output formats (e.g. JSON)
 - Reuse `AbapClassParser`

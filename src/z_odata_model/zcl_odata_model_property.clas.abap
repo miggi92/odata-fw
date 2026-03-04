@@ -120,6 +120,14 @@ CLASS zcl_odata_model_property IMPLEMENTATION.
     IF is_property-not_visible = abap_true.
       zcl_odata_annotaion_sap=>create_from_property( mo_property )->add_visible_false_annotation( ).
     ENDIF.
+
+    IF is_property-unit IS NOT INITIAL.
+      zcl_odata_annotaion_sap=>create_from_property( mo_property )->add_unit_annotation(
+                                                                     iv_unit = |{ is_property-unit }|  ).
+    ENDIF.
+    IF is_property-is_unit = abap_true.
+      zcl_odata_annotaion_sap=>create_from_property( mo_property )->add_is_unit_annotation( ).
+    ENDIF.
   ENDMETHOD.
 
   METHOD get_property_type.

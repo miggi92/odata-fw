@@ -22,6 +22,18 @@ CLASS zcl_odata_annotaion_sap DEFINITION
     METHODS add_label_annotation
       IMPORTING iv_label_text TYPE /iwbep/med_annotation_value.
 
+    "! <p class="shorttext synchronized">Add unit annoation </p>
+    "!  The unit is coming from the property that is defined in the property.
+    "!
+    "! @parameter iv_unit | <p class="shorttext synchronized">Unit of Measure</p>
+    METHODS add_unit_annotation
+      IMPORTING iv_unit TYPE /iwbep/med_annotation_value.
+
+    "! <p class="shorttext synchronized">Add is unit annoation </p>
+    "!  Add annotation to define it as a unit of measure.
+    "!</p>
+    METHODS add_is_unit_annotation.
+
     "! <p class="shorttext synchronized" lang="de">Add required in filter annotation</p>
     "!
     METHODS add_required_filter_annotation.
@@ -77,6 +89,16 @@ CLASS zcl_odata_annotaion_sap IMPLEMENTATION.
   METHOD add_visible_false_annotation.
     mo_annotation->add( iv_key   = 'visible'
                         iv_value = 'false' ).
+  ENDMETHOD.
+
+  METHOD add_unit_annotation.
+    mo_annotation->add( iv_key   = 'unit'
+                        iv_value = iv_unit ).
+  ENDMETHOD.
+
+  METHOD add_is_unit_annotation.
+    mo_annotation->add( iv_key   = 'semantics'
+                        iv_value = 'unit-of-measure' ).
   ENDMETHOD.
 
 ENDCLASS.

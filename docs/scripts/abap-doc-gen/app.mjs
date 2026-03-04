@@ -66,7 +66,8 @@ export class GeneratorApp {
   generateFile(filePath) {
     const source = readFileSync(filePath, 'utf-8')
     const model = this.parser.parse(source)
-    const relativeFilePath = relative(this.sourceDir, filePath)
+    const relativeFilePath = relative(this.sourceDir, filePath).replace(/\\/g, '/')
+    model.sourceRelativePath = relativeFilePath
 
     if (!model.name) {
       console.warn(`  ⚠ Could not parse class name from ${relativeFilePath}, skipping`)

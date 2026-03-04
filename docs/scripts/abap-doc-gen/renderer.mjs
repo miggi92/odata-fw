@@ -1,6 +1,32 @@
 import { SECTION_LABELS, SECTION_ORDER } from './constants.mjs'
 
 export class MarkdownRenderer {
+  buildExternalLink(url, label = url) {
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`
+  }
+
+  linkifyUrls(text) {
+    return text.replace(/https?:\/\/[^\s<>()]+/g, (rawUrl, offset, source) => {
+      if (offset >= 2 && source.slice(offset - 2, offset) === '](') {
+        return rawUrl
+      }
+
+      const before = source.slice(Math.max(0, offset - 6), offset).toLowerCase()
+      if (before === 'href="' || before === "href='") {
+        return rawUrl
+      }
+
+      let url = rawUrl
+      let trailing = ''
+      while (/[.,;:!?]$/.test(url)) {
+        trailing = `${url.slice(-1)}${trailing}`
+        url = url.slice(0, -1)
+      }
+
+      return `${this.buildExternalLink(url)}${trailing}`
+    })
+  }
+
   render(model) {
     const lines = []
 
@@ -14,7 +40,9 @@ export class MarkdownRenderer {
     lines.push('')
 
     if (model.description) {
-      lines.push(`> ${model.description}`)
+      for (const line of model.description.split('\n')) {
+        lines.push(`> ${this.linkifyUrls(line)}`)
+      }
       lines.push('')
     }
 
@@ -71,7 +99,9 @@ export class MarkdownRenderer {
     lines.push('')
 
     if (method.doc.description) {
-      lines.push(method.doc.description)
+      for (const line of method.doc.description.split('\n')) {
+        lines.push(this.linkifyUrls(line))
+      }
       lines.push('')
     }
 
@@ -79,7 +109,7 @@ export class MarkdownRenderer {
       lines.push('| Parameter | Description |')
       lines.push('|-----------|-------------|')
       for (const param of method.doc.parameters) {
-        lines.push(`| \`${param.name}\` | ${param.description} |`)
+        lines.push(`| \`${param.name}\` | ${this.linkifyUrls(param.description)} |`)
       }
       lines.push('')
     }
@@ -87,16 +117,19 @@ export class MarkdownRenderer {
     if (method.doc.raising.length > 0) {
       lines.push('**Exceptions:**')
       for (const error of method.doc.raising) {
-        lines.push(`- \`${error.name}\` — ${error.description}`)
+        lines.push(`- \`${error.name}\` — ${this.linkifyUrls(error.description)}`)
       }
       lines.push('')
     }
   }
 
   renderSourceLink(lines, model) {
+    const sourcePath = model.sourceRelativePath ?? `${model.name.toLowerCase()}.clas.abap`
+    const sourceUrl = `https://github.com/miggi92/odata-fw/blob/master/src/${sourcePath}`
+
     lines.push('---')
     lines.push('')
-    lines.push(`*Auto-generated from [${model.name.toLowerCase()}.clas.abap](https://github.com/miggi92/odata-fw/blob/master/src/${model.name.toLowerCase()}.clas.abap)*`)
+    lines.push(`*Auto-generated from ${this.buildExternalLink(sourceUrl, sourcePath)}*`)
     lines.push('')
   }
 }

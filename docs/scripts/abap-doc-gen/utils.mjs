@@ -15,6 +15,7 @@ export class AbapDocUtils {
 
   static parseDocBlock(lines) {
     const doc = AbapDocUtils.emptyDoc()
+    const descriptionLines = []
 
     for (const line of lines) {
       const content = line.replace(/^\s*"!\s?/, '')
@@ -39,10 +40,12 @@ export class AbapDocUtils {
       }
 
       const text = AbapDocUtils.extractShortText(content)
-      if (text && !doc.description) {
-        doc.description = text
+      if (text) {
+        descriptionLines.push(text)
       }
     }
+
+    doc.description = descriptionLines.join('\n')
 
     return doc
   }

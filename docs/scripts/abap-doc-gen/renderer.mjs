@@ -27,12 +27,12 @@ export class MarkdownRenderer {
     })
   }
 
-  render(model) {
+  render(model, options = {}) {
     const lines = []
 
     lines.push('---')
     lines.push(`title: ${model.name}`)
-    lines.push(`description: "Auto-generated API reference for ${model.name}"`)
+    lines.push(`description: "Auto-generated API reference for ${model.objectType} ${model.name}"`)
     lines.push('---')
     lines.push('')
 
@@ -46,14 +46,21 @@ export class MarkdownRenderer {
       lines.push('')
     }
 
-    this.renderClassInfo(lines, model)
+    this.renderClassInfo(lines, model, options)
     this.renderMethods(lines, model)
     this.renderSourceLink(lines, model)
 
     return lines.join('\n')
   }
 
-  renderClassInfo(lines, model) {
+  renderClassInfo(lines, model, options) {
+    lines.push(`**Type:** ${model.objectType === 'interface' ? 'Interface' : 'Class'}`)
+    lines.push('')
+
+    if (model.objectType !== 'class') {
+      return
+    }
+
     const modifiers = []
     if (model.isAbstract) modifiers.push('Abstract')
     if (model.isFinal) modifiers.push('Final')
@@ -69,9 +76,15 @@ export class MarkdownRenderer {
     }
 
     if (model.interfaces.length > 0) {
+      const localInterfaceNames = options.localInterfaceNames ?? new Set()
+
       lines.push('**Interfaces:**')
       for (const intf of model.interfaces) {
-        lines.push(`- \`${intf}\``)
+        if (localInterfaceNames.has(intf)) {
+          lines.push(`- [\`${intf}\`](/dev-objects/classes/_generated/${intf.toLowerCase()})`)
+        } else {
+          lines.push(`- \`${intf}\``)
+        }
       }
       lines.push('')
     }

@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'node:fs'
-import { join, basename } from 'node:path'
+import { join, basename, relative } from 'node:path'
 
 import { AbapClassParser } from './parser.mjs'
 import { MarkdownRenderer } from './renderer.mjs'
@@ -40,16 +40,36 @@ export class GeneratorApp {
   }
 
   getClassFiles() {
-    return readdirSync(this.sourceDir)
-      .filter(file => file.endsWith('.clas.abap') && !file.includes('.testclasses'))
+    return this.collectClassFiles(this.sourceDir)
   }
 
-  generateFile(file) {
-    const source = readFileSync(join(this.sourceDir, file), 'utf-8')
+  collectClassFiles(directory) {
+    const entries = readdirSync(directory, { withFileTypes: true })
+    const files = []
+
+    for (const entry of entries) {
+      const fullPath = join(directory, entry.name)
+
+      if (entry.isDirectory()) {
+        files.push(...this.collectClassFiles(fullPath))
+        continue
+      }
+
+      if (entry.isFile() && entry.name.endsWith('.clas.abap') && !entry.name.includes('.testclasses')) {
+        files.push(fullPath)
+      }
+    }
+
+    return files
+  }
+
+  generateFile(filePath) {
+    const source = readFileSync(filePath, 'utf-8')
     const model = this.parser.parse(source)
+    const relativeFilePath = relative(this.sourceDir, filePath)
 
     if (!model.name) {
-      console.warn(`  ⚠ Could not parse class name from ${file}, skipping`)
+      console.warn(`  ⚠ Could not parse class name from ${relativeFilePath}, skipping`)
       return null
     }
 
@@ -83,7 +103,7 @@ export class GeneratorApp {
       'description: Auto-generated ABAP API reference pages extracted from source code comments.',
       '---',
       '',
-      'This section is generated from ABAP Doc comments in the `src/*.clas.abap` files.',
+      'This section is generated from ABAP Doc comments in the `src/**/*.clas.abap` files.',
       '',
       '## Classes',
       ''

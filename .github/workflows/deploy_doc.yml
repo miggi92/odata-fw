@@ -5,6 +5,8 @@ on:
     branches: [master]
     paths:
       - 'docs/**'
+      - 'src/**.clas.abap'
+      - 'src/**.intf.abap'
 
   workflow_dispatch:
 

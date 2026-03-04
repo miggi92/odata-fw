@@ -30,6 +30,8 @@ After [defining an entity](define-entity), navigate to the property level in the
 | **FILTER_IN_FILTERBAR** | Mark as `X` to show this property in the smart filter bar. |
 | **MANDATORY_FILTER** | Mark as `X` to make this property a required filter. |
 | **NOT_VISIBLE** | Mark as `X` to hide this property from the UI (sets `sap:visible="false"`). |
+| **UNIT** | The unit of measure for this property. (sets `sap:unit="PropertyName"`)) |
+| **IS_UNIT** | Mark as `X` to indicate this property is a unit (sets `sap:semantics="unit-of-measure"`). |
 
 ## Property Texts
 
